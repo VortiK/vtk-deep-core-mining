@@ -12,6 +12,7 @@ local function resource_patch_maker(ore_name, ore_patch_name, hardnessparam, min
     type = "resource",
     name = ore_patch_name,
     icon = "__vtk-deep-core-mining__/graphics/icons/"..ore_patch_name..".png",
+    icon_size = 32,
     flags = {"placeable-neutral"},
     category = "vtk-deepcore-ore",
     order = "a-b-a",
