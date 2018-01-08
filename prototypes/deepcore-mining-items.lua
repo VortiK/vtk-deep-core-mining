@@ -67,7 +67,7 @@ data:extend({
     
     collision_box = {{ -2.5, -2.5}, {2.5, 2.5}},
     selection_box = {{ -2.5, -2.5}, {2.5, 2.5}},
-    drawing_box = {{-1.6, -2.5}, {1.5, 1.6}},
+    drawing_box = {{-2.5, -2.5}, {2.5, 2.5}},
     
     input_fluid_box = nil, 
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
