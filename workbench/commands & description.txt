@@ -1,0 +1,49 @@
+-- spawn ore patches
+/c game.player.surface.create_entity({name = "iron-ore-patch", amount = math.random(60000, 300000), position = {game.player.position.x, game.player.position.y}, force = game.forces.neutral})
+
+/c game.player.surface.create_entity({name = "copper-ore-patch", amount = math.random(60000, 300000), position = {game.player.position.x, game.player.position.y}, force = game.forces.neutral})
+
+/c game.player.surface.create_entity({name = "coal-patch", amount = math.random(60000, 300000), position = {game.player.position.x, game.player.position.y}, force = game.forces.neutral})
+
+-- spawn ore fields
+/c local surface = game.player.surface;
+local ore = nil
+local size = 5
+local density = 10
+for y=-size,size do
+ for x=-size,size do
+  a = (((size+1) - math.abs(x))*10)
+  b = (((size+1) - math.abs(y))*10)
+  if a < b then
+   ore = math.random(((a*density)-(a*(density-8))),((a*density)+(a*(density-8))))
+  end
+  if b < a then
+   ore = math.random(((b*density)-(b*(density-8))),((b*density)+(b*(density-8))))
+  end
+  surface.create_entity({name="lead-ore", amount=ore, position={game.player.position.x+x, game.player.position.y+y}})
+ end
+end
+
+
+-- remove some entity in a radius
+/c for _, entity in ipairs(game.player.surface.find_entities_filtered{
+        area={{game.player.position.x-32, game.player.position.y-32},
+            {game.player.position.x+32, game.player.position.y+32}},
+            name="iron-ore-patch"})
+do
+    entity.destroy()
+end
+
+
+-- change difficulty
+/c game.difficulty_settings.recipe_difficulty = 0; game.difficulty_settings.technology_difficulty = 0; game.difficulty_settings.technology_price_multiplier = 1
+
+-- add item
+/c game.player.insert{name="vtk-deepcore-mining-drill", count=100}
+
+-- print player position 
+/c local p = game.player p.print(p.position.x.." "..p.position.y)
+
+
+
+https://github.com/Afforess/Factorio-Stdlib

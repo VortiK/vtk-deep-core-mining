@@ -1,0 +1,10 @@
+{
+  "name": "vtk-deep-core-mining",
+  "version": "1.0.0",
+  "factorio_version": "0.15",
+  "title": "Deep core mining",
+  "author": "VortiK",
+  "homepage": "",
+  "description": "Adds variation of vanilla ressources to mine when ore patches are depleted.",
+  "dependencies": ["base >= 0.15"]
+}
