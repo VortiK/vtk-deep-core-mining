@@ -1,10 +1,10 @@
 {
   "name": "vtk-deep-core-mining",
-  "version": "1.3.1",
-  "factorio_version": "0.15",
+  "version": "1.4.0",
   "title": "Deep core mining",
   "author": "VortiK",
   "homepage": "",
   "description": "Adds variation of vanilla ressources to mine when ore fields are depleted with an advanced mining drill to upgrade mining outposts and provide source of expensive but steady infinite ore.",
-  "dependencies": ["base >= 0.15"]
+  "factorio_version": "0.16",
+  "dependencies": ["base >= 0.16"]
 }
