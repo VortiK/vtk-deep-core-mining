@@ -84,7 +84,7 @@ data:extend({
     {
       type = "electric",
       -- will produce this much * energy pollution units per tick
-      emissions = 1,
+      emissions = 0.15,
       usage_priority = "secondary-input",
     },
     vector_to_place_result = {0, -2.85},
