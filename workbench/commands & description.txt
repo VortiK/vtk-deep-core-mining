@@ -1,49 +1,27 @@
--- spawn ore patches
-/c game.player.surface.create_entity({name = "iron-ore-patch", amount = math.random(60000, 300000), position = {game.player.position.x, game.player.position.y}, force = game.forces.neutral})
-
-/c game.player.surface.create_entity({name = "copper-ore-patch", amount = math.random(60000, 300000), position = {game.player.position.x, game.player.position.y}, force = game.forces.neutral})
-
 /c game.player.surface.create_entity({name = "coal-patch", amount = math.random(60000, 300000), position = {game.player.position.x, game.player.position.y}, force = game.forces.neutral})
 
--- spawn ore fields
-/c local surface = game.player.surface;
-local ore = nil
-local size = 5
-local density = 10
-for y=-size,size do
- for x=-size,size do
-  a = (((size+1) - math.abs(x))*10)
-  b = (((size+1) - math.abs(y))*10)
-  if a < b then
-   ore = math.random(((a*density)-(a*(density-8))),((a*density)+(a*(density-8))))
-  end
-  if b < a then
-   ore = math.random(((b*density)-(b*(density-8))),((b*density)+(b*(density-8))))
-  end
-  surface.create_entity({name="lead-ore", amount=ore, position={game.player.position.x+x, game.player.position.y+y}})
- end
-end
-
-
--- remove some entity in a radius
-/c for _, entity in ipairs(game.player.surface.find_entities_filtered{
-        area={{game.player.position.x-32, game.player.position.y-32},
-            {game.player.position.x+32, game.player.position.y+32}},
-            name="iron-ore-patch"})
-do
-    entity.destroy()
-end
-
-
--- change difficulty
 /c game.difficulty_settings.recipe_difficulty = 0; game.difficulty_settings.technology_difficulty = 0; game.difficulty_settings.technology_price_multiplier = 1
 
--- add item
 /c game.player.insert{name="vtk-deepcore-mining-drill", count=100}
 
--- print player position 
-/c local p = game.player p.print(p.position.x.." "..p.position.y)
 
+Sad to see your outposts depleted and empty ore trains on your rails ? No more with Deep Core Mining ! Refactor your mining outpost to give them a new longterm breath !
 
+This mod is designed to aleviate the "depleted ore outpost" and "need to keep building new outpost forever" problems without a too cheaty ore generator solution. Adds a new type of equivalent ore resources that only spawn in place of depleted field to be mined with specific expensive drill.
+- New ore resource "patches" have a 10% chance to spawn under depleted normal ore for Iron, Copper and Coal.
+- Ore patches are like oil and provide an infinite yield that diminish with usage but with a small infinite minimum.
+- New advanced and animated mining drill to mine ore patches with associated technology and build component ; 16x more expansive to build but 27x more powerfull than a normal electric mining drill !
 
-https://github.com/Afforess/Factorio-Stdlib
+The idea is the repurpose old mining outpost when ore is depleted. So the infrastructure is still usefull for the investment of resources and time to replace old drills and building new machines while also providing an small but steady infinite source of ore.
+
+Graphics for the mining drill are not mine, source : https://www.spriters-resource.com/
+
+* * *
+
+Todo
+- add shadow and smoke to the drill
+- add another higher tier deep mining with rare mining spot
+
+Changelog
+
+2017-08-11 - 1.0.0 - initial release

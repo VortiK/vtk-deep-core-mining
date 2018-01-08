@@ -51,7 +51,7 @@ data:extend({
     result = "vtk-deepcore-mining-drone",
   },
 })
-  
+
 -- entity
 data:extend({
   {
@@ -85,19 +85,18 @@ data:extend({
       type = "electric",
       -- will produce this much * energy pollution units per tick
       emissions = 1,
-      usage_priority = "secondary-input"
+      usage_priority = "secondary-input",
     },
-    
     vector_to_place_result = {0, -2.85},
     base_picture =
     {
       sheet =
       {
-        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-miner-sheet.png",
-        -- priority = "high",
-        width = 300,
-        height = 400,
-        shift = util.by_pixel(0, -10),
+        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-miner-sheet-shadow.png",
+        priority = "high",
+        width = 331, --300,
+        height = 398,
+        shift = util.by_pixel(8, -8),
         scale = 0.55
         --scale = 0.01
       }
