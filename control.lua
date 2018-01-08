@@ -5,7 +5,7 @@ function spawn_ore_patch_on_depleted_ore(event)
   local ore = event.entity
   local surface = ore.surface
   local areaToScan = Position.expand_to_area(ore.position, 5)
-  local orePatchable = {"iron-ore", "copper-ore", "coal"}
+  local patchableOres = {"iron-ore", "copper-ore", "coal", "stone"}
   
   -- logic : 
   -- - depleted ore has an equivalent patch entity
@@ -19,14 +19,16 @@ function spawn_ore_patch_on_depleted_ore(event)
   -- player.print(serpent.block(player))
   
   validOre = false
-  for _,v in pairs(orePatchable) do
-    if v == ore.name then
-      validOre = true
-      break
+  for _,patchableOre in pairs(patchableOres) do
+    if patchableOre == ore.name then
+      if settings.global["vtk-deep-core-mining-spawn-"..patchableOre.."-patch"].value then
+        validOre = true
+        break
+      end
     end
   end
   
-  if validOre and not Area.inside(Position.expand_to_area({0,0}, 500), ore.position) then
+  if validOre and not Area.inside(Position.expand_to_area({0,0}, settings.global["vtk-deep-core-mining-spawn-radius-from-spawn"].value), ore.position) then
     orePatch = ore.name .. "-patch"
     local number = math.random(1, 10)
     entitiesCount = surface.count_entities_filtered{area = areaToScan, name = orePatch}

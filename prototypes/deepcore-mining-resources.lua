@@ -76,6 +76,12 @@ data:extend(
     2, 
     {r=0, g=0, b=0}
   ),
-  -- resource_patch_maker("stone", 0.4, 2, {r=0.478, g=0.450, b=0.317})
+  resource_patch_maker(
+    "stone",
+    "stone-patch",
+    0.4, 
+    2, 
+    {r=0.478, g=0.450, b=0.317}
+  ),
   -- resource_patch_maker("uraniume-ore", 0.9, 4, {r=0, g=0.7, b=0})
 })
