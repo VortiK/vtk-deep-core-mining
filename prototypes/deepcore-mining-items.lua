@@ -72,7 +72,6 @@ data:extend({
     selection_box = {{ -2.5, -2.5}, {2.5, 2.5}},
     drawing_box = {{-2.5, -2.5}, {2.5, 2.5}},
     
-    input_fluid_box = nil, 
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     
     mining_speed = 0.5,
@@ -81,17 +80,15 @@ data:extend({
     
     input_fluid_box =
     {
-      production_type = "input-output",
+      production_type = "input",
       pipe_picture = assembler2pipepictures(),
       pipe_covers = pipecoverspictures(),
-      base_area = 1,
-      height = 2,
-      base_level = -1,
+      base_area = 10, -- = x 100 fluid storage
+      --height = 10, -- ??
+      base_level = 1,-- so it requires a pump to inject
       pipe_connections =
       {
-        {
-          positions = { {2, -3}, {3, -2}, {-2, 3}, {-3, 2} }
-        }
+        { position = {-1, -3} },
       }
     },
     
@@ -103,7 +100,7 @@ data:extend({
       emissions = 0.15,
       usage_priority = "secondary-input",
     },
-    vector_to_place_result = {0, -2.85},
+    vector_to_place_result = {2, -3},
     base_picture =
     {
       sheet =

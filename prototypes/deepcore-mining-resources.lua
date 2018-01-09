@@ -22,7 +22,7 @@ local function resource_patch_maker(ore_name, ore_patch_name, hardnessparam, min
           probability = 1
         }
       },
-      fluid_amount = 10,
+      fluid_amount = 100,
       required_fluid = "sulfuric-acid"
     }
   }
@@ -82,6 +82,41 @@ local function resource_patch_maker(ore_name, ore_patch_name, hardnessparam, min
   return oredata
 end
 
+local function make_ore_glow(oreresource)
+
+    data.raw.resource[oreresource].stage_counts = {1}
+    data.raw.resource[oreresource].effect_animation_period = 5
+    data.raw.resource[oreresource].effect_animation_period_deviation = 1
+    data.raw.resource[oreresource].effect_darkness_multiplier = 3.6
+
+    data.raw.resource[oreresource].stages =
+    {
+        sheet =
+        {
+            filename = "__vtk-deep-core-mining__/graphics/resource/"..oreresource.."-sprite.png",
+            priority = "extra-high",
+            width = 100,
+            height = 100,
+            frame_count = 3,
+            variation_count = 1,
+        }
+    }
+    data.raw.resource[oreresource].stages_effect =
+    {
+        sheet =
+        {
+            filename = "__vtk-deep-core-mining__/graphics/resource/"..oreresource.."-glow.png",
+            priority = "extra-high",
+            width = 100,
+            height = 100,
+            frame_count = 3,
+            variation_count = 1,
+            blend_mode = "additive",
+            flags = {"light"},
+        }
+    }
+end
+
 data:extend(
 {
   resource_patch_maker(
@@ -125,3 +160,5 @@ data:extend(
     true
   )
 })
+
+make_ore_glow("uranium-ore-patch")
