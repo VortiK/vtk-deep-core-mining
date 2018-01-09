@@ -21,16 +21,22 @@ Graphics for the mining drill are not mine, source : https://www.spriters-resour
 * * *
 
 Todo
-- add circuit connexion to the drill (would only be for on/off control, not sure how it would be possible/usefull to have the % remaining information aswell) 
-- expand to other ore (uranium)
 - mods support, bob ore, angel ore ? 
-- balance needs ; maybe it provides too much ore compared to "depleted oil" ? (Some balance done in 1.4.2)
 - Tool to manually remove ore patches (for cleaning up land if needed), would give a burst of a lot of ore for sacrifying an infinite ore patch (might be in the form of an item that needs reprocessing to prevent inventory clutter).
 - Maybe some more ideas (:
 
 * * *
 
 Changelog
+
+2018-01-09 - 1.5.0 - Nuclear Age
+- Added uranium ore patches and made them glow (inspiration from https://mods.factorio.com/mods/wormmus/wormmus-glowing-ores)
+- DCMD can mine uranium ore patches and require sulfuric acid (100 from 10 for normal mining drill)
+- DCMD will need a dedicated pump to inject fluid in it
+- Changed DCMD ore output to better fit the sprite (you'll need to fix your existing mines)
+- DCMD now has circuit interface. Like mining drill or pumpjack can be toggled on/off and read remaining resources (but this seems bugged for now)
+- Added min and max for random ore patches values on spawn as a mod setting you can change (defaults from 60 000 to 300 000, same as before)
+- Fixed some translations typo & grammar
 
 2017-12-26 - 1.4.2 - Mining speed fix
 - DCMD mining speed was bugged because of a leftover test (probably since 1.0 of the mod). Tested with the originally intended 27x more power of a normal mining drill, felt overwhelming (too much ore). It is now ~13x times faster at mining as the normal mining drill (cost unchanged, still ~16x).
