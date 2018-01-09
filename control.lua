@@ -5,7 +5,7 @@ function spawn_ore_patch_on_depleted_ore(event)
   local ore = event.entity
   local surface = ore.surface
   local areaToScan = Position.expand_to_area(ore.position, 5)
-  local patchableOres = {"iron-ore", "copper-ore", "coal", "stone"}
+  local patchableOres = {"iron-ore", "copper-ore", "coal", "stone"; "uranium-ore"}
   
   -- logic : 
   -- - depleted ore has an equivalent patch entity
@@ -34,7 +34,7 @@ function spawn_ore_patch_on_depleted_ore(event)
     entitiesCount = surface.count_entities_filtered{area = areaToScan, name = orePatch}
     
     if number == 1 and entitiesCount == 0 then
-      oreamount = math.random(60000, 300000)
+      oreamount = math.random(settings.global["vtk-deep-core-mining-min-richness"].value, settings.global["vtk-deep-core-mining-max-richness"].value)
       newOreEntity = surface.create_entity({name = orePatch, amount = oreamount, position = ore.position, force = game.forces.neutral})
     end
   end

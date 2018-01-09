@@ -79,6 +79,22 @@ data:extend({
     mining_power = 15,
     resource_searching_radius = 0.49,
     
+    input_fluid_box =
+    {
+      production_type = "input-output",
+      pipe_picture = assembler2pipepictures(),
+      pipe_covers = pipecoverspictures(),
+      base_area = 1,
+      height = 2,
+      base_level = -1,
+      pipe_connections =
+      {
+        {
+          positions = { {2, -3}, {3, -2}, {-2, 3}, {-3, 2} }
+        }
+      }
+    },
+    
     energy_usage = "1MW",
     energy_source =
     {
@@ -154,5 +170,9 @@ data:extend({
     },
     circuit_wire_max_distance = 9,
     --]]
+    
+    circuit_wire_connection_points = circuit_connector_definitions["pumpjack"].points,
+    circuit_connector_sprites = circuit_connector_definitions["pumpjack"].sprites,
+    circuit_wire_max_distance = 14,
   }
 })
