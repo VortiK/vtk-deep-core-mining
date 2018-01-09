@@ -10,7 +10,7 @@
 Sad to see your outposts depleted and empty ore trains on your rails ? No more with Deep Core Mining ! Refactor your mining outpost to give them a new longterm breath !
 
 This mod is designed to aleviate the "depleted ore outpost" and "need to keep building new outpost forever" problems without a too cheaty ore generator solution. Adds a new type of equivalent ore resources that only spawn in place of depleted field to be mined with specific expensive drill.
-- New ore resource "patches" have a 10% chance to spawn under depleted normal ore for Iron, Copper, Coal and Stone.
+- New ore resource "patches" have a 10% chance to spawn under depleted normal ore for Iron, Copper, Uranium, Coal and Stone.
 - Ore patches are like oil and provide an infinite yield that diminish with usage but with a small infinite minimum.
 - New advanced and animated mining drill, the Deep Core Mining Drill (DCMD) is used to mine ore patches with associated technology and its own intermediate component ; ~16x more expensive to build but ~13x more powerful than a normal electric mining drill !
 
@@ -21,6 +21,7 @@ Graphics for the mining drill are not mine, source : https://www.spriters-resour
 * * *
 
 Todo
+- better piping and circuit connection position
 - mods support, bob ore, angel ore ? 
 - Tool to manually remove ore patches (for cleaning up land if needed), would give a burst of a lot of ore for sacrifying an infinite ore patch (might be in the form of an item that needs reprocessing to prevent inventory clutter).
 - Maybe some more ideas (:
@@ -34,7 +35,7 @@ Changelog
 - DCMD can mine uranium ore patches and require sulfuric acid (100 from 10 for normal mining drill)
 - DCMD will need a dedicated pump to inject fluid in it
 - Changed DCMD ore output to better fit the sprite (you'll need to fix your existing mines)
-- DCMD now has circuit interface. Like mining drill or pumpjack can be toggled on/off and read remaining resources (but this seems bugged for now)
+- DCMD now has circuit interface. Like mining drill or pumpjack can be toggled on/off and read remaining resources (like pumpjacks it will output the mining rate)
 - Added min and max for random ore patches values on spawn as a mod setting you can change (defaults from 60 000 to 300 000, same as before)
 - Fixed some translations typo & grammar
 
