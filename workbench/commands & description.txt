@@ -12,6 +12,7 @@ Sad to see your outposts depleted and empty ore trains on your rails ? No more w
 This mod is designed to aleviate the "depleted ore outpost" and "need to keep building new outpost forever" problems without a too cheaty ore generator solution. Adds a new type of equivalent ore resources that only spawn in place of depleted field to be mined with specific expensive drill.
 - New ore resource "patches" have a 10% chance to spawn under depleted normal ore for Iron, Copper, Uranium, Coal and Stone.
 - Ore patches are like oil and provide an infinite yield that diminish with usage but with a small infinite minimum.
+- Ore patches can be manually mined to free land and get a burst of resources as the cost of refining and losing the infinite minable patch.
 - New advanced and animated mining drill, the Deep Core Mining Drill (DCMD) is used to mine ore patches with associated technology and its own intermediate component ; ~16x more expensive to build but ~13x more powerful than a normal electric mining drill !
 
 The idea is to repurpose old mining outpost when ore is depleted. So the infrastructure is still usefull for the investment of resources and time to replace old drills and building new machines while also providing a small but steady infinite source of ore.
@@ -22,13 +23,22 @@ Graphics for the mining drill are not mine, source : https://www.spriters-resour
 
 Todo
 - better piping and circuit connection position
-- mods support, bob ore, angel ore ? 
-- Tool to manually remove ore patches (for cleaning up land if needed), would give a burst of a lot of ore for sacrifying an infinite ore patch (might be in the form of an item that needs reprocessing to prevent inventory clutter).
+- mods support, bob ore, angel ore ? It is getting harder as more features means more code and graphic assets to build to adapt to more ores. Might need to work on a generic way to build it all to enable other mods ore support).
 - Maybe some more ideas (:
 
 * * *
 
 Changelog
+
+2018-01-14 - 1.6.0 - Manual mining
+- Added a manual mining feature using a selection tool to select ore patches to remove.
+- Removing ore patches requires deep core mining drones and sulfuric acid barrel for uranium ore patch.
+- Removing ore patches generates ore chunks of 10% of the remaining ore patch up to a max of 1 000 (maxes out at ~300% of ore patch amount).
+- Deep Core Ore chunks require refining with sulfuric acid to get normal ore at 100 per unit.
+- Split Deep Core Mining technology to unlock manual patch removing tools earlier and kept DCMD high tech.
+- Reduced default range from start from which ore patches can spawn from 250 to 0 as there is now a tool to remove them if needed.
+- Some graphics of manual mining and refining process are placeholder and may be improved later.
+- Added changelog.txt
 
 2018-01-09 - 1.5.0 - Nuclear Age
 - Added uranium ore patches and made them glow (inspiration from https://mods.factorio.com/mods/wormmus/wormmus-glowing-ores)

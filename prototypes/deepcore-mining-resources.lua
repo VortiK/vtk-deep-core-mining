@@ -2,7 +2,7 @@ data:extend(
 {
   {
     type = "resource-category",
-    name = "vtk-deepcore-ore"
+    name = "vtk-deepcore-mining-ore"
   }
 })
 
@@ -34,7 +34,7 @@ local function resource_patch_maker(ore_name, ore_patch_name, hardnessparam, min
     icon = "__vtk-deep-core-mining__/graphics/icons/"..ore_patch_name..".png",
     icon_size = 32,
     flags = {"placeable-neutral"},
-    category = "vtk-deepcore-ore",
+    category = "vtk-deepcore-mining-ore",
     order = "a-b-a",
     infinite = true,
     highlight = true,

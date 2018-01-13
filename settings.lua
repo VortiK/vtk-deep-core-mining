@@ -5,7 +5,7 @@ data:extend({
 		name = "vtk-deep-core-mining-spawn-radius-from-spawn",
 		setting_type = "runtime-global",
 		minimum_value = 1,
-		default_value = 250,
+		default_value = 1,
 		maximum_value = 10000,
 		order = "1"
 	},

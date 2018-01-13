@@ -23,12 +23,52 @@ data:extend({
   },
   {
     type = "item",
-    name = "vtk-deepcore-iron-ore-chunk",
-    icon = "__vtk-deep-core-mining__/graphics/icons/iron-ore-patch.png",
+    name = "vtk-deepcore-mining-iron-ore-chunk",
+    icon = "__vtk-deep-core-mining__/graphics/icons/iron-ore-patch-chunk.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
-    subgroup = "intermediate-product",
-    order = "lm[vtk-deepcore-iron-ore-chunk]",
+    subgroup = "raw-resource",
+    order = "aa[vtk-deepcore-mining-iron-ore-chunk]",
+    stack_size = 100
+  },
+  {
+    type = "item",
+    name = "vtk-deepcore-mining-copper-ore-chunk",
+    icon = "__vtk-deep-core-mining__/graphics/icons/copper-ore-patch-chunk.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-resource",
+    order = "aa[vtk-deepcore-mining-copper-ore-chunk]",
+    stack_size = 100
+  },
+  {
+    type = "item",
+    name = "vtk-deepcore-mining-coal-chunk",
+    icon = "__vtk-deep-core-mining__/graphics/icons/coal-patch-chunk.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-resource",
+    order = "aa[vtk-deepcore-mining-coal-chunk]",
+    stack_size = 100
+  },
+  {
+    type = "item",
+    name = "vtk-deepcore-mining-stone-chunk",
+    icon = "__vtk-deep-core-mining__/graphics/icons/stone-patch-chunk.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-resource",
+    order = "aa[vtk-deepcore-mining-stone-chunk]",
+    stack_size = 100
+  },
+  {
+    type = "item",
+    name = "vtk-deepcore-mining-uranium-ore-chunk",
+    icon = "__vtk-deep-core-mining__/graphics/icons/uranium-ore-patch-chunk.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-resource",
+    order = "aa[vtk-deepcore-mining-uranium-ore-chunk]",
     stack_size = 100
   },
 })
@@ -37,7 +77,7 @@ data:extend({
 data:extend({
   {
     type = "selection-tool",
-    name = "vtk-deep-core-planner",
+    name = "vtk-deepcore-mining-planner",
     icon = "__vtk-deep-core-mining__/graphics/icons/mining-drone-blueprint.png",
     icon_size = 32,
     stack_size = 1,
@@ -53,7 +93,7 @@ data:extend({
   },
   {
     type = "recipe",
-    name = "vtk-deep-core-planner",
+    name = "vtk-deepcore-mining-planner",
     enabled = false,
     energy_required = 1,
     ingredients =
@@ -62,7 +102,7 @@ data:extend({
       {"advanced-circuit", 4},
       {"vtk-deepcore-mining-drone", 5}
     },
-    result = "vtk-deep-core-planner"
+    result = "vtk-deepcore-mining-planner"
   }
 })
 
@@ -97,23 +137,131 @@ data:extend({
   },
   {
     type = "recipe",
-    name = "vtk-deepcore-iron-ore-chunk-refining",
+    name = "vtk-deepcore-mining-iron-ore-chunk-refining",
     enabled = false,
-    energy_required = 10,
+    energy_required = 5,
     category = "chemistry",
-    ingredients =
+    subgroup = "raw-material",
+    ingredients = 
     {
-      {"vtk-deepcore-iron-ore-chunk", 1},
-      {type="fluid", name="sulfuric-acid", amount=100},
+      {"vtk-deepcore-mining-iron-ore-chunk", 1},
+      {type="fluid", name="sulfuric-acid", amount=50},
     },
-    result = 
+    main_product = "", -- to force use of recipe locales and icons instead of result's
+    icons = {{icon = "__vtk-deep-core-mining__/graphics/icons/iron-ore-patch-refining.png"}},
+    icon_size = 32,
+    results = 
     {
-      {type="item", name="iron-ore", amount=10}
+      {type="item", name="iron-ore", amount=100}
     },
     crafting_machine_tint =
     {
-      primary = {r = 0.700, g = 0.130, b = 0.180, a = 0.000}, -- steel blue #4682B4
-      secondary = {r = 0.000, g = 0.680, b = 0.894, a = 0.357}, -- #00ade45b -- to change?
+      primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
+      secondary = {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
+      tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
+    }
+  },
+  {
+    type = "recipe",
+    name = "vtk-deepcore-mining-copper-ore-chunk-refining",
+    enabled = false,
+    energy_required = 5,
+    category = "chemistry",
+    subgroup = "raw-material",
+    ingredients =
+    {
+      {"vtk-deepcore-mining-copper-ore-chunk", 1},
+      {type="fluid", name="sulfuric-acid", amount=50},
+    },
+    main_product = "", -- to force use of recipe locales and icons instead of result's
+    icons = {{icon = "__vtk-deep-core-mining__/graphics/icons/copper-ore-patch-refining.png"}},
+    icon_size = 32,
+    results = 
+    {
+      {type="item", name="copper-ore", amount=100}
+    },
+    crafting_machine_tint =
+    {
+      primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
+      secondary = {r = 0.255, g = 0.165, b = 0.000, a = 0.357}, -- orange	#FFA500	rgb(255,165,0)
+      tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
+    }
+  },
+  {
+    type = "recipe",
+    name = "vtk-deepcore-mining-coal-chunk-refining",
+    enabled = false,
+    energy_required = 5,
+    category = "chemistry",
+    subgroup = "raw-material",
+    ingredients =
+    {
+      {"vtk-deepcore-mining-coal-chunk", 1},
+      {type="fluid", name="sulfuric-acid", amount=50},
+    },
+    main_product = "", -- to force use of recipe locales and icons instead of result's
+    icons = {{icon = "__vtk-deep-core-mining__/graphics/icons/coal-patch-refining.png"}},
+    icon_size = 32,
+    results = 
+    {
+      {type="item", name="coal", amount=100}
+    },
+    crafting_machine_tint =
+    {
+      primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
+      secondary = {r = 0.105, g = 0.105, b = 0.105, a = 0.357}, -- dimgray / dimgray	#696969	rgb(105,105,105)
+      tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
+    }
+  },
+  {
+    type = "recipe",
+    name = "vtk-deepcore-mining-stone-chunk-refining",
+    enabled = false,
+    energy_required = 5,
+    category = "chemistry",
+    subgroup = "raw-material",
+    ingredients =
+    {
+      {"vtk-deepcore-mining-stone-chunk", 1},
+      {type="fluid", name="sulfuric-acid", amount=50},
+    },
+    main_product = "", -- to force use of recipe locales and icons instead of result's
+    icons = {{icon = "__vtk-deep-core-mining__/graphics/icons/stone-patch-refining.png"}},
+    icon_size = 32,
+    results = 
+    {
+      {type="item", name="stone", amount=100}
+    },
+    crafting_machine_tint =
+    {
+      primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
+      secondary = {r = 0.244, g = 0.164, b = 0.096, a = 0.357}, -- sandybrown	#F4A460	rgb(244,164,96)
+      tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
+    }
+  },
+  {
+    type = "recipe",
+    name = "vtk-deepcore-mining-uranium-ore-chunk-refining",
+    enabled = false,
+    energy_required = 5,
+    category = "chemistry",
+    subgroup = "raw-material",
+    ingredients =
+    {
+      {"vtk-deepcore-mining-uranium-ore-chunk", 1},
+      {type="fluid", name="sulfuric-acid", amount=100},
+    },
+    main_product = "", -- to force use of recipe locales and icons instead of result's
+    icons = {{icon = "__vtk-deep-core-mining__/graphics/icons/uranium-ore-patch-refining.png"}},
+    icon_size = 32,
+    results = 
+    {
+      {type="item", name="uranium-ore", amount=100}
+    },
+    crafting_machine_tint =
+    {
+      primary = {r = 0.000, g = 0.173, b = 0.228, a = 0.000}, -- #00ade45b -- to change?
+      secondary = {r = 0.173, g = 0.255, b = 0.047, a = 0.357}, -- greenyellow	#ADFF2F	rgb(173,255,47)
       tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
     }
   },
@@ -128,7 +276,7 @@ data:extend({
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 5, result = "vtk-deepcore-mining-drill"},
-    resource_categories = {"vtk-deepcore-ore"},
+    resource_categories = {"vtk-deepcore-mining-ore"},
     max_health = 3000,
     dying_explosion = "massive-explosion",
     corpse = "big-remnants",
