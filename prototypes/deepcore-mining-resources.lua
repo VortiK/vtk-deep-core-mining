@@ -37,11 +37,13 @@ local function resource_patch_maker(ore_name, ore_patch_name, hardnessparam, min
     category = "vtk-deepcore-ore",
     order = "a-b-a",
     infinite = true,
+    highlight = true,
     minimum = 60000,
     normal = 300000,
+    resource_patch_search_radius = 20,
     minable =
     {
-      hardness = hardnessparam,
+      hardness = hardnessparam * 10,
       mining_time = miningtime,
       results =
       {

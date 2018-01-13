@@ -14,9 +14,9 @@ function spawn_ore_patch_on_depleted_ore(event)
   -- - then spawn it on the location the ore was depleted
   
   -- debug
-  -- local player = game.players[1]
-  -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
-  -- player.print(serpent.block(player))
+  local player = game.players[1]
+  player.print("VTK-DEEP-CORE-MINING_DEBUG")
+  player.print(serpent.block(player))
   
   validOre = false
   for _,patchableOre in pairs(patchableOres) do
@@ -41,10 +41,47 @@ function spawn_ore_patch_on_depleted_ore(event)
   
 end
 
+local function remove_ore_patch(player, surface, area, entities)
+  local patchescount = 0
+  local dronescount = player.get_item_count("vtk-deepcore-mining-drone")
+  
+  for _,entity in pairs(entities) do
+    if entity.type == "resource" and game.entity_prototypes[entity.name].resource_category == "vtk-deepcore-ore" then
+      patchescount = patchescount + 1
+    end
+  end
+    
+  if patchescount > 0 then
+    for _,entity in pairs(entities) do
+      if entity.type == "resource" and game.entity_prototypes[entity.name].resource_category == "vtk-deepcore-ore" then
+        if dronescount >= patchescount then
+          -- spawn deep core ore chunks : vtk-deepcore-iron-ore-chunk x 1000 (stacks to 100)
+          -- todo variable depending on patch remaining ore ?
+          -- todo variable on ore patch type, what about uranium ? Add sulfuric acid barrels
+          surface.spill_item_stack(entity.position, {name="vtk-deepcore-iron-ore-chunk", count = 1000}, true)
+          player.remove_item{name="vtk-deepcore-mining-drone", count = patchescount}
+          entity.destroy()
+        else
+          player.print("Not enough Deep Core Mining Drones. "..patchescount.." needed only "..dronescount.." in inventory")
+        end
+      end
+    end
+  end
+	
+end
+
 -- events hook
 events = defines.events
 script.on_event({
     events.on_resource_depleted
 }, function(event)
     spawn_ore_patch_on_depleted_ore(event)
+end)
+
+script.on_event(events.on_player_selected_area, function(event)
+  if event.item == "vtk-deep-core-planner" then
+		local player = game.players[event.player_index]
+		local surface = player.surface
+		remove_ore_patch(player, surface, event.area, event.entities)
+	end
 end)

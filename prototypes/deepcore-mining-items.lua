@@ -11,7 +11,7 @@ data:extend({
     place_result = "vtk-deepcore-mining-drill",
     stack_size = 25
   },
-    {
+  {
     type = "item",
     name = "vtk-deepcore-mining-drone",
     icon = "__vtk-deep-core-mining__/graphics/icons/mining-drone.png",
@@ -21,6 +21,49 @@ data:extend({
     order = "lm[vtk-deepcore-mining-drone]",
     stack_size = 50
   },
+  {
+    type = "item",
+    name = "vtk-deepcore-iron-ore-chunk",
+    icon = "__vtk-deep-core-mining__/graphics/icons/iron-ore-patch.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "intermediate-product",
+    order = "lm[vtk-deepcore-iron-ore-chunk]",
+    stack_size = 100
+  },
+})
+
+-- planner
+data:extend({
+  {
+    type = "selection-tool",
+    name = "vtk-deep-core-planner",
+    icon = "__vtk-deep-core-mining__/graphics/icons/mining-drone-blueprint.png",
+    icon_size = 32,
+    stack_size = 1,
+    subgroup = "tool",
+    order = "c[automated-construction]-d[deep-core-mining]",
+    flags = {"goes-to-quickbar"},
+    selection_color = {r = 1.0, g = 0.2, b = 1.0, a = 0.3},
+    alt_selection_color = {r = 0.2, g = 0.8, b = 0.3, a = 0.3},
+    selection_mode = {"any-entity"},
+    alt_selection_mode = {"any-entity"},
+    selection_cursor_box_type = "entity",
+    alt_selection_cursor_box_type = "entity"
+  },
+  {
+    type = "recipe",
+    name = "vtk-deep-core-planner",
+    enabled = false,
+    energy_required = 1,
+    ingredients =
+    {
+      {"blueprint", 1},
+      {"advanced-circuit", 4},
+      {"vtk-deepcore-mining-drone", 5}
+    },
+    result = "vtk-deep-core-planner"
+  }
 })
 
 -- recipe
@@ -51,6 +94,28 @@ data:extend({
       {"advanced-circuit", 1}
     },
     result = "vtk-deepcore-mining-drone",
+  },
+  {
+    type = "recipe",
+    name = "vtk-deepcore-iron-ore-chunk-refining",
+    enabled = false,
+    energy_required = 10,
+    category = "chemistry",
+    ingredients =
+    {
+      {"vtk-deepcore-iron-ore-chunk", 1},
+      {type="fluid", name="sulfuric-acid", amount=100},
+    },
+    result = 
+    {
+      {type="item", name="iron-ore", amount=10}
+    },
+    crafting_machine_tint =
+    {
+      primary = {r = 0.700, g = 0.130, b = 0.180, a = 0.000}, -- steel blue #4682B4
+      secondary = {r = 0.000, g = 0.680, b = 0.894, a = 0.357}, -- #00ade45b -- to change?
+      tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
+    }
   },
 })
 

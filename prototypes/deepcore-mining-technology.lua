@@ -15,6 +15,14 @@ data:extend(
           type = "unlock-recipe",
           recipe = "vtk-deepcore-mining-drone"
         },
+        {
+          type = "unlock-recipe",
+          recipe = "vtk-deep-core-planner"
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "vtk-deepcore-iron-ore-chunk-refining"
+        },
       },
     prerequisites = {"advanced-material-processing-2", "productivity-module-3", "mining-productivity-4"}, 
     unit =
