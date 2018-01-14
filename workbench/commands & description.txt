@@ -23,12 +23,15 @@ Graphics for the mining drill are not mine, source : https://www.spriters-resour
 
 Todo
 - better piping and circuit connection position
-- mods support, bob ore, angel ore ? It is getting harder as more features means more code and graphic assets to build to adapt to more ores. Might need to work on a generic way to build it all to enable other mods ore support).
+- mods support, bob ore, angel ore ? It is getting harder as more features means more code and graphic assets to build to adapt to more ores. Might be needed to get around making a generic way to build it all to enable other mods ore support.
 - Maybe some more ideas (:
 
 * * *
 
 Changelog
+
+2018-01-14 - 1.6.1 - Hotfix
+- Removed crash inducing migration file that shouldn't be there.
 
 2018-01-14 - 1.6.0 - Manual mining
 - Added a manual mining feature using a selection tool to select ore patches to remove.
