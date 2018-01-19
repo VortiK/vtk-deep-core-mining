@@ -5,32 +5,34 @@ local deep_core_resource_patch_category = {
 
 local deep_core_resource_ore_category = {
     type = "resource-category",
-    name = "vtk-deepcore-mining-ore"
+    name = "vtk-deepcore-mining-crack"
 }
-
+-- not used for now, generates way too much cracks and autoplace is dark magic
+--[[
 local deep_core_noise_layer = {
   type = "noise-layer",
-  name = "vtk-deepcore-mining-ore"
+  name = "vtk-deepcore-mining-crack"
 }
 
 local deep_core_control = {
   type = "autoplace-control",
-  name = "vtk-deepcore-mining-ore",
+  name = "vtk-deepcore-mining-crack",
   richness = true,
   order = "b-b-z[vtk-deep-core-mining]-a[ore]",
   category = "resource"
 }
+--]]
 
 
 local deep_core_ore = {
   type = "resource",
-  name = "vtk-deepcore-mining-ore",
+  name = "vtk-deepcore-mining-crack",
   icon = "__vtk-deep-core-mining__/graphics/icons/deep-core.png",
   icon_size = 32,
   flags = {"placeable-neutral"},
   collision_box = {{ -5.4, -5.4}, {5.4, 5.4}},
   selection_box = {{ -2.5, -2.5}, {2.5, 2.5}},
-  category = "vtk-deepcore-mining-ore",
+  category = "vtk-deepcore-mining-crack",
   order = "z[vtk-deepcore-mining]-b[ore]",
   infinite = true,
   highlight = true,
@@ -55,9 +57,10 @@ local deep_core_ore = {
     fluid_amount = 100,
     required_fluid = "sulfuric-acid"
   },
+  --[[
   autoplace =
   {
-    control = "vtk-deepcore-mining-ore",
+    control = "vtk-deepcore-mining-crack",
     sharpness = 0.98,
     max_probability = 0.04,
     richness_base = 75000,
@@ -67,7 +70,7 @@ local deep_core_ore = {
     peaks =
     {
       {
-        noise_layer = "vtk-deepcore-mining-ore",
+        noise_layer = "vtk-deepcore-mining-crack",
         noise_octaves_difference = -1.5,
         noise_persistence = 0.3,
         starting_area_weight_optimal = 0,
@@ -76,6 +79,7 @@ local deep_core_ore = {
       }
     }
   },
+  ]]--
 
   stages =
   {
@@ -281,8 +285,8 @@ local uranium_ore_patch =
 data:extend({
   deep_core_resource_patch_category, 
   deep_core_resource_ore_category, 
-  deep_core_noise_layer, 
-  deep_core_control, 
+  -- deep_core_noise_layer, 
+  -- deep_core_control, 
   deep_core_ore, 
   copper_ore_patch, 
   iron_ore_patch, 

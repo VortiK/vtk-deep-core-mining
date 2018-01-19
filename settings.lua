@@ -2,7 +2,7 @@ data:extend({
 	-- Global
 	{
 		type = "int-setting",
-		name = "vtk-deep-core-mining-spawn-radius-from-spawn",
+		name = "vtk-deep-core-mining-spawn-radius-from-start",
 		setting_type = "runtime-global",
 		minimum_value = 1,
 		default_value = 1,
@@ -62,6 +62,14 @@ data:extend({
   {
       type = "bool-setting",
       name = "vtk-deep-core-mining-spawn-uranium-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "e"
+  },
+  {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-cracks",
       setting_type = "runtime-global",
       default_value = true,
       per_user = false,

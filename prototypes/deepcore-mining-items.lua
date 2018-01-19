@@ -371,6 +371,9 @@ data:extend({
     mining_power = 15,
     resource_searching_radius = 0.49,
     
+    rotatable = false,
+    supports_direction = false,
+    
     input_fluid_box =
     {
       production_type = "input",
@@ -399,7 +402,7 @@ data:extend({
       sheet =
       {
         filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-mine-sheet.png",
-        -- priority = "low",
+        priority = "high",
         width = 330,
         height = 400,
         shift = util.by_pixel(8, -8),
@@ -410,25 +413,77 @@ data:extend({
     {
       north =
       {
-        priority = "extra-high",
+        priority = "low",
         width = 120, 
         height = 122, 
         line_length = 7,
 	      -- shift = util.by_pixel(9, 33),
-	      shift = util.by_pixel(7, 25),
+	      shift = util.by_pixel(7, 30),
         filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-miner-drill-animation.png",
         frame_count = 21,
         animation_speed = 0.5,
-        scale = 0.55
+        scale = 0.50
       }
+    },
+    input_fluid_patch_sprites =
+    {
+      north =
+      {
+        priority = "extra-high",
+        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-mine-pipe.png",
+        line_length = 1,
+        width = 330,
+        height = 400,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(8, -8),
+        scale = 0.5
+      }, 
+      south =
+      {
+        priority = "extra-high",
+        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-mine-pipe.png",
+        line_length = 1,
+        width = 330,
+        height = 400,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(8, -8),
+        scale = 0.5
+      }, 
+      east =
+      {
+        priority = "extra-high",
+        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-mine-pipe.png",
+        line_length = 1,
+        width = 330,
+        height = 400,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(8, -8),
+        scale = 0.5
+      }, 
+      west =
+      {
+        priority = "extra-high",
+        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-mine-pipe.png",
+        line_length = 1,
+        width = 330,
+        height = 400,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(8, -8),
+        scale = 0.5
+      }, 
     },
     working_sound =
     {
       sound =
       {
         filename = "__base__/sound/electric-mining-drill.ogg",
-        volume = 1.75
+        volume = 1.5
       },
+      match_speed_to_activity = true,
       apparent_volume = 2.5,
     },
     module_specification =
@@ -472,7 +527,7 @@ data:extend({
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 10, result = "vtk-deepcore-mining-drill-advanced"},
-    resource_categories = {"vtk-deepcore-mining-ore"},
+    resource_categories = {"vtk-deepcore-mining-crack"},
     max_health = 10000,
     dying_explosion = "massive-explosion",
     corpse = "big-remnants",
@@ -486,6 +541,9 @@ data:extend({
     mining_speed = 0.5,
     mining_power = 15,
     resource_searching_radius = 0.49,
+    
+    rotatable = false,
+    supports_direction = false,
     
     input_fluid_box =
     {
@@ -542,7 +600,7 @@ data:extend({
       sound =
       {
         filename = "__vtk-deep-core-mining__/sounds/MOHORUN2.ogg",
-        volume = 1
+        volume = 2
       },
       audible_distance_modifier = 1,
     },
@@ -551,7 +609,7 @@ data:extend({
       sound =
       {
         filename = "__vtk-deep-core-mining__/sounds/MOHORUN2_working.ogg",
-        volume = 1
+        volume = 2
       },
       match_speed_to_activity = true,
       audible_distance_modifier = 1,
