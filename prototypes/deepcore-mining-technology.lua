@@ -2,9 +2,9 @@ data:extend(
 {
   {
     type = "technology",
-    name = "vtk-deepcore-mining",
+    name = "vtk-deepcore",
     icon_size = 128,
-    icon = "__vtk-deep-core-mining__/graphics/technology/deepcore-mining.png",
+    icon = "__vtk-deep-core-mining__/graphics/technology/deepcore-tech.png",
     effects = 
     {
         {
@@ -44,7 +44,6 @@ data:extend(
         {"science-pack-1", 1},
         {"science-pack-2", 1},
         {"science-pack-3", 1},
-        {"production-science-pack", 1},
       },
       time = 30,
     },
@@ -53,7 +52,7 @@ data:extend(
   },
   {
     type = "technology",
-    name = "vtk-deepcore-mining-advanced",
+    name = "vtk-deepcore-mining",
     icon_size = 128,
     icon = "__vtk-deep-core-mining__/graphics/technology/deepcore-mining.png",
     effects = 
@@ -63,7 +62,7 @@ data:extend(
           recipe = "vtk-deepcore-mining-drill"
         },
       },
-    prerequisites = {"vtk-deepcore-mining", "advanced-material-processing-2", "productivity-module-3", "mining-productivity-4"}, 
+    prerequisites = {"vtk-deepcore", "advanced-material-processing-2", "productivity-module-3", "mining-productivity-4"}, 
     unit =
     {
       count = 1000,
@@ -72,6 +71,38 @@ data:extend(
         {"science-pack-2", 1},
         {"science-pack-3", 1},
         {"production-science-pack", 1},
+      },
+      time = 60,
+    },
+    upgrade = true,
+    order = "e-c-c-a"
+  },
+  {
+    type = "technology",
+    name = "vtk-deepcore-mining-advanced",
+    icon_size = 128,
+    icon = "__vtk-deep-core-mining__/graphics/technology/deepcore-mining-advanced.png",
+    effects = 
+    {
+        {
+          type = "unlock-recipe",
+          recipe = "vtk-deepcore-mining-drill-advanced"
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "vtk-deepcore-mining-ore-chunk-refining"
+        },
+      },
+    prerequisites = {"vtk-deepcore", "vtk-deepcore-mining", "mining-productivity-12"}, 
+    unit =
+    {
+      count = 1500,
+      ingredients = {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1},
+        {"production-science-pack", 1},
+        {"high-tech-science-pack", 1},
       },
       time = 60,
     },

@@ -7,9 +7,20 @@ data:extend({
     icon_size = 32,
     flags = {"goes-to-quickbar"},
     subgroup = "extraction-machine",
-    order = "a[items]-c[vtk-deepcore-mining-drill]",
+    order = "v[items]-d[vtk-deepcore-mining-drill]",
     place_result = "vtk-deepcore-mining-drill",
     stack_size = 25
+  },
+  {
+    type = "item",
+    name = "vtk-deepcore-mining-drill-advanced",
+    icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-mine-advanced.png",
+    icon_size = 32,
+    flags = {"goes-to-quickbar"},
+    subgroup = "extraction-machine",
+    order = "v[items]-d[vtk-deepcore-mining-drill-advanced]",
+    place_result = "vtk-deepcore-mining-drill-advanced",
+    stack_size = 10
   },
   {
     type = "item",
@@ -18,8 +29,18 @@ data:extend({
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "lm[vtk-deepcore-mining-drone]",
+    order = "v[vtk-deepcore-mining-drone]",
     stack_size = 50
+  },
+  {
+    type = "item",
+    name = "vtk-deepcore-mining-ore-chunk",
+    icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-resource",
+    order = "vz[vtk-deepcore-mining-ore-chunk]",
+    stack_size = 100
   },
   {
     type = "item",
@@ -28,7 +49,7 @@ data:extend({
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
-    order = "aa[vtk-deepcore-mining-iron-ore-chunk]",
+    order = "va[vtk-deepcore-mining-iron-ore-chunk]",
     stack_size = 100
   },
   {
@@ -38,7 +59,7 @@ data:extend({
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
-    order = "aa[vtk-deepcore-mining-copper-ore-chunk]",
+    order = "vb[vtk-deepcore-mining-copper-ore-chunk]",
     stack_size = 100
   },
   {
@@ -48,7 +69,7 @@ data:extend({
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
-    order = "aa[vtk-deepcore-mining-coal-chunk]",
+    order = "vc[vtk-deepcore-mining-coal-chunk]",
     stack_size = 100
   },
   {
@@ -58,7 +79,7 @@ data:extend({
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
-    order = "aa[vtk-deepcore-mining-stone-chunk]",
+    order = "vd[vtk-deepcore-mining-stone-chunk]",
     stack_size = 100
   },
   {
@@ -68,7 +89,7 @@ data:extend({
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
-    order = "aa[vtk-deepcore-mining-uranium-ore-chunk]",
+    order = "ve[vtk-deepcore-mining-uranium-ore-chunk]",
     stack_size = 100
   },
 })
@@ -82,7 +103,7 @@ data:extend({
     icon_size = 32,
     stack_size = 1,
     subgroup = "tool",
-    order = "c[automated-construction]-d[deep-core-mining]",
+    order = "v[automated-construction]-d[deep-core-mining]",
     flags = {"goes-to-quickbar"},
     selection_color = {r = 1.0, g = 0.2, b = 1.0, a = 0.3},
     alt_selection_color = {r = 0.2, g = 0.8, b = 0.3, a = 0.3},
@@ -124,6 +145,20 @@ data:extend({
   },
   {
     type = "recipe",
+    name = "vtk-deepcore-mining-drill-advanced",
+    enabled = false,
+    energy_required = 100,
+    ingredients =
+    {
+      {"vtk-deepcore-mining-drill", 10},
+      {"steel-plate", 100},
+      {"processing-unit", 20},
+      {"vtk-deepcore-mining-drone", 50}
+    },
+    result = "vtk-deepcore-mining-drill-advanced",
+  },
+  {
+    type = "recipe",
     name = "vtk-deepcore-mining-drone",
     enabled = false,
     energy_required = 10,
@@ -134,6 +169,51 @@ data:extend({
       {"advanced-circuit", 1}
     },
     result = "vtk-deepcore-mining-drone",
+  },
+  {
+    type = "recipe",
+    name = "vtk-deepcore-mining-ore-chunk-refining",
+    energy_required = 30,
+    enabled = false,
+    category = "centrifuging",
+    ingredients = {
+      {"vtk-deepcore-mining-ore-chunk", 100},
+      {"vtk-deepcore-mining-drone", 2}
+    },
+    icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk.png",
+    icon_size = 32,
+    subgroup = "intermediate-product",
+    order = "v[vtk-deepcore-mining]-a[deepcore-ore-processing]",
+    main_product = "",
+    results =
+    {
+      {
+        name = "vtk-deepcore-mining-iron-ore-chunk",
+        probability = 0.30,
+        amount = 10
+      },
+      {
+        name = "vtk-deepcore-mining-copper-ore-chunk",
+        probability = 0.30,
+        amount = 10
+      },
+      {
+        name = "vtk-deepcore-mining-coal-chunk",
+        probability = 0.15,
+        amount = 10
+      },
+      {
+        name = "vtk-deepcore-mining-stone-chunk",
+        probability = 0.15,
+        amount = 10
+      },
+      {
+        name = "vtk-deepcore-mining-uranium-ore-chunk",
+        probability = 0.10,
+        amount = 10
+      },
+    },
+    allow_decomposition = false
   },
   {
     type = "recipe",
@@ -276,7 +356,7 @@ data:extend({
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 5, result = "vtk-deepcore-mining-drill"},
-    resource_categories = {"vtk-deepcore-mining-ore"},
+    resource_categories = {"vtk-deepcore-mining-ore-patch"},
     max_health = 3000,
     dying_explosion = "massive-explosion",
     corpse = "big-remnants",
@@ -291,10 +371,13 @@ data:extend({
     mining_power = 15,
     resource_searching_radius = 0.49,
     
+    rotatable = false,
+    supports_direction = false,
+    
     input_fluid_box =
     {
       production_type = "input",
-      pipe_picture = assembler2pipepictures(),
+      --pipe_picture = assembler2pipepictures(),
       pipe_covers = pipecoverspictures(),
       base_area = 10, -- = x 100 fluid storage
       --height = 10, -- ??
@@ -318,37 +401,89 @@ data:extend({
     {
       sheet =
       {
-        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-miner-sheet-shadow.png",
+        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-mine-sheet.png",
         priority = "high",
-        width = 331, --300,
-        height = 398,
+        width = 330,
+        height = 400,
         shift = util.by_pixel(8, -8),
-        scale = 0.55
-        --scale = 0.01
+        scale = 0.50
       }
     },
     animations =
     {
       north =
       {
-        priority = "extra-high",
+        priority = "low",
         width = 120, 
         height = 122, 
         line_length = 7,
-	      shift = util.by_pixel(9, 33),
+	      -- shift = util.by_pixel(9, 33),
+	      shift = util.by_pixel(7, 30),
         filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-miner-drill-animation.png",
         frame_count = 21,
         animation_speed = 0.5,
-        scale = 0.55
+        scale = 0.50
       }
+    },
+    input_fluid_patch_sprites =
+    {
+      north =
+      {
+        priority = "extra-high",
+        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-mine-pipe.png",
+        line_length = 1,
+        width = 330,
+        height = 400,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(8, -8),
+        scale = 0.5
+      }, 
+      south =
+      {
+        priority = "extra-high",
+        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-mine-pipe.png",
+        line_length = 1,
+        width = 330,
+        height = 400,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(8, -8),
+        scale = 0.5
+      }, 
+      east =
+      {
+        priority = "extra-high",
+        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-mine-pipe.png",
+        line_length = 1,
+        width = 330,
+        height = 400,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(8, -8),
+        scale = 0.5
+      }, 
+      west =
+      {
+        priority = "extra-high",
+        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-mine-pipe.png",
+        line_length = 1,
+        width = 330,
+        height = 400,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(8, -8),
+        scale = 0.5
+      }, 
     },
     working_sound =
     {
       sound =
       {
         filename = "__base__/sound/electric-mining-drill.ogg",
-        volume = 1.75
+        volume = 1.5
       },
+      match_speed_to_activity = true,
       apparent_volume = 2.5,
     },
     module_specification =
@@ -381,6 +516,116 @@ data:extend({
     circuit_wire_max_distance = 9,
     --]]
     
+    circuit_wire_connection_points = circuit_connector_definitions["pumpjack"].points,
+    circuit_connector_sprites = circuit_connector_definitions["pumpjack"].sprites,
+    circuit_wire_max_distance = 14,
+  },
+  {
+    type = "mining-drill",
+    name = "vtk-deepcore-mining-drill-advanced",
+    icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-mine-advanced.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 10, result = "vtk-deepcore-mining-drill-advanced"},
+    resource_categories = {"vtk-deepcore-mining-crack"},
+    max_health = 10000,
+    dying_explosion = "massive-explosion",
+    corpse = "big-remnants",
+    
+    collision_box = {{ -4.5, -4.5}, {4.5, 4.5}},
+    selection_box = {{ -4.5, -4.5}, {4.5, 4.5}},
+    drawing_box = {{-4.5, -4.5}, {4.5, 4.5}},
+    
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    
+    mining_speed = 0.5,
+    mining_power = 15,
+    resource_searching_radius = 0.49,
+    
+    rotatable = false,
+    supports_direction = false,
+    
+    input_fluid_box =
+    {
+      production_type = "input",
+      --pipe_picture = assembler2pipepictures(),
+      pipe_covers = pipecoverspictures(),
+      base_area = 10, -- = x 100 fluid storage
+      --height = 10, -- ??
+      base_level = 1,-- so it requires a pump to inject
+      pipe_connections =
+      {
+        { position = {5, -3} },
+      }
+    },
+    
+    energy_usage = "10MW",
+    energy_source =
+    {
+      type = "electric",
+      -- will produce this much * energy pollution units per tick
+      emissions = 0.15,
+      usage_priority = "secondary-input",
+    },
+    vector_to_place_result = {0, -5},
+    base_picture =
+    {
+      sheet =
+      {
+        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-miner-advanced-sheet.png",
+        priority = "high",
+        width = 380, 
+        height = 380,
+        --shift = util.by_pixel(8, -8),
+        scale = 0.90
+      }
+    },
+    animations =
+    {
+      north =
+      {
+        priority = "extra-high",
+        width = 380, 
+        height = 380, 
+        line_length = 1,
+	      -- shift = util.by_pixel(9, 33),
+        filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-miner-advanced.png",
+        frame_count = 1,
+        animation_speed = 1,
+        scale = 0.90
+      }
+    },
+    activate_sound =
+    {
+      sound =
+      {
+        filename = "__vtk-deep-core-mining__/sounds/MOHORUN2.ogg",
+        volume = 2
+      },
+      audible_distance_modifier = 1,
+    },
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__vtk-deep-core-mining__/sounds/MOHORUN2_working.ogg",
+        volume = 2
+      },
+      match_speed_to_activity = true,
+      audible_distance_modifier = 1,
+    },
+    module_specification =
+    {
+      module_slots = 3
+    },
+    radius_visualisation_picture =
+    {
+      filename = "__base__/graphics/entity/pumpjack/pumpjack-radius-visualization.png",
+      width = 12,
+      height = 12
+    },
+    monitor_visualization_tint = {r=78, g=173, b=255},
+    fast_replaceable_group = "vtk-deepcore-mining-drill-advanced",
     circuit_wire_connection_points = circuit_connector_definitions["pumpjack"].points,
     circuit_connector_sprites = circuit_connector_definitions["pumpjack"].sprites,
     circuit_wire_max_distance = 14,
