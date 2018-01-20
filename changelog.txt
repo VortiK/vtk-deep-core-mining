@@ -6,7 +6,8 @@ Date: 20. 01. 2018
     - New Deep Core Mining Cack resources that are a rare spawn in the world (~1/500 chance per chunk). Enable to mine the ...
     - New Resource Deep Core Ore Chunk from DCM Cracks that must be refined in a centrifuge and will yield ore chunks that themselves require refining to get ore.
     - DCM Crack can be planner removed and require sulfuric acid to mine (like uranium).
-    - Made both DCMD and ADCMD not rotatable and fixed in south orientation to match their sprite (thanks discord @Bilka#2444)
+    - Made both DCMD and ADCMD not rotatable and fixed in south orientation to match their sprite (thanks discord @Bilka#2444).
+    - Both DCMD and ADCMD require a direct pump to inject sulfuric acid when mining uranium ore patch and deep core mining crack (pipes will not be enough).
   Changes:
     - Review descriptions & locales.
     - Review Technologies, now in 3 tiers with appropriate cost and requirements. Migration is done for existing saves.
