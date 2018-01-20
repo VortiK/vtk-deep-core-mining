@@ -57,7 +57,7 @@ function place_deep_core_cracks(area, surface)
   local maxrichness = settings.global["vtk-deep-core-mining-max-richness"].value
   
 -- debug
- local player = game.players[1]
+-- local player = game.players[1]
 -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
 
   -- only spawn deep core mining cracks in nauvis
@@ -87,8 +87,8 @@ function place_deep_core_cracks(area, surface)
   
   -- minimum distance from spawn where deepcore mining cracks appear (default 1)
 -- debug
-  player.print("setting value "..minspawnrange)
-  player.print("position x "..x1.." y "..y1)
+-- player.print("setting value "..minspawnrange)
+-- player.print("position x "..x1.." y "..y1)
 
   if Area.inside(Position.expand_to_area({0,0}, minspawnrange), {x1, y1}) then
     return
@@ -107,8 +107,8 @@ function place_deep_core_cracks(area, surface)
       oreamount = math.random(minrichness, maxrichness)
       surface.create_entity({name = "vtk-deepcore-mining-crack", amount = oreamount, position = tile.position, force = game.forces.neutral})
 -- debug
- player.print("vtk-deepcore-mining-crack placed successfully")
- player.print(serpent.block(tile.position))
+-- player.print("vtk-deepcore-mining-crack placed successfully")
+-- player.print(serpent.block(tile.position))
       return
     end
     attempts = attempts + 1
