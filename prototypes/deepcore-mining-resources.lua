@@ -36,22 +36,22 @@ local deep_core_ore = {
   order = "z[vtk-deepcore-mining]-b[ore]",
   infinite = true,
   highlight = true,
-  infinite_depletion_amount = 1,
-  minimum = 1000,
+  infinite_depletion_amount = 0,
+  minimum = 10000,
   normal = 10000,
   enable_cliff_removal = false,
   tree_removal_probability = 0,
   cliff_removal_probability = 0,
   minable = {
     hardness = 10,
-    mining_time = 10,
+    mining_time = 2,
     mining_particle = "stone-particle",
     results = {
       {
         type = "item",
         name = "vtk-deepcore-mining-ore-chunk",
-        amount_min = 10,
-        amount_max = 10,
+        amount_min = 1,
+        amount_max = 1,
       }, 
     },
     fluid_amount = 100,
@@ -130,13 +130,13 @@ local function resource_patch_maker(ore_name, ore_patch_name, hardnessparam, min
     order = "a-b-a",
     infinite = true,
     highlight = true,
-    infinite_depletion_amount = 5,
-    minimum = 60000,
-    normal = 300000,
+    infinite_depletion_amount = 0,
+    minimum = 10000,
+    normal = 10000,
     resource_patch_search_radius = 20,
     minable =
     {
-      hardness = hardnessparam * 10,
+      hardness = hardnessparam, 
       mining_time = miningtime,
       mining_particle = miningparticle,
       results =
@@ -189,98 +189,93 @@ end
 
 local function make_ore_glow(oreresource)
 
-    data.raw.resource[oreresource].stage_counts = {1}
-    data.raw.resource[oreresource].effect_animation_period = 5
-    data.raw.resource[oreresource].effect_animation_period_deviation = 1
-    data.raw.resource[oreresource].effect_darkness_multiplier = 3.6
+  data.raw.resource[oreresource].stage_counts = {1}
+  data.raw.resource[oreresource].effect_animation_period = 5
+  data.raw.resource[oreresource].effect_animation_period_deviation = 1
+  data.raw.resource[oreresource].effect_darkness_multiplier = 3.6
 
-    data.raw.resource[oreresource].stages =
+  data.raw.resource[oreresource].stages =
+  {
+    sheet =
     {
-        sheet =
-        {
-            filename = "__vtk-deep-core-mining__/graphics/resource/"..oreresource.."-sprite.png",
-            priority = "extra-high",
-            width = 100,
-            height = 100,
-            frame_count = 3,
-            variation_count = 1,
-        }
+      filename = "__vtk-deep-core-mining__/graphics/resource/"..oreresource.."-sprite.png",
+      priority = "extra-high",
+      width = 100,
+      height = 100,
+      frame_count = 3,
+      variation_count = 1,
     }
-    data.raw.resource[oreresource].stages_effect =
+  }
+  data.raw.resource[oreresource].stages_effect =
+  {
+    sheet =
     {
-        sheet =
-        {
-            filename = "__vtk-deep-core-mining__/graphics/resource/"..oreresource.."-glow.png",
-            priority = "extra-high",
-            width = 100,
-            height = 100,
-            frame_count = 3,
-            variation_count = 1,
-            blend_mode = "additive",
-            flags = {"light"},
-        }
+      filename = "__vtk-deep-core-mining__/graphics/resource/"..oreresource.."-glow.png",
+      priority = "extra-high",
+      width = 100,
+      height = 100,
+      frame_count = 3,
+      variation_count = 1,
+      blend_mode = "additive",
+      flags = {"light"},
     }
+  }
 end
 
 local copper_ore_patch = 
-  resource_patch_maker(
-    "copper-ore", 
-    "copper-ore-patch", 
-    0.9,                         -- hardnessparam
-    2,                           -- miningtime
-    "copper-ore-particle",       -- miningparticle
-    {r=0.803, g=0.388, b=0.215}, -- mapcolor
-    false                        -- fluid
-  )
-
+resource_patch_maker(
+  "copper-ore", 
+  "copper-ore-patch", 
+  data.raw.resource["copper-ore"].minable.hardness,         -- hardnessparam
+  data.raw.resource["copper-ore"].minable.mining_time,      -- miningtime
+  data.raw.resource["copper-ore"].minable.mining_particle,  -- miningparticle
+  data.raw.resource["copper-ore"].map_color,                -- mapcolor
+  false                                                     -- fluid required
+)
 
 local iron_ore_patch = 
-  resource_patch_maker(
-    "iron-ore", 
-    "iron-ore-patch", 
-    0.9, 
-    2, 
-    "iron-ore-particle",
-    {r=0.337, g=0.419, b=0.427},
-    false
-  )
-
+resource_patch_maker(
+  "iron-ore", 
+  "iron-ore-patch", 
+  data.raw.resource["iron-ore"].minable.hardness, 
+  data.raw.resource["iron-ore"].minable.mining_time, 
+  data.raw.resource["iron-ore"].minable.mining_particle, 
+  data.raw.resource["iron-ore"].map_color, 
+  false
+)
 
 local coal_patch = 
-  resource_patch_maker(
-    "coal", 
-    "coal-patch", 
-    0.9, 
-    2, 
-    "coal-particle",
-    {r=0, g=0, b=0},
-    false
-  )
-
+resource_patch_maker(
+  "coal", 
+  "coal-patch", 
+  data.raw.resource["coal"].minable.hardness, 
+  data.raw.resource["coal"].minable.mining_time, 
+  data.raw.resource["coal"].minable.mining_particle, 
+  data.raw.resource["coal"].map_color, 
+  false
+)
 
 local stone_patch = 
-  resource_patch_maker(
-    "stone",
-    "stone-patch",
-    0.4, 
-    2, 
-    "stone-particle",
-    {r=0.478, g=0.450, b=0.317},
-    false
-  )
-
+resource_patch_maker(
+  "stone",
+  "stone-patch",
+  data.raw.resource["stone"].minable.hardness, 
+  data.raw.resource["stone"].minable.mining_time, 
+  data.raw.resource["stone"].minable.mining_particle, 
+  data.raw.resource["stone"].map_color, 
+  false
+)
 
 local uranium_ore_patch = 
-  resource_patch_maker(
-    "uranium-ore", 
-    "uranium-ore-patch", 
-    0.9, 
-    4, 
-    "stone-particle",
-    {r=0, g=0.7, b=0},
-    true
-  )
-
+resource_patch_maker(
+  "uranium-ore", 
+  "uranium-ore-patch", 
+  data.raw.resource["uranium-ore"].minable.hardness, 
+  data.raw.resource["uranium-ore"].minable.mining_time, 
+  data.raw.resource["uranium-ore"].minable.mining_particle, 
+  data.raw.resource["uranium-ore"].map_color, 
+  true
+)
 
 data:extend({
   deep_core_resource_patch_category, 
@@ -295,3 +290,83 @@ data:extend({
   uranium_ore_patch
 })
 make_ore_glow("uranium-ore-patch")
+
+
+if mods["angelsrefining"] then
+
+local angels_ore1_patch = 
+resource_patch_maker(
+  "angels-ore1", 
+  "angels-ore1-patch", 
+  data.raw.resource["angels-ore1"].minable.hardness, 
+  data.raw.resource["angels-ore1"].minable.mining_time, 
+  data.raw.resource["angels-ore1"].minable.mining_particle, 
+  data.raw.resource["angels-ore1"].map_color, 
+  false
+)
+
+local angels_ore2_patch = 
+resource_patch_maker(
+  "angels-ore2", 
+  "angels-ore2-patch", 
+  data.raw.resource["angels-ore2"].minable.hardness, 
+  data.raw.resource["angels-ore2"].minable.mining_time, 
+  data.raw.resource["angels-ore2"].minable.mining_particle, 
+  data.raw.resource["angels-ore2"].map_color, 
+  false
+)
+
+local angels_ore3_patch = 
+resource_patch_maker(
+  "angels-ore3", 
+  "angels-ore3-patch", 
+  data.raw.resource["angels-ore3"].minable.hardness, 
+  data.raw.resource["angels-ore3"].minable.mining_time, 
+  data.raw.resource["angels-ore3"].minable.mining_particle, 
+  data.raw.resource["angels-ore3"].map_color, 
+  false
+)
+
+local angels_ore4_patch = 
+resource_patch_maker(
+  "angels-ore4", 
+  "angels-ore4-patch", 
+  data.raw.resource["angels-ore4"].minable.hardness, 
+  data.raw.resource["angels-ore4"].minable.mining_time, 
+  data.raw.resource["angels-ore4"].minable.mining_particle, 
+  data.raw.resource["angels-ore4"].map_color, 
+  false
+)
+
+local angels_ore5_patch = 
+resource_patch_maker(
+  "angels-ore5", 
+  "angels-ore5-patch", 
+  data.raw.resource["angels-ore5"].minable.hardness, 
+  data.raw.resource["angels-ore5"].minable.mining_time, 
+  data.raw.resource["angels-ore5"].minable.mining_particle, 
+  data.raw.resource["angels-ore5"].map_color, 
+  false
+)
+
+local angels_ore6_patch = 
+resource_patch_maker(
+  "angels-ore6", 
+  "angels-ore6-patch", 
+  data.raw.resource["angels-ore6"].minable.hardness, 
+  data.raw.resource["angels-ore6"].minable.mining_time, 
+  data.raw.resource["angels-ore6"].minable.mining_particle, 
+  data.raw.resource["angels-ore6"].map_color, 
+  false
+)
+
+data:extend({
+  angels_ore1_patch, 
+  angels_ore2_patch, 
+  angels_ore3_patch, 
+  angels_ore4_patch, 
+  angels_ore5_patch, 
+  angels_ore6_patch, 
+})
+
+end

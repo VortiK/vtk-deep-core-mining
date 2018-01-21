@@ -7,7 +7,7 @@ data:extend({
     icon_size = 32,
     flags = {"goes-to-quickbar"},
     subgroup = "extraction-machine",
-    order = "v[items]-d[vtk-deepcore-mining-drill]",
+    order = "v[items]-d1[vtk-deepcore-mining-drill]",
     place_result = "vtk-deepcore-mining-drill",
     stack_size = 25
   },
@@ -18,7 +18,7 @@ data:extend({
     icon_size = 32,
     flags = {"goes-to-quickbar"},
     subgroup = "extraction-machine",
-    order = "v[items]-d[vtk-deepcore-mining-drill-advanced]",
+    order = "v[items]-d2[vtk-deepcore-mining-drill-advanced]",
     place_result = "vtk-deepcore-mining-drill-advanced",
     stack_size = 10
   },
@@ -45,7 +45,7 @@ data:extend({
   {
     type = "item",
     name = "vtk-deepcore-mining-iron-ore-chunk",
-    icon = "__vtk-deep-core-mining__/graphics/icons/iron-ore-patch-chunk.png",
+    icon = "__vtk-deep-core-mining__/graphics/icons/iron-ore-chunk.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
@@ -55,7 +55,7 @@ data:extend({
   {
     type = "item",
     name = "vtk-deepcore-mining-copper-ore-chunk",
-    icon = "__vtk-deep-core-mining__/graphics/icons/copper-ore-patch-chunk.png",
+    icon = "__vtk-deep-core-mining__/graphics/icons/copper-ore-chunk.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
@@ -65,7 +65,7 @@ data:extend({
   {
     type = "item",
     name = "vtk-deepcore-mining-coal-chunk",
-    icon = "__vtk-deep-core-mining__/graphics/icons/coal-patch-chunk.png",
+    icon = "__vtk-deep-core-mining__/graphics/icons/coal-chunk.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
@@ -75,7 +75,7 @@ data:extend({
   {
     type = "item",
     name = "vtk-deepcore-mining-stone-chunk",
-    icon = "__vtk-deep-core-mining__/graphics/icons/stone-patch-chunk.png",
+    icon = "__vtk-deep-core-mining__/graphics/icons/stone-chunk.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
@@ -85,7 +85,7 @@ data:extend({
   {
     type = "item",
     name = "vtk-deepcore-mining-uranium-ore-chunk",
-    icon = "__vtk-deep-core-mining__/graphics/icons/uranium-ore-patch-chunk.png",
+    icon = "__vtk-deep-core-mining__/graphics/icons/uranium-ore-chunk.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
@@ -93,6 +93,73 @@ data:extend({
     stack_size = 100
   },
 })
+
+
+if mods["angelsrefining"] then
+
+data:extend({
+  {
+    type = "item",
+    name = "vtk-deepcore-mining-angels-ore1-chunk",
+    icon = "__vtk-deep-core-mining__/graphics/icons/angels-ore1-chunk.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-resource",
+    order = "vb1[vtk-deepcore-mining-angels-ore1-chunk]",
+    stack_size = 100
+  },
+  {
+    type = "item",
+    name = "vtk-deepcore-mining-angels-ore2-chunk",
+    icon = "__vtk-deep-core-mining__/graphics/icons/angels-ore2-chunk.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-resource",
+    order = "vb2[vtk-deepcore-mining-angels-ore2-chunk]",
+    stack_size = 100
+  },
+  {
+    type = "item",
+    name = "vtk-deepcore-mining-angels-ore3-chunk",
+    icon = "__vtk-deep-core-mining__/graphics/icons/angels-ore3-chunk.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-resource",
+    order = "vb3[vtk-deepcore-mining-angels-ore3-chunk]",
+    stack_size = 100
+  },
+  {
+    type = "item",
+    name = "vtk-deepcore-mining-angels-ore4-chunk",
+    icon = "__vtk-deep-core-mining__/graphics/icons/angels-ore4-chunk.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-resource",
+    order = "vb4[vtk-deepcore-mining-angels-ore4-chunk]",
+    stack_size = 100
+  },
+  {
+    type = "item",
+    name = "vtk-deepcore-mining-angels-ore5-chunk",
+    icon = "__vtk-deep-core-mining__/graphics/icons/angels-ore5-chunk.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-resource",
+    order = "vb5[vtk-deepcore-mining-angels-ore5-chunk]",
+    stack_size = 100
+  },
+  {
+    type = "item",
+    name = "vtk-deepcore-mining-angels-ore6-chunk",
+    icon = "__vtk-deep-core-mining__/graphics/icons/angels-ore6-chunk.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-resource",
+    order = "vb6[vtk-deepcore-mining-angels-ore6-chunk]",
+    stack_size = 100
+  },
+})
+end
 
 -- planner
 data:extend({
@@ -180,7 +247,7 @@ data:extend({
       {"vtk-deepcore-mining-ore-chunk", 100},
       {"vtk-deepcore-mining-drone", 2}
     },
-    icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk.png",
+    icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk-refining.png",
     icon_size = 32,
     subgroup = "intermediate-product",
     order = "v[vtk-deepcore-mining]-a[deepcore-ore-processing]",
@@ -215,24 +282,29 @@ data:extend({
     },
     allow_decomposition = false
   },
+})
+
+local function chunk_refining_recipe_maker(ore_name, refining_result, refining_liquid, refining_liquid_amount)
+
+  local recipe =
   {
     type = "recipe",
-    name = "vtk-deepcore-mining-iron-ore-chunk-refining",
+    name = "vtk-deepcore-mining-"..ore_name.."-chunk-refining",
     enabled = false,
     energy_required = 5,
     category = "chemistry",
     subgroup = "raw-material",
     ingredients = 
     {
-      {"vtk-deepcore-mining-iron-ore-chunk", 1},
-      {type="fluid", name="sulfuric-acid", amount=50},
+      {"vtk-deepcore-mining-"..ore_name.."-chunk", 1},
+      {type="fluid", name=refining_liquid, amount=refining_liquid_amount},
     },
     main_product = "", -- to force use of recipe locales and icons instead of result's
-    icons = {{icon = "__vtk-deep-core-mining__/graphics/icons/iron-ore-patch-refining.png"}},
+    icons = {{icon = "__vtk-deep-core-mining__/graphics/icons/"..ore_name.."-chunk-refining.png"}},
     icon_size = 32,
     results = 
     {
-      {type="item", name="iron-ore", amount=100}
+      {type="item", name=refining_result, amount=100}
     },
     crafting_machine_tint =
     {
@@ -240,112 +312,114 @@ data:extend({
       secondary = {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
       tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
     }
-  },
-  {
-    type = "recipe",
-    name = "vtk-deepcore-mining-copper-ore-chunk-refining",
-    enabled = false,
-    energy_required = 5,
-    category = "chemistry",
-    subgroup = "raw-material",
-    ingredients =
-    {
-      {"vtk-deepcore-mining-copper-ore-chunk", 1},
-      {type="fluid", name="sulfuric-acid", amount=50},
-    },
-    main_product = "", -- to force use of recipe locales and icons instead of result's
-    icons = {{icon = "__vtk-deep-core-mining__/graphics/icons/copper-ore-patch-refining.png"}},
-    icon_size = 32,
-    results = 
-    {
-      {type="item", name="copper-ore", amount=100}
-    },
-    crafting_machine_tint =
-    {
-      primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
-      secondary = {r = 0.255, g = 0.165, b = 0.000, a = 0.357}, -- orange	#FFA500	rgb(255,165,0)
-      tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
-    }
-  },
-  {
-    type = "recipe",
-    name = "vtk-deepcore-mining-coal-chunk-refining",
-    enabled = false,
-    energy_required = 5,
-    category = "chemistry",
-    subgroup = "raw-material",
-    ingredients =
-    {
-      {"vtk-deepcore-mining-coal-chunk", 1},
-      {type="fluid", name="sulfuric-acid", amount=50},
-    },
-    main_product = "", -- to force use of recipe locales and icons instead of result's
-    icons = {{icon = "__vtk-deep-core-mining__/graphics/icons/coal-patch-refining.png"}},
-    icon_size = 32,
-    results = 
-    {
-      {type="item", name="coal", amount=100}
-    },
-    crafting_machine_tint =
-    {
-      primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
-      secondary = {r = 0.105, g = 0.105, b = 0.105, a = 0.357}, -- dimgray / dimgray	#696969	rgb(105,105,105)
-      tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
-    }
-  },
-  {
-    type = "recipe",
-    name = "vtk-deepcore-mining-stone-chunk-refining",
-    enabled = false,
-    energy_required = 5,
-    category = "chemistry",
-    subgroup = "raw-material",
-    ingredients =
-    {
-      {"vtk-deepcore-mining-stone-chunk", 1},
-      {type="fluid", name="sulfuric-acid", amount=50},
-    },
-    main_product = "", -- to force use of recipe locales and icons instead of result's
-    icons = {{icon = "__vtk-deep-core-mining__/graphics/icons/stone-patch-refining.png"}},
-    icon_size = 32,
-    results = 
-    {
-      {type="item", name="stone", amount=100}
-    },
-    crafting_machine_tint =
-    {
-      primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
-      secondary = {r = 0.244, g = 0.164, b = 0.096, a = 0.357}, -- sandybrown	#F4A460	rgb(244,164,96)
-      tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
-    }
-  },
-  {
-    type = "recipe",
-    name = "vtk-deepcore-mining-uranium-ore-chunk-refining",
-    enabled = false,
-    energy_required = 5,
-    category = "chemistry",
-    subgroup = "raw-material",
-    ingredients =
-    {
-      {"vtk-deepcore-mining-uranium-ore-chunk", 1},
-      {type="fluid", name="sulfuric-acid", amount=100},
-    },
-    main_product = "", -- to force use of recipe locales and icons instead of result's
-    icons = {{icon = "__vtk-deep-core-mining__/graphics/icons/uranium-ore-patch-refining.png"}},
-    icon_size = 32,
-    results = 
-    {
-      {type="item", name="uranium-ore", amount=100}
-    },
-    crafting_machine_tint =
-    {
-      primary = {r = 0.000, g = 0.173, b = 0.228, a = 0.000}, -- #00ade45b -- to change?
-      secondary = {r = 0.173, g = 0.255, b = 0.047, a = 0.357}, -- greenyellow	#ADFF2F	rgb(173,255,47)
-      tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
-    }
-  },
+  }
+  
+  return recipe
+end
+
+local iron_ore_chunk_refining_recipe = 
+chunk_refining_recipe_maker(
+  "iron-ore",       -- ore_name : used for recipe name "-chunk-refining", ingredient "-chunk", refining icon "-chunk-refining.png")
+  "iron-ore",       -- result
+  "sulfuric-acid",  -- refining liquid
+  50                -- refining liquid amount
+                    -- TODO tint to implement
+  -- {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
+)
+local copper_ore_chunk_refining_recipe = 
+chunk_refining_recipe_maker(
+  "copper-ore", 
+  "copper-ore", 
+  "sulfuric-acid", 
+  50 
+  -- {r = 0.255, g = 0.165, b = 0.000, a = 0.357}, -- orange	#FFA500	rgb(255,165,0)
+)
+local coal_chunk_refining_recipe = 
+chunk_refining_recipe_maker(
+  "coal", 
+  "coal", 
+  "sulfuric-acid", 
+  25 
+  -- {r = 0.105, g = 0.105, b = 0.105, a = 0.357}, -- dimgray / dimgray	#696969	rgb(105,105,105)
+)
+local stone_chunk_refining_recipe = 
+chunk_refining_recipe_maker(
+  "stone", 
+  "stone", 
+  "sulfuric-acid", 
+  25 
+  -- {r = 0.244, g = 0.164, b = 0.096, a = 0.357}, -- sandybrown	#F4A460	rgb(244,164,96)
+)
+local uranium_ore_chunk_refining_recipe = 
+chunk_refining_recipe_maker(
+  "uranium-ore", 
+  "uranium-ore", 
+  "sulfuric-acid", 
+  100 
+  -- {r = 0.173, g = 0.255, b = 0.047, a = 0.357}, -- greenyellow	#ADFF2F	rgb(173,255,47)
+)
+data:extend({
+  iron_ore_chunk_refining_recipe, 
+  copper_ore_chunk_refining_recipe, 
+  coal_chunk_refining_recipe, 
+  stone_chunk_refining_recipe, 
+  uranium_ore_chunk_refining_recipe, 
 })
+
+--if mods["angelsrefining"] then
+
+local angelore1_chunk_refining_recipe = 
+chunk_refining_recipe_maker(
+  "angels-ore1", 
+  "angels-ore1", 
+  "sulfuric-acid", 
+  50 
+)
+local angelore2_chunk_refining_recipe = 
+chunk_refining_recipe_maker(
+  "angels-ore2", 
+  "angels-ore2", 
+  "sulfuric-acid", 
+  50 
+)
+local angelore3_chunk_refining_recipe = 
+chunk_refining_recipe_maker(
+  "angels-ore3", 
+  "angels-ore3", 
+  "sulfuric-acid", 
+  50 
+)
+local angelore4_chunk_refining_recipe = 
+chunk_refining_recipe_maker(
+  "angels-ore4", 
+  "angels-ore4", 
+  "sulfuric-acid", 
+  50 
+)
+local angelore5_chunk_refining_recipe = 
+chunk_refining_recipe_maker(
+  "angels-ore5", 
+  "angels-ore5", 
+  "sulfuric-acid", 
+  50 
+)
+local angelore6_chunk_refining_recipe = 
+chunk_refining_recipe_maker(
+  "angels-ore6", 
+  "angels-ore6", 
+  "sulfuric-acid", 
+  50 
+)
+
+data:extend({
+  angelore1_chunk_refining_recipe, 
+  angelore2_chunk_refining_recipe, 
+  angelore3_chunk_refining_recipe, 
+  angelore4_chunk_refining_recipe, 
+  angelore5_chunk_refining_recipe, 
+  angelore6_chunk_refining_recipe, 
+})
+--end
 
 -- entity
 data:extend({
@@ -368,7 +442,7 @@ data:extend({
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     
     mining_speed = 0.5,
-    mining_power = 15,
+    mining_power = 30,
     resource_searching_radius = 0.49,
     
     rotatable = false,
@@ -538,8 +612,8 @@ data:extend({
     
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     
-    mining_speed = 0.5,
-    mining_power = 15,
+    mining_speed = 1,
+    mining_power = 60,
     resource_searching_radius = 0.49,
     
     rotatable = false,
@@ -595,22 +669,24 @@ data:extend({
         scale = 0.90
       }
     },
-    activate_sound =
-    {
-      sound =
-      {
-        filename = "__vtk-deep-core-mining__/sounds/MOHORUN2.ogg",
-        volume = 2
-      },
-      audible_distance_modifier = 1,
-    },
     working_sound =
     {
-      sound =
+      activate_sound =
       {
-        filename = "__vtk-deep-core-mining__/sounds/MOHORUN2_working.ogg",
+        filename = "__vtk-deep-core-mining__/sounds/advdeepcore_start.ogg",
         volume = 2
       },
+      deactivate_sound =
+      {
+        filename = "__vtk-deep-core-mining__/sounds/advdeepcore_stop.ogg",
+        volume = 2
+      },
+      sound =
+      {
+        filename = "__vtk-deep-core-mining__/sounds/advdeepcore_working.ogg",
+        volume = 2
+      },
+      -- match_volume_to_activity = true,
       match_speed_to_activity = true,
       audible_distance_modifier = 1,
     },

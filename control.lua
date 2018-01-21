@@ -1,5 +1,6 @@
 require 'stdlib/area/area'
 require 'stdlib/area/position'
+require 'stdlib/table'
 
 function spawn_ore_patch_on_depleted_ore(event)
   local ore = event.entity
@@ -7,8 +8,13 @@ function spawn_ore_patch_on_depleted_ore(event)
   local areaToScan = Position.expand_to_area(ore.position, 5)
   local patchableOres = {"iron-ore", "copper-ore", "coal", "stone"; "uranium-ore"}
   local minspawnrange = settings.global["vtk-deep-core-mining-spawn-radius-from-start"].value
-  local minrichness = settings.global["vtk-deep-core-mining-min-richness"].value
-  local maxrichness = settings.global["vtk-deep-core-mining-max-richness"].value
+  local minrichness = settings.global["vtk-deep-core-mining-patch-min-richness"].value
+  local maxrichness = settings.global["vtk-deep-core-mining-patch-max-richness"].value
+  
+  if game.active_mods["angelsrefining"] then
+    local angelsores = {"angels-ore1", "angels-ore2", "angels-ore3", "angels-ore4", "angels-ore5", "angels-ore6"}
+    patchableOres = table.merge(patchableOres, angelsores)
+  end
   
   -- logic : 
   -- - depleted ore has an equivalent patch entity
@@ -19,6 +25,7 @@ function spawn_ore_patch_on_depleted_ore(event)
   -- debug
   -- local player = game.players[1]
   -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
+  -- player.print(serpent.block(ore.name))
   -- player.print(serpent.block(player))
   
   validOre = false
@@ -53,8 +60,7 @@ function place_deep_core_cracks(area, surface)
   end
   
   local minspawnrange = settings.global["vtk-deep-core-mining-spawn-radius-from-start"].value
-  local minrichness = settings.global["vtk-deep-core-mining-min-richness"].value
-  local maxrichness = settings.global["vtk-deep-core-mining-max-richness"].value
+  local crackrichness = settings.global["vtk-deep-core-mining-crack-richness"].value
   
 -- debug
 -- local player = game.players[1]
@@ -104,7 +110,7 @@ function place_deep_core_cracks(area, surface)
 -- debug player.print(serpent.block(tile.name))
   
     if tile.valid and surface.can_place_entity{name = "vtk-deepcore-mining-crack", position = tile.position} then
-      oreamount = math.random(minrichness, maxrichness)
+      oreamount = crackrichness
       surface.create_entity({name = "vtk-deepcore-mining-crack", amount = oreamount, position = tile.position, force = game.forces.neutral})
 -- debug
 -- player.print("vtk-deepcore-mining-crack placed successfully")
@@ -147,12 +153,10 @@ local function remove_ore_patch(player, surface, area, entities)
       and (game.entity_prototypes[entity.name].resource_category == "vtk-deepcore-mining-ore-patch" 
         or game.entity_prototypes[entity.name].resource_category == "vtk-deepcore-mining-crack")
     then
+      table.insert(patches, entity)
       patchescount = patchescount + 1
       if entity.name == "uranium-ore-patch" or entity.name == "vtk-deepcore-mining-crack" then
         sulfuricpatchescount = sulfuricpatchescount + 1
-        table.insert(sulfuricpatches, entity)
-      else
-        table.insert(patches, entity)
       end
     end
   end
@@ -176,37 +180,58 @@ local function remove_ore_patch(player, surface, area, entities)
   
   -- removing !
   for _,entity in pairs(patches) do
-    -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
-    -- player.print(serpent.block(entity.name))
-    -- player.print(serpent.block(entity.amount))
+    local amountospawn = get_filtered_amount(entity.amount)
+    -- debug
+      player.print("VTK-DEEP-CORE-MINING_DEBUG")
+      player.print("Found "..patchescount.." patches to remove and "..sulfuricpatchescount.." sulfuric patches to remove")
+      player.print(serpent.block(entity.name))
+      player.print(serpent.block(entity.amount))
+      player.print(serpent.block(amountospawn))
 
     if entity.name == "iron-ore-patch" then
-      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-iron-ore-chunk", count = get_filtered_amount(entity.amount)}, true)
+      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-iron-ore-chunk", count = amountospawn}, true)
       
     elseif entity.name == "copper-ore-patch" then
-      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-copper-ore-chunk", count = get_filtered_amount(entity.amount)}, true)
+      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-copper-ore-chunk", count = amountospawn}, true)
       
     elseif entity.name == "coal-patch" then
-      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-coal-chunk", count = get_filtered_amount(entity.amount)}, true)
+      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-coal-chunk", count = amountospawn}, true)
       
     elseif entity.name == "stone-patch" then
-      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-stone-chunk", count = get_filtered_amount(entity.amount)}, true)
-    end
+      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-stone-chunk", count = amountospawn}, true)
+      
+    elseif entity.name == "uranium-ore-patch" then
+      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-uranium-ore-chunk", count = amountospawn}, true)
+
+    elseif entity.name == "vtk-deepcore-mining-crack" then
+      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-ore-chunk", count = amountospawn}, true)
     
+    elseif entity.name == "angels-ore1-patch" then
+      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-angels-ore1-chunk", count = amountospawn}, true)
+      
+    elseif entity.name == "angels-ore2-patch" then
+      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-angels-ore2-chunk", count = amountospawn}, true)
+      
+    elseif entity.name == "angels-ore3-patch" then
+      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-angels-ore3-chunk", count = amountospawn}, true)
+      
+    elseif entity.name == "angels-ore4-patch" then
+      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-angels-ore4-chunk", count = amountospawn}, true)
+      
+    elseif entity.name == "angels-ore5-patch" then
+      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-angels-ore5-chunk", count = amountospawn}, true)
+      
+    elseif entity.name == "angels-ore6-patch" then
+      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-angels-ore6-chunk", count = amountospawn}, true)
+    
+    end
     entity.destroy()
   end
   
-  for _,entity in pairs(sulfuricpatches) do
-    if entity.name == "uranium-ore-patch" then
-      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-uranium-ore-chunk", count = get_filtered_amount(entity.amount)}, true)
-
-    elseif entity.name == "vtk-deepcore-mining-crack" then
-      surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-ore-chunk", count = get_filtered_amount(entity.amount)}, true)
-    end
-  end
-  
   player.remove_item{name="vtk-deepcore-mining-drone", count = patchescount}
-  player.remove_item{name="sulfuric-acid-barrel", count = sulfuricpatchescount}
+  if sulfuricpatchescount > 0 then
+    player.remove_item{name="sulfuric-acid-barrel", count = sulfuricpatchescount}
+  end
 	
 end
 
