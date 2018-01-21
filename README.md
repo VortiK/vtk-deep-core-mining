@@ -15,4 +15,7 @@ Other new features
 - Manual planner tool to remove ore patches and cracks from the world to free land or get a boost of refinable resources.
 - Drills require sulfuric acid (for uranium and cracks) that *must* be injected directly with a pump (pipes will not be enough).
 
+Mod support
+- Angel's Refining mod : https://mods.factorio.com/mod/angelsrefining
+
 Graphics for the mining drills are not mine, source : https://www.spriters-resource.com/
