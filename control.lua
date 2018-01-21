@@ -182,11 +182,11 @@ local function remove_ore_patch(player, surface, area, entities)
   for _,entity in pairs(patches) do
     local amountospawn = get_filtered_amount(entity.amount)
     -- debug
-      player.print("VTK-DEEP-CORE-MINING_DEBUG")
-      player.print("Found "..patchescount.." patches to remove and "..sulfuricpatchescount.." sulfuric patches to remove")
-      player.print(serpent.block(entity.name))
-      player.print(serpent.block(entity.amount))
-      player.print(serpent.block(amountospawn))
+    -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
+    -- player.print("Found "..patchescount.." patches to remove and "..sulfuricpatchescount.." sulfuric patches to remove")
+    -- player.print(serpent.block(entity.name))
+    -- player.print(serpent.block(entity.amount))
+    -- player.print(serpent.block(amountospawn))
 
     if entity.name == "iron-ore-patch" then
       surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-iron-ore-chunk", count = amountospawn}, true)
