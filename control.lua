@@ -111,7 +111,12 @@ function place_deep_core_cracks(area, surface)
   
     if tile.valid and surface.can_place_entity{name = "vtk-deepcore-mining-crack", position = tile.position} then
       oreamount = crackrichness
-      surface.create_entity({name = "vtk-deepcore-mining-crack", amount = oreamount, position = tile.position, force = game.forces.neutral})
+      createdentity = surface.create_entity({name = "vtk-deepcore-mining-crack", amount = oreamount, position = tile.position, force = game.forces.neutral})
+      
+      -- cleanup decoratives around the newly spawned crack
+      cleanupzone = Area.construct(createdentity.position.x, createdentity.position.y, createdentity.position.x, createdentity.position.y)
+      cleanupzone = Area.expand(cleanupzone, 2)
+      surface.destroy_decoratives(cleanupzone)
 -- debug
 -- player.print("vtk-deepcore-mining-crack placed successfully")
 -- player.print(serpent.block(tile.position))
