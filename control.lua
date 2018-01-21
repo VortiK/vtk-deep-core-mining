@@ -288,50 +288,46 @@ script.on_event({
     place_deep_core_cracks(event.area, event.surface)
 end)
 
--- on mod update fix 
+-- on mod update fix DCMD rotation and ore patches yields for existing world before 1.8.2 version of the mod
 script.on_configuration_changed(function(data)
-
- local player = game.players[1]
- player.print("VTK-DEEP-CORE-MINING_DEBUG")
-player.print(data.mod_changes["vtk-deep-core-mining"].old_version)
-  if data.mod_changes["vtk-deep-core-mining"].old_version ~= nil and data.mod_changes["vtk-deep-core-mining"].old_version < "1.8.2" then
-    player.print("VTK-DEEP-CORE-MINING_DEBUG")
-    local orepatchesfixed = 0
-    local dcmdfixed = 0
-    
-    -- scan surface for DCMD already installed in the world and rotate them south if needed and mark them on the map for their force to check their logistics
-    for s, surface in pairs (game.surfaces) do
-      for e, entity in pairs(surface.find_entities_filtered({name = "vtk-deepcore-mining-drill"})) do
-        entity.rotatable = false 
-        if entity.direction ~= defines.direction.south then
-          entity.direction = defines.direction.south
-          entity.force.add_chart_tag(entity.surface,{position=entity.position, text="Rotated DCMD need its output fixed.",icon={type="item", name=entity.name}})
-          dcmdfixed = dcmdfixed + 1
+  if data.mod_changes["vtk-deep-core-mining"].old_version ~= nil
+    if data.mod_changes["vtk-deep-core-mining"].old_version < "1.8.2" then
+      local orepatchesfixed = 0
+      local dcmdfixed = 0
+      
+      -- scan surface for DCMD already installed in the world and rotate them south if needed and mark them on the map for their force to check their logistics
+      for s, surface in pairs (game.surfaces) do
+        for e, entity in pairs(surface.find_entities_filtered({name = "vtk-deepcore-mining-drill"})) do
+          entity.rotatable = false 
+          if entity.direction ~= defines.direction.south then
+            entity.direction = defines.direction.south
+            entity.force.add_chart_tag(entity.surface,{position=entity.position, text="Rotated DCMD need its output fixed.",icon={type="item", name=entity.name}})
+            dcmdfixed = dcmdfixed + 1
+          end
+        end
+        
+        -- scan surface for all ore patches and set their amount to the new intended 100% yield
+        local orepatches = {}
+        orepatches = table.merge(orepatches, surface.find_entities_filtered({name = "iron-ore-patch"}), {option1=true})
+        orepatches = table.merge(orepatches, surface.find_entities_filtered({name = "copper-ore-patch"}), {option1=true})
+        orepatches = table.merge(orepatches, surface.find_entities_filtered({name = "coal-patch"}), {option1=true})
+        orepatches = table.merge(orepatches, surface.find_entities_filtered({name = "stone-patch"}), {option1=true})
+        orepatches = table.merge(orepatches, surface.find_entities_filtered({name = "uranium-ore-patch"}), {option1=true})
+        orepatches = table.merge(orepatches, surface.find_entities_filtered({name = "crack"}), {option1=true})
+        
+        for o, orepatch in pairs(orepatches) do
+          orepatch.amount = 10000
+          orepatchesfixed = orepatchesfixed + 1
+        end
+        
+        -- notify everyone
+        for f, force in pairs(game.forces) do
+          for p, player in pairs(force.players) do
+            player.print("Deep Core Mining update : "..dcmdfixed.." DCMD have been force rotate south and might need logistic fixing. They have been marked on the map.")
+            player.print("Deep Core Mining update : "..orepatchesfixed.." Ore patches & cracks have been updated and now have an undepleting yield of 100% to properly work with change Deep Core Mining drills power.")
+          end
         end
       end
-      
-      -- scan surface for all ore patches and set their amount to the new intended 100% yield
-      local orepatches = {}
-      orepatches = table.merge(orepatches, surface.find_entities_filtered({name = "iron-ore-patch"}), {option1=true})
-      orepatches = table.merge(orepatches, surface.find_entities_filtered({name = "copper-ore-patch"}), {option1=true})
-      orepatches = table.merge(orepatches, surface.find_entities_filtered({name = "coal-patch"}), {option1=true})
-      orepatches = table.merge(orepatches, surface.find_entities_filtered({name = "stone-patch"}), {option1=true})
-      orepatches = table.merge(orepatches, surface.find_entities_filtered({name = "uranium-ore-patch"}), {option1=true})
-      orepatches = table.merge(orepatches, surface.find_entities_filtered({name = "crack"}), {option1=true})
-      
-      for o, orepatch in pairs(orepatches) do
-        orepatch.amount = 10000
-        orepatchesfixed = orepatchesfixed + 1
-      end
-      
-      -- notify everyone
-      for f, force in pairs(game.forces) do
-        for p, player in pairs(force.players) do
-          player.print("Deep Core Mining update : "..dcmdfixed.." DCMD have been force rotate south and might need logistic fixing. They have been marked on the map.")
-          player.print("Deep Core Mining update : "..orepatchesfixed.." Ore patches & cracks have been updated and now have an undepleting yield of 100% to properly work with change Deep Core Mining drills power.")
-        end
-      end
-      
     end
   end
 end)
