@@ -290,7 +290,7 @@ end)
 
 -- on mod update fix DCMD rotation and ore patches yields for existing world before 1.8.2 version of the mod
 script.on_configuration_changed(function(data)
-  if data.mod_changes["vtk-deep-core-mining"].old_version ~= nil
+  if data.mod_changes["vtk-deep-core-mining"].old_version ~= nil then
     if data.mod_changes["vtk-deep-core-mining"].old_version < "1.8.2" then
       local orepatchesfixed = 0
       local dcmdfixed = 0
@@ -320,11 +320,15 @@ script.on_configuration_changed(function(data)
           orepatchesfixed = orepatchesfixed + 1
         end
         
-        -- notify everyone
+        -- notify everyone if needed
         for f, force in pairs(game.forces) do
           for p, player in pairs(force.players) do
-            player.print("Deep Core Mining update : "..dcmdfixed.." DCMD have been force rotate south and might need logistic fixing. They have been marked on the map.")
-            player.print("Deep Core Mining update : "..orepatchesfixed.." Ore patches & cracks have been updated and now have an undepleting yield of 100% to properly work with change Deep Core Mining drills power.")
+            if dcmdfixed > 0 then
+              player.print("Deep Core Mining update : "..dcmdfixed.." DCMD have been force rotate south and might need logistic fixing. They have been marked on the map.")
+            end
+            if orepatchesfixed > 0 then
+              player.print("Deep Core Mining update : "..orepatchesfixed.." Ore patches & cracks have been updated and now have an undepleting yield of 100% to properly work with change Deep Core Mining drills power.")
+            end
           end
         end
       end
