@@ -110,3 +110,12 @@ data:extend(
     order = "e-c-c-a"
   },
 })
+
+if mods["angelsrefining"] then
+  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-angels-ore1-chunk-refining" })
+  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-angels-ore2-chunk-refining" })
+  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-angels-ore3-chunk-refining" })
+  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-angels-ore4-chunk-refining" })
+  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-angels-ore5-chunk-refining" })
+  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-angels-ore6-chunk-refining" })
+end

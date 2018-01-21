@@ -1,6 +1,10 @@
 /c game.forces.player.chart(game.player.surface, {lefttop = {x = -1024, y = -1024}, rightbottom = {x = 1024, y = 1024}})
 
+/c game.player.surface.create_entity({name = "vtk-deepcore-mining-crack", amount = 10000, position = {game.player.position.x, game.player.position.y}, force = game.forces.neutral})
+
 /c game.player.surface.create_entity({name = "coal-patch", amount = math.random(60000, 300000), position = {game.player.position.x, game.player.position.y}, force = game.forces.neutral})
+/c game.player.surface.create_entity({name = "coal-patch", amount = math.random(60000, 300000), position = {game.player.position.x, game.player.position.y}, force = game.forces.neutral})
+
 
 /c game.difficulty_settings.recipe_difficulty = 0; game.difficulty_settings.technology_difficulty = 0; game.difficulty_settings.technology_price_multiplier = 1
 

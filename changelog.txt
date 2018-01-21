@@ -1,4 +1,29 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.8.2
+Date: 21. 01. 2018
+  Fixes:
+    - Migration for old saves to force DCMD rotation and set all existing ore patches yield to 100% according to new paradigm.
+    - Added decoration clean up on deep core crack spawning to better see it in the world.
+---------------------------------------------------------------------------------------------------
+Version: 1.8.1
+Date: 21. 01. 2018
+  Fixes:
+    - Fix vanilla crash because of angel support test
+---------------------------------------------------------------------------------------------------
+Version: 1.8.0
+Date: 21. 01. 2018
+  Features:
+    - Adds Angel's Ore support (Angel's Refining mod). Like vanilla ores, Angels ores patches will spawn on depletion and can be manually harvested with the planner tool and refined (thanks Discord SotS#7790 for gfx help).
+  Changes:
+    - Major rebalance of ore patches and cracks richness amounts generation & settings. Now fixed to a value of 10 000 (= 100%) and won't deplete. This is to prevent varying mining output (richness can still be changed in mod settings).
+    - Rebalance mining outputs :
+      - DCMD should output a bit more than a single lane of a yellow belt but might require a chest or express splitter to keep up the mining speed.
+      - ADCMD should require a full redbelt, but might work better if outputing into a chest.
+    - ADCMD custom sounds improvements, now has a starting and stopping sound.
+  Fixes:
+    - Fixed manual mining with planner tool could fail on certain ore patches (uranium & cracks)
+    - Various internal tidying of graphics, locales fixes and code refactoring to improve maintainability.
+---------------------------------------------------------------------------------------------------
 Version: 1.7.1
 Date: 20. 01. 2018
   Fixes:
@@ -6,7 +31,7 @@ Date: 20. 01. 2018
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.0
 Date: 20. 01. 2018
- Features:
+  Features:
     - New Advanced Deep Core Mining drill, bigger, expensiver and it has its own working sound. Dedicated to mine the ...
     - New Deep Core Mining Cack resources that are a rare spawn in the world (~1/500 chance per chunk). Enable to mine the ...
     - New Resource Deep Core Ore Chunk from DCM Cracks that must be refined in a centrifuge and will yield ore chunks that themselves require refining to get ore.
