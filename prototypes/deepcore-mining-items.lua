@@ -366,7 +366,7 @@ data:extend({
   uranium_ore_chunk_refining_recipe, 
 })
 
---if mods["angelsrefining"] then
+if mods["angelsrefining"] then
 
 local angelore1_chunk_refining_recipe = 
 chunk_refining_recipe_maker(
@@ -419,7 +419,7 @@ data:extend({
   angelore5_chunk_refining_recipe, 
   angelore6_chunk_refining_recipe, 
 })
---end
+end
 
 -- entity
 data:extend({
