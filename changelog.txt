@@ -2,10 +2,12 @@
 Version: 1.8.0
 Date: 21. 01. 2018
   Features:
-    - Adds Angels Ore support (angelsrefining mod). Like vanilla ores, Angels ores patches will spawn on depletion and can be manually harvested with the planner tool and refined.
+    - Adds Angel's Ore support (Angel's Refining mod). Like vanilla ores, Angels ores patches will spawn on depletion and can be manually harvested with the planner tool and refined (thanks Discord SotS#7790 for gfx help).
   Changes:
     - Major rebalance of ore patches and cracks richness amounts generation & settings. Now fixed to a value of 10 000 (= 100%) and won't deplete. This is to prevent varying mining output (richness can still be changed in mod settings).
-    - Rebalance mining outputs, DCMD should output a bit more than a single lane of a yellow belt. ADCMD should require a full redbelt. Both might work better if outputing into containers like chests.
+    - Rebalance mining outputs :
+      - DCMD should output a bit more than a single lane of a yellow belt but might require a chest or express splitter to keep up the mining speed.
+      - ADCMD should require a full redbelt, but might work better if outputing into a chest.
     - ADCMD custom sounds improvements, now has a starting and stopping sound.
   Fixes:
     - Fixed manual mining with planner tool could fail on certain ore patches (uranium & cracks)
