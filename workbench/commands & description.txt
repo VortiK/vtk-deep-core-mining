@@ -5,6 +5,26 @@
 /c game.player.surface.create_entity({name = "coal-patch", amount = math.random(60000, 300000), position = {game.player.position.x, game.player.position.y}, force = game.forces.neutral})
 /c game.player.surface.create_entity({name = "coal-patch", amount = math.random(60000, 300000), position = {game.player.position.x, game.player.position.y}, force = game.forces.neutral})
 
+/c local surface=game.player.surface
+local count=0
+for key, ent in pairs(surface.find_entities_filtered({name="iron-ore-patch"})) do
+  game.player.print(count.." "..ent.amount)
+  ent.amount = 10000
+  game.player.print(count.." "..ent.amount)
+  count=count+1
+end
+game.player.print(count)
+
+
+/c local surface=game.player.surface
+local count=0
+for key, ent in pairs(surface.find_entities_filtered({name="iron-ore-patch"})) do
+  game.player.print(count.." "..ent.amount)
+  count=count+1
+end
+game.player.print(count)
+
+
 
 /c game.difficulty_settings.recipe_difficulty = 0; game.difficulty_settings.technology_difficulty = 0; game.difficulty_settings.technology_price_multiplier = 1
 

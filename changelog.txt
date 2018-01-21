@@ -1,8 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.8.2
-Date: 21. 01. 2018
-  Fixes:
-    - Migration for old saves to force DCMD rotation and set all existing ore patches yield to 100% according to new paradigm.
+Date: 22. 01. 2018
+  Changes:
+    - Migration for old saves to force DCMD rotation and set all existing ore patches yield to 100% according to new paradigm. Script will notify all players and DCMD that have been affected will be marked on the map.
     - Added decoration clean up on deep core crack spawning to better see it in the world.
 ---------------------------------------------------------------------------------------------------
 Version: 1.8.1
