@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.8.4
+Date: 22. 01. 2018
+  Fixes:
+    - Critical hotfix to migration upgrade when other mods are updated and not this one. Thanks Discord Noxy#5617 for the report and fix.
+---------------------------------------------------------------------------------------------------
+Version: 1.8.3
+Date: 22. 01. 2018
+  Changes:
+    - Some local updates.
+---------------------------------------------------------------------------------------------------
 Version: 1.8.2
 Date: 22. 01. 2018
   Changes:

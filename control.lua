@@ -290,7 +290,7 @@ end)
 
 -- on mod update fix DCMD rotation and ore patches yields for existing world before 1.8.2 version of the mod
 script.on_configuration_changed(function(data)
-  if data.mod_changes["vtk-deep-core-mining"].old_version ~= nil then
+  if data.mod_changes["vtk-deep-core-mining"] and data.mod_changes["vtk-deep-core-mining"].old_version ~= nil then
     if data.mod_changes["vtk-deep-core-mining"].old_version < "1.8.2" then
       local orepatchesfixed = 0
       local dcmdfixed = 0
