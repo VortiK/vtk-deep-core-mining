@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.8.7
+Date: 24. 01. 2018
+  Changes:
+    - Limited modules that can be used on DCMD and ADCMD to only efficiency and reduced from 3 to 2 slots (taking a look a beacon effects limitation aswell as it can be overpowered).
+---------------------------------------------------------------------------------------------------
 Version: 1.8.6
 Date: 23. 01. 2018
   Fixes:
