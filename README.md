@@ -7,7 +7,7 @@ This mod is designed to aleviate the "depleted ore outpost" and "need to keep bu
 - Ore patches and Cracks provide an infinite yield that stays at 100%.
 - Ore patches and Cracks can be manually mined to free land and get a burst of resources as the cost of refining and losing the infinite minable patch.
 - High tech animated mining drill, the Deep Core Mining Drill (DCMD) is used to mine ore patches with associated technology and its own intermediate component ; ~16x more expensive to build but ~7x more powerful than a normal electric mining drill.
-- Advanced mining drill with custom sounds used to mine Cracks that yields a specific ore that require heavy refining to get useable ore.
+- Advanced Deep Core Mining Drill (ADCMD) with custom sounds used to mine Cracks that yields a specific ore that require heavy refining to get useable ore.
 
 The idea is to repurpose old mining outpost when ore is depleted. So the infrastructure is still usefull for the investment of resources and time to replace old drills and building new machines while also providing a small but steady infinite source of ore.
 
@@ -18,5 +18,7 @@ Other new features
 
 Mod support
 - Angel's Refining mod : https://mods.factorio.com/mod/angelsrefining
+
+Deep Core Mining is powered by the Factorio Standard Library Project : https://github.com/Afforess/Factorio-Stdlib
 
 Graphics for the mining drills are not mine, source : https://www.spriters-resource.com/

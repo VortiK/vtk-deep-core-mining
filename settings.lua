@@ -8,7 +8,7 @@ data:extend({
 		default_value = 1,
 		maximum_value = 10000,
 		order = "1"
-	},
+  },
   {
 		type = "int-setting",
 		name = "vtk-deep-core-mining-patch-min-richness",
@@ -16,7 +16,7 @@ data:extend({
 		minimum_value = 1,
 		default_value = 10000,
 		maximum_value = 3000000,
-		order = "1"
+		order = "2"
 	},
   {
 		type = "int-setting",
@@ -25,7 +25,7 @@ data:extend({
 		minimum_value = 1,
 		default_value = 10000,
 		maximum_value = 3000000,
-		order = "1"
+		order = "3"
 	},
   {
 		type = "int-setting",
@@ -34,7 +34,15 @@ data:extend({
 		minimum_value = 1,
 		default_value = 10000,
 		maximum_value = 3000000,
-		order = "1"
+		order = "4"
+	},
+  {
+    type = "bool-setting",
+		name = "vtk-deep-core-mining-allow-beacon",
+		setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+		order = "5"
 	},
   {
     type = "bool-setting",

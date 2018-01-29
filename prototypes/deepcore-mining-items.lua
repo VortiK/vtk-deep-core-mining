@@ -560,10 +560,7 @@ data:extend({
             match_speed_to_activity = true,
             apparent_volume = 2.5,
         },
-        module_specification =
-        {
-            module_slots = 2
-        },
+        module_specification = { module_slots = 2 },
         allowed_effects = {"productivity", "consumption", "pollution"}, 
         radius_visualisation_picture =
         {
@@ -572,7 +569,7 @@ data:extend({
             height = 12
         },
         monitor_visualization_tint = {r=78, g=173, b=255},
-        fast_replaceable_group = "vtk-deepcore-mining-drill",
+        -- fast_replaceable_group = "vtk-deepcore-mining-drill",
         --[[
         circuit_wire_connection_points =
         {
@@ -600,7 +597,11 @@ data:extend({
         name = "vtk-deepcore-mining-drill-advanced",
         icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-mine-advanced.png",
         icon_size = 32,
-        flags = {"placeable-neutral", "player-creation"},
+        flags = {
+            "placeable-neutral",
+            "placeable-player",
+            "player-creation",
+        },
         minable = {mining_time = 10, result = "vtk-deepcore-mining-drill-advanced"},
         resource_categories = {"vtk-deepcore-mining-crack"},
         max_health = 10000,
@@ -691,11 +692,10 @@ data:extend({
             match_speed_to_activity = true,
             audible_distance_modifier = 1,
         },
-        module_specification =
-        {
-            module_slots = 2
-        },
+        module_specification = { module_slots = 2 },
         allowed_effects = {"productivity", "consumption", "pollution"}, 
+        -- module_specification = { module_slots = 0 },
+        -- allowed_effects = nil, 
         radius_visualisation_picture =
         {
             filename = "__base__/graphics/entity/pumpjack/pumpjack-radius-visualization.png",
@@ -703,7 +703,7 @@ data:extend({
             height = 12
         },
         monitor_visualization_tint = {r=78, g=173, b=255},
-        fast_replaceable_group = "vtk-deepcore-mining-drill-advanced",
+        -- fast_replaceable_group = "vtk-deepcore-mining-drill-advanced",
         circuit_wire_connection_points = circuit_connector_definitions["pumpjack"].points,
         circuit_connector_sprites = circuit_connector_definitions["pumpjack"].sprites,
         circuit_wire_max_distance = 14,
