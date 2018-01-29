@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.9.0
-Date: 24. 01. 2018
+Date: 29. 01. 2018
   Features:
     - Added beacons prevention enforcing feature™ (BPEF), when building a beacon near a DCMD it will be removed and droped on the ground (and vis versa). This is because beacons speed module usage on DCMD is overpowered and Deep Core Mining is overpowered enough already featuring an infinite ore source. This is however togglable in the mod options (on by default). Also existing beacons around DCMDs will not be removed as it might be too frustrating.
   Changes:
