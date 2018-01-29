@@ -40,7 +40,7 @@ data:extend({
     type = "bool-setting",
 		name = "vtk-deep-core-mining-allow-beacon",
 		setting_type = "runtime-global",
-    default_value = true,
+    default_value = false,
     per_user = false,
 		order = "5"
 	},

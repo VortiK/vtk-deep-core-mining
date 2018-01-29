@@ -10,7 +10,7 @@ end
 -- and can't flag them as not affected for this entity type (mining drill, but it somehow works for furnaces)
 -- so we prevent building them around beacon and building beacons around them
 function prevent_beacons(entity)
-    if not settings.global["vtk-deep-core-mining-allow-beacon"].value then
+    if settings.global["vtk-deep-core-mining-allow-beacon"].value then
         return
     end
     
