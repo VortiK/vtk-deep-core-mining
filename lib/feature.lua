@@ -1,5 +1,9 @@
 -- deep core mining drills sprites are not rotatable, so force then south!
 function force_rotation(entity)
+    if settings.global["vtk-deep-core-mining-allow-rotation"].value then
+        return
+    end
+
     if entity.name == "vtk-deepcore-mining-drill" or entity.name == "vtk-deepcore-mining-drill-advanced" then
         entity.rotatable = false
         entity.direction = defines.direction.south

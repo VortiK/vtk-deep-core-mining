@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.9.2
+Date: 30. 01. 2018
+  Changes:
+    - Added an "Allow rotation of DCMDs" mod setting (off by default) following popular demand. You'll need to remove and place DCMD again to make them rotatable if you set this setting to Yes.
+---------------------------------------------------------------------------------------------------
 Version: 1.9.1
 Date: 29. 01. 2018
   Fixes:
