@@ -19,7 +19,7 @@ end
 function spawn_ore_patch_on_depleted_ore(event)
     local ore = event.entity
     local surface = ore.surface
-    local areaToScan = Position.expand_to_area(ore.position, 5)
+    local areaToScan = Position.expand_to_area(ore.position, 10)
     local patchableOres = {"iron-ore", "copper-ore", "coal", "stone"; "uranium-ore"}
     local minspawnrange = settings.global["vtk-deep-core-mining-spawn-radius-from-start"].value
     local minrichness = settings.global["vtk-deep-core-mining-patch-min-richness"].value

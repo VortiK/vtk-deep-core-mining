@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.10.0
+Date: 05. 02. 2018
+  Changes:
+    - Balance pass on DCMD : (Thanks Discord Noxy#5617 for testing & feedback)
+      - it proved to be too much and become a main source of ore instead of small but steady,  
+      - reduced mining rate by 50%, mining power from 30 to 15.
+      - ore patches spawning's min range between patches increased from 5 to 10 tiles.
+    - Balance pass on ADCMD : (Thanks djmad for number crunching https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/5a72339966b10c000a5cf789).
+      - it was kinda too expensive especially for iron because of mining drone cost and for coal because of sulfuric acid (if you use coal liquefaction), 
+      - increased Deep Core Ore iron chunks refining yield from 100 to 200, 
+      - reduced sulfuric acid needed for Coal and Stone chunks refining from 25 to 10, 
+      - reduced Deep Core Mining drone cost from 2 to 1 for Deep Core Ore refining.
+  Fixes:
+    - Reviewed the DCMD drill animation, should be less jittery.
+---------------------------------------------------------------------------------------------------
 Version: 1.9.2
 Date: 30. 01. 2018
   Changes:

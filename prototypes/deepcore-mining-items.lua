@@ -245,7 +245,7 @@ data:extend({
         category = "centrifuging",
         ingredients = {
             {"vtk-deepcore-mining-ore-chunk", 100},
-            {"vtk-deepcore-mining-drone", 2}
+            {"vtk-deepcore-mining-drone", 1}
         },
         icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk-refining.png",
         icon_size = 32,
@@ -284,7 +284,7 @@ data:extend({
     },
 })
 
-local function chunk_refining_recipe_maker(ore_name, refining_result, refining_liquid, refining_liquid_amount)
+local function chunk_refining_recipe_maker(ore_name, refining_result, result_amount, refining_liquid, refining_liquid_amount)
 
     local recipe =
     {
@@ -304,7 +304,7 @@ local function chunk_refining_recipe_maker(ore_name, refining_result, refining_l
         icon_size = 32,
         results = 
         {
-            {type="item", name=refining_result, amount=100}
+            {type="item", name=refining_result, amount=result_amount}
         },
         crafting_machine_tint =
         {
@@ -321,15 +321,17 @@ local iron_ore_chunk_refining_recipe =
 chunk_refining_recipe_maker(
     "iron-ore",             -- ore_name : used for recipe name "-chunk-refining", ingredient "-chunk", refining icon "-chunk-refining.png")
     "iron-ore",             -- result
-    "sulfuric-acid",    -- refining liquid
-    50                                -- refining liquid amount
-                                        -- TODO tint to implement
+    200,                    -- result amount
+    "sulfuric-acid",        -- refining liquid
+    50                      -- refining liquid amount
+                            -- TODO tint to implement
     -- {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
 )
 local copper_ore_chunk_refining_recipe = 
 chunk_refining_recipe_maker(
     "copper-ore", 
     "copper-ore", 
+    100, 
     "sulfuric-acid", 
     50 
     -- {r = 0.255, g = 0.165, b = 0.000, a = 0.357}, -- orange	#FFA500	rgb(255,165,0)
@@ -338,22 +340,25 @@ local coal_chunk_refining_recipe =
 chunk_refining_recipe_maker(
     "coal", 
     "coal", 
+    100, 
     "sulfuric-acid", 
-    25 
+    10 
     -- {r = 0.105, g = 0.105, b = 0.105, a = 0.357}, -- dimgray / dimgray	#696969	rgb(105,105,105)
 )
 local stone_chunk_refining_recipe = 
 chunk_refining_recipe_maker(
     "stone", 
     "stone", 
+    100, 
     "sulfuric-acid", 
-    25 
+    10 
     -- {r = 0.244, g = 0.164, b = 0.096, a = 0.357}, -- sandybrown	#F4A460	rgb(244,164,96)
 )
 local uranium_ore_chunk_refining_recipe = 
 chunk_refining_recipe_maker(
     "uranium-ore", 
-    "uranium-ore", 
+    "uranium-ore",
+    100,  
     "sulfuric-acid", 
     100 
     -- {r = 0.173, g = 0.255, b = 0.047, a = 0.357}, -- greenyellow	#ADFF2F	rgb(173,255,47)
@@ -442,7 +447,7 @@ data:extend({
         vehicle_impact_sound =    { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
         
         mining_speed = 0.5,
-        mining_power = 30,
+        mining_power = 15,
         resource_searching_radius = 0.49,
         
         rotatable = false,
@@ -494,9 +499,11 @@ data:extend({
 	            -- shift = util.by_pixel(9, 33),
 	            shift = util.by_pixel(7, 30),
                 filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-miner-drill-animation.png",
-                frame_count = 21,
-                animation_speed = 0.5,
-                scale = 0.50
+                frame_count = 20,
+                run_mode = "forward", 
+                animation_speed = 0.50,
+                scale = 0.50,
+                
             }
         },
         input_fluid_patch_sprites =
