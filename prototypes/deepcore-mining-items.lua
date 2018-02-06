@@ -304,7 +304,10 @@ local function chunk_refining_recipe_maker(ore_name, refining_result, result_amo
         icon_size = 32,
         results = 
         {
-            {type="item", name=refining_result, amount=result_amount}
+            {type="item", name=refining_result, amount=result_amount/4}, 
+            {type="item", name=refining_result, amount=result_amount/4}, 
+            {type="item", name=refining_result, amount=result_amount/4}, 
+            {type="item", name=refining_result, amount=result_amount/4}, 
         },
         crafting_machine_tint =
         {
@@ -440,7 +443,7 @@ data:extend({
         dying_explosion = "massive-explosion",
         corpse = "big-remnants",
         
-        collision_box = {{ -2.5, -2.5}, {2.5, 2.5}},
+        collision_box = {{ -2.1, -2.1}, {2.1, 2.5}},
         selection_box = {{ -2.5, -2.5}, {2.5, 2.5}},
         drawing_box = {{-2.5, -2.5}, {2.5, 2.5}},
         
@@ -615,7 +618,7 @@ data:extend({
         dying_explosion = "massive-explosion",
         corpse = "big-remnants",
         
-        collision_box = {{ -4.5, -4.5}, {4.5, 4.5}},
+        collision_box = {{ -3.6, -4.1}, {4.1, 4.5}},
         selection_box = {{ -4.5, -4.5}, {4.5, 4.5}},
         drawing_box = {{-4.5, -4.5}, {4.5, 4.5}},
         

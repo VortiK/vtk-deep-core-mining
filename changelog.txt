@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.10.1
+Date: 05. 02. 2018
+  Changes:
+    - Reduced DCMD and ADCMD collision box a bit to make it easier to navigate around them.
+  Fixes:
+    - Fixed chemical plant refining ouput to handle more resulting ore as it was limited by ore stack sizes (50) instead of set outputs (100 or 200). You'll need at least 2 upgraded stack inserters to ouput Iron Chunks refining with no down time.
+---------------------------------------------------------------------------------------------------
 Version: 1.10.0
 Date: 05. 02. 2018
   Changes:
