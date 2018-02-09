@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.10.3
+Date: 08. 02. 2018
+  Changes:
+    - Removed the rotation forcing and map labeling update for before DCM 1.8.2 saves. Was fun the code but way too frustrating in practice for players.
+    - Rotation is still disabled by default but can be enabled in the mod opotions menu. It will only apply to new drills and existing drills placed before DCM 1.8.2 will stay rotatable.
+---------------------------------------------------------------------------------------------------
+Version: 1.10.2
+Date: 07. 02. 2018
+  Fixes:
+    - Fixed Angel's Ores compatibility with last changes regarding refining yield.
+    - Fixed ADCMD collision box that made it un-placable.
+---------------------------------------------------------------------------------------------------
 Version: 1.10.1
 Date: 05. 02. 2018
   Changes:

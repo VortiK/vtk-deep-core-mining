@@ -380,6 +380,7 @@ local angelore1_chunk_refining_recipe =
 chunk_refining_recipe_maker(
     "angels-ore1", 
     "angels-ore1", 
+    200, 
     "sulfuric-acid", 
     50 
 )
@@ -387,6 +388,7 @@ local angelore2_chunk_refining_recipe =
 chunk_refining_recipe_maker(
     "angels-ore2", 
     "angels-ore2", 
+    100, 
     "sulfuric-acid", 
     50 
 )
@@ -394,6 +396,7 @@ local angelore3_chunk_refining_recipe =
 chunk_refining_recipe_maker(
     "angels-ore3", 
     "angels-ore3", 
+    100, 
     "sulfuric-acid", 
     50 
 )
@@ -401,6 +404,7 @@ local angelore4_chunk_refining_recipe =
 chunk_refining_recipe_maker(
     "angels-ore4", 
     "angels-ore4", 
+    100, 
     "sulfuric-acid", 
     50 
 )
@@ -408,6 +412,7 @@ local angelore5_chunk_refining_recipe =
 chunk_refining_recipe_maker(
     "angels-ore5", 
     "angels-ore5", 
+    100, 
     "sulfuric-acid", 
     50 
 )
@@ -415,6 +420,7 @@ local angelore6_chunk_refining_recipe =
 chunk_refining_recipe_maker(
     "angels-ore6", 
     "angels-ore6", 
+    100, 
     "sulfuric-acid", 
     50 
 )
@@ -618,7 +624,7 @@ data:extend({
         dying_explosion = "massive-explosion",
         corpse = "big-remnants",
         
-        collision_box = {{ -3.6, -4.1}, {4.1, 4.5}},
+        collision_box = {{ -4.1, -4.1}, {4.1, 4.5}},
         selection_box = {{ -4.5, -4.5}, {4.5, 4.5}},
         drawing_box = {{-4.5, -4.5}, {4.5, 4.5}},
         
