@@ -1,6 +1,10 @@
+-- Factorio STD Lib
 require 'stdlib/area/area'
 require 'stdlib/area/position'
 require 'stdlib/table'
+-- Sementic Version comparision tool
+local v = require 'lib/semver'
+-- This Mod's functions
 require 'lib/resource'
 require 'lib/feature'
 require 'lib/upgrade'
@@ -45,6 +49,9 @@ end)
 -- on mod update fixes
 script.on_configuration_changed(function(data)
     if data.mod_changes["vtk-deep-core-mining"] and data.mod_changes["vtk-deep-core-mining"].old_version ~= nil then
-        upgrade182(data)
+        local current = v(data.mod_changes["vtk-deep-core-mining"].old_version)
+        if current < v(1,8,2) then
+            upgrade182(data)
+        end
     end
 end)

@@ -1,8 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.10.4
+Date: 10. 02. 2018
+  Changes:
+    - Implemented sementic version for proper upgrade comparison triggers.
+    - Reimplemented rotation forcing and map labelling update saves before DCM 1.8.2.
+---------------------------------------------------------------------------------------------------
 Version: 1.10.3
 Date: 08. 02. 2018
   Changes:
-    - Removed the rotation forcing and map labeling update for before DCM 1.8.2 saves. Was fun the code but way too frustrating in practice for players.
+    - Removed the rotation forcing and map labeling update for before DCM 1.8.2 saves as it could trigger even in later versions.
     - Rotation is still disabled by default but can be enabled in the mod opotions menu. It will only apply to new drills and existing drills placed before DCM 1.8.2 will stay rotatable.
 ---------------------------------------------------------------------------------------------------
 Version: 1.10.2
@@ -21,15 +27,15 @@ Date: 05. 02. 2018
 Version: 1.10.0
 Date: 05. 02. 2018
   Changes:
-    - Balance pass on DCMD : (Thanks Discord Noxy#5617 for testing & feedback)
-      - it proved to be too much and become a main source of ore instead of small but steady,  
-      - reduced mining rate by 50%, mining power from 30 to 15.
-      - ore patches spawning's min range between patches increased from 5 to 10 tiles.
-    - Balance pass on ADCMD : (Thanks djmad for number crunching https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/5a72339966b10c000a5cf789).
-      - it was kinda too expensive especially for iron because of mining drone cost and for coal because of sulfuric acid (if you use coal liquefaction), 
-      - increased Deep Core Ore iron chunks refining yield from 100 to 200, 
-      - reduced sulfuric acid needed for Coal and Stone chunks refining from 25 to 10, 
-      - reduced Deep Core Mining drone cost from 2 to 1 for Deep Core Ore refining.
+    - 1/ Balance pass on DCMD : (Thanks Discord Noxy#5617 for testing & feedback)
+    - it proved to be too much and become a main source of ore instead of small but steady,  
+    - reduced mining rate by 50%, mining power from 30 to 15.
+    - ore patches spawning's min range between patches increased from 5 to 10 tiles.
+    - 2/ Balance pass on ADCMD : (Thanks djmad for number crunching https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/5a72339966b10c000a5cf789).
+    - it was kinda too expensive especially for iron because of mining drone cost and for coal because of sulfuric acid (if you use coal liquefaction), 
+    - increased Deep Core Ore iron chunks refining yield from 100 to 200, 
+    - reduced sulfuric acid needed for Coal and Stone chunks refining from 25 to 10, 
+    - reduced Deep Core Mining drone cost from 2 to 1 for Deep Core Ore refining.
   Fixes:
     - Reviewed the DCMD drill animation, should be less jittery.
 ---------------------------------------------------------------------------------------------------
@@ -96,11 +102,11 @@ Date: 21. 01. 2018
   Features:
     - Adds Angel's Ore support (Angel's Refining mod). Like vanilla ores, Angels ores patches will spawn on depletion and can be manually harvested with the planner tool and refined (thanks Discord SotS#7790 for gfx help).
   Changes:
-    - Major rebalance of ore patches and cracks richness amounts generation & settings. Now fixed to a value of 10 000 (= 100%) and won't deplete. This is to prevent varying mining output (richness can still be changed in mod settings).
-    - Rebalance mining outputs :
-      - DCMD should output a bit more than a single lane of a yellow belt but might require a chest or express splitter to keep up the mining speed.
-      - ADCMD should require a full redbelt, but might work better if outputing into a chest.
-    - ADCMD custom sounds improvements, now has a starting and stopping sound.
+    - 1/ Major rebalance of ore patches and cracks richness amounts generation & settings. Now fixed to a value of 10 000 (= 100%) and won't deplete. This is to prevent varying mining output (richness can still be changed in mod settings).
+    - 2/ Rebalance mining outputs :
+    - DCMD should output a bit more than a single lane of a yellow belt but might require a chest or express splitter to keep up the mining speed.
+    - ADCMD should require a full redbelt, but might work better if outputing into a chest.
+    - 3/ ADCMD custom sounds improvements, now has a starting and stopping sound.
   Fixes:
     - Fixed manual mining with planner tool could fail on certain ore patches (uranium & cracks)
     - Various internal tidying of graphics, locales fixes and code refactoring to improve maintainability.
