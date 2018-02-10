@@ -13,7 +13,7 @@ This mod is designed to aleviate the "depleted ore outpost" and "need to keep bu
 
 The idea is to repurpose old mining outpost when ore is depleted. So the infrastructure is still usefull for the investment of resources and time to replace old drills and building new machines while also providing a small but steady infinite source of ore.
 
-##Other features details
+## Other features details
 - Advanced deep core mining drill to mine rare cracks in the world. Provide infinite ore, but require heavy refining.
  Manual planner tool to remove ore patches and cracks from the world to free land or get a boost of refinable resources.
 - Drills require sulfuric acid (for uranium and cracks) that *must* be injected directly with a pump (pipes will not be enough).
