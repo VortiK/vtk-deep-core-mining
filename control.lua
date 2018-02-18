@@ -1,8 +1,8 @@
 -- Factorio STD Lib
-require 'lib/stdlib/area/area'
-require 'lib/stdlib/area/position'
-require 'lib/stdlib/table'
-require 'lib/stdlib/string'
+require 'stdlib/area/area'
+require 'stdlib/area/position'
+require 'stdlib/table'
+require 'stdlib/string'
 -- Sementic Version comparision tool
 local v = require 'lib/semver'
 -- This Mod's functions
