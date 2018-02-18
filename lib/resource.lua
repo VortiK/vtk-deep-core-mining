@@ -20,7 +20,13 @@ function spawn_ore_patch_on_depleted_ore(event)
     local ore = event.entity
     local surface = ore.surface
     local areaToScan = Position.expand_to_area(ore.position, 10)
-    local patchableOres = {"iron-ore", "copper-ore", "coal", "stone"; "uranium-ore"}
+    local patchableOres = {
+        ["iron-ore"] = "iron-ore",
+        ["copper-ore"] = "copper-ore",
+        ["coal"] = "coal",
+        ["stone"] = "stone",
+        ["uranium-ore"] = "uranium-ore"
+    }
     local minspawnrange = settings.global["vtk-deep-core-mining-spawn-radius-from-start"].value
     local minrichness = settings.global["vtk-deep-core-mining-patch-min-richness"].value
     local maxrichness = settings.global["vtk-deep-core-mining-patch-max-richness"].value
@@ -31,8 +37,24 @@ function spawn_ore_patch_on_depleted_ore(event)
     end
 
     if game.active_mods["angelsrefining"] then
-        local angelsores = {"angels-ore1", "angels-ore2", "angels-ore3", "angels-ore4", "angels-ore5", "angels-ore6"}
-        patchableOres = table.merge(patchableOres, angelsores, {option1=true})
+        local angelsores = {
+            ["angels-ore1"] = "angels-ore1", 
+            ["angels-ore2"] = "angels-ore2", 
+            ["angels-ore3"] = "angels-ore3", 
+            ["angels-ore4"] = "angels-ore4", 
+            ["angels-ore5"] = "angels-ore5", 
+            ["angels-ore6"] = "angels-ore6"
+        }
+        patchableOres = table.merge(patchableOres, angelsores)
+    end
+
+    -- Add support for Dirty Mining of supported ore patches
+    if game.active_mods["DirtyMining"] then
+        local dirtyores = {}
+        for orename, oreresult in pairs(patchableOres) do
+            dirtyores = table.merge(dirtyores, {['dirty-ore-'..orename] = oreresult})
+        end
+        patchableOres = table.merge(patchableOres, dirtyores)
     end
     
     -- logic : 
@@ -44,27 +66,30 @@ function spawn_ore_patch_on_depleted_ore(event)
     -- debug
     -- local player = game.players[1]
     -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
-    -- player.print(serpent.block(ore.name))
+    -- player.print("mined ore : "..serpent.block(ore.name))
     -- player.print(serpent.block(player))
     
-    validOre = false
-    for _,patchableOre in pairs(patchableOres) do
-        if patchableOre == ore.name then
-            if settings.global["vtk-deep-core-mining-spawn-"..patchableOre.."-patch"].value then
+    local validOre = false
+    local orePatchToSpawn = nil
+    for patchableOre, oreResult in pairs(patchableOres) do
+        -- need to pass true for "plain" search as 4th param because some ore have a "-" and it is a special character for lua string.find() apparently ...
+        if string.find(patchableOre, ore.name, 1, true) then 
+            if settings.global["vtk-deep-core-mining-spawn-"..oreResult.."-patch"]
+            and settings.global["vtk-deep-core-mining-spawn-"..oreResult.."-patch"].value then
                 validOre = true
+                orePatchToSpawn = oreResult.."-patch"
                 break
             end
         end
     end
     
     if validOre and not Area.inside(Position.expand_to_area({0,0}, minspawnrange), ore.position) then
-        orePatch = ore.name .. "-patch"
         local number = math.random(1, 10)
-        entitiesCount = surface.count_entities_filtered{area = areaToScan, name = orePatch}
+        entitiesCount = surface.count_entities_filtered{area = areaToScan, name = orePatchToSpawn}
         
         if number == 1 and entitiesCount == 0 then
             oreamount = math.random(minrichness, maxrichness)
-            newOreEntity = surface.create_entity({name = orePatch, amount = oreamount, position = ore.position, force = game.forces.neutral})
+            newOreEntity = surface.create_entity({name = orePatchToSpawn, amount = oreamount, position = ore.position, force = game.forces.neutral})
         end
     end
   

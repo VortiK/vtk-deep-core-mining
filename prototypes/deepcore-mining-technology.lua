@@ -92,7 +92,7 @@ data:extend(
           type = "unlock-recipe",
           recipe = "vtk-deepcore-mining-ore-chunk-refining"
         },
-      },
+    },
     prerequisites = {"vtk-deepcore", "vtk-deepcore-mining", "mining-productivity-12"}, 
     unit =
     {

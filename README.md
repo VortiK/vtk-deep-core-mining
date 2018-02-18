@@ -24,6 +24,7 @@ The idea is to repurpose old mining outpost when ore is depleted. So the infrast
 
 ## Mod support
 - Angel's Refining mod : https://mods.factorio.com/mod/angelsrefining
+- Reika's Dirty Mining mod : https://mods.factorio.com/mod/DirtyMining
 
 ## Credits
 - Deep Core Mining is powered by the Factorio Standard Library Project : https://github.com/Afforess/Factorio-Stdlib

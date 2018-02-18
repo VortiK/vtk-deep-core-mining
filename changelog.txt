@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.11.0
+Date: 18. 02. 2018
+  Changes:
+    - Added support for Dirty Mining mod ores (https://mods.factorio.com/mod/DirtyMining). Will only work for Deep Core Mining supported ores (so currently vanilla and Angels).
+    - Internal update of factorio stdlib.
+---------------------------------------------------------------------------------------------------
 Version: 1.10.4
 Date: 10. 02. 2018
   Changes:
