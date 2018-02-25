@@ -174,11 +174,17 @@ function remove_ore_patch(player, surface, area, entities)
     local patchescount = 0
     local sulfuricpatchescount = 0
     local dronescount = player.get_item_count("vtk-deepcore-mining-drone")
-    local sulfuricacidbarrelcount = player.get_item_count("sulfuric-acid-barrel")
     local patches = {}
     local sulfuricpatches = {}
     local todo = true
-    
+    local sulfuricacidbarrel = "sulfuric-acid-barrel"
+    if game.active_mods["angelspetrochem"] then
+        sulfuricacidbarrel = "liquid-sulfuric-acid-barrel"
+    end
+    local sulfuricacidbarrelcount = player.get_item_count(sulfuricacidbarrel)
+
+    -- debug
+    -- player.print("inventory : "..serpent.line(player.get_inventory(defines.inventory.player_main).get_contents()))
     for _,entity in pairs(entities) do
         if entity.type == "resource"
             and (game.entity_prototypes[entity.name].resource_category == "vtk-deepcore-mining-ore-patch" 
@@ -261,7 +267,7 @@ function remove_ore_patch(player, surface, area, entities)
     
     player.remove_item{name="vtk-deepcore-mining-drone", count = patchescount}
     if sulfuricpatchescount > 0 then
-        player.remove_item{name="sulfuric-acid-barrel", count = sulfuricpatchescount}
+        player.remove_item{name=sulfuricacidbarrel, count = sulfuricpatchescount}
     end
 	
 end

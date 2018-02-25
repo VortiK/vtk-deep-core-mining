@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.11.2
+Date: 25. 02. 2018
+  Fixes:
+    - Fixed Deep Core Mining Drills not working on Cracks and uranium patches aswell as refining processes with Angel's Petrochem reworked Sulfuric Acid liquid (sulfuric-acid > liquid-sulfuric-acid).
+    - Fixed last fix fix that actually broke Planner Mining. This is Angel's Petrochem and not Angel's Refining that changes sulfuric acid.
+---------------------------------------------------------------------------------------------------
+Version: 1.11.1
+Date: 25. 02. 2018
+  Fixes:
+    - Fixed Deep Core Mining Planner not working on Cracks and uranium patches with Angel's Petrochem reworked Sulfuric Acid Barrels (sulfuric-acid-barrel > liquid-sulfuric-acid-barrel)
+---------------------------------------------------------------------------------------------------
 Version: 1.11.0
 Date: 18. 02. 2018
   Changes:

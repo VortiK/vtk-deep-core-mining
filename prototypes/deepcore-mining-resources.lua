@@ -1,3 +1,8 @@
+local sulfuricacidname = "sulfuric-acid"
+if mods["angelspetrochem"] then
+    sulfuricacidname = "liquid-sulfuric-acid"
+end
+
 local deep_core_resource_patch_category = {
     type = "resource-category",
     name = "vtk-deepcore-mining-ore-patch"
@@ -55,7 +60,7 @@ local deep_core_ore = {
       }, 
     },
     fluid_amount = 100,
-    required_fluid = "sulfuric-acid"
+    required_fluid = sulfuricacidname
   },
   --[[
   autoplace =
@@ -115,7 +120,7 @@ local function resource_patch_maker(ore_name, ore_patch_name, hardnessparam, min
         }
       },
       fluid_amount = 100,
-      required_fluid = "sulfuric-acid"
+      required_fluid = sulfuricacidname
     }
   }
   

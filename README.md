@@ -24,6 +24,7 @@ The idea is to repurpose old mining outpost when ore is depleted. So the infrast
 
 ## Mod support
 - Angel's Refining mod : https://mods.factorio.com/mod/angelsrefining
+- Angel's Petrochem mod compatibility (regarding Sulfuric Acid) : https://mods.factorio.com/mod/angelspetrochem
 - Reika's Dirty Mining mod : https://mods.factorio.com/mod/DirtyMining
 
 ## Credits

@@ -1,3 +1,8 @@
+local sulfuricacidname = "sulfuric-acid"
+if mods["angelspetrochem"] then
+    sulfuricacidname = "liquid-sulfuric-acid"
+end
+
 -- item
 data:extend({
     {
@@ -325,7 +330,7 @@ chunk_refining_recipe_maker(
     "iron-ore",             -- ore_name : used for recipe name "-chunk-refining", ingredient "-chunk", refining icon "-chunk-refining.png")
     "iron-ore",             -- result
     200,                    -- result amount
-    "sulfuric-acid",        -- refining liquid
+    sulfuricacidname,        -- refining liquid
     50                      -- refining liquid amount
                             -- TODO tint to implement
     -- {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
@@ -335,7 +340,7 @@ chunk_refining_recipe_maker(
     "copper-ore", 
     "copper-ore", 
     100, 
-    "sulfuric-acid", 
+    sulfuricacidname, 
     50 
     -- {r = 0.255, g = 0.165, b = 0.000, a = 0.357}, -- orange	#FFA500	rgb(255,165,0)
 )
@@ -344,7 +349,7 @@ chunk_refining_recipe_maker(
     "coal", 
     "coal", 
     100, 
-    "sulfuric-acid", 
+    sulfuricacidname, 
     10 
     -- {r = 0.105, g = 0.105, b = 0.105, a = 0.357}, -- dimgray / dimgray	#696969	rgb(105,105,105)
 )
@@ -353,7 +358,7 @@ chunk_refining_recipe_maker(
     "stone", 
     "stone", 
     100, 
-    "sulfuric-acid", 
+    sulfuricacidname, 
     10 
     -- {r = 0.244, g = 0.164, b = 0.096, a = 0.357}, -- sandybrown	#F4A460	rgb(244,164,96)
 )
@@ -362,7 +367,7 @@ chunk_refining_recipe_maker(
     "uranium-ore", 
     "uranium-ore",
     100,  
-    "sulfuric-acid", 
+    sulfuricacidname, 
     100 
     -- {r = 0.173, g = 0.255, b = 0.047, a = 0.357}, -- greenyellow	#ADFF2F	rgb(173,255,47)
 )
@@ -381,7 +386,7 @@ chunk_refining_recipe_maker(
     "angels-ore1", 
     "angels-ore1", 
     200, 
-    "sulfuric-acid", 
+    sulfuricacidname, 
     50 
 )
 local angelore2_chunk_refining_recipe = 
@@ -389,7 +394,7 @@ chunk_refining_recipe_maker(
     "angels-ore2", 
     "angels-ore2", 
     100, 
-    "sulfuric-acid", 
+    sulfuricacidname, 
     50 
 )
 local angelore3_chunk_refining_recipe = 
@@ -397,7 +402,7 @@ chunk_refining_recipe_maker(
     "angels-ore3", 
     "angels-ore3", 
     100, 
-    "sulfuric-acid", 
+    sulfuricacidname, 
     50 
 )
 local angelore4_chunk_refining_recipe = 
@@ -405,7 +410,7 @@ chunk_refining_recipe_maker(
     "angels-ore4", 
     "angels-ore4", 
     100, 
-    "sulfuric-acid", 
+    sulfuricacidname, 
     50 
 )
 local angelore5_chunk_refining_recipe = 
@@ -413,7 +418,7 @@ chunk_refining_recipe_maker(
     "angels-ore5", 
     "angels-ore5", 
     100, 
-    "sulfuric-acid", 
+    sulfuricacidname, 
     50 
 )
 local angelore6_chunk_refining_recipe = 
@@ -421,7 +426,7 @@ chunk_refining_recipe_maker(
     "angels-ore6", 
     "angels-ore6", 
     100, 
-    "sulfuric-acid", 
+    sulfuricacidname, 
     50 
 )
 
