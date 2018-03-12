@@ -47,7 +47,7 @@ data:extend({
   {
     type = "bool-setting",
 		name = "vtk-deep-core-mining-allow-rotation",
-		setting_type = "runtime-global",
+		setting_type = "startup",
     default_value = false,
     per_user = false,
 		order = "6"

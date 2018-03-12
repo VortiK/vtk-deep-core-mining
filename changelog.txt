@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.11.3
+Date: 12. 03. 2018
+  Changes:
+    - Make use of the new "not-rotatable" entity flag. Still mod setting dependant, but it is now a startup setting. This fixes the mining drills being rotatable before placing them and not after.
+---------------------------------------------------------------------------------------------------
 Version: 1.11.2
 Date: 25. 02. 2018
   Fixes:

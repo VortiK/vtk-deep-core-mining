@@ -38,12 +38,11 @@ script.on_event({
   end
 end)
 
--- force DMCD rotation
+-- prevent beacons
 script.on_event({
     events.on_robot_built_entity, 
     events.on_built_entity
 }, function(event)
-    force_rotation(event.created_entity)
     prevent_beacons(event.created_entity)
 end)
 

@@ -447,7 +447,11 @@ data:extend({
         name = "vtk-deepcore-mining-drill",
         icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-mine.png",
         icon_size = 32,
-        flags = {"placeable-neutral", "player-creation"},
+        flags = {
+            "placeable-neutral",
+            "placeable-player",
+            "player-creation",
+        },
         minable = {mining_time = 5, result = "vtk-deepcore-mining-drill"},
         resource_categories = {"vtk-deepcore-mining-ore-patch"},
         max_health = 3000,
@@ -477,7 +481,7 @@ data:extend({
             base_level = 1,-- so it requires a pump to inject
             pipe_connections =
             {
-                { position = {-1, -3} },
+                { position = {1, 3} },
             }
         },
         
@@ -489,7 +493,7 @@ data:extend({
             emissions = 0.15,
             usage_priority = "secondary-input",
         },
-        vector_to_place_result = {2, -3},
+        vector_to_place_result = {-2, 3},
         base_picture =
         {
             sheet =
@@ -652,7 +656,7 @@ data:extend({
             base_level = 1,-- so it requires a pump to inject
             pipe_connections =
             {
-                { position = {5, -3} },
+                { position = {-5, 3} },
             }
         },
         
@@ -664,7 +668,7 @@ data:extend({
             emissions = 0.15,
             usage_priority = "secondary-input",
         },
-        vector_to_place_result = {0, -5},
+        vector_to_place_result = {0, 5},
         base_picture =
         {
             sheet =
@@ -730,3 +734,8 @@ data:extend({
         circuit_wire_max_distance = 14,
     }
 })
+
+if not settings.startup["vtk-deep-core-mining-allow-rotation"].value then
+    table.insert(data.raw["mining-drill"]["vtk-deepcore-mining-drill"].flags, "not-rotatable")
+    table.insert(data.raw["mining-drill"]["vtk-deepcore-mining-drill-advanced"].flags, "not-rotatable")
+end
