@@ -46,124 +46,41 @@ data:extend({
         subgroup = "raw-resource",
         order = "vz[vtk-deepcore-mining-ore-chunk]",
         stack_size = 100
-    },
-    {
-        type = "item",
-        name = "vtk-deepcore-mining-iron-ore-chunk",
-        icon = "__vtk-deep-core-mining__/graphics/icons/iron-ore-chunk.png",
-        icon_size = 32,
-        flags = {"goes-to-main-inventory"},
-        subgroup = "raw-resource",
-        order = "va[vtk-deepcore-mining-iron-ore-chunk]",
-        stack_size = 100
-    },
-    {
-        type = "item",
-        name = "vtk-deepcore-mining-copper-ore-chunk",
-        icon = "__vtk-deep-core-mining__/graphics/icons/copper-ore-chunk.png",
-        icon_size = 32,
-        flags = {"goes-to-main-inventory"},
-        subgroup = "raw-resource",
-        order = "vb[vtk-deepcore-mining-copper-ore-chunk]",
-        stack_size = 100
-    },
-    {
-        type = "item",
-        name = "vtk-deepcore-mining-coal-chunk",
-        icon = "__vtk-deep-core-mining__/graphics/icons/coal-chunk.png",
-        icon_size = 32,
-        flags = {"goes-to-main-inventory"},
-        subgroup = "raw-resource",
-        order = "vc[vtk-deepcore-mining-coal-chunk]",
-        stack_size = 100
-    },
-    {
-        type = "item",
-        name = "vtk-deepcore-mining-stone-chunk",
-        icon = "__vtk-deep-core-mining__/graphics/icons/stone-chunk.png",
-        icon_size = 32,
-        flags = {"goes-to-main-inventory"},
-        subgroup = "raw-resource",
-        order = "vd[vtk-deepcore-mining-stone-chunk]",
-        stack_size = 100
-    },
-    {
-        type = "item",
-        name = "vtk-deepcore-mining-uranium-ore-chunk",
-        icon = "__vtk-deep-core-mining__/graphics/icons/uranium-ore-chunk.png",
-        icon_size = 32,
-        flags = {"goes-to-main-inventory"},
-        subgroup = "raw-resource",
-        order = "ve[vtk-deepcore-mining-uranium-ore-chunk]",
-        stack_size = 100
-    },
+    }
 })
 
+local i = 1
+for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
+  local oretint = nil
+  if oredata.tint then
+    if data.raw.resource[ore].tint then
+      oretint = data.raw.resource[ore].tint
+    else
+      oretint = data.raw.resource[ore].map_color
+    end
+  end
 
-if mods["angelsrefining"] then
+  local ore_patch = 
+    {
+        type = "item",
+    name = "vtk-deepcore-mining-"..ore.."-chunk",
+    icons = {
+    {
+        icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk.png",
+        tint = oretint
+      }
+    },
+        icon_size = 32,
+        flags = {"goes-to-main-inventory"},
+        subgroup = "raw-resource",
+    order = "va[vtk-deepcore-mining-chunk-"..i.."]",
+        stack_size = 100
+  }
+  data:extend({
+    ore_patch, 
 
-data:extend({
-    {
-        type = "item",
-        name = "vtk-deepcore-mining-angels-ore1-chunk",
-        icon = "__vtk-deep-core-mining__/graphics/icons/angels-ore1-chunk.png",
-        icon_size = 32,
-        flags = {"goes-to-main-inventory"},
-        subgroup = "raw-resource",
-        order = "vb1[vtk-deepcore-mining-angels-ore1-chunk]",
-        stack_size = 100
-    },
-    {
-        type = "item",
-        name = "vtk-deepcore-mining-angels-ore2-chunk",
-        icon = "__vtk-deep-core-mining__/graphics/icons/angels-ore2-chunk.png",
-        icon_size = 32,
-        flags = {"goes-to-main-inventory"},
-        subgroup = "raw-resource",
-        order = "vb2[vtk-deepcore-mining-angels-ore2-chunk]",
-        stack_size = 100
-    },
-    {
-        type = "item",
-        name = "vtk-deepcore-mining-angels-ore3-chunk",
-        icon = "__vtk-deep-core-mining__/graphics/icons/angels-ore3-chunk.png",
-        icon_size = 32,
-        flags = {"goes-to-main-inventory"},
-        subgroup = "raw-resource",
-        order = "vb3[vtk-deepcore-mining-angels-ore3-chunk]",
-        stack_size = 100
-    },
-    {
-        type = "item",
-        name = "vtk-deepcore-mining-angels-ore4-chunk",
-        icon = "__vtk-deep-core-mining__/graphics/icons/angels-ore4-chunk.png",
-        icon_size = 32,
-        flags = {"goes-to-main-inventory"},
-        subgroup = "raw-resource",
-        order = "vb4[vtk-deepcore-mining-angels-ore4-chunk]",
-        stack_size = 100
-    },
-    {
-        type = "item",
-        name = "vtk-deepcore-mining-angels-ore5-chunk",
-        icon = "__vtk-deep-core-mining__/graphics/icons/angels-ore5-chunk.png",
-        icon_size = 32,
-        flags = {"goes-to-main-inventory"},
-        subgroup = "raw-resource",
-        order = "vb5[vtk-deepcore-mining-angels-ore5-chunk]",
-        stack_size = 100
-    },
-    {
-        type = "item",
-        name = "vtk-deepcore-mining-angels-ore6-chunk",
-        icon = "__vtk-deep-core-mining__/graphics/icons/angels-ore6-chunk.png",
-        icon_size = 32,
-        flags = {"goes-to-main-inventory"},
-        subgroup = "raw-resource",
-        order = "vb6[vtk-deepcore-mining-angels-ore6-chunk]",
-        stack_size = 100
-    },
 })
+  i = i + 1
 end
 
 -- planner
@@ -191,8 +108,7 @@ data:extend({
         energy_required = 1,
         ingredients =
         {
-            {"blueprint", 1},
-            {"advanced-circuit", 4},
+            {"advanced-circuit", 5},
             {"vtk-deepcore-mining-drone", 5}
         },
         result = "vtk-deepcore-mining-planner"
@@ -252,45 +168,38 @@ data:extend({
             {"vtk-deepcore-mining-ore-chunk", 100},
             {"vtk-deepcore-mining-drone", 1}
         },
-        icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk-refining.png",
+        icons = {
+          {
+            icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk-refining.png"
+          },
+          {
+            icon = "__vtk-deep-core-mining__/graphics/icons/acid.png",
+          }
+        },
         icon_size = 32,
         subgroup = "intermediate-product",
         order = "v[vtk-deepcore-mining]-a[deepcore-ore-processing]",
         main_product = "",
         results =
         {
-            {
-                name = "vtk-deepcore-mining-iron-ore-chunk",
-                probability = 0.30,
-                amount = 10
-            },
-            {
-                name = "vtk-deepcore-mining-copper-ore-chunk",
-                probability = 0.30,
-                amount = 10
-            },
-            {
-                name = "vtk-deepcore-mining-coal-chunk",
-                probability = 0.15,
-                amount = 10
-            },
-            {
-                name = "vtk-deepcore-mining-stone-chunk",
-                probability = 0.15,
-                amount = 10
-            },
-            {
-                name = "vtk-deepcore-mining-uranium-ore-chunk",
-                probability = 0.10,
-                amount = 10
-            },
         },
         allow_decomposition = false
     },
 })
 
-local function chunk_refining_recipe_maker(ore_name, refining_result, result_amount, refining_liquid, refining_liquid_amount)
+for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
+    table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..ore.."-chunk", probability = oredata.probability, amount = 10 })
+end
 
+local function chunk_refining_recipe_maker(
+  ore_name, 
+  ore_icon, 
+  refining_result, 
+  result_amount, 
+  refining_liquid, 
+  refining_liquid_amount, 
+  oretint
+)
     local recipe =
     {
         type = "recipe",
@@ -305,7 +214,15 @@ local function chunk_refining_recipe_maker(ore_name, refining_result, result_amo
             {type="fluid", name=refining_liquid, amount=refining_liquid_amount},
         },
         main_product = "", -- to force use of recipe locales and icons instead of result's
-        icons = {{icon = "__vtk-deep-core-mining__/graphics/icons/"..ore_name.."-chunk-refining.png"}},
+        icons = {
+          {
+            icon = "__vtk-deep-core-mining__/graphics/icons/"..ore_icon.."-chunk-refining.png", 
+            tint = oretint
+          },
+          {
+            icon = "__vtk-deep-core-mining__/graphics/icons/acid.png",
+          }
+        },
         icon_size = 32,
         results = 
         {
@@ -316,127 +233,41 @@ local function chunk_refining_recipe_maker(ore_name, refining_result, result_amo
         },
         crafting_machine_tint =
         {
-            primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
-            secondary = {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
-            tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
+            -- primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
+            -- secondary = {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
+            -- tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
+            primay = oretint,
+            secondary = oretint,
+            tertiary = oretint,
         }
     }
     
     return recipe
 end
 
-local iron_ore_chunk_refining_recipe = 
-chunk_refining_recipe_maker(
-    "iron-ore",             -- ore_name : used for recipe name "-chunk-refining", ingredient "-chunk", refining icon "-chunk-refining.png")
-    "iron-ore",             -- result
-    200,                    -- result amount
-    sulfuricacidname,        -- refining liquid
-    50                      -- refining liquid amount
-                            -- TODO tint to implement
+for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
+  local oretint = nil
+  if oredata.tint then
+    if data.raw.resource[ore].tint then
+        oretint = data.raw.resource[ore].tint
+    else
+        oretint = data.raw.resource[ore].map_color
+    end
+  end
+  
+  local ore_chunk_refining_recipe = chunk_refining_recipe_maker(
+    ore,                  -- ore_name : used for recipe name "-chunk-refining" and ingredient "-chunk")
+    oredata.img,          -- ore refining icon "-chunk-refining.png
+    oredata.result,       -- result
+    oredata.refineamount, -- result amount
+    sulfuricacidname,     -- refining liquid
+    oredata.refineliquid, -- refining liquid amount
+    oretint               -- tint
     -- {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
 )
-local copper_ore_chunk_refining_recipe = 
-chunk_refining_recipe_maker(
-    "copper-ore", 
-    "copper-ore", 
-    100, 
-    sulfuricacidname, 
-    50 
-    -- {r = 0.255, g = 0.165, b = 0.000, a = 0.357}, -- orange	#FFA500	rgb(255,165,0)
-)
-local coal_chunk_refining_recipe = 
-chunk_refining_recipe_maker(
-    "coal", 
-    "coal", 
-    100, 
-    sulfuricacidname, 
-    10 
-    -- {r = 0.105, g = 0.105, b = 0.105, a = 0.357}, -- dimgray / dimgray	#696969	rgb(105,105,105)
-)
-local stone_chunk_refining_recipe = 
-chunk_refining_recipe_maker(
-    "stone", 
-    "stone", 
-    100, 
-    sulfuricacidname, 
-    10 
-    -- {r = 0.244, g = 0.164, b = 0.096, a = 0.357}, -- sandybrown	#F4A460	rgb(244,164,96)
-)
-local uranium_ore_chunk_refining_recipe = 
-chunk_refining_recipe_maker(
-    "uranium-ore", 
-    "uranium-ore",
-    100,  
-    sulfuricacidname, 
-    100 
-    -- {r = 0.173, g = 0.255, b = 0.047, a = 0.357}, -- greenyellow	#ADFF2F	rgb(173,255,47)
-)
-data:extend({
-    iron_ore_chunk_refining_recipe, 
-    copper_ore_chunk_refining_recipe, 
-    coal_chunk_refining_recipe, 
-    stone_chunk_refining_recipe, 
-    uranium_ore_chunk_refining_recipe, 
-})
-
-if mods["angelsrefining"] then
-
-local angelore1_chunk_refining_recipe = 
-chunk_refining_recipe_maker(
-    "angels-ore1", 
-    "angels-ore1", 
-    200, 
-    sulfuricacidname, 
-    50 
-)
-local angelore2_chunk_refining_recipe = 
-chunk_refining_recipe_maker(
-    "angels-ore2", 
-    "angels-ore2", 
-    100, 
-    sulfuricacidname, 
-    50 
-)
-local angelore3_chunk_refining_recipe = 
-chunk_refining_recipe_maker(
-    "angels-ore3", 
-    "angels-ore3", 
-    100, 
-    sulfuricacidname, 
-    50 
-)
-local angelore4_chunk_refining_recipe = 
-chunk_refining_recipe_maker(
-    "angels-ore4", 
-    "angels-ore4", 
-    100, 
-    sulfuricacidname, 
-    50 
-)
-local angelore5_chunk_refining_recipe = 
-chunk_refining_recipe_maker(
-    "angels-ore5", 
-    "angels-ore5", 
-    100, 
-    sulfuricacidname, 
-    50 
-)
-local angelore6_chunk_refining_recipe = 
-chunk_refining_recipe_maker(
-    "angels-ore6", 
-    "angels-ore6", 
-    100, 
-    sulfuricacidname, 
-    50 
-)
 
 data:extend({
-    angelore1_chunk_refining_recipe, 
-    angelore2_chunk_refining_recipe, 
-    angelore3_chunk_refining_recipe, 
-    angelore4_chunk_refining_recipe, 
-    angelore5_chunk_refining_recipe, 
-    angelore6_chunk_refining_recipe, 
+    ore_chunk_refining_recipe
 })
 end
 

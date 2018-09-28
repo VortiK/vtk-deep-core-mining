@@ -54,4 +54,5 @@ script.on_configuration_changed(function(data)
             upgrade182(data)
         end
     end
+
 end)

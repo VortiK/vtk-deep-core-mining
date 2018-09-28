@@ -15,26 +15,6 @@ data:extend(
           type = "unlock-recipe",
           recipe = "vtk-deepcore-mining-planner"
         },
-        {
-          type = "unlock-recipe",
-          recipe = "vtk-deepcore-mining-iron-ore-chunk-refining"
-        },
-        {
-          type = "unlock-recipe",
-          recipe = "vtk-deepcore-mining-copper-ore-chunk-refining"
-        },
-        {
-          type = "unlock-recipe",
-          recipe = "vtk-deepcore-mining-coal-chunk-refining"
-        },
-        {
-          type = "unlock-recipe",
-          recipe = "vtk-deepcore-mining-stone-chunk-refining"
-        },
-        {
-          type = "unlock-recipe",
-          recipe = "vtk-deepcore-mining-uranium-ore-chunk-refining"
-        },
       },
     prerequisites = {"advanced-electronics", "robotics", "advanced-material-processing", "sulfur-processing"}, 
     unit =
@@ -111,11 +91,6 @@ data:extend(
   },
 })
 
-if mods["angelsrefining"] then
-  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-angels-ore1-chunk-refining" })
-  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-angels-ore2-chunk-refining" })
-  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-angels-ore3-chunk-refining" })
-  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-angels-ore4-chunk-refining" })
-  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-angels-ore5-chunk-refining" })
-  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-angels-ore6-chunk-refining" })
+for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
+  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-"..ore.."-chunk-refining" })
 end

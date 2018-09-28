@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.12.0
+Date: 28. 09. 2018
+  Changes:
+    - Added much requested support for Bob's ores including gems and their configurations.
+    - Reviewed and proper support for Angel's Refining standalone, Bob's ores standalone and Angel's Refining + Bob's Plates at the same time.
+    - Major internal refactor to handle ore patches entities, recipes and items generation in a more generic way.
+    - Added a generic ore gfx handling using origin's ore tint or map_color, it's not super nice looking handcrafted gfx but helps rapid support of new ores.
+    - Support for Advanced Deep Core Mining for Angel's and Bob's ores, Deep Core Ore Chunk Refining output will be Angel's or Bob's ores chunks accordingly for further refining.
+    - Updated some GFX to increase their shinyness significantly for Deep Core Mining Drone, refining recipes icons, Deep Core Mining Tech and mod's main icon.
+---------------------------------------------------------------------------------------------------
+Version: 1.11.4
+Date: 20. 08. 2018
+  Changes:
+    - Removed blueprint from ingredient of the Deep Core Mining Planner tool as it would take any from player inventory even if not an empty blueprint (https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/5b42cd2975e71e000be52bc7).
+---------------------------------------------------------------------------------------------------
 Version: 1.11.3
 Date: 12. 03. 2018
   Changes:

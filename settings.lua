@@ -54,11 +54,19 @@ data:extend({
 	},
   {
     type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-cracks",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "g"
+  },
+  {
+    type = "bool-setting",
     name = "vtk-deep-core-mining-spawn-iron-ore-patch",
     setting_type = "runtime-global",
     default_value = true,
     per_user = false,
-    order = "b"
+    order = "ha1"
   },
   {
     type = "bool-setting",
@@ -66,7 +74,7 @@ data:extend({
     setting_type = "runtime-global",
     default_value = true,
     per_user = false,
-    order = "c"
+    order = "ha2"
   },
   {
     type = "bool-setting",
@@ -74,7 +82,7 @@ data:extend({
     setting_type = "runtime-global",
     default_value = true,
     per_user = false,
-    order = "d"
+    order = "ha3"
   },
   {
     type = "bool-setting",
@@ -82,7 +90,7 @@ data:extend({
     setting_type = "runtime-global",
     default_value = true,
     per_user = false,
-    order = "e"
+    order = "ha4"
   },
   {
     type = "bool-setting",
@@ -90,27 +98,19 @@ data:extend({
     setting_type = "runtime-global",
     default_value = true,
     per_user = false,
-    order = "f"
-  },
-  {
-    type = "bool-setting",
-    name = "vtk-deep-core-mining-spawn-cracks",
-    setting_type = "runtime-global",
-    default_value = true,
-    per_user = false,
-    order = "g"
+    order = "ha5"
   },
 })
-  
+
 if mods["angelsrefining"] then
-data:extend({
+  data:extend({
   {
     type = "bool-setting",
     name = "vtk-deep-core-mining-spawn-angels-ore1-patch",
     setting_type = "runtime-global",
     default_value = true,
     per_user = false,
-    order = "h"
+    order = "hb1"
   },
   {
     type = "bool-setting",
@@ -118,7 +118,7 @@ data:extend({
     setting_type = "runtime-global",
     default_value = true,
     per_user = false,
-    order = "i"
+    order = "hb2"
   },
   {
     type = "bool-setting",
@@ -126,7 +126,7 @@ data:extend({
     setting_type = "runtime-global",
     default_value = true,
     per_user = false,
-    order = "j"
+    order = "hb3"
   },
   {
     type = "bool-setting",
@@ -134,23 +134,145 @@ data:extend({
     setting_type = "runtime-global",
     default_value = true,
     per_user = false,
-    order = "k"
+    order = "hb4"
   },
+  })
+end
+
+  if mods["bobplates"] then
+    data:extend({
+      {
+        type = "bool-setting",
+        name = "vtk-deep-core-mining-spawn-angels-ore5-patch",
+        setting_type = "runtime-global",
+        default_value = true,
+        per_user = false,
+        order = "hb5"
+      },
+      {
+        type = "bool-setting",
+        name = "vtk-deep-core-mining-spawn-angels-ore6-patch",
+        setting_type = "runtime-global",
+        default_value = true,
+        per_user = false,
+        order = "hb6"
+      },
+    })
+end
+  
+if mods["bobores"] and not mods["angelsrefining"] then
+  data:extend({
   {
     type = "bool-setting",
-    name = "vtk-deep-core-mining-spawn-angels-ore5-patch",
+    name = "vtk-deep-core-mining-spawn-tin-ore-patch",
     setting_type = "runtime-global",
     default_value = true,
     per_user = false,
-    order = "l"
+    order = "hc1"
   },
   {
     type = "bool-setting",
-    name = "vtk-deep-core-mining-spawn-angels-ore6-patch",
+    name = "vtk-deep-core-mining-spawn-lead-ore-patch",
     setting_type = "runtime-global",
     default_value = true,
     per_user = false,
-    order = "m"
+    order = "hc2"
   },
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-quartz-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "hc3"
+  },
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-silver-ore-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "hc4"
+  },
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-zinc-ore-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "hc5"
+  },
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-gold-ore-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "hc6"
+  },
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-bauxite-ore-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "hc7"
+  },
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-rutile-ore-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "hc8"
+  },
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-tungsten-ore-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "hc9"
+  },
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-thorium-ore-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "hd1"
+  },
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-nickel-ore-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "hd2"
+  },
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-cobalt-ore-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "hd3"
+  },
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-sulfur-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "hd4"
+  },
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-gem-ore-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "hd5"
+  }
 })
 end
