@@ -1,4 +1,24 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.13.0
+Date: 22. 01. 2019
+  Changes:
+    - Happy New Year !
+    - Added support for Bilka's New Game Plus worlds : https://mods.factorio.com/mod/NewGamePlus
+    - Rebalanced Ore Chunks refining : Iron 200 (=), Copper 100 (=), Stone 50 (from 100), Coal 50 (from 100), Uranium 10 (from 100)
+    - New feature : Deep Core Ore Chunk Focused refining, provides a single ore chunk type but is more wasteful and yields only half the efficiency depending on the ore refining probability and result (eg. normal refining yield 10 iron chunk 30% of the time, focused refining will get 4 iron chunk all the time). Thanks November for the suggestion : https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/5bc50345ff1173000a26447e
+    - New recipes should be enabled on existing game saves.
+---------------------------------------------------------------------------------------------------
+Version: 1.12.2
+Date: 05. 10. 2018
+  Changes:
+    - Added German translation provided by Forum user Seeeno (https://forums.factorio.com/memberlist.php?mode=viewprofile&u=48703).
+---------------------------------------------------------------------------------------------------
+Version: 1.12.1
+Date: 28. 09. 2018
+  Changes:
+    - Fixed Deep Core Mining Technology new icon being oversized.
+    - Small adjustements on new icons GFX.
+---------------------------------------------------------------------------------------------------
 Version: 1.12.0
 Date: 28. 09. 2018
   Changes:

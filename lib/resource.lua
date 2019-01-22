@@ -3,7 +3,7 @@ function get_filtered_amount(amount)
     -- 10 000 = 3%
     -- 300% = 1 000 000
     -- Set to 10% of amount by removing ore patch and max 1 000 chunks (stacks to 100, so 10 stacks to be transportable)
-    -- Yields 100 per refine, so total = 1 000 000
+    -- eg : Yields 100 per refine, so total = 1 000 000
     local amountospawn = 0.1 * amount
     -- prevent too much spawning if amount is over the top (ie creative mod / cheating, etc).
     if amountospawn > 1000 then
@@ -138,7 +138,8 @@ function place_deep_core_cracks(area, surface)
   -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
 
     -- only spawn deep core mining cracks in nauvis
-    if surface.name ~= "nauvis" then
+    -- supports New Game Plus mod's "Nauvis plus" worlds
+    if surface.name ~= "nauvis" and not string.contains(surface.name, "Nauvis plus") then
         return
     end
     

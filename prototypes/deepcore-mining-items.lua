@@ -173,7 +173,7 @@ data:extend({
             icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk-refining.png"
           },
           {
-            icon = "__vtk-deep-core-mining__/graphics/icons/acid.png",
+            icon = "__vtk-deep-core-mining__/graphics/icons/acid.png"
           }
         },
         icon_size = 32,
@@ -189,6 +189,26 @@ data:extend({
 
 for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..ore.."-chunk", probability = oredata.probability, amount = 10 })
+
+    -- on the fly focus deep core chunk refining recipes creation
+    local ore_chunk_focus_recipe = table.deepcopy(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining'])
+    ore_chunk_focus_recipe.name = 'vtk-deepcore-mining-ore-chunk-refining-'..ore..'-focus'
+    -- focused refining is wasteful and will only get half the result amount compared to the non focused refining method but guarrantee the ore type refinied
+    ore_chunk_focus_recipe.results = {{name = "vtk-deepcore-mining-"..ore.."-chunk", amount = math.ceil(6 * (oredata.refineamount / 100) * oredata.probability)}}
+
+    -- tint "generic" ores (like bobs)
+    local oretint = nil
+    if oredata.tint then
+        if data.raw.resource[ore].tint then
+            oretint = data.raw.resource[ore].tint
+        else
+            oretint = data.raw.resource[ore].map_color
+        end
+        table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..ore.."-focus.png", tint = oretint})
+    else
+        table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..ore.."-focus.png"})
+    end
+    data:extend({ore_chunk_focus_recipe})
 end
 
 local function chunk_refining_recipe_maker(
