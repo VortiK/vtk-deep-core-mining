@@ -204,9 +204,9 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
         else
             oretint = data.raw.resource[ore].map_color
         end
-        table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..ore.."-focus.png", tint = oretint})
+        table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-focus.png", tint = oretint})
     else
-        table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..ore.."-focus.png"})
+        table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-focus.png"})
     end
     data:extend({ore_chunk_focus_recipe})
 end
