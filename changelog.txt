@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.13.2
+Date: 24. 01. 2019
+  Changes:
+    - Balance : Increased Deep Core Ore Refining Focused recipes ingredient to 200 Deep Core Ore from 100 to really make them more expensive. Feedback welcome, I feel this is still too good.
+---------------------------------------------------------------------------------------------------
 Version: 1.13.1
 Date: 23. 01. 2019
   Changes:
