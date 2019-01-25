@@ -104,40 +104,39 @@ data:extend({
 
 if mods["angelsrefining"] then
   data:extend({
-  {
-    type = "bool-setting",
-    name = "vtk-deep-core-mining-spawn-angels-ore1-patch",
-    setting_type = "runtime-global",
-    default_value = true,
-    per_user = false,
-    order = "hb1"
-  },
-  {
-    type = "bool-setting",
-    name = "vtk-deep-core-mining-spawn-angels-ore2-patch",
-    setting_type = "runtime-global",
-    default_value = true,
-    per_user = false,
-    order = "hb2"
-  },
-  {
-    type = "bool-setting",
-    name = "vtk-deep-core-mining-spawn-angels-ore3-patch",
-    setting_type = "runtime-global",
-    default_value = true,
-    per_user = false,
-    order = "hb3"
-  },
-  {
-    type = "bool-setting",
-    name = "vtk-deep-core-mining-spawn-angels-ore4-patch",
-    setting_type = "runtime-global",
-    default_value = true,
-    per_user = false,
-    order = "hb4"
-  },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-angels-ore1-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hb1"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-angels-ore2-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hb2"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-angels-ore3-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hb3"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-angels-ore4-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hb4"
+    },
   })
-end
 
   if mods["bobplates"] then
     data:extend({
@@ -158,6 +157,68 @@ end
         order = "hb6"
       },
     })
+    
+    if mods["Clowns-Extended-Minerals"] then
+      data:extend({
+        {
+          type = "bool-setting",
+          name = "vtk-deep-core-mining-spawn-clowns-ore1-patch",
+          setting_type = "runtime-global",
+          default_value = true,
+          per_user = false,
+          order = "hbc1"
+        },
+        {
+          type = "bool-setting",
+          name = "vtk-deep-core-mining-spawn-clowns-ore2-patch",
+          setting_type = "runtime-global",
+          default_value = true,
+          per_user = false,
+          order = "hbc2"
+        },
+        {
+          type = "bool-setting",
+          name = "vtk-deep-core-mining-spawn-clowns-ore3-patch",
+          setting_type = "runtime-global",
+          default_value = true,
+          per_user = false,
+          order = "hbc3"
+        },
+        {
+          type = "bool-setting",
+          name = "vtk-deep-core-mining-spawn-clowns-ore4-patch",
+          setting_type = "runtime-global",
+          default_value = true,
+          per_user = false,
+          order = "hbc4"
+        },
+        {
+          type = "bool-setting",
+          name = "vtk-deep-core-mining-spawn-clowns-ore5-patch",
+          setting_type = "runtime-global",
+          default_value = true,
+          per_user = false,
+          order = "hbc5"
+        },
+        {
+          type = "bool-setting",
+          name = "vtk-deep-core-mining-spawn-clowns-ore6-patch",
+          setting_type = "runtime-global",
+          default_value = true,
+          per_user = false,
+          order = "hbc6"
+        },
+        {
+          type = "bool-setting",
+          name = "vtk-deep-core-mining-spawn-clowns-ore7-patch",
+          setting_type = "runtime-global",
+          default_value = true,
+          per_user = false,
+          order = "hbc7"
+        },
+      })
+    end
+  end
 end
   
 if mods["bobores"] and not mods["angelsrefining"] then

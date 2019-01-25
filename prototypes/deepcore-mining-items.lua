@@ -194,8 +194,8 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     local ore_chunk_focus_recipe = table.deepcopy(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining'])
     ore_chunk_focus_recipe.name = 'vtk-deepcore-mining-ore-chunk-refining-'..ore..'-focus'
     -- focused refining is wasteful and will only get half the result amount compared to the non focused refining method but guarrantee the ore type refinied
-    ore_chunk_focus_recipe.incredients['vtk-deepcore-mining-ore-chunk'] = 200
-    ore_chunk_focus_recipe.results = {{name = "vtk-deepcore-mining-"..ore.."-chunk", amount = math.ceil(6 * (oredata.refineamount / 100) * oredata.probability)}}
+    ore_chunk_focus_recipe.ingredients = {{"vtk-deepcore-mining-ore-chunk", 200}, {"vtk-deepcore-mining-drone", 1}}
+    ore_chunk_focus_recipe.results = {{name = "vtk-deepcore-mining-"..ore.."-chunk", amount = math.ceil(6 * (oredata.refineamount / 200) * oredata.probability)}}
 
     -- tint "generic" ores (like bobs)
     local oretint = nil

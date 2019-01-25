@@ -98,31 +98,88 @@ if mods.angelsrefining then
     },
   }
 
-  if mods.bobplates then
+  if mods["Clowns-Extended-Minerals"] then
     local angelsbobores = {
-      ["angels-ore5"] = {
-        ["result"] = "angels-ore5", 
-        ["img"] = "angels-ore5", 
-        ["frame"] = 3,
-        ["variation"] = 1,
+      ["clowns-ore1"] = {
+        ["result"] = "clowns-ore1", 
+        ["img"] = "ore", 
+        ["frame"] = 4,
+        ["variation"] = 3,
         ["refineamount"] = 100, 
         ["refineliquid"] = 50, 
         ["probability"] = 0.30,
-        ["tint"] = false
+        ["tint"] = true
       },
-      ["angels-ore6"] = {
-        ["result"] = "angels-ore6", 
-        ["img"] = "angels-ore6", 
-        ["frame"] = 3,
-        ["variation"] = 1,
+      ["clowns-ore2"] = {
+        ["result"] = "clowns-ore2", 
+        ["img"] = "ore", 
+        ["frame"] = 4,
+        ["variation"] = 3,
         ["refineamount"] = 100, 
         ["refineliquid"] = 50, 
         ["probability"] = 0.30,
-        ["tint"] = false
+        ["tint"] = true
+      },
+      ["clowns-ore3"] = {
+        ["result"] = "clowns-ore3", 
+        ["img"] = "ore", 
+        ["frame"] = 4,
+        ["variation"] = 3,
+        ["refineamount"] = 100, 
+        ["refineliquid"] = 50, 
+        ["probability"] = 0.30,
+        ["tint"] = true
+      },
+      ["clowns-ore4"] = {
+        ["result"] = "clowns-ore4", 
+        ["img"] = "ore", 
+        ["frame"] = 4,
+        ["variation"] = 3,
+        ["refineamount"] = 100, 
+        ["refineliquid"] = 50, 
+        ["probability"] = 0.30,
+        ["tint"] = true
+      },
+      ["clowns-ore5"] = {
+        ["result"] = "clowns-ore5", 
+        ["img"] = "ore", 
+        ["frame"] = 4,
+        ["variation"] = 3,
+        ["refineamount"] = 100, 
+        ["refineliquid"] = 50, 
+        ["probability"] = 0.30,
+        ["tint"] = true
+      },
+      ["clowns-ore6"] = {
+        ["result"] = "clowns-ore6", 
+        ["img"] = "ore", 
+        ["frame"] = 4,
+        ["variation"] = 3,
+        ["refineamount"] = 100, 
+        ["refineliquid"] = 50, 
+        ["probability"] = 0.30,
+        ["tint"] = true
+      },
+      ["clowns-ore7"] = {
+        ["result"] = "clowns-ore7", 
+        ["img"] = "ore", 
+        ["frame"] = 4,
+        ["variation"] = 3,
+        ["refineamount"] = 100, 
+        ["refineliquid"] = 50, 
+        ["probability"] = 0.30,
+        ["tint"] = true
       },
     }
     angelsores = table.merge(angelsores, angelsbobores)
   end
+  
+  if mods.bobplates then
+    local angelbobsclownsores = {
+    }
+    angelsores = table.merge(angelsores, angelbobsclownsores)
+  end
+  
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, angelsores)
 end
 

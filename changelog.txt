@@ -1,6 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.14.0
+Date: 25. 01. 2019
+  Changes:
+    - Added support for Clowns Extended Minerals, feedback welcome.
+---------------------------------------------------------------------------------------------------
 Version: 1.13.2
-Date: 24. 01. 2019
+Date: 25. 01. 2019
   Changes:
     - Balance : Increased Deep Core Ore Refining Focused recipes ingredient to 200 Deep Core Ore from 100 to really make them more expensive. Feedback welcome, I feel this is still too good.
 ---------------------------------------------------------------------------------------------------

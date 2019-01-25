@@ -36,6 +36,19 @@ function get_patchable_ores()
     }
     patchableOres = table.merge(patchableOres, angelsores)
   end
+  
+  if game.active_mods["Clowns-Extended-Minerals"] then
+    local clownssores = {
+      ["clowns-ore1"] = "clowns-ore1", 
+      ["clowns-ore2"] = "clowns-ore2", 
+      ["clowns-ore3"] = "clowns-ore3", 
+      ["clowns-ore4"] = "clowns-ore4", 
+      ["clowns-ore5"] = "clowns-ore5", 
+      ["clowns-ore6"] = "clowns-ore6", 
+      ["clowns-ore7"] = "clowns-ore7", 
+    }
+    patchableOres = table.merge(patchableOres, clownssores)
+  end
 
   -- Bob's ore support
   if game.active_mods["bobores"] and not game.active_mods["angelsrefining"] then

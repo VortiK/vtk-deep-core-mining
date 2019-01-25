@@ -27,8 +27,9 @@ The idea is to repurpose old mining outpost when ore is depleted. So the infrast
 - Angel's Petrochem mod compatibility (regarding Sulfuric Acid) : https://mods.factorio.com/mod/angelspetrochem
 - Reika's Dirty Mining mod : https://mods.factorio.com/mod/DirtyMining
 - Bob's Ores mod : https://mods.factorio.com/mod/bobores
+- Clown's Extended Minerals mod : https://mods.factorio.com/mod/Clowns-Extended-Minerals
 - Bilka's New Game Plus : https://mods.factorio.com/mod/NewGamePlus
-- Todo depending on requests : DyWorld, Yuoki, Ice Smelters, others
+- Other mods support depending on request !
 
 ## Credits
 - Deep Core Mining is powered by the Factorio Standard Library Project : https://github.com/Afforess/Factorio-Stdlib
