@@ -1,10 +1,10 @@
 {
   "name": "vtk-deep-core-mining",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "title": "Deep core mining",
   "author": "VortiK",
   "homepage": "",
-  "description": "Adds variation of vanilla resources to mine when ore fields are depleted with an advanced mining drill to upgrade mining outposts and provide source of expensive but steady infinite ore. Adds an high tech infinite ore mining from rare deep core cracks spawned in the world that require heavy refining. Supports Angel's Ores, Bob's Ores, Clown's Extended Minerals and Dirty Mining.",
+  "description": "Adds variation of vanilla resources to mine when ore fields are depleted with an advanced mining drill to upgrade mining outposts and provide source of expensive but steady infinite ore. Adds an high tech infinite ore mining from rare deep core cracks spawned in the world that require heavy refining. Supports Angel's Ores, Bob's Ores, Mad Clown's Extended Minerals and Dirty Mining.",
   "factorio_version": "0.16",
   "dependencies": [
     "base >= 0.16", 

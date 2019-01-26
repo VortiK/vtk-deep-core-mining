@@ -1,8 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.15.0
+Date: 26. 01. 2019
+  Changes:
+    - Fixed missing Angel's Ore 5 & 6 (Rubyte & Bobmnium) in an Angel's + Bob's game since 1.14.0
+    - Made all Angel's Deep Core Ores use the generic tinted icons for ores patches and refining recipes (like Bob's and Mad Clown's). It's kinda ugly for now but less confusing than using the same gfx as the base ore. Also reduces the mod's weight.
+    - Rebalanced Deep Core Ore refinining to reduce all ore % depending on number of enabled ores in the game past the vanilla 5 : Angel's only -25%, Bob's and more mods -50%.
+    - Rebalanced Mad Clown's ore Deep Core refining recipes (numbers taken from https://forums.factorio.com/viewtopic.php?f=185&t=58136&p=345448#p345448)
+      - Change in : % from Crotinium/Jivolite, X ore refined from patches, Y acid required for refine, Z% from Deep Core Refine (DCR) :
+      - Antitate (clowns-ore2), Pro-Galena (clowns-ore3), Orichalcite (clowns-ore4), Phosphorite (clowns-ore5) reduced by 25% from CJ reference, 100 to 75 ore refined, 50 to 37 acid, 30% DCR to 22%
+      - Sanguinate (clowns-ore6), Eliongate (clowns-ore7) reduced by 50% from C/J reference, 100 to 50 ore refined, 50 to 25 acid, 30% DCR to 15%
+      - Adamantite (clowns-ore1) reduced by 75% from CJ reference, 100 to 25 ore refined, 50 to 15 acid, 30% DCR to 7%
+---------------------------------------------------------------------------------------------------
 Version: 1.14.0
 Date: 25. 01. 2019
   Changes:
-    - Added support for Clowns Extended Minerals, feedback welcome.
+    - Added support for Mad Clown's Extended Minerals for Angel's Bob's games, feedback welcome.
 ---------------------------------------------------------------------------------------------------
 Version: 1.13.2
 Date: 25. 01. 2019
