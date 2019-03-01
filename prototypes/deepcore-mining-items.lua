@@ -10,7 +10,6 @@ data:extend({
         name = "vtk-deepcore-mining-drill",
         icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-mine.png",
         icon_size = 32,
-        flags = {"goes-to-quickbar"},
         subgroup = "extraction-machine",
         order = "v[items]-d1[vtk-deepcore-mining-drill]",
         place_result = "vtk-deepcore-mining-drill",
@@ -21,7 +20,6 @@ data:extend({
         name = "vtk-deepcore-mining-drill-advanced",
         icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-mine-advanced.png",
         icon_size = 32,
-        flags = {"goes-to-quickbar"},
         subgroup = "extraction-machine",
         order = "v[items]-d2[vtk-deepcore-mining-drill-advanced]",
         place_result = "vtk-deepcore-mining-drill-advanced",
@@ -32,7 +30,6 @@ data:extend({
         name = "vtk-deepcore-mining-drone",
         icon = "__vtk-deep-core-mining__/graphics/icons/mining-drone.png",
         icon_size = 32,
-        flags = {"goes-to-main-inventory"},
         subgroup = "intermediate-product",
         order = "v[vtk-deepcore-mining-drone]",
         stack_size = 50
@@ -42,7 +39,6 @@ data:extend({
         name = "vtk-deepcore-mining-ore-chunk",
         icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk.png",
         icon_size = 32,
-        flags = {"goes-to-main-inventory"},
         subgroup = "raw-resource",
         order = "vz[vtk-deepcore-mining-ore-chunk]",
         stack_size = 100
@@ -71,7 +67,6 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
       }
     },
         icon_size = 32,
-        flags = {"goes-to-main-inventory"},
         subgroup = "raw-resource",
     order = "va[vtk-deepcore-mining-chunk-"..i.."]",
         stack_size = 100
@@ -93,7 +88,6 @@ data:extend({
         stack_size = 1,
         subgroup = "tool",
         order = "v[automated-construction]-d[deep-core-mining]",
-        flags = {"goes-to-quickbar"},
         selection_color = {r = 1.0, g = 0.2, b = 1.0, a = 0.3},
         alt_selection_color = {r = 0.2, g = 0.8, b = 0.3, a = 0.3},
         selection_mode = {"any-entity"},
