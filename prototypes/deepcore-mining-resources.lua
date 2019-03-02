@@ -55,11 +55,11 @@ local deep_core_ore = {
       {
         type = "item",
         name = "vtk-deepcore-mining-ore-chunk",
-        amount_min = 30,
-        amount_max = 30,
+        amount_min = 900,
+        amount_max = 900,
       }, 
     },
-    fluid_amount = 1000,
+    fluid_amount = 9000,
     required_fluid = sulfuricacidname
   },
   --[[
@@ -118,7 +118,6 @@ local function resource_patch_maker(
   oreimg, 
   frame, 
   variation, 
-  hardnessparam, 
   miningtime, 
   miningparticle, 
   mapcolor, 
@@ -128,14 +127,14 @@ local function resource_patch_maker(
   local fluid_req = {
     minable =
     {
-      mining_time = miningtime,
+      mining_time = miningtime*2,
       results =
       {
         {
           type = "item",
           name = ore_name,
-          amount_min = 10,
-          amount_max = 10,
+          amount_min = 2,
+          amount_max = 2,
           probability = 1
         }
       },
@@ -144,7 +143,7 @@ local function resource_patch_maker(
     }
   }
   
-  oredata = 
+  local oredata = 
   {
     type = "resource",
     name = ore_patch_name,
@@ -167,15 +166,15 @@ local function resource_patch_maker(
     resource_patch_search_radius = 20,
     minable =
     {
-      mining_time = miningtime,
+      mining_time = miningtime*2,
       mining_particle = miningparticle,
       results =
       {
         {
           type = "item",
           name = ore_name,
-          amount_min = 10,
-          amount_max = 10,
+          amount_min = 2,
+          amount_max = 2,
           probability = 1
         }
       }
@@ -270,8 +269,8 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     oredata.img,                                    -- ore image name (icon, entity, hrentity)
     oredata.frame,                                  -- frame
     oredata.variation,                              -- variation
-    data.raw.resource[ore].minable.mining_time*10,  -- miningtime * 10 and yields 10 units
-    data.raw.resource[ore].minable.mining_particle, -- miningparticle
+    data.raw.resource[ore].minable['mining_time'],     -- miningtime,
+    data.raw.resource[ore].minable['mining_particle'], -- miningparticle
     data.raw.resource[ore].map_color,               -- mapcolor
     oretint,                                        -- tint
     false                                           -- fluid required

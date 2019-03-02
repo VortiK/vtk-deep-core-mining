@@ -1,46 +1,47 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.16.0
-Date: 02. 03. 2019
+Date: 02.03.2019
   Changes:
     - Updated for 0.17.
     - Added mod thumbnail.
-    - Removed items quickbar behavior as quickbar doesn't exists anymore (thanks pull request by robert).
-    - Review mining speed with new paradygm, should be similar speed to previous system with some introduced balancing.
-    - Removed mining hardness from minerals and mining power from drills.
-    - Deep Core Mining Drill Speed : 3 (was ~3,5), now mines 10 ores in 10 seconds.
-    - Advanced Deep Core Mining Drill now mines 30 ore per 30 seconds (was ~29) for 1000 sulfuric acid (from 3000 for that amount previously).
-    - Review selection tool for deep core mining tool.
+    - Removed items quickbar behavior as quickbar doesn't exists anymore (thanks pull request by Blacksmoke16 https://github.com/VortiK/vtk-deep-core-mining/pull/3).
     - Updated science pack to new names for technologies.
+    - Reviewed mining speed with new paradygm, should be similar speed to previous system with some introduced balancing and "batch" output.
+    - Removed mining hardness from minerals and mining power from drills.
+    - Deep Core Mining Drill Speed now mines 4 ores in 2 seconds (= 2/s, small nerf from 3,5/s).
+    - Advanced Deep Core Mining Drill now mines 900 ore per 30 seconds (30/s from ~29/s previously) for 9 000 sulfuric acid (reduced from 90 000 for that amount previously).
+    - Todo : Refactor Deep Core Mining tool item to a GUI selection tool.
+    - Todo : Maybe refactor the Deep Core Cracks spawning with a noise system.
 ---------------------------------------------------------------------------------------------------
 Version: 1.15.0
-Date: 26. 01. 2019
+Date: 26.01.2019
   Changes:
     - Fixed missing Angel's Ore 5 & 6 (Rubyte & Bobmnium) in an Angel's + Bob's game since 1.14.0
     - Made all Angel's Deep Core Ores use the generic tinted icons for ores patches and refining recipes (like Bob's and Mad Clown's). It's kinda ugly for now but less confusing than using the same gfx as the base ore. Also reduces the mod's weight.
     - Rebalanced Deep Core Ore refinining to reduce all ore % depending on number of enabled ores in the game past the vanilla 5 : Angel's only -25%, Bob's and more mods -50%.
     - Rebalanced Mad Clown's ore Deep Core refining recipes (numbers taken from https://forums.factorio.com/viewtopic.php?f=185&t=58136&p=345448#p345448)
-      - Change in : % from Crotinium/Jivolite, X ore refined from patches, Y acid required for refine, Z% from Deep Core Refine (DCR) :
-      - Antitate (clowns-ore2), Pro-Galena (clowns-ore3), Orichalcite (clowns-ore4), Phosphorite (clowns-ore5) reduced by 25% from CJ reference, 100 to 75 ore refined, 50 to 37 acid, 30% DCR to 22%
-      - Sanguinate (clowns-ore6), Eliongate (clowns-ore7) reduced by 50% from C/J reference, 100 to 50 ore refined, 50 to 25 acid, 30% DCR to 15%
-      - Adamantite (clowns-ore1) reduced by 75% from CJ reference, 100 to 25 ore refined, 50 to 15 acid, 30% DCR to 7%
+    - Change in : % from Crotinium/Jivolite, X ore refined from patches, Y acid required for refine, Z% from Deep Core Refine (DCR) :
+    - Antitate (clowns-ore2), Pro-Galena (clowns-ore3), Orichalcite (clowns-ore4), Phosphorite (clowns-ore5) reduced by 25% from CJ reference, 100 to 75 ore refined, 50 to 37 acid, 30% DCR to 22%
+    - Sanguinate (clowns-ore6), Eliongate (clowns-ore7) reduced by 50% from C/J reference, 100 to 50 ore refined, 50 to 25 acid, 30% DCR to 15%
+    - Adamantite (clowns-ore1) reduced by 75% from CJ reference, 100 to 25 ore refined, 50 to 15 acid, 30% DCR to 7%
 ---------------------------------------------------------------------------------------------------
 Version: 1.14.0
-Date: 25. 01. 2019
+Date: 25.01.2019
   Changes:
     - Added support for Mad Clown's Extended Minerals for Angel's Bob's games, feedback welcome.
 ---------------------------------------------------------------------------------------------------
 Version: 1.13.2
-Date: 25. 01. 2019
+Date: 25.01.2019
   Changes:
     - Balance : Increased Deep Core Ore Refining Focused recipes ingredient to 200 Deep Core Ore from 100 to really make them more expensive. Feedback welcome, I feel this is still too good.
 ---------------------------------------------------------------------------------------------------
 Version: 1.13.1
-Date: 23. 01. 2019
+Date: 23.01.2019
   Changes:
     - Fixed Bob's ore new focus recipes missing images.
 ---------------------------------------------------------------------------------------------------
 Version: 1.13.0
-Date: 22. 01. 2019
+Date: 22.01.2019
   Changes:
     - Happy New Year !
     - Added support for Bilka's New Game Plus worlds : https://mods.factorio.com/mod/NewGamePlus
@@ -49,18 +50,18 @@ Date: 22. 01. 2019
     - New recipes should be enabled on existing game saves.
 ---------------------------------------------------------------------------------------------------
 Version: 1.12.2
-Date: 05. 10. 2018
+Date: 05.10.2018
   Changes:
     - Added German translation provided by Forum user Seeeno (https://forums.factorio.com/memberlist.php?mode=viewprofile&u=48703).
 ---------------------------------------------------------------------------------------------------
 Version: 1.12.1
-Date: 28. 09. 2018
+Date: 28.09.2018
   Changes:
     - Fixed Deep Core Mining Technology new icon being oversized.
     - Small adjustements on new icons GFX.
 ---------------------------------------------------------------------------------------------------
 Version: 1.12.0
-Date: 28. 09. 2018
+Date: 28.09.2018
   Changes:
     - Added much requested support for Bob's ores including gems and their configurations.
     - Reviewed and proper support for Angel's Refining standalone, Bob's ores standalone and Angel's Refining + Bob's Plates at the same time.
@@ -70,59 +71,59 @@ Date: 28. 09. 2018
     - Updated some GFX to increase their shinyness significantly for Deep Core Mining Drone, refining recipes icons, Deep Core Mining Tech and mod's main icon.
 ---------------------------------------------------------------------------------------------------
 Version: 1.11.4
-Date: 20. 08. 2018
+Date: 20.08.2018
   Changes:
     - Removed blueprint from ingredient of the Deep Core Mining Planner tool as it would take any from player inventory even if not an empty blueprint (https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/5b42cd2975e71e000be52bc7).
 ---------------------------------------------------------------------------------------------------
 Version: 1.11.3
-Date: 12. 03. 2018
+Date: 12.03.2018
   Changes:
     - Make use of the new "not-rotatable" entity flag. Still mod setting dependant, but it is now a startup setting. This fixes the mining drills being rotatable before placing them and not after.
 ---------------------------------------------------------------------------------------------------
 Version: 1.11.2
-Date: 25. 02. 2018
+Date: 25.02.2018
   Fixes:
     - Fixed Deep Core Mining Drills not working on Cracks and uranium patches aswell as refining processes with Angel's Petrochem reworked Sulfuric Acid liquid (sulfuric-acid > liquid-sulfuric-acid).
     - Fixed last fix fix that actually broke Planner Mining. This is Angel's Petrochem and not Angel's Refining that changes sulfuric acid.
 ---------------------------------------------------------------------------------------------------
 Version: 1.11.1
-Date: 25. 02. 2018
+Date: 25.02.2018
   Fixes:
     - Fixed Deep Core Mining Planner not working on Cracks and uranium patches with Angel's Petrochem reworked Sulfuric Acid Barrels (sulfuric-acid-barrel > liquid-sulfuric-acid-barrel)
 ---------------------------------------------------------------------------------------------------
 Version: 1.11.0
-Date: 18. 02. 2018
+Date: 18.02.2018
   Changes:
     - Added support for Dirty Mining mod ores (https://mods.factorio.com/mod/DirtyMining). Will only work for Deep Core Mining supported ores (so currently vanilla and Angels).
     - Internal update of factorio stdlib.
 ---------------------------------------------------------------------------------------------------
 Version: 1.10.4
-Date: 10. 02. 2018
+Date: 10.02.2018
   Changes:
     - Implemented sementic version for proper upgrade comparison triggers.
     - Reimplemented rotation forcing and map labelling update saves before DCM 1.8.2.
 ---------------------------------------------------------------------------------------------------
 Version: 1.10.3
-Date: 08. 02. 2018
+Date: 08.02.2018
   Changes:
     - Removed the rotation forcing and map labeling update for before DCM 1.8.2 saves as it could trigger even in later versions.
     - Rotation is still disabled by default but can be enabled in the mod opotions menu. It will only apply to new drills and existing drills placed before DCM 1.8.2 will stay rotatable.
 ---------------------------------------------------------------------------------------------------
 Version: 1.10.2
-Date: 07. 02. 2018
+Date: 07.02.2018
   Fixes:
     - Fixed Angel's Ores compatibility with last changes regarding refining yield.
     - Fixed ADCMD collision box that made it un-placable.
 ---------------------------------------------------------------------------------------------------
 Version: 1.10.1
-Date: 05. 02. 2018
+Date: 05.02.2018
   Changes:
     - Reduced DCMD and ADCMD collision box a bit to make it easier to navigate around them.
   Fixes:
     - Fixed chemical plant refining ouput to handle more resulting ore as it was limited by ore stack sizes (50) instead of set outputs (100 or 200). You'll need at least 2 upgraded stack inserters to ouput Iron Chunks refining with no down time.
 ---------------------------------------------------------------------------------------------------
 Version: 1.10.0
-Date: 05. 02. 2018
+Date: 05.02.2018
   Changes:
     - 1/ Balance pass on DCMD : (Thanks Discord Noxy#5617 for testing & feedback)
     - it proved to be too much and become a main source of ore instead of small but steady,  
@@ -137,17 +138,17 @@ Date: 05. 02. 2018
     - Reviewed the DCMD drill animation, should be less jittery.
 ---------------------------------------------------------------------------------------------------
 Version: 1.9.2
-Date: 30. 01. 2018
+Date: 30.01.2018
   Changes:
     - Added an "Allow rotation of DCMDs" mod setting (off by default) following popular demand. You'll need to remove and place DCMD again to make them rotatable if you set this setting to Yes.
 ---------------------------------------------------------------------------------------------------
 Version: 1.9.1
-Date: 29. 01. 2018
+Date: 29.01.2018
   Fixes:
     - Fixed new setting name and value to not be confusing.
 ---------------------------------------------------------------------------------------------------
 Version: 1.9.0
-Date: 29. 01. 2018
+Date: 29.01.2018
   Features:
     - Added beacons prevention enforcing feature™ (BPEF), when building a beacon near a DCMD it will be removed and droped on the ground (and vis versa). This is because beacons speed module usage on DCMD is overpowered and Deep Core Mining is overpowered enough already featuring an infinite ore source. This is however togglable in the mod options (on by default). Also existing beacons around DCMDs will not be removed as it might be too frustrating.
   Changes:
@@ -159,43 +160,43 @@ Date: 29. 01. 2018
     - Some locales fixing.
 ---------------------------------------------------------------------------------------------------
 Version: 1.8.7
-Date: 24. 01. 2018
+Date: 24.01.2018
   Changes:
     - Limited modules that can be used on DCMD and ADCMD to only efficiency and reduced from 3 to 2 slots (taking a look a beacon effects limitation aswell as it can be overpowered).
 ---------------------------------------------------------------------------------------------------
 Version: 1.8.6
-Date: 23. 01. 2018
+Date: 23.01.2018
   Fixes:
     - Fix last fix fix of previous fix's junk added by macos. Thanks macos.
 ---------------------------------------------------------------------------------------------------
 Version: 1.8.5
-Date: 23. 01. 2018
+Date: 23.01.2018
   Fixes:
     - Fix last fix.
 ----------------------------------------------------------------------------------------------------
 Version: 1.8.4
-Date: 22. 01. 2018
+Date: 22.01.2018
   Fixes:
     - Critical hotfix to migration upgrade when other mods are updated and not this one. Thanks Discord Noxy#5617 for the report and fix.
 ---------------------------------------------------------------------------------------------------
 Version: 1.8.3
-Date: 22. 01. 2018
+Date: 22.01.2018
   Changes:
     - Some local updates.
 ---------------------------------------------------------------------------------------------------
 Version: 1.8.2
-Date: 22. 01. 2018
+Date: 22.01.2018
   Changes:
     - Migration for old saves to force DCMD rotation and set all existing ore patches yield to 100% according to new paradigm. Script will notify all players and DCMD that have been affected will be marked on the map.
     - Added decoration clean up on deep core crack spawning to better see it in the world.
 ---------------------------------------------------------------------------------------------------
 Version: 1.8.1
-Date: 21. 01. 2018
+Date: 21.01.2018
   Fixes:
     - Fix vanilla crash because of angel support test
 ---------------------------------------------------------------------------------------------------
 Version: 1.8.0
-Date: 21. 01. 2018
+Date: 21.01.2018
   Features:
     - Adds Angel's Ore support (Angel's Refining mod). Like vanilla ores, Angels ores patches will spawn on depletion and can be manually harvested with the planner tool and refined (thanks Discord SotS#7790 for gfx help).
   Changes:
@@ -209,12 +210,12 @@ Date: 21. 01. 2018
     - Various internal tidying of graphics, locales fixes and code refactoring to improve maintainability.
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.1
-Date: 20. 01. 2018
+Date: 20.01.2018
   Fixes:
     - Removed debugs
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.0
-Date: 20. 01. 2018
+Date: 20.01.2018
   Features:
     - New Advanced Deep Core Mining drill, bigger, expensiver and it has its own working sound. Dedicated to mine the ...
     - New Deep Core Mining Cack resources that are a rare spawn in the world (~1/500 chance per chunk). Enable to mine the ...
@@ -232,12 +233,12 @@ Date: 20. 01. 2018
     - Sounds tuning, graphics enhancements and code improvement accross the board.
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.1
-Date: 14. 01. 2018
+Date: 14.01.2018
   Fixes:
     - Removed crash inducing migration file that shouldn't be there.
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.0
-Date: 14. 01. 2018
+Date: 14.01.2018
   Features:
     - New Manual Mining feature using a selection tool to select ore patches to remove.
     - Removing ore patches requires deep core mining drones and sulfuric acid barrel for uranium ore patches.
@@ -250,7 +251,7 @@ Date: 14. 01. 2018
     - Reduced default range from start from which ore patches can spawn from 250 to 1 as there is now a tool to remove them if needed.
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.0
-Date: 09. 01. 2018
+Date: 09.01.2018
   Features:
     - Nuclear Age
     - Added uranium ore patches and made them glow (inspiration from https://mods.factorio.com/mods/wormmus/wormmus-glowing-ores)
@@ -264,54 +265,54 @@ Date: 09. 01. 2018
     - Fixed some translations typo & grammar
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.2
-Date: 26. 12. 2017
+Date: 26.12.2017
   Fixes:
     - Mining speed fix
     - DCMD mining speed was bugged because of a leftover test (probably since 1.0 of the mod). Tested with the originally intended 27x more power of a normal mining drill, felt overwhelming (too much ore). It is now ~13x times faster at mining as the normal mining drill (cost unchanged, still ~16x).
     - Thanks for the report in https://mods.factorio.com/mods/VortiK/vtk-deep-core-mining/discussion/22655
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.1
-Date: 13. 12. 2017
+Date: 13.12.2017
   Fixes:
     - Fixed crash because of missing icon_size on some entity that is now required.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.0
-Date: 13. 12. 2017
+Date: 13.12.2017
   Changes:
     - Updated for Factorio 0.16
 ---------------------------------------------------------------------------------------------------
 Version: 1.3.1
-Date: 29. 11. 2017
+Date: 29.11.2017
   Changes:
     - Balanced DCMD pollution as it was indeed way to high, from 1000 to 150 without module which is closer to the intended ~10-15x a normal mining drill (9 pollution). It can of course still be reduced by 80% with 3 efficiency modules 1 for ~3x pollution of a normal mining drill (30 vs 9) and ~15x an efficiency moduled mining drill (30 vs 1.8).
     - Thanks a lot for the detailed feedback in this discussion https://mods.factorio.com/mods/VortiK/vtk-deep-core-mining/discussion/19928
 ---------------------------------------------------------------------------------------------------
 Version: 1.3.0
-Date: 10. 11. 2017
+Date: 10.11.2017
   Features:
     - Stone age
     - Added support for deep core mining of depleted stone with stone patches
     - Added map-level mod runtime configurations for enabling each ore patches (iron, copper, coal, stone). All enabled by default, if disabled will prevent spawning of new ore patches when normal ore is depleted.
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.0
-Date: 13. 08. 2017
+Date: 13.08.2017
   Changes:
     - Changed default minimum range from the start where ore patch spawn on depleted ore from 500 to 250.
     - Made the minimum spawn range a setting that can be changed in the mod options game menu.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.1
-Date: 12. 08. 2017
+Date: 12.08.2017
   Fixes:
     - Minor fix to Deep core mining drill selection box
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.0
-Date: 12. 08. 2017
+Date: 12.08.2017
   Features:
     - Ore patches won't spawn on depleted ore in the starting zone < 500 blocs (~1-2 starting area radar size) ; it's a high tech mining solution not available until mid-endgame anyway.
     - Added shadow to the Deep core mining drill !
     - (internal) Added Factorio community Stdlib : https://github.com/Afforess/Factorio-Stdlib (it's awesome for modding, try it !)
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.0
-Date: 11. 08. 2017
+Date: 11.08.2017
   Features:
     - initial release
