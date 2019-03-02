@@ -503,7 +503,7 @@ data:extend({
             production_type = "input",
             --pipe_picture = assembler2pipepictures(),
             pipe_covers = pipecoverspictures(),
-            base_area = 10, -- = x 100 fluid storage
+            base_area = 100, -- = x 100 fluid storage
             --height = 10, -- ??
             base_level = 1,-- so it requires a pump to inject
             pipe_connections =

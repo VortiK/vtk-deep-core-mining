@@ -9,7 +9,7 @@ Date: 02.03.2019
     - Reviewed mining speed with new paradygm, should be similar speed to previous system with some introduced balancing and "batch" output.
     - Removed mining hardness from minerals and mining power from drills.
     - Deep Core Mining Drill Speed now mines 4 ores in 2 seconds (= 2/s, small nerf from 3,5/s).
-    - Advanced Deep Core Mining Drill now mines 900 ore per 30 seconds (30/s from ~29/s previously) for 9 000 sulfuric acid (reduced from 90 000 for that amount previously).
+    - Advanced Deep Core Mining Drill now mines 900 ore per 30 seconds (30/s from ~29/s previously) for 9 000 sulfuric acid (reduced from 90 000 for that amount previously), increased the drill liquid storage accordingly.
     - Todo : Refactor Deep Core Mining tool item to a GUI selection tool.
     - Todo : Maybe refactor the Deep Core Cracks spawning with a noise system.
     - Renamed mod with my name to find them all more easily.
