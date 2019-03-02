@@ -318,7 +318,7 @@ data:extend({
         
         vehicle_impact_sound =    { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
         
-        mining_speed = 4,
+        mining_speed = 1,
         resource_searching_radius = 0.49,
         
         rotatable = false,
@@ -492,7 +492,7 @@ data:extend({
         
         vehicle_impact_sound =    { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
         
-        mining_speed = 30,
+        mining_speed = 1,
         resource_searching_radius = 0.49,
         
         rotatable = false,

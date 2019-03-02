@@ -57,7 +57,7 @@ local deep_core_ore = {
         name = "vtk-deepcore-mining-ore-chunk",
         amount_min = 900,
         amount_max = 900,
-      }, 
+      },
     },
     fluid_amount = 9000,
     required_fluid = sulfuricacidname
@@ -173,8 +173,8 @@ local function resource_patch_maker(
         {
           type = "item",
           name = ore_name,
-          amount_min = 2,
-          amount_max = 2,
+          amount_min = 4,
+          amount_max = 4,
           probability = 1
         }
       }
