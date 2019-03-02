@@ -12,6 +12,7 @@ Date: 02.03.2019
     - Advanced Deep Core Mining Drill now mines 900 ore per 30 seconds (30/s from ~29/s previously) for 9 000 sulfuric acid (reduced from 90 000 for that amount previously).
     - Todo : Refactor Deep Core Mining tool item to a GUI selection tool.
     - Todo : Maybe refactor the Deep Core Cracks spawning with a noise system.
+    - Renamed mod with my name to find them all more easily.
 ---------------------------------------------------------------------------------------------------
 Version: 1.15.0
 Date: 26.01.2019
