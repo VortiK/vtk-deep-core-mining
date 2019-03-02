@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.16.0
+Date: 02. 03. 2019
+  Changes:
+    - Updated for 0.17.
+    - Added mod thumbnail.
+    - Removed items quickbar behavior as quickbar doesn't exists anymore (thanks pull request by robert).
+    - Review mining speed with new paradygm, should be similar speed to previous system with some introduced balancing.
+    - Removed mining hardness from minerals and mining power from drills.
+    - Deep Core Mining Drill Speed : 3 (was ~3,5), now mines 10 ores in 10 seconds.
+    - Advanced Deep Core Mining Drill now mines 30 ore per 30 seconds (was ~29) for 1000 sulfuric acid (from 3000 for that amount previously).
+    - Review selection tool for deep core mining tool.
+    - Updated science pack to new names for technologies.
+---------------------------------------------------------------------------------------------------
 Version: 1.15.0
 Date: 26. 01. 2019
   Changes:

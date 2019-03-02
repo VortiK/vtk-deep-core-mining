@@ -49,18 +49,17 @@ local deep_core_ore = {
   tree_removal_probability = 0,
   cliff_removal_probability = 0,
   minable = {
-    hardness = 10,
-    mining_time = 2,
+    mining_time = 30,
     mining_particle = "stone-particle",
     results = {
       {
         type = "item",
         name = "vtk-deepcore-mining-ore-chunk",
-        amount_min = 1,
-        amount_max = 1,
+        amount_min = 30,
+        amount_max = 30,
       }, 
     },
-    fluid_amount = 100,
+    fluid_amount = 1000,
     required_fluid = sulfuricacidname
   },
   --[[
@@ -129,19 +128,18 @@ local function resource_patch_maker(
   local fluid_req = {
     minable =
     {
-      hardness = hardnessparam,
       mining_time = miningtime,
       results =
       {
         {
           type = "item",
           name = ore_name,
-          amount_min = 1,
-          amount_max = 1,
+          amount_min = 10,
+          amount_max = 10,
           probability = 1
         }
       },
-      fluid_amount = 100,
+      fluid_amount = 1000,
       required_fluid = sulfuricacidname
     }
   }
@@ -169,7 +167,6 @@ local function resource_patch_maker(
     resource_patch_search_radius = 20,
     minable =
     {
-      hardness = hardnessparam, 
       mining_time = miningtime,
       mining_particle = miningparticle,
       results =
@@ -177,8 +174,8 @@ local function resource_patch_maker(
         {
           type = "item",
           name = ore_name,
-          amount_min = 1,
-          amount_max = 1,
+          amount_min = 10,
+          amount_max = 10,
           probability = 1
         }
       }
@@ -273,8 +270,7 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     oredata.img,                                    -- ore image name (icon, entity, hrentity)
     oredata.frame,                                  -- frame
     oredata.variation,                              -- variation
-    data.raw.resource[ore].minable.hardness,        -- hardnessparam
-    data.raw.resource[ore].minable.mining_time,     -- miningtime
+    data.raw.resource[ore].minable.mining_time*10,  -- miningtime * 10 and yields 10 units
     data.raw.resource[ore].minable.mining_particle, -- miningparticle
     data.raw.resource[ore].map_color,               -- mapcolor
     oretint,                                        -- tint
@@ -293,7 +289,6 @@ resource_patch_maker(
   "uranium-ore", 
   3, 
   1, 
-  data.raw.resource["uranium-ore"].minable.hardness, 
   data.raw.resource["uranium-ore"].minable.mining_time, 
   data.raw.resource["uranium-ore"].minable.mining_particle, 
   data.raw.resource["uranium-ore"].map_color, 
