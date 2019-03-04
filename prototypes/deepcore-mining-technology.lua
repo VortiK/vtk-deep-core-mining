@@ -42,7 +42,7 @@ data:extend(
           recipe = "vtk-deepcore-mining-drill"
         },
       },
-    prerequisites = {"vtk-deepcore", "advanced-material-processing-2", "productivity-module-3", "mining-productivity-4"}, 
+    prerequisites = {"vtk-deepcore", "advanced-material-processing-2", "productivity-module-3", "mining-productivity-1"}, 
     unit =
     {
       count = 1000,
@@ -73,7 +73,7 @@ data:extend(
           recipe = "vtk-deepcore-mining-ore-chunk-refining"
         },
     },
-    prerequisites = {"vtk-deepcore", "vtk-deepcore-mining", "mining-productivity-12"}, 
+    prerequisites = {"vtk-deepcore", "vtk-deepcore-mining", "mining-productivity-3"}, 
     unit =
     {
       count = 1500,

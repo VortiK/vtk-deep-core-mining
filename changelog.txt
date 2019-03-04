@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.16.2
+Date: 04.03.2019
+  Changes:
+    - Fixed compatibility with Factorio 0.17.5 that refactored mining productivity that was a prerequist to Deep Core Mining. Cost should be the same.
+    - Deep Core Mining requires Mining Productivity lvl1 (from 3).
+    - Advanced Deep Core Mining requires Mining Productivity lvl3 (from 12).
+---------------------------------------------------------------------------------------------------
 Version: 1.16.1
 Date: 02.03.2019
   Changes:
