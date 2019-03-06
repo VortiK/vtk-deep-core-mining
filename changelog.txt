@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.16.4
+Date: 07.03.2019
+  Changes:
+    - Fixed decoratives being removed from the whole map instead of just around deep core cracks when they spawn (on tile discovery). Thanks for report https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/5c7fec54bad30c000d2947ab.
+    - Made a migration script to regenerate all the decoratives from all surfaces in existing games.
+---------------------------------------------------------------------------------------------------
 Version: 1.16.3
 Date: 05.03.2019
   Changes:
