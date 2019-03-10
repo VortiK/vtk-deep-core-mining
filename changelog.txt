@@ -1,8 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.17.0
+Date: 10.03.2019
+  Changes:
+    - Added Support to Quartz ore from https://mods.factorio.com/mod/SimpleSilicon
+    - As Quartz mining require water, Deep Core Quartz Mining require 400 water for 4 ore from a Deep Core Quartz Ore Patch.
+    - Some refactor to support mod's ore that have a different mining result than the resource name. Don't hesitate to report regressions especially on supported mod's ores.
+    - Fixed Ore Patch Mining that require fluid to mine couldn't be mined because it required more fluid than the Deep Core Mining Drill could hold for Uranium. Now require 400 liquid instead of 1000 for 4 ore.
+---------------------------------------------------------------------------------------------------
 Version: 1.16.4
 Date: 07.03.2019
   Changes:
-    - Fixed decoratives being removed from the whole map instead of just around deep core cracks when they spawn (on tile discovery). Thanks for report https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/5c7fec54bad30c000d2947ab.
+    - Fixed decoratives being removed from the whole map instead of just around deep core cracks when they spawn (on tile discovery). Thanks for report https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/5c7fec54bad30c000d2947ab
     - Made a migration script to regenerate all the decoratives from all surfaces in existing games.
 ---------------------------------------------------------------------------------------------------
 Version: 1.16.3

@@ -24,6 +24,11 @@ function get_patchable_ores()
     ["uranium-ore"] = "uranium-ore", 
   }
 
+  -- SimpleSilicon's ore support
+  if game.active_mods["SimpleSilicon"] then
+    patchableOres = table.merge(patchableOres, {["SiSi-quartz-ore"] = "SiSi-quartz"})
+  end
+
   -- Angel's ore support
   if game.active_mods["angelsrefining"] then
     local angelsores = {
@@ -106,9 +111,9 @@ function spawn_ore_patch_on_depleted_ore(event)
     -- - then spawn it on the location the ore was depleted
     
     -- debug
-    -- local player = game.players[1]
-    -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
-    -- player.print("mined ore : "..serpent.block(ore))
+     local player = game.players[1]
+     player.print("VTK-DEEP-CORE-MINING_DEBUG")
+     player.print("mined ore : "..serpent.block(ore))
     -- player.print(serpent.block(player))
     
     local validOre = false

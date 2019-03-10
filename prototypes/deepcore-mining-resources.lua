@@ -115,6 +115,7 @@ data:extend({
 local function resource_patch_maker(
   ore_name, 
   ore_patch_name, 
+  ore_result,
   oreimg, 
   frame, 
   variation, 
@@ -122,27 +123,9 @@ local function resource_patch_maker(
   miningparticle, 
   mapcolor, 
   oretint, 
-  fluid
+  fluid,
+  fluidamount
 )
-  local fluid_req = {
-    minable =
-    {
-      mining_time = miningtime*2,
-      results =
-      {
-        {
-          type = "item",
-          name = ore_name,
-          amount_min = 2,
-          amount_max = 2,
-          probability = 1
-        }
-      },
-      fluid_amount = 1000,
-      required_fluid = sulfuricacidname
-    }
-  }
-  
   local oredata = 
   {
     type = "resource",
@@ -172,7 +155,7 @@ local function resource_patch_maker(
       {
         {
           type = "item",
-          name = ore_name,
+          name = ore_result,
           amount_min = 4,
           amount_max = 4,
           probability = 1
@@ -209,10 +192,29 @@ local function resource_patch_maker(
     map_grid = false
   }
   
-  if fluid then
-    for k,v in pairs(fluid_req) do oredata[k] = v end
-
-    return oredata
+  if fluid ~= nil then
+    table.merge(oredata.minable, {["fluid_amount"] = fluidamount, ["required_fluid"] = fluid})
+    
+    
+  local fluid_req = {
+    minable =
+    {
+      mining_time = miningtime*2,
+      results =
+      {
+        {
+          type = "item",
+          name = ore_result,
+          amount_min = 2,
+          amount_max = 2,
+          probability = 1
+        }
+      },
+      fluid_amount = fluidamount,
+      required_fluid = sulfuricacidname
+    }
+  }
+    -- for k,v in pairs(fluid_req) do oredata[k] = v end
   end
   
   return oredata
@@ -262,18 +264,32 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
       oretint = data.raw.resource[ore].map_color
     end
   end
-  
+
+  local fluid = nil;
+  if oredata["mining-liquid"] then
+    if oredata["mining-liquid"] == "sulfuric-acid" then
+      fluid = sulfuricacidname
+    else 
+      fluid = oredata["mining-liquid"]
+    end
+  end
+  local fluidamount = nil;
+  if oredata["mining-liquid-amount"] then
+    fluidamount = oredata["mining-liquid-amount"]
+  end
   local ore_patch = resource_patch_maker(
-    ore,                                            -- ore_name
-    ore.."-patch",                                  -- ore_patch_name
-    oredata.img,                                    -- ore image name (icon, entity, hrentity)
-    oredata.frame,                                  -- frame
-    oredata.variation,                              -- variation
-    data.raw.resource[ore].minable['mining_time'],     -- miningtime,
-    data.raw.resource[ore].minable['mining_particle'], -- miningparticle
-    data.raw.resource[ore].map_color,               -- mapcolor
-    oretint,                                        -- tint
-    false                                           -- fluid required
+    ore,                                                -- ore_name
+    oredata.result.."-patch",                           -- ore_patch_name
+    oredata.result,                                     -- ore_result
+    oredata.img,                                        -- ore image name (icon, entity, hrentity)
+    oredata.frame,                                      -- frame
+    oredata.variation,                                  -- variation
+    data.raw.resource[ore].minable['mining_time'],      -- miningtime,
+    data.raw.resource[ore].minable['mining_particle'],  -- miningparticle
+    data.raw.resource[ore].map_color,                   -- mapcolor
+    oretint,                                            -- tint
+    fluid,                                              -- fluid required
+    fluidamount                                         -- fluid amount
   )
   
   data:extend({
@@ -281,21 +297,4 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   })
 end
 
-local uranium_ore_patch = 
-resource_patch_maker(
-  "uranium-ore", 
-  "uranium-ore-patch", 
-  "uranium-ore", 
-  3, 
-  1, 
-  data.raw.resource["uranium-ore"].minable.mining_time, 
-  data.raw.resource["uranium-ore"].minable.mining_particle, 
-  data.raw.resource["uranium-ore"].map_color, 
-  nil,
-  true
-)
-
-data:extend({
-  uranium_ore_patch
-})
 make_ore_glow("uranium-ore-patch")

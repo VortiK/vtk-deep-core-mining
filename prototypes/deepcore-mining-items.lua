@@ -55,26 +55,25 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
       oretint = data.raw.resource[ore].map_color
     end
   end
-
+  
   local ore_patch = 
-    {
-        type = "item",
+  {
+    type = "item",
     name = "vtk-deepcore-mining-"..ore.."-chunk",
     icons = {
-    {
+      {
         icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk.png",
         tint = oretint
       }
     },
-        icon_size = 32,
-        subgroup = "raw-resource",
+    icon_size = 32,
+    subgroup = "raw-resource",
     order = "va[vtk-deepcore-mining-chunk-"..i.."]",
-        stack_size = 100
+    stack_size = 100
   }
   data:extend({
     ore_patch, 
-
-})
+  })
   i = i + 1
 end
 

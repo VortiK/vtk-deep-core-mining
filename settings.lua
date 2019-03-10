@@ -102,6 +102,19 @@ data:extend({
   },
 })
 
+if mods["SimpleSilicon"] then
+  data:extend({
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-SiSi-quartz-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "ha5"
+  },
+})
+end
+
 if mods["angelsrefining"] then
   data:extend({
     {

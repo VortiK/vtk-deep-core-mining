@@ -43,15 +43,36 @@ vtk_deepcoremining_supported_ores = {
   },
   ["uranium-ore"] = {
     ["result"] = "uranium-ore", 
+    ["mining-liquid"] = "sulfuric-acid", 
+    ["mining-liquid-amount"] = 100, 
     ["img"] = "uranium-ore", 
     ["frame"] = 3, 
     ["variation"] = 1,
     ["refineamount"] = 10, 
-    ["refineliquid"] = 100, 
+    ["refineliquid"] = 400, 
     ["probability"] = 0.15,
     ["tint"] = false
   }
 }
+
+-- SimpleSilicon's ore support
+if mods["SimpleSilicon"] then
+  local SimpleSilicon_ore = {
+    ["SiSi-quartz-ore"] = {
+      ["result"] = "SiSi-quartz", 
+      ["mining-liquid"] = "water", 
+      ["mining-liquid-amount"] = 400, 
+      ["img"] = "ore", 
+      ["frame"] = 3, 
+      ["variation"] = 1,
+      ["refineamount"] = 75, 
+      ["refineliquid"] = 20, 
+      ["probability"] = 0.20,
+      ["tint"] = true
+    }
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, SimpleSilicon_ore)
+end
 
 -- Angel's ore support
 if mods.angelsrefining then
