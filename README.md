@@ -29,6 +29,7 @@ The idea is to repurpose old mining outpost when ore is depleted. So the infrast
 - Bob's Ores mod : https://mods.factorio.com/mod/bobores
 - Clown's Extended Minerals mod : https://mods.factorio.com/mod/Clowns-Extended-Minerals
 - Bilka's New Game Plus : https://mods.factorio.com/mod/NewGamePlus
+- Arcitos's Simple Silicon : https://mods.factorio.com/mod/SimpleSilicon
 - Other mods support depending on request !
 
 ## Credits
