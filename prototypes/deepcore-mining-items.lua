@@ -248,10 +248,7 @@ local function chunk_refining_recipe_maker(
         icon_size = 32,
         results = 
         {
-            {type="item", name=refining_result, amount=result_amount/4}, 
-            {type="item", name=refining_result, amount=result_amount/4}, 
-            {type="item", name=refining_result, amount=result_amount/4}, 
-            {type="item", name=refining_result, amount=result_amount/4}, 
+            {type="item", name=refining_result, amount=result_amount},
         },
         crafting_machine_tint =
         {
