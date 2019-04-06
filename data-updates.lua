@@ -3,10 +3,7 @@ if mods.bobores and not mods.angelsrefining then
     bobmods.lib.resource.add_result("gem-ore-patch", {name="gem-ore"})
     data.raw.recipe["vtk-deepcore-mining-gem-ore-chunk-refining"].results = 
     {
-        {type="item", name="gem-ore", amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/4}, 
-        {type="item", name="gem-ore", amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/4}, 
-        {type="item", name="gem-ore", amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/4}, 
-        {type="item", name="gem-ore", amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/4}, 
+        {type="item", name="gem-ore", amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount}, 
     }
     -- table.insert(data.raw['recipe']['vtk-deepcore-mining-gem-ore-chunk-refining']['results'],
     -- {name = "vtk-deepcore-mining-"..ore.."-chunk", probability = oredata.probability, amount = 10 })
@@ -21,12 +18,12 @@ if mods.bobores and not mods.angelsrefining then
 
     data.raw.recipe["vtk-deepcore-mining-gem-ore-chunk-refining"].results = 
     {
-        {type="item", name="diamond-ore", probability = bobmods.gems.DiamondRatio, amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/4}, 
-        {type="item", name="emerald-ore", probability = bobmods.gems.EmeraldRatio, amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/4}, 
-        {type="item", name="amethyst-ore", probability = bobmods.gems.AmethystRatio, amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/4}, 
-        {type="item", name="ruby-ore", probability = bobmods.gems.RubyRatio, amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/4}, 
-        {type="item", name="sapphire-ore", probability = bobmods.gems.SapphireRatio, amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/4}, 
-        {type="item", name="topaz-ore", probability = bobmods.gems.TopazRatio, amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/4}, 
+        {type="item", name="diamond-ore", probability = bobmods.gems.DiamondRatio, amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/6}, 
+        {type="item", name="emerald-ore", probability = bobmods.gems.EmeraldRatio, amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/6}, 
+        {type="item", name="amethyst-ore", probability = bobmods.gems.AmethystRatio, amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/6}, 
+        {type="item", name="ruby-ore", probability = bobmods.gems.RubyRatio, amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/6}, 
+        {type="item", name="sapphire-ore", probability = bobmods.gems.SapphireRatio, amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/6}, 
+        {type="item", name="topaz-ore", probability = bobmods.gems.TopazRatio, amount=vtk_deepcoremining_supported_ores["gem-ore"].refineamount/6}, 
     }
   end
 
@@ -61,3 +58,15 @@ if mods.bobores and not mods.angelsrefining then
     bobmods.lib.resource.add_result("cobalt-ore-patch", {name = "obsidian", amount_min = 1, amount_max = 12, probability = 0.25})
   end
 end
+
+-- Disallow AAI vehicles to mine resource-category vtk-deepcore-mining-ore-patch and vtk-deepcore-mining-crack
+--[[
+if mods["aai-vehicles-miner"] then
+  for _, resource in pairs(data.raw.resource) do
+
+    if resource.category ~= nil and string.match(resource.category, "vtk-deepcore-mining") then
+      settings.global["vehicle-mining-disallow-resources"].value = settings.global["vehicle-mining-disallow-resources"].value .. " " .. resource.name 
+    end
+  end
+end
+]]--
