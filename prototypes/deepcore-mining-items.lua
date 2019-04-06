@@ -338,8 +338,7 @@ data:extend({
         energy_source =
         {
             type = "electric",
-            -- will produce this much * energy pollution units per tick
-            emissions = 0.15,
+            emissions_per_second_per_watt = 100 / 1000000,
             usage_priority = "secondary-input",
         },
         vector_to_place_result = {-2, 3},
@@ -512,8 +511,7 @@ data:extend({
         energy_source =
         {
             type = "electric",
-            -- will produce this much * energy pollution units per tick
-            emissions = 0.15,
+            emissions_per_second_per_watt = 1000 / 10000000,
             usage_priority = "secondary-input",
         },
         vector_to_place_result = {0, 5},
