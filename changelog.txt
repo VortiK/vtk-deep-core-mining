@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.17.5
+Date: 08.04.2019
+  Changes:
+    - Fixed changelog for good ! Thanks again Pi-C.
+    - Removed the decorative regeneration in 1.16.4 migration as it could add decoratives even on concreted tiles. Most 0.17 experimental saves affected should be fixed by now and removing it will prevent polluting more saves when 0.17 becomes stable. If you really want to fix deorative, it's possible from the in-game console.
+---------------------------------------------------------------------------------------------------
 Version: 1.17.4
 Date: 06.04.2019
   Changes:
@@ -227,7 +233,7 @@ Version: 1.8.5
 Date: 23.01.2018
   Fixes:
     - Fix last fix.
-----------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 Version: 1.8.4
 Date: 22.01.2018
   Fixes:
