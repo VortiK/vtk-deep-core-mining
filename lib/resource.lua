@@ -136,7 +136,7 @@ function spawn_ore_patch_on_depleted_ore(event)
         
         if number == 1 and entitiesCount == 0 then
             oreamount = math.random(minrichness, maxrichness)
-            newOreEntity = surface.create_entity({name = orePatchToSpawn, amount = oreamount, position = ore.position, force = game.forces.neutral})
+            newOreEntity = surface.create_entity({name = orePatchToSpawn, amount = oreamount, position = ore.position, force = game.forces.neutral, raise_built = true})
         end
     end
   
@@ -282,7 +282,7 @@ function remove_ore_patch(player, surface, area, entities)
           surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-"..chunk.."-chunk", count = amountospawn}, true)
 
         end
-        entity.destroy()
+        entity.destroy({raise_destroy = true})
     end
     
     player.remove_item{name="vtk-deepcore-mining-drone", count = patchescount}

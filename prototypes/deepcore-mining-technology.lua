@@ -16,7 +16,7 @@ data:extend(
           recipe = "vtk-deepcore-mining-planner"
         },
       },
-    prerequisites = {"advanced-electronics", "robotics", "advanced-material-processing", "sulfur-processing"}, 
+    prerequisites = {"advanced-electronics", "robotics", "advanced-material-processing", "sulfur-processing", "chemical-science-pack"}, 
     unit =
     {
       count = 500,
@@ -42,7 +42,7 @@ data:extend(
           recipe = "vtk-deepcore-mining-drill"
         },
       },
-    prerequisites = {"vtk-deepcore", "advanced-material-processing-2", "productivity-module-3", "mining-productivity-1"}, 
+    prerequisites = {"vtk-deepcore", "advanced-material-processing-2", "productivity-module-3", "mining-productivity-1", "production-science-pack"}, 
     unit =
     {
       count = 1000,
@@ -73,7 +73,7 @@ data:extend(
           recipe = "vtk-deepcore-mining-ore-chunk-refining"
         },
     },
-    prerequisites = {"vtk-deepcore", "vtk-deepcore-mining", "mining-productivity-3"}, 
+    prerequisites = {"vtk-deepcore", "vtk-deepcore-mining", "mining-productivity-3", "production-science-pack", "utility-science-pack"}, 
     unit =
     {
       count = 1500,

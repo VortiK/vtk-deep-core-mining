@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.18.0
+Date: 10.10.2019
+  Changes:
+    - Added raise_built and raise_destroy when deep core ore patches are created by mining or removed by the deep core mining planner for better other mods support through theses native events (thanks to the suggestion made by Rampant mod author https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/5cdcab6514ee39000ce0ad62).
+    - Marked Industrial Revolution as explicitly incompatible for now. May be supported later but as it is an heavy overhaul mod, I can't make any promise.
+    - Added prerequist of Production Science and Utility science on some Deep Core Mining techs (mostly cosmetics, shouldn't change the tech tree workflow of Deep Core Mining much).
+---------------------------------------------------------------------------------------------------
 Version: 1.17.5
 Date: 08.04.2019
   Changes:
