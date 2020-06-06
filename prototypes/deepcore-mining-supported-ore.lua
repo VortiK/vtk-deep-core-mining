@@ -400,7 +400,7 @@ if mods.pyrawores then
       ["variation"] = 3,
       ["refineamount"] = 200,
       ["refineliquid"] = 200,
-      ["refineliquid2"] = 100 * 200,
+      ["refineliquid2"] = 1600,
       ["refineliquid2_name"] = "steam",
       ["probability"] = 0.10,
       ["tint"] = true
@@ -424,7 +424,7 @@ if mods.pyrawores then
       ["variation"] = 3,
       ["refineamount"] = 200,
       ["refineliquid"] = 200,
-      ["refineliquid2"] = 100 * 200,
+      ["refineliquid2"] = 2000,
       ["refineliquid2_name"] = "coal-gas",
       ["probability"] = 0.10,
       ["tint"] = true
@@ -438,7 +438,7 @@ if mods.pyrawores then
       ["variation"] = 3,
       ["refineamount"] = 200,
       ["refineliquid"] = 200,
-      ["refineliquid2"] = 40 * 200,
+      ["refineliquid2"] = 1000,
       ["refineliquid2_name"] = "syngas",
       ["probability"] = 0.10,
       ["tint"] = true
@@ -452,7 +452,7 @@ if mods.pyrawores then
       ["variation"] = 3,
       ["refineamount"] = 200,
       ["refineliquid"] = 200,
-      ["refineliquid2"] = 100 * 200,
+      ["refineliquid2"] = 2000,
       ["refineliquid2_name"] = "acetylene",
       ["probability"] = 0.10,
       ["tint"] = true
@@ -466,7 +466,7 @@ if mods.pyrawores then
       ["variation"] = 3,
       ["refineamount"] = 200,
       ["refineliquid"] = 200,
-      ["refineliquid2"] = 40 * 200,
+      ["refineliquid2"] = 1000,
       ["refineliquid2_name"] = "syngas",
       ["probability"] = 0.10,
       ["tint"] = true
@@ -490,7 +490,7 @@ if mods.pyrawores then
       ["variation"] = 3,
       ["refineamount"] = 200,
       ["refineliquid"] = 200,
-      ["refineliquid2"] = 40 * 200,
+      ["refineliquid2"] = 1000,
       ["refineliquid2_name"] = "acetylene",
       ["probability"] = 0.10,
       ["tint"] = true
@@ -504,7 +504,7 @@ if mods.pyrawores then
       ["variation"] = 3,
       ["refineamount"] = 200,
       ["refineliquid"] = 200,
-      ["refineliquid2"] = 40 * 200,
+      ["refineliquid2"] = 1000,
       ["refineliquid2_name"] = "syngas",
       ["probability"] = 0.10,
       ["tint"] = true
@@ -525,7 +525,7 @@ if mods.pycoalprocessing then
       ["variation"] = 3,
       ["refineamount"] = 200,
       ["refineliquid"] = 200,
-      ["refineliquid2"] = 50 * 200,
+      ["refineliquid2"] = 800,
       ["refineliquid2_name"] = "syngas",
       ["probability"] = 0.10,
       ["tint"] = true
@@ -539,7 +539,7 @@ if mods.pycoalprocessing then
       ["variation"] = 3,
       ["refineamount"] = 200,
       ["refineliquid"] = 200,
-      ["refineliquid2"] = 60 * 200,
+      ["refineliquid2"] = 2000,
       ["refineliquid2_name"] = "refsyngas",
       ["probability"] = 0.10,
       ["tint"] = true
