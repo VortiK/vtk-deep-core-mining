@@ -16,6 +16,7 @@
     "? Clowns-Extended-Minerals >= 1.1.2",
     "? SimpleSilicon >= 1.2.0",
     "? aai-vehicle-miner >= 0.4.2",
+    "? leighzermorphite >= 0.3.3",
     "!IndustrialRevolution"
   ]
 }

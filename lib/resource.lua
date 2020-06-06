@@ -75,6 +75,14 @@ function get_patchable_ores()
     }
     patchableOres = table.merge(patchableOres, bobores)
   end
+
+  -- Leighzer's Morphite support
+  if game.active_mods["leighzermorphite"] then
+    local leighzermorphite = {
+      ["morphite-ore"] = "morphite-ore",
+    }
+    patchableOres = table.merge(patchableOres, leighzermorphite)
+  end
   return patchableOres
 end
 

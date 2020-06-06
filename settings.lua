@@ -350,3 +350,17 @@ if mods["bobores"] and not mods["angelsrefining"] then
   }
 })
 end
+
+-- Leighzer's Morphite support
+if mods.leighzermorphite then
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-morphite-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "he1"
+    },
+  })
+end

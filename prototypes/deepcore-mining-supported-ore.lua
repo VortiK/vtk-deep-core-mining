@@ -371,6 +371,23 @@ if not mods.angelsrefining and mods.bobores then
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, bobores)
 end
 
+-- Leighzer's Morphite support
+if mods.leighzermorphite then
+  local leighzermorphite = {
+    ["morphite-ore"] = {
+      ["result"] = "morphite-ore",
+      ["img"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, leighzermorphite)
+end
+
 -- somehow table.count doesn't exists in lua and you have to do it yourself
 vtk_deepcoremining_supported_ores_count = 0
   
