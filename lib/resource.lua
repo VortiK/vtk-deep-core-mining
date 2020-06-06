@@ -100,6 +100,15 @@ function get_patchable_ores()
     patchableOres = table.merge(patchableOres, pyrawores)
   end
 
+-- Pyanodons Coal Processing support
+  if game.active_mods["pycoalprocessing"] then
+    local pycoalprocessing = {
+      ["borax"] = "raw-borax",
+      ["niobium"] = "niobium-ore",
+    }
+    patchableOres = table.merge(patchableOres, pycoalprocessing)
+  end
+
   return patchableOres
 end
 

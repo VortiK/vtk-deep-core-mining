@@ -18,6 +18,7 @@
     "? aai-vehicle-miner >= 0.4.2",
     "? leighzermorphite >= 0.3.3",
     "? pyrawores >= 2.0.7",
+    "? pycoalprocessing >= 1.7.7",
     "!IndustrialRevolution"
   ]
 }

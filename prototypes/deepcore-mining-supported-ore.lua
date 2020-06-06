@@ -513,6 +513,41 @@ if mods.pyrawores then
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, pyrawores)
 end
 
+-- Pyanodons Coal Processing support
+if mods.pycoalprocessing then
+  local pycoalprocessing = {
+    ["borax"] = {
+      ["result"] = "raw-borax",
+      ["mining-liquid"] = "syngas",
+      ["mining-liquid-amount"] = 50,
+      ["img"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 50 * 200,
+      ["refineliquid2_name"] = "syngas",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["niobium"] = {
+      ["result"] = "niobium-ore",
+      ["mining-liquid"] = "refsyngas",
+      ["mining-liquid-amount"] = 60,
+      ["img"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 60 * 200,
+      ["refineliquid2_name"] = "refsyngas",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, pycoalprocessing)
+end
+
 -- somehow table.count doesn't exists in lua and you have to do it yourself
 vtk_deepcoremining_supported_ores_count = 0
   

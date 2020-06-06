@@ -442,3 +442,25 @@ if mods.pyrawores then
     },
   })
 end
+
+-- Pyanodons Coal Processing support
+if mods.pycoalprocessing then
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-raw-borax-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hf10"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-niobium-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hf11"
+    },
+  })
+end
