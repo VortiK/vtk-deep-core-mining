@@ -388,6 +388,131 @@ if mods.leighzermorphite then
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, leighzermorphite)
 end
 
+-- Pyanodons Raw Ores support
+if mods.pyrawores then
+  local pyrawores = {
+    ["ore-tin"] = {
+      ["result"] = "ore-tin",
+      ["mining-liquid"] = "steam",
+      ["mining-liquid-amount"] = 100,
+      ["img"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 100 * 200,
+      ["refineliquid2_name"] = "steam",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-quartz"] = {
+      ["result"] = "ore-quartz",
+      ["img"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-aluminium"] = {
+      ["result"] = "ore-aluminium",
+      ["mining-liquid"] = "coal-gas",
+      ["mining-liquid-amount"] = 100,
+      ["img"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 100 * 200,
+      ["refineliquid2_name"] = "coal-gas",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-chromium"] = {
+      ["result"] = "ore-chromium",
+      ["mining-liquid"] = "syngas",
+      ["mining-liquid-amount"] = 40,
+      ["img"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 40 * 200,
+      ["refineliquid2_name"] = "syngas",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-lead"] = {
+      ["result"] = "ore-lead",
+      ["mining-liquid"] = "acetylene",
+      ["mining-liquid-amount"] = 100,
+      ["img"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 100 * 200,
+      ["refineliquid2_name"] = "acetylene",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-nickel"] = {
+      ["result"] = "ore-nickel",
+      ["mining-liquid"] = "syngas",
+      ["mining-liquid-amount"] = 40,
+      ["img"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 40 * 200,
+      ["refineliquid2_name"] = "syngas",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["raw-coal"] = {
+      ["result"] = "raw-coal",
+      ["img"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-titanium"] = {
+      ["result"] = "ore-titanium",
+      ["mining-liquid"] = "acetylene",
+      ["mining-liquid-amount"] = 40,
+      ["img"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 40 * 200,
+      ["refineliquid2_name"] = "acetylene",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-zinc"] = {
+      ["result"] = "ore-zinc",
+      ["mining-liquid"] = "syngas",
+      ["mining-liquid-amount"] = 40,
+      ["img"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 40 * 200,
+      ["refineliquid2_name"] = "syngas",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, pyrawores)
+end
+
 -- somehow table.count doesn't exists in lua and you have to do it yourself
 vtk_deepcoremining_supported_ores_count = 0
   

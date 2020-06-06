@@ -219,7 +219,9 @@ local function chunk_refining_recipe_maker(
   refining_result, 
   result_amount, 
   refining_liquid, 
-  refining_liquid_amount, 
+  refining_liquid_amount,
+  refining_liquid2,
+  refining_liquid2_amount,
   oretint
 )
     local recipe =
@@ -234,6 +236,7 @@ local function chunk_refining_recipe_maker(
         {
             {"vtk-deepcore-mining-"..ore_name.."-chunk", 1},
             {type="fluid", name=refining_liquid, amount=refining_liquid_amount},
+			refining_liquid2 and {type="fluid", name=refining_liquid2, amount=refining_liquid2_amount},
         },
         main_product = "", -- to force use of recipe locales and icons instead of result's
         icons = {
@@ -275,13 +278,15 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   end
   
   local ore_chunk_refining_recipe = chunk_refining_recipe_maker(
-    ore,                  -- ore_name : used for recipe name "-chunk-refining" and ingredient "-chunk")
-    oredata.img,          -- ore refining icon "-chunk-refining.png
-    oredata.result,       -- result
-    oredata.refineamount, -- result amount
-    sulfuricacidname,     -- refining liquid
-    oredata.refineliquid, -- refining liquid amount
-    oretint               -- tint
+    ore,                          -- ore_name : used for recipe name "-chunk-refining" and ingredient "-chunk")
+    oredata.img,                  -- ore refining icon "-chunk-refining.png
+    oredata.result,               -- result
+    oredata.refineamount,         -- result amount
+    sulfuricacidname,             -- refining liquid
+    oredata.refineliquid,         -- refining liquid amount
+    oredata.refineliquid2_name,   -- refining liquid 2
+    oredata.refineliquid2,        -- refining liquid 2 amount
+    oretint                       -- tint
     -- {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
 )
 

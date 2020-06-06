@@ -17,6 +17,7 @@
     "? SimpleSilicon >= 1.2.0",
     "? aai-vehicle-miner >= 0.4.2",
     "? leighzermorphite >= 0.3.3",
+    "? pyrawores >= 2.0.7",
     "!IndustrialRevolution"
   ]
 }

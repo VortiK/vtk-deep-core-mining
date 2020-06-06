@@ -83,6 +83,23 @@ function get_patchable_ores()
     }
     patchableOres = table.merge(patchableOres, leighzermorphite)
   end
+
+  -- Pyanodons Raw Ores support
+  if game.active_mods["pyrawores"] then
+    local pyrawores = {
+      ["ore-tin"] = "ore-tin",
+      ["ore-quartz"] = "ore-quartz",
+      ["ore-aluminium"] = "ore-aluminium",
+      ["ore-chromium"] = "ore-chromium",
+      ["ore-lead"] = "ore-lead",
+      ["ore-nickel"] = "ore-nickel",
+      ["raw-coal"] = "raw-coal",
+      ["ore-titanium"] = "ore-titanium",
+      ["ore-zinc"] = "ore-zinc",
+    }
+    patchableOres = table.merge(patchableOres, pyrawores)
+  end
+
   return patchableOres
 end
 
