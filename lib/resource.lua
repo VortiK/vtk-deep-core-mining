@@ -42,6 +42,7 @@ function get_patchable_ores()
     patchableOres = table.merge(patchableOres, angelsores)
   end
   
+  -- Clowns Extended Minerals ore support
   if game.active_mods["Clowns-Extended-Minerals"] then
     local clownssores = {
       ["clowns-ore1"] = "clowns-ore1", 
@@ -75,6 +76,12 @@ function get_patchable_ores()
     }
     patchableOres = table.merge(patchableOres, bobores)
   end
+  
+  -- Krastorio2's ore support
+  if game.active_mods["Krastorio2"] then
+    patchableOres = table.merge(patchableOres, {["rare-metals"] = "raw-rare-metals"})
+  end
+
   return patchableOres
 end
 
@@ -222,6 +229,7 @@ end
 function remove_ore_patch(player, surface, area, entities)
     local patchescount = 0
     local sulfuricpatchescount = 0
+    local chlorinepatchescount = 0
     local dronescount = player.get_item_count("vtk-deepcore-mining-drone")
     local patches = {}
     local sulfuricpatches = {}
@@ -231,18 +239,36 @@ function remove_ore_patch(player, surface, area, entities)
         sulfuricacidbarrel = "liquid-sulfuric-acid-barrel"
     end
     local sulfuricacidbarrelcount = player.get_item_count(sulfuricacidbarrel)
+    local chlorinebarrelcount = 0
+    
+    if game.active_mods["Krastorio2"] then
+      local chlorinebarrelcount = player.get_item_count("chlorine-barrel")
+    end
 
     -- debug
     -- player.print("inventory : "..serpent.line(player.get_inventory(defines.inventory.player_main).get_contents()))
     for _,entity in pairs(entities) do
+      -- player.print("entity : "..serpent.line(entity))
+      -- player.print("entity : "..serpent.block(entity))
+      -- player.print("name : "..entity.name)
+      -- player.print("type : "..entity.type)
+      -- player.print("entity proto : "..serpent.block(entity.prototype))
+      -- player.print("proto : "..serpent.line(game.entity_prototypes[entity.name].name))
+      -- player.print("cat : "..game.entity_prototypes[entity.name].resource_category)
+      -- player.print("entity proto name : "..serpent.block(entity.prototype.name))
+      -- player.print("entity proto cat : "..serpent.block(entity.prototype.resource_category))
+
         if entity.type == "resource"
-            and (game.entity_prototypes[entity.name].resource_category == "vtk-deepcore-mining-ore-patch" 
-            or game.entity_prototypes[entity.name].resource_category == "vtk-deepcore-mining-crack")
+            and (entity.prototype.resource_category == "vtk-deepcore-mining-ore-patch" 
+            or entity.prototype.resource_category == "vtk-deepcore-mining-crack")
         then
             table.insert(patches, entity)
             patchescount = patchescount + 1
             if entity.name == "uranium-ore-patch" or entity.name == "vtk-deepcore-mining-crack" then
                 sulfuricpatchescount = sulfuricpatchescount + 1
+            end
+            if entity.name == "rare-metals" then
+                chlorinepatchescount = chlorinepatchescount + 1
             end
         end
     end
@@ -258,6 +284,10 @@ function remove_ore_patch(player, surface, area, entities)
     end
     if sulfuricacidbarrelcount < sulfuricpatchescount then
         player.print("Not enough sulfuric acid barrel. "..sulfuricpatchescount.." needed only "..sulfuricacidbarrelcount.." in inventory.")
+        todo = false
+    end
+    if chlorinepatchescount < chlorinebarrelcount then
+        player.print("Not enough chlorine acid barrel. "..chlorinepatchescount.." needed only "..chlorinebarrelcount.." in inventory.")
         todo = false
     end
     if not todo then
@@ -290,4 +320,7 @@ function remove_ore_patch(player, surface, area, entities)
         player.remove_item{name=sulfuricacidbarrel, count = sulfuricpatchescount}
     end
 	
+    if chlorinepatchescount > 0 then
+      player.remove_item{name="chlorine-barrel", count = chlorinepatchescount}
+  end
 end

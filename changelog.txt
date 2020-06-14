@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.0
+Date: 13.06.2020
+  Changes:
+    - Fixed pollution emission of deep core mining drills, they were emitting none, DCMD emits 100 and ADCMD 1000 per minute.
+    - Fixed Manual DCMDrone tool that was not mining ore patches anymore.
+    - Improved some icons from 32px to 64px, DCMD, ADCMD, DCMdrone and tool.
+    - Added support for Krastorio 2 Rare Metals ore.
+---------------------------------------------------------------------------------------------------
+Version: 1.19.0
+Date: 30.01.2020
+  Changes:
+    - Upgrade to 0.18 compatibility.
+    - Fixed typo in locale for Gold.
+---------------------------------------------------------------------------------------------------
 Version: 1.18.0
 Date: 10.10.2019
   Changes:

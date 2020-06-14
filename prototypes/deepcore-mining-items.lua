@@ -9,7 +9,7 @@ data:extend({
         type = "item",
         name = "vtk-deepcore-mining-drill",
         icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-mine.png",
-        icon_size = 32,
+        icon_size = 64,
         subgroup = "extraction-machine",
         order = "v[items]-d1[vtk-deepcore-mining-drill]",
         place_result = "vtk-deepcore-mining-drill",
@@ -19,7 +19,7 @@ data:extend({
         type = "item",
         name = "vtk-deepcore-mining-drill-advanced",
         icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-mine-advanced.png",
-        icon_size = 32,
+        icon_size = 64,
         subgroup = "extraction-machine",
         order = "v[items]-d2[vtk-deepcore-mining-drill-advanced]",
         place_result = "vtk-deepcore-mining-drill-advanced",
@@ -29,7 +29,7 @@ data:extend({
         type = "item",
         name = "vtk-deepcore-mining-drone",
         icon = "__vtk-deep-core-mining__/graphics/icons/mining-drone.png",
-        icon_size = 32,
+        icon_size = 64,
         subgroup = "intermediate-product",
         order = "v[vtk-deepcore-mining-drone]",
         stack_size = 50
@@ -83,7 +83,7 @@ data:extend({
         type = "selection-tool",
         name = "vtk-deepcore-mining-planner",
         icon = "__vtk-deep-core-mining__/graphics/icons/mining-drone-blueprint.png",
-        icon_size = 32,
+        icon_size = 64,
         stack_size = 1,
         subgroup = "tool",
         order = "v[automated-construction]-d[deep-core-mining]",
@@ -296,7 +296,7 @@ data:extend({
         type = "mining-drill",
         name = "vtk-deepcore-mining-drill",
         icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-mine.png",
-        icon_size = 32,
+        icon_size = 64,
         flags = {
             "placeable-neutral",
             "placeable-player",
@@ -338,7 +338,7 @@ data:extend({
         energy_source =
         {
             type = "electric",
-            emissions_per_second_per_watt = 100 / 1000000,
+            emissions_per_minute = 100,
             usage_priority = "secondary-input",
         },
         vector_to_place_result = {-2, 3},
@@ -469,7 +469,7 @@ data:extend({
         type = "mining-drill",
         name = "vtk-deepcore-mining-drill-advanced",
         icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-mine-advanced.png",
-        icon_size = 32,
+        icon_size = 64,
         flags = {
             "placeable-neutral",
             "placeable-player",
@@ -511,7 +511,7 @@ data:extend({
         energy_source =
         {
             type = "electric",
-            emissions_per_second_per_watt = 1000 / 10000000,
+            emissions_per_minute = 1000,
             usage_priority = "secondary-input",
         },
         vector_to_place_result = {0, 5},

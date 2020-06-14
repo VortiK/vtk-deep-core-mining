@@ -23,6 +23,8 @@ The idea is to repurpose old mining outpost when ore is depleted. So the infrast
   - Loader Redux : https://mods.factorio.com/mod/LoaderRedux (*Vanilla flavour*)
 
 ## Mod support
+- NOT compatible with Industrial Revolution : https://mods.factorio.com/mod/IndustrialRevolution
+- Minor incompatibility with Filter Mining Drill mod : https://mods.factorio.com/mod/Cursed-FMD : the DCMDPlanner tool will not work to remove ore patches and patches of different ore types may spawn too close to each other.
 - Angel's Refining mod : https://mods.factorio.com/mod/angelsrefining
 - Angel's Petrochem mod compatibility (regarding Sulfuric Acid) : https://mods.factorio.com/mod/angelspetrochem
 - Reika's Dirty Mining mod : https://mods.factorio.com/mod/DirtyMining
@@ -30,6 +32,7 @@ The idea is to repurpose old mining outpost when ore is depleted. So the infrast
 - Clown's Extended Minerals mod : https://mods.factorio.com/mod/Clowns-Extended-Minerals
 - Bilka's New Game Plus : https://mods.factorio.com/mod/NewGamePlus
 - Arcitos's Simple Silicon : https://mods.factorio.com/mod/SimpleSilicon
+- Krastorio 2's Rare Metals : https://mods.factorio.com/mod/Krastorio2
 - Other mods support depending on request !
 
 ## Credits

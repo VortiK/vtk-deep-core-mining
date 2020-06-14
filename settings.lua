@@ -233,7 +233,7 @@ if mods["angelsrefining"] then
     end
   end
 end
-  
+
 if mods["bobores"] and not mods["angelsrefining"] then
   data:extend({
   {
@@ -348,5 +348,18 @@ if mods["bobores"] and not mods["angelsrefining"] then
     per_user = false,
     order = "hd5"
   }
+})
+end
+
+if mods["Krastorio2"] then
+  data:extend({
+  {
+    type = "bool-setting",
+    name = "vtk-deep-core-mining-spawn-rare-metals-patch",
+    setting_type = "runtime-global",
+    default_value = true,
+    per_user = false,
+    order = "he1"
+  },
 })
 end

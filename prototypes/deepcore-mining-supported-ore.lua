@@ -371,6 +371,25 @@ if not mods.angelsrefining and mods.bobores then
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, bobores)
 end
 
+-- Krastorio 2 Rare Metals ore support
+if mods["Krastorio2"] then
+  local SimpleSilicon_ore = {
+    ["rare-metals"] = {
+      ["result"] = "raw-rare-metals", 
+      ["mining-liquid"] = "chlorine", 
+      ["mining-liquid-amount"] = 25, 
+      ["img"] = "ore", 
+      ["frame"] = 3, 
+      ["variation"] = 1,
+      ["refineamount"] = 100, 
+      ["refineliquid"] = 50, 
+      ["probability"] = 0.10,
+      ["tint"] = true
+    }
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, SimpleSilicon_ore)
+end
+
 -- somehow table.count doesn't exists in lua and you have to do it yourself
 vtk_deepcoremining_supported_ores_count = 0
   
