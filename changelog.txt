@@ -1,6 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.20.1
+Date: 17.06.2020
+  Changes:
+    - Made a whoopsy, fixed iron, copper, coal, stone and uranium missing custom patch icons.
+---------------------------------------------------------------------------------------------------
 Version: 1.20.0
-Date: 13.06.2020
+Date: 17.06.2020
   Changes:
     - Fixed pollution emission of deep core mining drills, they were emitting none, DCMD emits 100 and ADCMD 1000 per minute.
     - Reduced DCMDrills sound volume a bit.
