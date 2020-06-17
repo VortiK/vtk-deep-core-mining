@@ -176,7 +176,7 @@ function spawn_ore_patch_on_depleted_ore(event)
         
         if number == 1 and entitiesCount == 0 then
             oreamount = math.random(minrichness, maxrichness)
-            newOreEntity = surface.create_entity({name = orePatchToSpawn, amount = oreamount, position = ore.position, force = game.forces.neutral, raise_built = true})
+            local newOreEntity = surface.create_entity({name = orePatchToSpawn, amount = oreamount, position = ore.position, force = game.forces.neutral, raise_built = true})
         end
     end
   
