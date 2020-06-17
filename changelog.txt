@@ -3,8 +3,12 @@ Version: 1.20.0
 Date: 13.06.2020
   Changes:
     - Fixed pollution emission of deep core mining drills, they were emitting none, DCMD emits 100 and ADCMD 1000 per minute.
-    - Fixed Manual DCMDrone tool that was not mining ore patches anymore.
-    - Improved some icons from 32px to 64px, DCMD, ADCMD, DCMdrone and tool.
+    - Reduced DCMDrills sound volume a bit.
+    - DCMD don't require a pump to inject fluid anymore, was more confusing than anything.
+    - Added machine working tint for refining to all ores according to their ore tint, makes colored chemical plan smokes according to the ore refining.
+    - Improved some icons from 32px to 64px, DCMD, ADCMD, DCMdrone, tool and ores.
+    - All deep core ores items now use the generic deep core ore chunk icon that is partly tinted to the ore.
+    - Generic tinted deep ore chunk have now 8 new variations for items in the world (in belts and droped on the ground).
     - Added support for Krastorio 2 Rare Metals ore.
 ---------------------------------------------------------------------------------------------------
 Version: 1.19.0

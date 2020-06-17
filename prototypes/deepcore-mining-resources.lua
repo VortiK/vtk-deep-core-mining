@@ -137,7 +137,7 @@ local function resource_patch_maker(
         tint = oretint
       }
     },
-    icon_size = 32,
+    icon_size = 64,
     flags = {"placeable-neutral"},
     category = "vtk-deepcore-mining-ore-patch",
     order = "a-b-a",
@@ -281,7 +281,7 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     ore,                                                -- ore_name
     oredata.result.."-patch",                           -- ore_patch_name
     oredata.result,                                     -- ore_result
-    oredata.img,                                        -- ore image name (icon, entity, hrentity)
+    oredata.patchimg,                                        -- ore image name (icon, entity, hrentity)
     oredata.frame,                                      -- frame
     oredata.variation,                                  -- variation
     data.raw.resource[ore].minable['mining_time'],      -- miningtime,

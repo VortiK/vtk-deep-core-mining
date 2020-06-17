@@ -38,7 +38,7 @@ data:extend({
         type = "item",
         name = "vtk-deepcore-mining-ore-chunk",
         icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk.png",
-        icon_size = 32,
+        icon_size = 64,
         subgroup = "raw-resource",
         order = "vz[vtk-deepcore-mining-ore-chunk]",
         stack_size = 100
@@ -56,23 +56,38 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     end
   end
   
-  local ore_patch = 
+  local ore_chunk = 
   {
     type = "item",
-    name = "vtk-deepcore-mining-"..ore.."-chunk",
+    name = "vtk-deepcore-mining-"..oredata.result.."-chunk",
     icons = {
-      {
-        icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk.png",
-        tint = oretint
-      }
+        {
+            icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon.png",
+        },
+        {
+            icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon-layer.png",
+            tint = oretint
+        },
     },
-    icon_size = 32,
+    icon_size = 64,
+    mipmap_count = 8,
+    pictures =
+    {
+      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk.png", scale = 0.25, mipmap_count = 3, tint = oretint },
+      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-1.png", scale = 0.25, mipmap_count = 3, tint = oretint },
+      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-2.png", scale = 0.25, mipmap_count = 3, tint = oretint },
+      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-3.png", scale = 0.25, mipmap_count = 3, tint = oretint },
+      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-4.png", scale = 0.25, mipmap_count = 3, tint = oretint },
+      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-5.png", scale = 0.25, mipmap_count = 3, tint = oretint },
+      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-6.png", scale = 0.25, mipmap_count = 3, tint = oretint },
+      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-7.png", scale = 0.25, mipmap_count = 3, tint = oretint },
+    },
     subgroup = "raw-resource",
     order = "va[vtk-deepcore-mining-chunk-"..i.."]",
     stack_size = 100
   }
   data:extend({
-    ore_patch, 
+    ore_chunk, 
   })
   i = i + 1
 end
@@ -167,9 +182,9 @@ data:extend({
           },
           {
             icon = "__vtk-deep-core-mining__/graphics/icons/acid.png"
-          }
+          },
         },
-        icon_size = 32,
+        icon_size = 64,
         subgroup = "intermediate-product",
         order = "v[vtk-deepcore-mining]-a[deepcore-ore-processing]",
         main_product = "",
@@ -189,14 +204,14 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
         oreprobability = oredata.probability * 0.75
     end
 
-    table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..ore.."-chunk", probability = oreprobability, amount = 10 })
+    table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = oreprobability, amount = 10 })
 
     -- on the fly focus deep core chunk refining recipes creation
     local ore_chunk_focus_recipe = table.deepcopy(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining'])
-    ore_chunk_focus_recipe.name = 'vtk-deepcore-mining-ore-chunk-refining-'..ore..'-focus'
+    ore_chunk_focus_recipe.name = 'vtk-deepcore-mining-ore-chunk-refining-'..oredata.result..'-focus'
     -- focused refining is wasteful and will only get half the result amount compared to the non focused refining method but guarrantee the ore type refinied
     ore_chunk_focus_recipe.ingredients = {{"vtk-deepcore-mining-ore-chunk", 200}, {"vtk-deepcore-mining-drone", 1}}
-    ore_chunk_focus_recipe.results = {{name = "vtk-deepcore-mining-"..ore.."-chunk", amount = math.ceil(6 * (oredata.refineamount / 200) * oreprobability)}}
+    ore_chunk_focus_recipe.results = {{name = "vtk-deepcore-mining-"..oredata.result.."-chunk", amount = math.ceil(6 * (oredata.refineamount / 200) * oreprobability)}}
 
     -- tint "generic" ores (like bobs)
     local oretint = nil
@@ -206,7 +221,21 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
         else
             oretint = data.raw.resource[ore].map_color
         end
-        table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-focus.png", tint = oretint})
+        
+        -- table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-focus.png", tint = oretint})
+        table.insert(ore_chunk_focus_recipe.icons, 
+            {
+              icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon.png",
+              scale = 0.25,
+              shift = {-10, 10},
+            })
+        table.insert(ore_chunk_focus_recipe.icons, 
+            {
+              icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon-layer.png",
+              scale = 0.25,
+              shift = {-10, 10},
+              tint = oretint,
+            })
     else
         table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-focus.png"})
     end
@@ -220,32 +249,36 @@ local function chunk_refining_recipe_maker(
   result_amount, 
   refining_liquid, 
   refining_liquid_amount, 
-  oretint
+  oretint,
+  machinetint
 )
     local recipe =
     {
         type = "recipe",
-        name = "vtk-deepcore-mining-"..ore_name.."-chunk-refining",
+        name = "vtk-deepcore-mining-"..refining_result.."-chunk-refining",
         enabled = false,
         energy_required = 5,
         category = "chemistry",
         subgroup = "raw-material",
         ingredients = 
         {
-            {"vtk-deepcore-mining-"..ore_name.."-chunk", 1},
+            {"vtk-deepcore-mining-"..refining_result.."-chunk", 1},
             {type="fluid", name=refining_liquid, amount=refining_liquid_amount},
         },
         main_product = "", -- to force use of recipe locales and icons instead of result's
         icons = {
           {
-            icon = "__vtk-deep-core-mining__/graphics/icons/"..ore_icon.."-chunk-refining.png", 
+            icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon.png",
+          },
+          {
+            icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon-layer.png",
             tint = oretint
           },
           {
             icon = "__vtk-deep-core-mining__/graphics/icons/acid.png",
           }
         },
-        icon_size = 32,
+        icon_size = 64,
         results = 
         {
             {type="item", name=refining_result, amount=result_amount},
@@ -266,12 +299,14 @@ end
 
 for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   local oretint = nil
+  local machinetint = nil
+  if data.raw.resource[ore].tint then
+    machinetint = data.raw.resource[ore].tint
+  else
+    machinetint = data.raw.resource[ore].map_color
+  end
   if oredata.tint then
-    if data.raw.resource[ore].tint then
-        oretint = data.raw.resource[ore].tint
-    else
-        oretint = data.raw.resource[ore].map_color
-    end
+    oretint = machinetint
   end
   
   local ore_chunk_refining_recipe = chunk_refining_recipe_maker(
@@ -281,13 +316,14 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     oredata.refineamount, -- result amount
     sulfuricacidname,     -- refining liquid
     oredata.refineliquid, -- refining liquid amount
-    oretint               -- tint
+    oretint,               -- tint
+    machinetint           -- machinetint
     -- {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
-)
+  )
 
-data:extend({
+  data:extend({
     ore_chunk_refining_recipe
-})
+  })
 end
 
 -- entity
@@ -327,7 +363,8 @@ data:extend({
             pipe_covers = pipecoverspictures(),
             base_area = 10, -- = x 100 fluid storage
             --height = 10, -- ??
-            base_level = 1,-- so it requires a pump to inject
+            --base_level = 1,-- so it requires a pump to inject
+            base_level = 0,
             pipe_connections =
             {
                 { position = {1, 3} },
@@ -428,7 +465,7 @@ data:extend({
             sound =
             {
                 filename = "__base__/sound/electric-mining-drill.ogg",
-                volume = 1.5
+                volume = 1.25
             },
             match_speed_to_activity = true,
             apparent_volume = 2.5,
@@ -500,7 +537,8 @@ data:extend({
             pipe_covers = pipecoverspictures(),
             base_area = 100, -- = x 100 fluid storage
             --height = 10, -- ??
-            base_level = 1,-- so it requires a pump to inject
+            -- base_level = 1,-- so it requires a pump to inject
+            base_level = 0,
             pipe_connections =
             {
                 { position = {-5, 3} },
@@ -547,17 +585,17 @@ data:extend({
             activate_sound =
             {
                 filename = "__vtk-deep-core-mining__/sounds/advdeepcore_start.ogg",
-                volume = 2
+                volume = 1
             },
             deactivate_sound =
             {
                 filename = "__vtk-deep-core-mining__/sounds/advdeepcore_stop.ogg",
-                volume = 2
+                volume = 1
             },
             sound =
             {
                 filename = "__vtk-deep-core-mining__/sounds/advdeepcore_working.ogg",
-                volume = 2
+                volume = 1
             },
             -- match_volume_to_activity = true,
             match_speed_to_activity = true,

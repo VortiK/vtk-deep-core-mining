@@ -355,7 +355,7 @@ if mods["Krastorio2"] then
   data:extend({
   {
     type = "bool-setting",
-    name = "vtk-deep-core-mining-spawn-rare-metals-patch",
+    name = "vtk-deep-core-mining-spawn-raw-rare-metals-patch",
     setting_type = "runtime-global",
     default_value = true,
     per_user = false,

@@ -3,55 +3,60 @@ if not vtk_deepcoremining_supported_ores then vtk_deepcoremining_supported_ores 
 vtk_deepcoremining_supported_ores = {
   ["iron-ore"] = {
     ["result"] = "iron-ore",
-    ["img"] = "iron-ore", 
+    ["img"] = "ore", 
+    ["patchimg"] = "iron-ore", 
     ["frame"] = 3, 
     ["variation"] = 1,
     ["refineamount"] = 200, 
     ["refineliquid"] = 50, 
     ["probability"] = 0.30,
-    ["tint"] = false
+    ["tint"] = true
   },
   ["copper-ore"] = {
     ["result"] = "copper-ore", 
-    ["img"] = "copper-ore", 
+    ["img"] = "ore", 
+    ["patchimg"] = "copper-ore", 
     ["frame"] = 3,
     ["variation"] = 1,
     ["refineamount"] = 100, 
     ["refineliquid"] = 50, 
     ["probability"] = 0.30,
-    ["tint"] = false
+    ["tint"] = true
   },
   ["coal"] = {
     ["result"] = "coal", 
-    ["img"] = "coal", 
+    ["img"] = "ore", 
+    ["patchimg"] = "coal", 
     ["frame"] = 3,
     ["variation"] = 1,
     ["refineamount"] = 50, 
     ["refineliquid"] = 10, 
     ["probability"] = 0.15,
-    ["tint"] = false
+    ["tint"] = true
   },
   ["stone"] = {
     ["result"] = "stone", 
-    ["img"] = "stone", 
+    ["img"] = "ore", 
+    ["patchimg"] = "stone", 
     ["frame"] = 3,
     ["variation"] = 1,
     ["refineamount"] = 50, 
     ["refineliquid"] = 10, 
     ["probability"] = 0.15,
-    ["tint"] = false
+    ["tint"] = true
   },
   ["uranium-ore"] = {
     ["result"] = "uranium-ore", 
     ["mining-liquid"] = "sulfuric-acid", 
     ["mining-liquid-amount"] = 100, 
-    ["img"] = "uranium-ore", 
+    ["img"] = "ore", 
+    ["patchimg"] = "uranium-ore", 
     ["frame"] = 3, 
     ["variation"] = 1,
     ["refineamount"] = 10, 
     ["refineliquid"] = 400, 
     ["probability"] = 0.15,
-    ["tint"] = false
+    ["tint"] = true
   }
 }
 
@@ -63,6 +68,7 @@ if mods["SimpleSilicon"] then
       ["mining-liquid"] = "water", 
       ["mining-liquid-amount"] = 400, 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 3, 
       ["variation"] = 1,
       ["refineamount"] = 75, 
@@ -80,6 +86,7 @@ if mods.angelsrefining then
     ["angels-ore1"] = {
       ["result"] = "angels-ore1", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 3, 
       ["variation"] = 1,
       ["refineamount"] = 200, 
@@ -90,6 +97,7 @@ if mods.angelsrefining then
     ["angels-ore2"] = {
       ["result"] = "angels-ore2", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 3, 
       ["variation"] = 1,
       ["refineamount"] = 200, 
@@ -100,6 +108,7 @@ if mods.angelsrefining then
     ["angels-ore3"] = {
       ["result"] = "angels-ore3", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 3, 
       ["variation"] = 1,
       ["refineamount"] = 100, 
@@ -110,6 +119,7 @@ if mods.angelsrefining then
     ["angels-ore4"] = {
       ["result"] = "angels-ore4", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 3, 
       ["variation"] = 1,
       ["refineamount"] = 100, 
@@ -124,6 +134,7 @@ if mods.angelsrefining then
       ["angels-ore5"] = {
         ["result"] = "angels-ore5", 
         ["img"] = "ore", 
+        ["patchimg"] = "ore", 
         ["frame"] = 3, 
         ["variation"] = 1,
         ["refineamount"] = 100, 
@@ -134,6 +145,7 @@ if mods.angelsrefining then
       ["angels-ore6"] = {
         ["result"] = "angels-ore6", 
         ["img"] = "ore", 
+        ["patchimg"] = "ore", 
         ["frame"] = 3, 
         ["variation"] = 1,
         ["refineamount"] = 100, 
@@ -150,6 +162,7 @@ if mods.angelsrefining then
       ["clowns-ore1"] = {
         ["result"] = "clowns-ore1", 
         ["img"] = "ore", 
+        ["patchimg"] = "ore", 
         ["frame"] = 4,
         ["variation"] = 3,
         ["refineamount"] = 25, 
@@ -160,6 +173,7 @@ if mods.angelsrefining then
       ["clowns-ore2"] = {
         ["result"] = "clowns-ore2", 
         ["img"] = "ore", 
+        ["patchimg"] = "ore", 
         ["frame"] = 4,
         ["variation"] = 3,
         ["refineamount"] = 75, 
@@ -170,6 +184,7 @@ if mods.angelsrefining then
       ["clowns-ore3"] = {
         ["result"] = "clowns-ore3", 
         ["img"] = "ore", 
+        ["patchimg"] = "ore", 
         ["frame"] = 4,
         ["variation"] = 3,
         ["refineamount"] = 75, 
@@ -180,6 +195,7 @@ if mods.angelsrefining then
       ["clowns-ore4"] = {
         ["result"] = "clowns-ore4", 
         ["img"] = "ore", 
+        ["patchimg"] = "ore", 
         ["frame"] = 4,
         ["variation"] = 3,
         ["refineamount"] = 75, 
@@ -190,6 +206,7 @@ if mods.angelsrefining then
       ["clowns-ore5"] = {
         ["result"] = "clowns-ore5", 
         ["img"] = "ore", 
+        ["patchimg"] = "ore", 
         ["frame"] = 4,
         ["variation"] = 3,
         ["refineamount"] = 75, 
@@ -200,6 +217,7 @@ if mods.angelsrefining then
       ["clowns-ore6"] = {
         ["result"] = "clowns-ore6", 
         ["img"] = "ore", 
+        ["patchimg"] = "ore", 
         ["frame"] = 4,
         ["variation"] = 3,
         ["refineamount"] = 50, 
@@ -210,6 +228,7 @@ if mods.angelsrefining then
       ["clowns-ore7"] = {
         ["result"] = "clowns-ore7", 
         ["img"] = "ore", 
+        ["patchimg"] = "ore", 
         ["frame"] = 4,
         ["variation"] = 3,
         ["refineamount"] = 50, 
@@ -230,6 +249,7 @@ if not mods.angelsrefining and mods.bobores then
     ["tin-ore"] = {
       ["result"] = "tin-ore", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -240,6 +260,7 @@ if not mods.angelsrefining and mods.bobores then
     ["lead-ore"] = {
       ["result"] = "lead-ore", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -250,6 +271,7 @@ if not mods.angelsrefining and mods.bobores then
     ["quartz"] =  {
       ["result"] = "quartz", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -260,6 +282,7 @@ if not mods.angelsrefining and mods.bobores then
     ["silver-ore"] = {
       ["result"] = "silver-ore", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -270,6 +293,7 @@ if not mods.angelsrefining and mods.bobores then
     ["zinc-ore"] = {
       ["result"] = "zinc-ore", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -280,6 +304,7 @@ if not mods.angelsrefining and mods.bobores then
     ["gold-ore"] = {
       ["result"] = "gold-ore", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -290,6 +315,7 @@ if not mods.angelsrefining and mods.bobores then
     ["bauxite-ore"] = {
       ["result"] = "bauxite-ore", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -300,6 +326,7 @@ if not mods.angelsrefining and mods.bobores then
     ["rutile-ore"] = {
       ["result"] = "rutile-ore", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -310,6 +337,7 @@ if not mods.angelsrefining and mods.bobores then
     ["tungsten-ore"] = {
       ["result"] = "tungsten-ore", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -320,6 +348,7 @@ if not mods.angelsrefining and mods.bobores then
     ["thorium-ore"] = {
       ["result"] = "thorium-ore", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -330,6 +359,7 @@ if not mods.angelsrefining and mods.bobores then
     ["nickel-ore"] = {
       ["result"] = "nickel-ore", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -340,6 +370,7 @@ if not mods.angelsrefining and mods.bobores then
     ["cobalt-ore"] = {
       ["result"] = "cobalt-ore", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -350,6 +381,7 @@ if not mods.angelsrefining and mods.bobores then
     ["sulfur"] = {
       ["result"] = "sulfur", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -360,6 +392,7 @@ if not mods.angelsrefining and mods.bobores then
     ["gem-ore"] = {
       ["result"] = "gem-ore", 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 4, 
       ["variation"] = 3,
       ["refineamount"] = 200, 
@@ -373,12 +406,13 @@ end
 
 -- Krastorio 2 Rare Metals ore support
 if mods["Krastorio2"] then
-  local SimpleSilicon_ore = {
+  local Krastorio2_ore = {
     ["rare-metals"] = {
       ["result"] = "raw-rare-metals", 
       ["mining-liquid"] = "chlorine", 
       ["mining-liquid-amount"] = 25, 
       ["img"] = "ore", 
+      ["patchimg"] = "ore", 
       ["frame"] = 3, 
       ["variation"] = 1,
       ["refineamount"] = 100, 
@@ -387,12 +421,12 @@ if mods["Krastorio2"] then
       ["tint"] = true
     }
   }
-  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, SimpleSilicon_ore)
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, Krastorio2_ore)
 end
 
 -- somehow table.count doesn't exists in lua and you have to do it yourself
 vtk_deepcoremining_supported_ores_count = 0
-  
+
 for k,v in pairs(vtk_deepcoremining_supported_ores) do
   vtk_deepcoremining_supported_ores_count = vtk_deepcoremining_supported_ores_count + 1
 end

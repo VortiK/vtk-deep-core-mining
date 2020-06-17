@@ -307,7 +307,7 @@ function remove_ore_patch(player, surface, area, entities)
         if entity.name == "vtk-deepcore-mining-crack" then
           surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-ore-chunk", count = amountospawn}, true)
         
-        elseif (game.entity_prototypes[entity.name].resource_category == "vtk-deepcore-mining-ore-patch") then
+        elseif (entity.prototype.resource_category == "vtk-deepcore-mining-ore-patch") then
           local chunk = string.sub(entity.name, 1, -7) -- "iron-ore-patch"
           surface.spill_item_stack(entity.position, {name="vtk-deepcore-mining-"..chunk.."-chunk", count = amountospawn}, true)
 
