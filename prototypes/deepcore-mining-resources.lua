@@ -281,7 +281,7 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     ore,                                                -- ore_name
     oredata.result.."-patch",                           -- ore_patch_name
     oredata.result,                                     -- ore_result
-    oredata.patchimg,                                        -- ore image name (icon, entity, hrentity)
+    oredata.patchimg,                                   -- ore image name (icon, entity, hrentity)
     oredata.frame,                                      -- frame
     oredata.variation,                                  -- variation
     data.raw.resource[ore].minable['mining_time'],      -- miningtime,

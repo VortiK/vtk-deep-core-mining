@@ -33,7 +33,13 @@ The idea is to repurpose old mining outpost when ore is depleted. So the infrast
 - Bilka's New Game Plus : https://mods.factorio.com/mod/NewGamePlus
 - Arcitos's Simple Silicon : https://mods.factorio.com/mod/SimpleSilicon
 - Krastorio 2's Rare Metals : https://mods.factorio.com/mod/Krastorio2
-- Other mods support depending on request !
+
+Compatibility contribution provided by DarkShadow44 https://github.com/DarkShadow44 : 
+- Leighzer's Morphite : https://mods.factorio.com/mod/leighzermorphite
+- Pyanodons Raw Ores : https://mods.factorio.com/mod/pyrawores
+- Pyanodons Coal Processing : https://mods.factorio.com/mod/pycoalprocessing
+
+Other mods support depending on request !
 
 ## Credits
 - Deep Core Mining is powered by the Factorio Standard Library Project : https://github.com/Afforess/Factorio-Stdlib

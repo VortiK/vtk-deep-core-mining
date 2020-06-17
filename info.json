@@ -1,10 +1,10 @@
 {
   "name": "vtk-deep-core-mining",
-  "version": "1.20.1",
+  "version": "1.21.0",
   "title": "VortiK's Deep core mining",
   "author": "VortiK",
   "homepage": "",
-  "description": "Adds variation of vanilla resources to mine when ore fields are depleted with an advanced mining drill to upgrade mining outposts and provide source of expensive but steady infinite ore. Adds an high tech infinite ore mining from rare deep core cracks spawned in the world that require heavy refining. Supports Angel's Ores, Bob's Ores, Mad Clown's Extended Minerals, Dirty Mining, Simple Silicon quartz, Krastorio 2 Rare Metal. Incompatible with Industrial Revolution for now.",
+  "description": "Adds variation of vanilla resources to mine when ore fields are depleted with an advanced mining drill to upgrade mining outposts and provide source of expensive but steady infinite ore. Adds an high tech infinite ore mining from rare deep core cracks spawned in the world that require heavy refining. Supports Angel's Ores, Bob's Ores, Mad Clown's Extended Minerals, Dirty Mining, Simple Silicon quartz, Krastorio 2 Rare Metal, Leighzer's Morphite, Pyanodons Raw Ores, Pyanodons Coal Processing. Incompatible with Industrial Revolution for now.",
   "factorio_version": "0.18",
   "dependencies": [
     "base >= 0.18", 
@@ -17,6 +17,9 @@
     "? SimpleSilicon >= 1.2.0",
     "? aai-vehicle-miner >= 0.4.2",
     "? Krastorio2 >= 0.9.22",
+    "? leighzermorphite >= 0.3.3",
+    "? pyrawores >= 2.0.7",
+    "? pycoalprocessing >= 1.7.7",
     "!IndustrialRevolution"
   ]
 }

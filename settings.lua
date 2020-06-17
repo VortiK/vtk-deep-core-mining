@@ -363,3 +363,117 @@ if mods["Krastorio2"] then
   },
 })
 end
+
+-- Leighzer's Morphite support
+if mods.leighzermorphite then
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-morphite-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "he1"
+    },
+  })
+end
+
+-- Pyanodons Raw Ores support
+if mods.pyrawores then
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-ore-tin-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hf1"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-ore-quartz-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hf2"
+    },
+	{
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-ore-aluminium-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hf3"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-ore-chromium-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hf4"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-ore-lead-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hf5"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-ore-nickel-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hf6"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-raw-coal-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hf7"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-ore-titanium-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hf8"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-ore-zinc-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hf9"
+    },
+  })
+end
+
+-- Pyanodons Coal Processing support
+if mods.pycoalprocessing then
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-raw-borax-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hf10"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-niobium-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hf11"
+    },
+  })
+end

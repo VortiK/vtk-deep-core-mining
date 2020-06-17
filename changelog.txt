@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.21.0
+Date: 17.06.2020
+  Changes:
+    - Added support to new mods ores kindly provided by DarkShadow44 https://github.com/DarkShadow44
+    - Leighzer's Morphite : https://mods.factorio.com/mod/leighzermorphite
+    - Pyanodons Raw Ores : https://mods.factorio.com/mod/pyrawores
+    - Pyanodons Coal Processing : https://mods.factorio.com/mod/pycoalprocessing
+---------------------------------------------------------------------------------------------------
 Version: 1.20.1
 Date: 17.06.2020
   Changes:

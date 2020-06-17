@@ -413,8 +413,8 @@ if mods["Krastorio2"] then
       ["mining-liquid-amount"] = 25, 
       ["img"] = "ore", 
       ["patchimg"] = "ore", 
-      ["frame"] = 3, 
-      ["variation"] = 1,
+      ["frame"] = 4, 
+      ["variation"] = 3,
       ["refineamount"] = 100, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
@@ -422,6 +422,195 @@ if mods["Krastorio2"] then
     }
   }
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, Krastorio2_ore)
+end
+
+-- Leighzer's Morphite support
+if mods.leighzermorphite then
+  local leighzermorphite = {
+    ["morphite-ore"] = {
+      ["result"] = "morphite-ore",
+      ["img"] = "ore",
+      ["patchimg"] = "ore", 
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, leighzermorphite)
+end
+
+-- Pyanodons Raw Ores support
+if mods.pyrawores then
+  local pyrawores = {
+    ["ore-tin"] = {
+      ["result"] = "ore-tin",
+      ["mining-liquid"] = "steam",
+      ["mining-liquid-amount"] = 100,
+      ["img"] = "ore",
+      ["patchimg"] = "ore", 
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 1600,
+      ["refineliquid2_name"] = "steam",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-quartz"] = {
+      ["result"] = "ore-quartz",
+      ["img"] = "ore",
+      ["patchimg"] = "ore", 
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-aluminium"] = {
+      ["result"] = "ore-aluminium",
+      ["mining-liquid"] = "coal-gas",
+      ["mining-liquid-amount"] = 100,
+      ["img"] = "ore",
+      ["patchimg"] = "ore", 
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 2000,
+      ["refineliquid2_name"] = "coal-gas",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-chromium"] = {
+      ["result"] = "ore-chromium",
+      ["mining-liquid"] = "syngas",
+      ["mining-liquid-amount"] = 40,
+      ["img"] = "ore",
+      ["patchimg"] = "ore", 
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 1000,
+      ["refineliquid2_name"] = "syngas",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-lead"] = {
+      ["result"] = "ore-lead",
+      ["mining-liquid"] = "acetylene",
+      ["mining-liquid-amount"] = 100,
+      ["img"] = "ore",
+      ["patchimg"] = "ore", 
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 2000,
+      ["refineliquid2_name"] = "acetylene",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-nickel"] = {
+      ["result"] = "ore-nickel",
+      ["mining-liquid"] = "syngas",
+      ["mining-liquid-amount"] = 40,
+      ["img"] = "ore",
+      ["patchimg"] = "ore", 
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 1000,
+      ["refineliquid2_name"] = "syngas",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["raw-coal"] = {
+      ["result"] = "raw-coal",
+      ["img"] = "ore",
+      ["patchimg"] = "ore", 
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-titanium"] = {
+      ["result"] = "ore-titanium",
+      ["mining-liquid"] = "acetylene",
+      ["mining-liquid-amount"] = 40,
+      ["img"] = "ore",
+      ["patchimg"] = "ore", 
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 1000,
+      ["refineliquid2_name"] = "acetylene",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["ore-zinc"] = {
+      ["result"] = "ore-zinc",
+      ["mining-liquid"] = "syngas",
+      ["mining-liquid-amount"] = 40,
+      ["img"] = "ore",
+      ["patchimg"] = "ore", 
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 1000,
+      ["refineliquid2_name"] = "syngas",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, pyrawores)
+end
+
+-- Pyanodons Coal Processing support
+if mods.pycoalprocessing then
+  local pycoalprocessing = {
+    ["borax"] = {
+      ["result"] = "raw-borax",
+      ["mining-liquid"] = "syngas",
+      ["mining-liquid-amount"] = 50,
+      ["img"] = "ore",
+      ["patchimg"] = "ore", 
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 800,
+      ["refineliquid2_name"] = "syngas",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+    ["niobium"] = {
+      ["result"] = "niobium-ore",
+      ["mining-liquid"] = "refsyngas",
+      ["mining-liquid-amount"] = 60,
+      ["img"] = "ore",
+      ["patchimg"] = "ore", 
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 200,
+      ["refineliquid"] = 200,
+      ["refineliquid2"] = 2000,
+      ["refineliquid2_name"] = "refsyngas",
+      ["probability"] = 0.10,
+      ["tint"] = true
+    },
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, pycoalprocessing)
 end
 
 -- somehow table.count doesn't exists in lua and you have to do it yourself

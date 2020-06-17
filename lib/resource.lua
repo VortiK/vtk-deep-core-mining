@@ -81,6 +81,39 @@ function get_patchable_ores()
   if game.active_mods["Krastorio2"] then
     patchableOres = table.merge(patchableOres, {["rare-metals"] = "raw-rare-metals"})
   end
+  
+  -- Leighzer's Morphite support
+  if game.active_mods["leighzermorphite"] then
+    local leighzermorphite = {
+      ["morphite-ore"] = "morphite-ore",
+    }
+    patchableOres = table.merge(patchableOres, leighzermorphite)
+  end
+
+  -- Pyanodons Raw Ores support
+  if game.active_mods["pyrawores"] then
+    local pyrawores = {
+      ["ore-tin"] = "ore-tin",
+      ["ore-quartz"] = "ore-quartz",
+      ["ore-aluminium"] = "ore-aluminium",
+      ["ore-chromium"] = "ore-chromium",
+      ["ore-lead"] = "ore-lead",
+      ["ore-nickel"] = "ore-nickel",
+      ["raw-coal"] = "raw-coal",
+      ["ore-titanium"] = "ore-titanium",
+      ["ore-zinc"] = "ore-zinc",
+    }
+    patchableOres = table.merge(patchableOres, pyrawores)
+  end
+
+  -- Pyanodons Coal Processing support
+  if game.active_mods["pycoalprocessing"] then
+    local pycoalprocessing = {
+      ["borax"] = "raw-borax",
+      ["niobium"] = "niobium-ore",
+    }
+    patchableOres = table.merge(patchableOres, pycoalprocessing)
+  end
 
   return patchableOres
 end
