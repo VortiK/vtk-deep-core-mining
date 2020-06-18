@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.22.0
+Date: 18.06.2020
+  Changes:
+    - Fixed vanilla ore patches being tinted as they have custom gfx.
+    - When Angel's Refining is present, vanilla ores are now removed from DCM except for Coal and Uranium that are always present.
+    - Fixed typo in Angel's locales for Bobmnium and Crotinium.
+    - Fixed DMCDrills sounds not working.
+---------------------------------------------------------------------------------------------------
 Version: 1.21.1
 Date: 17.06.2020
   Changes:

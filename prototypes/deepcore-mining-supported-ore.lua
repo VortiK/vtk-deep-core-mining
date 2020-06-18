@@ -1,28 +1,47 @@
 if not vtk_deepcoremining_supported_ores then vtk_deepcoremining_supported_ores = {} end
 
-vtk_deepcoremining_supported_ores = {
-  ["iron-ore"] = {
-    ["result"] = "iron-ore",
-    ["img"] = "ore", 
-    ["patchimg"] = "iron-ore", 
-    ["frame"] = 3, 
-    ["variation"] = 1,
-    ["refineamount"] = 200, 
-    ["refineliquid"] = 50, 
-    ["probability"] = 0.30,
-    ["tint"] = true
-  },
-  ["copper-ore"] = {
-    ["result"] = "copper-ore", 
-    ["img"] = "ore", 
-    ["patchimg"] = "copper-ore", 
-    ["frame"] = 3,
-    ["variation"] = 1,
-    ["refineamount"] = 100, 
-    ["refineliquid"] = 50, 
-    ["probability"] = 0.30,
-    ["tint"] = true
-  },
+if not mods.angelsrefining then
+  vtk_deepcoremining_supported_ores = {
+    ["iron-ore"] = {
+      ["result"] = "iron-ore",
+      ["img"] = "ore", 
+      ["patchimg"] = "iron-ore", 
+      ["frame"] = 3, 
+      ["variation"] = 1,
+      ["refineamount"] = 200, 
+      ["refineliquid"] = 50, 
+      ["probability"] = 0.30,
+      ["tint"] = true,
+      ["patchtint"] = false
+    },
+    ["copper-ore"] = {
+      ["result"] = "copper-ore", 
+      ["img"] = "ore", 
+      ["patchimg"] = "copper-ore", 
+      ["frame"] = 3,
+      ["variation"] = 1,
+      ["refineamount"] = 100, 
+      ["refineliquid"] = 50, 
+      ["probability"] = 0.30,
+      ["tint"] = true,
+      ["patchtint"] = false
+    },
+    ["stone"] = {
+      ["result"] = "stone", 
+      ["img"] = "ore", 
+      ["patchimg"] = "stone", 
+      ["frame"] = 3,
+      ["variation"] = 1,
+      ["refineamount"] = 50, 
+      ["refineliquid"] = 10, 
+      ["probability"] = 0.15,
+      ["tint"] = true,
+      ["patchtint"] = false
+    }
+  }
+end
+
+local alwaysthereore = {
   ["coal"] = {
     ["result"] = "coal", 
     ["img"] = "ore", 
@@ -32,18 +51,8 @@ vtk_deepcoremining_supported_ores = {
     ["refineamount"] = 50, 
     ["refineliquid"] = 10, 
     ["probability"] = 0.15,
-    ["tint"] = true
-  },
-  ["stone"] = {
-    ["result"] = "stone", 
-    ["img"] = "ore", 
-    ["patchimg"] = "stone", 
-    ["frame"] = 3,
-    ["variation"] = 1,
-    ["refineamount"] = 50, 
-    ["refineliquid"] = 10, 
-    ["probability"] = 0.15,
-    ["tint"] = true
+    ["tint"] = true,
+    ["patchtint"] = false
   },
   ["uranium-ore"] = {
     ["result"] = "uranium-ore", 
@@ -56,9 +65,11 @@ vtk_deepcoremining_supported_ores = {
     ["refineamount"] = 10, 
     ["refineliquid"] = 400, 
     ["probability"] = 0.15,
-    ["tint"] = true
+    ["tint"] = true,
+    ["patchtint"] = false
   }
 }
+vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, alwaysthereore)
 
 -- SimpleSilicon's ore support
 if mods["SimpleSilicon"] then
@@ -74,7 +85,8 @@ if mods["SimpleSilicon"] then
       ["refineamount"] = 75, 
       ["refineliquid"] = 20, 
       ["probability"] = 0.20,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     }
   }
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, SimpleSilicon_ore)
@@ -92,7 +104,8 @@ if mods.angelsrefining then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.30,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["angels-ore2"] = {
       ["result"] = "angels-ore2", 
@@ -103,7 +116,8 @@ if mods.angelsrefining then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.30,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["angels-ore3"] = {
       ["result"] = "angels-ore3", 
@@ -114,7 +128,8 @@ if mods.angelsrefining then
       ["refineamount"] = 100, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.30,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["angels-ore4"] = {
       ["result"] = "angels-ore4", 
@@ -125,7 +140,8 @@ if mods.angelsrefining then
       ["refineamount"] = 100, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.30,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
   }
 
@@ -140,7 +156,8 @@ if mods.angelsrefining then
         ["refineamount"] = 100, 
         ["refineliquid"] = 50, 
         ["probability"] = 0.30,
-        ["tint"] = true
+        ["tint"] = true,
+        ["patchtint"] = true
       },
       ["angels-ore6"] = {
         ["result"] = "angels-ore6", 
@@ -151,7 +168,8 @@ if mods.angelsrefining then
         ["refineamount"] = 100, 
         ["refineliquid"] = 50, 
         ["probability"] = 0.30,
-        ["tint"] = true
+        ["tint"] = true,
+        ["patchtint"] = true
       },
     }
     angelsores = table.merge(angelsores, angelsbobores)
@@ -168,7 +186,8 @@ if mods.angelsrefining then
         ["refineamount"] = 25, 
         ["refineliquid"] = 22, 
         ["probability"] = 0.07,
-        ["tint"] = true
+        ["tint"] = true,
+        ["patchtint"] = true
       },
       ["clowns-ore2"] = {
         ["result"] = "clowns-ore2", 
@@ -179,7 +198,8 @@ if mods.angelsrefining then
         ["refineamount"] = 75, 
         ["refineliquid"] = 37, 
         ["probability"] = 0.22,
-        ["tint"] = true
+        ["tint"] = true,
+        ["patchtint"] = true
       },
       ["clowns-ore3"] = {
         ["result"] = "clowns-ore3", 
@@ -190,7 +210,8 @@ if mods.angelsrefining then
         ["refineamount"] = 75, 
         ["refineliquid"] = 37, 
         ["probability"] = 0.22,
-        ["tint"] = true
+        ["tint"] = true,
+        ["patchtint"] = true
       },
       ["clowns-ore4"] = {
         ["result"] = "clowns-ore4", 
@@ -201,7 +222,8 @@ if mods.angelsrefining then
         ["refineamount"] = 75, 
         ["refineliquid"] = 37, 
         ["probability"] = 0.22,
-        ["tint"] = true
+        ["tint"] = true,
+        ["patchtint"] = true
       },
       ["clowns-ore5"] = {
         ["result"] = "clowns-ore5", 
@@ -212,7 +234,8 @@ if mods.angelsrefining then
         ["refineamount"] = 75, 
         ["refineliquid"] = 37, 
         ["probability"] = 0.22,
-        ["tint"] = true
+        ["tint"] = true,
+        ["patchtint"] = true
       },
       ["clowns-ore6"] = {
         ["result"] = "clowns-ore6", 
@@ -223,7 +246,8 @@ if mods.angelsrefining then
         ["refineamount"] = 50, 
         ["refineliquid"] = 25, 
         ["probability"] = 0.15,
-        ["tint"] = true
+        ["tint"] = true,
+        ["patchtint"] = true
       },
       ["clowns-ore7"] = {
         ["result"] = "clowns-ore7", 
@@ -234,7 +258,8 @@ if mods.angelsrefining then
         ["refineamount"] = 50, 
         ["refineliquid"] = 25, 
         ["probability"] = 0.15,
-        ["tint"] = true
+        ["tint"] = true,
+        ["patchtint"] = true
       },
     }
     angelsores = table.merge(angelsores, angelbobsclownsores)
@@ -255,7 +280,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["lead-ore"] = {
       ["result"] = "lead-ore", 
@@ -266,7 +292,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["quartz"] =  {
       ["result"] = "quartz", 
@@ -277,7 +304,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["silver-ore"] = {
       ["result"] = "silver-ore", 
@@ -288,7 +316,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["zinc-ore"] = {
       ["result"] = "zinc-ore", 
@@ -299,7 +328,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["gold-ore"] = {
       ["result"] = "gold-ore", 
@@ -310,7 +340,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["bauxite-ore"] = {
       ["result"] = "bauxite-ore", 
@@ -321,7 +352,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["rutile-ore"] = {
       ["result"] = "rutile-ore", 
@@ -332,7 +364,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["tungsten-ore"] = {
       ["result"] = "tungsten-ore", 
@@ -343,7 +376,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["thorium-ore"] = {
       ["result"] = "thorium-ore", 
@@ -354,7 +388,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["nickel-ore"] = {
       ["result"] = "nickel-ore", 
@@ -365,7 +400,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["cobalt-ore"] = {
       ["result"] = "cobalt-ore", 
@@ -376,7 +412,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["sulfur"] = {
       ["result"] = "sulfur", 
@@ -387,7 +424,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["gem-ore"] = {
       ["result"] = "gem-ore", 
@@ -398,7 +436,8 @@ if not mods.angelsrefining and mods.bobores then
       ["refineamount"] = 200, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
   }
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, bobores)
@@ -418,7 +457,8 @@ if mods["Krastorio2"] then
       ["refineamount"] = 100, 
       ["refineliquid"] = 50, 
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     }
   }
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, Krastorio2_ore)
@@ -436,7 +476,8 @@ if mods.leighzermorphite then
       ["refineamount"] = 200,
       ["refineliquid"] = 200,
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
   }
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, leighzermorphite)
@@ -458,7 +499,8 @@ if mods.pyrawores then
       ["refineliquid2"] = 1600,
       ["refineliquid2_name"] = "steam",
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["ore-quartz"] = {
       ["result"] = "ore-quartz",
@@ -469,7 +511,8 @@ if mods.pyrawores then
       ["refineamount"] = 200,
       ["refineliquid"] = 200,
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["ore-aluminium"] = {
       ["result"] = "ore-aluminium",
@@ -484,7 +527,8 @@ if mods.pyrawores then
       ["refineliquid2"] = 2000,
       ["refineliquid2_name"] = "coal-gas",
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["ore-chromium"] = {
       ["result"] = "ore-chromium",
@@ -499,7 +543,8 @@ if mods.pyrawores then
       ["refineliquid2"] = 1000,
       ["refineliquid2_name"] = "syngas",
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["ore-lead"] = {
       ["result"] = "ore-lead",
@@ -514,7 +559,8 @@ if mods.pyrawores then
       ["refineliquid2"] = 2000,
       ["refineliquid2_name"] = "acetylene",
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["ore-nickel"] = {
       ["result"] = "ore-nickel",
@@ -529,7 +575,8 @@ if mods.pyrawores then
       ["refineliquid2"] = 1000,
       ["refineliquid2_name"] = "syngas",
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["raw-coal"] = {
       ["result"] = "raw-coal",
@@ -540,7 +587,8 @@ if mods.pyrawores then
       ["refineamount"] = 200,
       ["refineliquid"] = 200,
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["ore-titanium"] = {
       ["result"] = "ore-titanium",
@@ -555,7 +603,8 @@ if mods.pyrawores then
       ["refineliquid2"] = 1000,
       ["refineliquid2_name"] = "acetylene",
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["ore-zinc"] = {
       ["result"] = "ore-zinc",
@@ -570,7 +619,8 @@ if mods.pyrawores then
       ["refineliquid2"] = 1000,
       ["refineliquid2_name"] = "syngas",
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
   }
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, pyrawores)
@@ -592,7 +642,8 @@ if mods.pycoalprocessing then
       ["refineliquid2"] = 800,
       ["refineliquid2_name"] = "syngas",
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
     ["niobium"] = {
       ["result"] = "niobium-ore",
@@ -607,7 +658,8 @@ if mods.pycoalprocessing then
       ["refineliquid2"] = 2000,
       ["refineliquid2_name"] = "refsyngas",
       ["probability"] = 0.10,
-      ["tint"] = true
+      ["tint"] = true,
+      ["patchtint"] = true
     },
   }
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, pycoalprocessing)

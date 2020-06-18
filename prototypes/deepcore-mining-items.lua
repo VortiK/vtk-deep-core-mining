@@ -1,3 +1,5 @@
+local sounds = require("__base__/prototypes/entity/demo-sounds")
+
 local sulfuricacidname = "sulfuric-acid"
 if mods["angelspetrochem"] then
     sulfuricacidname = "liquid-sulfuric-acid"
@@ -353,8 +355,10 @@ data:extend({
         selection_box = {{ -2.5, -2.5}, {2.5, 2.5}},
         drawing_box = {{-2.5, -2.5}, {2.5, 2.5}},
         
-        vehicle_impact_sound =    { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-        
+        vehicle_impact_sound = sounds.generic_impact,
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+
         mining_speed = 1,
         resource_searching_radius = 0.49,
         
@@ -527,8 +531,10 @@ data:extend({
         selection_box = {{ -4.5, -4.5}, {4.5, 4.5}},
         drawing_box = {{-4.5, -4.5}, {4.5, 4.5}},
         
-        vehicle_impact_sound =    { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-        
+        vehicle_impact_sound = sounds.generic_impact,
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+
         mining_speed = 1,
         resource_searching_radius = 0.49,
         

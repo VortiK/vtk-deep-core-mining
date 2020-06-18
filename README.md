@@ -34,7 +34,7 @@ The idea is to repurpose old mining outpost when ore is depleted. So the infrast
 - Arcitos's Simple Silicon : https://mods.factorio.com/mod/SimpleSilicon
 - Krastorio 2's Rare Metals : https://mods.factorio.com/mod/Krastorio2
 
-Compatibility contribution provided by DarkShadow44 https://github.com/DarkShadow44 : 
+## Compatibility contribution provided by DarkShadow44 https://github.com/DarkShadow44 : 
 - Leighzer's Morphite : https://mods.factorio.com/mod/leighzermorphite
 - Pyanodons Raw Ores : https://mods.factorio.com/mod/pyrawores
 - Pyanodons Coal Processing : https://mods.factorio.com/mod/pycoalprocessing

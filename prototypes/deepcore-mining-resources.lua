@@ -257,7 +257,7 @@ end
 
 for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   local oretint = nil
-  if oredata.tint then
+  if oredata.patchtint then
     if data.raw.resource[ore].tint then
       oretint = data.raw.resource[ore].tint
     else
@@ -295,6 +295,9 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   data:extend({
     ore_patch
   })
-end
 
-make_ore_glow("uranium-ore-patch")
+  if ore == "uranium-ore" then
+    make_ore_glow("uranium-ore-patch")
+  end
+
+end
