@@ -143,6 +143,21 @@ function spawn_ore_patch_on_depleted_ore(event)
         end
         patchableOres = table.merge(patchableOres, dirtyores)
     end
+
+    -- When Prospector is installed, only generate patches after the last deposit is exhausted
+    -- Prospector is currently not really compatible to DirtyMining, so only enable this feature when DirtyMining is absent
+    if game.active_mods["Prospector"] and not game.active_mods["DirtyMining"] then
+        local patchableOresNew = {}
+        for key, name in pairs(patchableOres) do
+            local key_seam = key.."-seam"
+            if game.entity_prototypes[key_seam] ~= nil then
+                patchableOresNew = table.merge(patchableOresNew, {[key_seam] = name})
+            else
+                patchableOresNew = table.merge(patchableOresNew, {[key] = name})
+            end
+        end
+        patchableOres = patchableOresNew
+    end
     
     -- logic : 
     -- - if depleted ore has an equivalent patch entity
@@ -159,8 +174,7 @@ function spawn_ore_patch_on_depleted_ore(event)
     local validOre = false
     local orePatchToSpawn = nil
     for patchableOre, oreresult in pairs(patchableOres) do
-        -- need to pass true for "plain" search as 4th param because some ore have a "-" and it is a special character for lua string.find() apparently ...
-        if string.find(patchableOre, ore.name, 1, true) then 
+        if patchableOre == ore.name then
             if settings.global["vtk-deep-core-mining-spawn-"..oreresult.."-patch"]
             and settings.global["vtk-deep-core-mining-spawn-"..oreresult.."-patch"].value then
                 validOre = true
