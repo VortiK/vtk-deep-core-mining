@@ -42,3 +42,27 @@ function upgrade182(data)
         end
     end
 end
+
+-- 2.0.0 replace the ADCMD to place update with DCMD rotation force and ore patches yields set for existing world before 1.8.2 version of the mod
+function upgrade200(data)
+    local dillscount = 0
+    for _, surface in pairs(game.surfaces) do
+        local adcmd = surface.find_entities_filtered{name="vtk-deepcore-mining-drill-advanced"}
+        for _, drill in pairs (adcmd) do
+            adcmd_energy_companion_add(drill)
+            dillscount = dillscount + 1
+        end
+    end
+    -- notify everyone
+    for f, force in pairs(game.forces) do
+        for p, player in pairs(force.players) do
+            player.print("[img=technology/vtk-deepcore] Deep Core Mining 2.0.0 update major changes !")
+            player.print("A total of "..dillscount.." [img=item/vtk-deepcore-mining-drill-advanced] Advanced Deepcore Mining Drills have been upgraded to set their new features. They may still have old features until replaced but it won't impact gameplay.")
+            player.print("[color=1,0,0]WARNING[/color] This upgrade is a big change and may break your factory logistics and DeepCore refining.")
+            player.print("[img=item/vtk-deepcore-mining-drill] DeepCore Mining Drills now mine [img=item/vtk-deepcore-mining-ore-chunk] DeepCore ore chunks and not raw ore anymore. Chunks need refining in a [img=item/chemical-plant] chemical plant to get ore [img=item/iron-ore].")
+            player.print("[img=item/vtk-deepcore-mining-drill-advanced] Advanced Deepcore Mining Drills now consume [img=item/vtk-deepcore-mining-drone] DeepCore Mining Drones to mine [img=item/vtk-deepcore-mining-ore-chunk] DeepCore ore and no longer requires [img=fluid/sulfuric-acid] sulfuric acid.")
+            player.print("[img=item/vtk-deepcore-mining-ore-chunk] DeepCore ore is now refined in [img=item/chemical-plant] chemical plant with [img=fluid/sulfuric-acid] sulfuric acid like other Deep Core ore chunks and no longer in centrifuge.")
+            player.print("Even if it may be frustrating to fix an existing factory I feel this makes the mod better overall. Please give it a chance and don't hesitate to provide feedback ! -- VortiK")
+        end
+    end
+end

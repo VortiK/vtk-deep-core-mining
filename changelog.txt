@@ -1,11 +1,37 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.0
+Date: 25.06.2020
+  Changes:
+    - Major mechanic change !
+    - DeepCore drill has a custom remanent in the unlikly scenario where it gets eaten by the local fauna.
+    - DeepCore drill now outputs ore chunks that must be refined instead of directly usable ore.
+    - Advanced DeepCore mining drill now smokes when mining.
+    - Advanced DeepCore mining drill is now animated when mining.
+    - Advanced DeepCore drill now require DeepCore Mining Drones as "fuel" and doesn't require sulfuric acid anymore. Drones have 60MJ energy, drill uses 10MW resulting in a mining cycle requiring 5 drones.
+    - Advanced DeepCore drill efficiency modules now reduce the DeepCore mining drones usage, but electricity usage stays at 10MW.
+    - Deep Core Ore now must be refined like other ore chunks, in a chemical plant with sulfuric acid (previously it was in a centrifuge with DeepCore Mining drones).
+    - Major rebalance for mining and refining as follow : 
+    - Balance goal is still a low but infinite source of ore as fields depletes around the factory and be able to reuse the infrastructure at the cost of replacing drills and setting up a refining facility.
+    - DeepCore Mining drill is about half the mining power of 10 mining drills as raw ore output for double the energy and refining steps on its unlocking productivity level (20%).
+    - A single DeepCore Mining drill uses half a yellow belt throughput on average before productivity.
+    - Advanced DeepCore Mining drill is about two third the mining power of a DeepCore mining drill as raw ore output (so 30% as powerful of 10 normal drills) and requires two stages of refining and more than 10x the energy.
+    - As Advanced DeepCore Mining consumes mining drones and lot of acid for refining, it require good productivity on the whole supply chain to be a small net positive on raw ores.
+    - A single Advanced DeepCore Mining drill uses 3/4 of a blue belt throughput on average before productivity. 
+    - Focus refining is about half as efficient as normal deep core refining (produces half the output, require 1,5x the chunks) but you can choose the raw ore.
+    - Acid usage for refining has been reduced a lot with the rebalance.
+    - Made colored chemical plant smokes when refining deepcore chunks more colored.
+    - Reduced mining drills sounds volume more. Again. Should be loud enough now.
+    - Added an upgrade code to place new feature with existing Advanced drills.
+    - Upgrade code also explains the major breaking changes to players to make them aware of the impact on existing factories.
+    - Source code reorganisation to help maintainability.
+---------------------------------------------------------------------------------------------------
 Version: 1.22.0
 Date: 18.06.2020
   Changes:
     - Fixed vanilla ore patches being tinted as they have custom gfx.
     - When Angel's Refining is present, vanilla ores are now removed from DCM except for Coal and Uranium that are always present.
     - Fixed typo in Angel's locales for Bobmnium and Crotinium.
-    - Fixed DMCDrills sounds not working.
+    - Fixed DMCDrills inventory opening sounds not working.
 ---------------------------------------------------------------------------------------------------
 Version: 1.21.1
 Date: 17.06.2020
@@ -28,7 +54,7 @@ Date: 17.06.2020
 Version: 1.20.0
 Date: 17.06.2020
   Changes:
-    - Fixed pollution emission of deep core mining drills, they were emitting none, DCMD emits 100 and ADCMD 1000 per minute.
+    - Fixed pollution emission of deep core mining drills, they were emitting none, DCMD emits 100 and ADCMD 1000 per minute as intended.
     - Reduced DCMDrills sound volume a bit.
     - DCMD don't require a pump to inject fluid anymore, was more confusing than anything.
     - Added machine working tint for refining to all ores according to their ore tint, makes colored chemical plan smokes according to the ore refining.

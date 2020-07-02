@@ -1,11 +1,8 @@
 local sounds = require("__base__/prototypes/entity/demo-sounds")
 
-local sulfuricacidname = "sulfuric-acid"
-if mods["angelspetrochem"] then
-    sulfuricacidname = "liquid-sulfuric-acid"
-end
-
--- item
+--
+-- Deep Core Items
+-- 
 data:extend({
     {
         type = "item",
@@ -28,71 +25,21 @@ data:extend({
         stack_size = 10
     },
     {
+        type = "fuel-category",
+        name = "vtk-deepcore-mining-drone"
+    },
+    {
         type = "item",
         name = "vtk-deepcore-mining-drone",
         icon = "__vtk-deep-core-mining__/graphics/icons/mining-drone.png",
         icon_size = 64,
+        fuel_value = '120MJ',
+        fuel_category = 'vtk-deepcore-mining-drone',
         subgroup = "intermediate-product",
         order = "v[vtk-deepcore-mining-drone]",
         stack_size = 50
-    },
-    {
-        type = "item",
-        name = "vtk-deepcore-mining-ore-chunk",
-        icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk.png",
-        icon_size = 64,
-        subgroup = "raw-resource",
-        order = "vz[vtk-deepcore-mining-ore-chunk]",
-        stack_size = 100
     }
 })
-
-local i = 1
-for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
-  local oretint = nil
-  if oredata.tint then
-    if data.raw.resource[ore].tint then
-      oretint = data.raw.resource[ore].tint
-    else
-      oretint = data.raw.resource[ore].map_color
-    end
-  end
-  
-  local ore_chunk = 
-  {
-    type = "item",
-    name = "vtk-deepcore-mining-"..oredata.result.."-chunk",
-    icons = {
-        {
-            icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon.png",
-        },
-        {
-            icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon-layer.png",
-            tint = oretint
-        },
-    },
-    icon_size = 64,
-    mipmap_count = 8,
-    pictures =
-    {
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-1.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-2.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-3.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-4.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-5.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-6.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-7.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-    },
-    subgroup = "raw-resource",
-    order = "va[vtk-deepcore-mining-chunk-"..i.."]",
-    stack_size = 100
-  }
-  data:extend({
-    ore_chunk, 
-  })
-  i = i + 1
-end
 
 -- planner
 data:extend({
@@ -125,7 +72,9 @@ data:extend({
     }
 })
 
--- recipe
+-- 
+-- Deep Core Item Recipe
+-- 
 data:extend({
     {
         type = "recipe",
@@ -168,173 +117,70 @@ data:extend({
         },
         result = "vtk-deepcore-mining-drone",
     },
-    {
-        type = "recipe",
-        name = "vtk-deepcore-mining-ore-chunk-refining",
-        energy_required = 30,
-        enabled = false,
-        category = "centrifuging",
-        ingredients = {
-            {"vtk-deepcore-mining-ore-chunk", 100},
-            {"vtk-deepcore-mining-drone", 1}
-        },
-        icons = {
-          {
-            icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk-refining.png"
-          },
-          {
-            icon = "__vtk-deep-core-mining__/graphics/icons/acid.png"
-          },
-        },
-        icon_size = 64,
-        subgroup = "intermediate-product",
-        order = "v[vtk-deepcore-mining]-a[deepcore-ore-processing]",
-        main_product = "",
-        results =
-        {
-        },
-        allow_decomposition = false
-    },
 })
 
-for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
+-- 
+-- Deep Core Entities
+-- 
 
-    local oreprobability = oredata.probability
-    if vtk_deepcoremining_supported_ores_count > 10 then
-        oreprobability = oredata.probability * 0.50
-    elseif vtk_deepcoremining_supported_ores_count > 5 then
-        oreprobability = oredata.probability * 0.75
-    end
-
-    table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = oreprobability, amount = 10 })
-
-    -- on the fly focus deep core chunk refining recipes creation
-    local ore_chunk_focus_recipe = table.deepcopy(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining'])
-    ore_chunk_focus_recipe.name = 'vtk-deepcore-mining-ore-chunk-refining-'..oredata.result..'-focus'
-    -- focused refining is wasteful and will only get half the result amount compared to the non focused refining method but guarrantee the ore type refinied
-    ore_chunk_focus_recipe.ingredients = {{"vtk-deepcore-mining-ore-chunk", 200}, {"vtk-deepcore-mining-drone", 1}}
-    ore_chunk_focus_recipe.results = {{name = "vtk-deepcore-mining-"..oredata.result.."-chunk", amount = math.ceil(6 * (oredata.refineamount / 200) * oreprobability)}}
-
-    -- tint "generic" ores (like bobs)
-    local oretint = nil
-    if oredata.tint then
-        if data.raw.resource[ore].tint then
-            oretint = data.raw.resource[ore].tint
-        else
-            oretint = data.raw.resource[ore].map_color
-        end
-        
-        -- table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-focus.png", tint = oretint})
-        table.insert(ore_chunk_focus_recipe.icons, 
-            {
-              icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon.png",
-              scale = 0.25,
-              shift = {-10, 10},
-            })
-        table.insert(ore_chunk_focus_recipe.icons, 
-            {
-              icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon-layer.png",
-              scale = 0.25,
-              shift = {-10, 10},
-              tint = oretint,
-            })
-    else
-        table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-focus.png"})
-    end
-    data:extend({ore_chunk_focus_recipe})
-end
-
-local function chunk_refining_recipe_maker(
-  ore_name, 
-  ore_icon, 
-  refining_result, 
-  result_amount, 
-  refining_liquid,
-  refining_liquid_amount,
-  refining_liquid2,
-  refining_liquid2_amount,
-  oretint,
-  machinetint
-)
-    local recipe =
+function electric_mining_drill_smoke()
+    return
     {
-        type = "recipe",
-        name = "vtk-deepcore-mining-"..refining_result.."-chunk-refining",
-        enabled = false,
-        energy_required = 5,
-        category = "chemistry",
-        subgroup = "raw-material",
-        ingredients = 
-        {
-            {"vtk-deepcore-mining-"..refining_result.."-chunk", 1},
-            {type="fluid", name=refining_liquid, amount=refining_liquid_amount},
-			refining_liquid2 and {type="fluid", name=refining_liquid2, amount=refining_liquid2_amount},
-        },
-        main_product = "", -- to force use of recipe locales and icons instead of result's
-        icons = {
-          {
-            icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon.png",
-          },
-          {
-            icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon-layer.png",
-            tint = oretint
-          },
-          {
-            icon = "__vtk-deep-core-mining__/graphics/icons/acid.png",
-          }
-        },
-        icon_size = 64,
-        results = 
-        {
-            {type="item", name=refining_result, amount=result_amount},
-        },
-        crafting_machine_tint =
-        {
-            -- primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
-            -- secondary = {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
-            -- tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
-            primay = oretint,
-            secondary = oretint,
-            tertiary = oretint,
-        }
+      priority = "high",
+      filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-smoke.png",
+      line_length = 6,
+      width = 24,
+      height = 38,
+      frame_count = 30,
+      animation_speed = 0,4,
+      direction_count = 1,
+      shift = util.by_pixel(0, 2),
+      hr_version =
+      {
+        priority = "high",
+        filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-smoke.png",
+        line_length = 6,
+        width = 48,
+        height = 72,
+        frame_count = 30,
+        animation_speed = 0,4,
+        direction_count = 1,
+        shift = util.by_pixel(0, 3),
+        scale = 0.5,
+      }
     }
-    
-    return recipe
-end
-
-for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
-  local oretint = nil
-  local machinetint = nil
-  if data.raw.resource[ore].tint then
-    machinetint = data.raw.resource[ore].tint
-  else
-    machinetint = data.raw.resource[ore].map_color
   end
-  if oredata.tint then
-    oretint = machinetint
-  end
-  
-  local ore_chunk_refining_recipe = chunk_refining_recipe_maker(
-    ore,                          -- ore_name : used for recipe name "-chunk-refining" and ingredient "-chunk")
-    oredata.img,                  -- ore refining icon "-chunk-refining.png
-    oredata.result,               -- result
-    oredata.refineamount,         -- result amount
-    sulfuricacidname,             -- refining liquid
-    oredata.refineliquid,         -- refining liquid amount
-    oredata.refineliquid2_name,   -- refining liquid 2
-    oredata.refineliquid2,        -- refining liquid 2 amount
-    oretint,                      -- tint
-    machinetint                   -- machinetint
-    -- {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
-  )
 
-  data:extend({
-    ore_chunk_refining_recipe
-  })
-end
-
--- entity
 data:extend({
+    {
+        type = "corpse",
+        name = "vtk-deepcore-mining-drill-remnants",
+        localised_name = {"entity-name.big-remnants"},
+        icon = "__base__/graphics/icons/remnants.png",
+        icon_size = 64, icon_mipmaps = 4,
+        flags = {"placeable-neutral", "not-on-map"},
+        subgroup = "generic-remnants",
+        order = "a-c-a",
+        collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
+        selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+        tile_width = 3,
+        tile_height = 3,
+        selectable_in_game = false,
+        time_before_removed = 60 * 60 * 60 * 1000, -- 1000 hours
+        final_render_layer = "remnants",
+        remove_on_tile_placement = true,
+        animation =
+        {
+        {
+            width = 330,
+            height = 400,
+            frame_count = 1,
+            direction_count = 1,
+            filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-mine-ruin.png",
+            scale = 0.50
+        },
+        }
+    },
     {
         type = "mining-drill",
         name = "vtk-deepcore-mining-drill",
@@ -349,7 +195,7 @@ data:extend({
         resource_categories = {"vtk-deepcore-mining-ore-patch"},
         max_health = 3000,
         dying_explosion = "massive-explosion",
-        corpse = "big-remnants",
+        corpse = "vtk-deepcore-mining-drill-remnants",
         
         collision_box = {{ -2.1, -2.1}, {2.1, 2.5}},
         selection_box = {{ -2.5, -2.5}, {2.5, 2.5}},
@@ -359,7 +205,7 @@ data:extend({
         open_sound = sounds.machine_open,
         close_sound = sounds.machine_close,
 
-        mining_speed = 1,
+        mining_speed = 5,
         resource_searching_radius = 0.49,
         
         rotatable = false,
@@ -368,8 +214,10 @@ data:extend({
         input_fluid_box =
         {
             production_type = "input",
-            --pipe_picture = assembler2pipepictures(),
+            pipe_picture = assembler2pipepictures(),
             pipe_covers = pipecoverspictures(),
+            --pipe_picture = assembler2pipepictures(),
+            --pipe_covers = pipecoverspictures(),
             base_area = 10, -- = x 100 fluid storage
             --height = 10, -- ??
             --base_level = 1,-- so it requires a pump to inject
@@ -408,16 +256,16 @@ data:extend({
                 width = 120, 
                 height = 122, 
                 line_length = 7,
-	            -- shift = util.by_pixel(9, 33),
-	            shift = util.by_pixel(7, 30),
+                -- shift = util.by_pixel(9, 33),
+                shift = util.by_pixel(7, 30),
                 filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-miner-drill-animation.png",
                 frame_count = 20,
                 run_mode = "forward", 
                 animation_speed = 0.50,
                 scale = 0.50,
-                
-            }
+            },
         },
+
         input_fluid_patch_sprites =
         {
             north =
@@ -474,10 +322,10 @@ data:extend({
             sound =
             {
                 filename = "__base__/sound/electric-mining-drill.ogg",
-                volume = 1.25
+                volume = 1
             },
             match_speed_to_activity = true,
-            apparent_volume = 2.5,
+            apparent_volume = 2,
         },
         module_specification = { module_slots = 2 },
         allowed_effects = {"productivity", "consumption", "pollution"}, 
@@ -535,7 +383,7 @@ data:extend({
         open_sound = sounds.machine_open,
         close_sound = sounds.machine_close,
 
-        mining_speed = 1,
+        mining_speed = 10,
         resource_searching_radius = 0.49,
         
         rotatable = false,
@@ -544,7 +392,7 @@ data:extend({
         input_fluid_box =
         {
             production_type = "input",
-            --pipe_picture = assembler2pipepictures(),
+            pipe_picture = assembler2pipepictures(),
             pipe_covers = pipecoverspictures(),
             base_area = 100, -- = x 100 fluid storage
             --height = 10, -- ??
@@ -555,13 +403,33 @@ data:extend({
                 { position = {-5, 3} },
             }
         },
-        
         energy_usage = "10MW",
         energy_source =
         {
-            type = "electric",
+            type = "burner",
+            fuel_category = "vtk-deepcore-mining-drone",
+            effectivity = 1,
+            fuel_inventory_size = 1,
             emissions_per_minute = 1000,
-            usage_priority = "secondary-input",
+            smoke =
+            {
+              {
+                  name = "smoke",
+                  north_position = {-1.6, -4},
+                  east_position = {-1.6, -4},
+                  west_position = {-1.6, -4},
+                  south_position = {-1.6, -4},
+                  frequency = 60,
+                  starting_vertical_speed = 0.02,
+                  movement_slow_down_factor  = 0.8,
+                  starting_frame_deviation = 30,
+                  fade_in_duration = 60,
+                  spread_duration = 100,
+                  fade_away_duration = 100,
+                  start_scale = 2,
+                  color = {r = 0.6, g = 0.6, b = 0.3, a = 0.7},
+              }
+            },
         },
         vector_to_place_result = {0, 5},
         base_picture =
@@ -583,10 +451,10 @@ data:extend({
                 priority = "extra-high",
                 width = 380, 
                 height = 380, 
-                line_length = 1,
+                line_length = 5,
 	            -- shift = util.by_pixel(9, 33),
-                filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-miner-advanced.png",
-                frame_count = 1,
+                filename = "__vtk-deep-core-mining__/graphics/entity/deepcore-miner-advanced-animation.png",
+                frame_count = 10,
                 animation_speed = 1,
                 scale = 0.90
             }
@@ -596,17 +464,17 @@ data:extend({
             activate_sound =
             {
                 filename = "__vtk-deep-core-mining__/sounds/advdeepcore_start.ogg",
-                volume = 1
+                volume = 0.8
             },
             deactivate_sound =
             {
                 filename = "__vtk-deep-core-mining__/sounds/advdeepcore_stop.ogg",
-                volume = 1
+                volume = 0.8
             },
             sound =
             {
                 filename = "__vtk-deep-core-mining__/sounds/advdeepcore_working.ogg",
-                volume = 1
+                volume = 0.8
             },
             -- match_volume_to_activity = true,
             match_speed_to_activity = true,
@@ -627,6 +495,31 @@ data:extend({
         circuit_wire_connection_points = circuit_connector_definitions["pumpjack"].points,
         circuit_connector_sprites = circuit_connector_definitions["pumpjack"].sprites,
         circuit_wire_max_distance = 14,
+    },
+    {
+        type = "electric-energy-interface",
+        name = "vtk-deepcore-mining-drill-advanced-energy-companion",
+        flags = {
+            "not-on-map",
+            "not-deconstructable",
+            "not-blueprintable",
+            "hidden",
+            "no-copy-paste",
+            "not-selectable-in-game",
+        },
+        destructible = false,
+        icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-mine-advanced.png",
+        icon_size = 64,
+        energy_source =
+        {
+            type = "electric",
+            emissions_per_minute = 0,
+            usage_priority = "secondary-input",
+            buffer_capacity = "10MW",
+            input_flow_limit = "10MW"
+        },
+        energy_usage = "10MW",
+        collision_box = {{ -4.1, -4.1}, {4.1, 4.5}},
     }
 })
 

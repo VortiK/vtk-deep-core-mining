@@ -39,12 +39,59 @@ script.on_event({
 end)
 
 -- prevent beacons
-script.on_event({
-    events.on_robot_built_entity, 
-    events.on_built_entity
-}, function(event)
-    prevent_beacons(event.created_entity)
-end)
+script.on_event(events.on_robot_built_entity,
+    function(event)
+        prevent_beacons(event.created_entity)
+    end,
+    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}, {filter="name", name = "vtk-deepcore-mining-drill"}}
+)
+script.on_event(events.on_built_entity,
+    function(event)
+        prevent_beacons(event.created_entity)
+    end,
+    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}, {filter="name", name = "vtk-deepcore-mining-drill"}}
+)
+
+-- adcmd_energy_companion place
+script.on_event(events.on_robot_built_entity,
+    function(event)
+        adcmd_energy_companion_add(event.created_entity)
+    end,
+    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}}
+)
+script.on_event(events.on_built_entity,
+    function(event)
+        adcmd_energy_companion_add(event.created_entity)
+    end,
+    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}}
+)
+
+-- adcmd_energy_companion remove
+script.on_event(events.on_entity_died,
+    function(event)
+        adcmd_energy_companion_remove(event.entity)
+    end,
+    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}}
+)
+script.on_event(events.on_player_mined_entity,
+    function(event)
+        adcmd_energy_companion_remove(event.entity)
+    end,
+    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}}
+)
+script.on_event(events.on_robot_pre_mined,
+    function(event)
+        adcmd_energy_companion_remove(event.entity)
+    end,
+    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}}
+)
+
+-- check power on adcmd energy interface companions every few and then
+script.on_nth_tick(120, 
+    function(event)
+        adcmd_energy_switcher()
+    end
+)
 
 -- on mod update fixes
 script.on_configuration_changed(function(data)
@@ -52,6 +99,9 @@ script.on_configuration_changed(function(data)
         local current = v(data.mod_changes["vtk-deep-core-mining"].old_version)
         if current < v(1,8,2) then
             upgrade182(data)
+        end
+        if current < v(2,0,0) then
+            upgrade200(data)
         end
     end
 
