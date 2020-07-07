@@ -1,8 +1,8 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.0
-Date: 02.07.2020
+Version: 2.0.1
+Date: 07.07.2020
   Changes:
-    - Fixed DCM recipes being used for raw materials calculation (allow-decompostion set to false), thanks mrudat.
+    - Fixed DCM recipes being used for raw materials calculation (allow-decompostion set to false to refining recipes), thanks mrudat.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.0
 Date: 02.07.2020
