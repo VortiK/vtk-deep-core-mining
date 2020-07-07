@@ -16,6 +16,7 @@ data:extend({
 --        category = "centrifuging",
         category = "chemistry",
         subgroup = "raw-material",
+        allow_decomposition = false,
         ingredients = {
             {"vtk-deepcore-mining-ore-chunk", 200},
             {type="fluid", name=sulfuricacidname, amount=50}
@@ -41,7 +42,6 @@ data:extend({
         results =
         {
         },
-        allow_decomposition = false,
         crafting_machine_tint =
         {
             -- primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
@@ -131,6 +131,7 @@ local function chunk_refining_recipe_maker(
         energy_required = 16,
         category = "chemistry",
         subgroup = "raw-material",
+        allow_decomposition = false,
         ingredients = 
         {
             {"vtk-deepcore-mining-"..refining_result.."-chunk", 30},

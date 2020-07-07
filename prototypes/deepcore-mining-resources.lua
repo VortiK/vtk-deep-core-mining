@@ -41,6 +41,7 @@ local deep_core_ore = {
   icon = "__vtk-deep-core-mining__/graphics/icons/deep-core.png",
   icon_size = 32,
   flags = {"placeable-neutral"},
+  allow_decomposition = false,
   collision_box = {{ -5.4, -5.4}, {5.4, 5.4}},
   selection_box = {{ -2.5, -2.5}, {2.5, 2.5}},
   category = "vtk-deepcore-mining-crack",

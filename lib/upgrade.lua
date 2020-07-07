@@ -45,19 +45,28 @@ end
 
 -- 2.0.0 replace the ADCMD to place update with DCMD rotation force and ore patches yields set for existing world before 1.8.2 version of the mod
 function upgrade200(data)
-    local dillscount = 0
+    local drillscount = 0
+    local advdrillscount = 0
     for _, surface in pairs(game.surfaces) do
+        local dcmd = surface.find_entities_filtered{name="vtk-deepcore-mining-drill"}
         local adcmd = surface.find_entities_filtered{name="vtk-deepcore-mining-drill-advanced"}
+        for _, drill in pairs (dcmd) do
+            drill.active = false
+            drillscount = drillscount + 1
+        end
         for _, drill in pairs (adcmd) do
+            drill.active = false
             adcmd_energy_companion_add(drill)
-            dillscount = dillscount + 1
+            advdrillscount = advdrillscount + 1
         end
     end
+
     -- notify everyone
     for f, force in pairs(game.forces) do
         for p, player in pairs(force.players) do
             player.print("[img=technology/vtk-deepcore] Deep Core Mining 2.0.0 update major changes !")
-            player.print("A total of "..dillscount.." [img=item/vtk-deepcore-mining-drill-advanced] Advanced Deepcore Mining Drills have been upgraded to set their new features. They may still have old features until replaced but it won't impact gameplay.")
+            player.print("To prevent logistic nightmares all DCMDrills have been disabled and must be manually replaced to use their new functionalities.")
+            player.print("A total of "..drillscount.." [img=item/vtk-deepcore-mining-drill] Deepcore Mining Drills and "..advdrillscount.." [img=item/vtk-deepcore-mining-drill-advanced] Advanced Deepcore Mining Drills have all been disabled.")
             player.print("[color=1,0,0]WARNING[/color] This upgrade is a big change and may break your factory logistics and DeepCore refining.")
             player.print("[img=item/vtk-deepcore-mining-drill] DeepCore Mining Drills now mine [img=item/vtk-deepcore-mining-ore-chunk] DeepCore ore chunks and not raw ore anymore. Chunks need refining in a [img=item/chemical-plant] chemical plant to get ore [img=item/iron-ore].")
             player.print("[img=item/vtk-deepcore-mining-drill-advanced] Advanced Deepcore Mining Drills now consume [img=item/vtk-deepcore-mining-drone] DeepCore Mining Drones to mine [img=item/vtk-deepcore-mining-ore-chunk] DeepCore ore and no longer requires [img=fluid/sulfuric-acid] sulfuric acid.")

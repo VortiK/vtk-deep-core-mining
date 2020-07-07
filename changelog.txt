@@ -1,13 +1,18 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.0
-Date: 25.06.2020
+Date: 02.07.2020
   Changes:
-    - Major mechanic change !
+    - Fixed DCM recipes being used for raw materials calculation (allow-decompostion set to false), thanks mrudat.
+---------------------------------------------------------------------------------------------------
+Version: 2.0.0
+Date: 02.07.2020
+  Changes:
+    - MAJOR MECHANIC CHANGE ! To prevent too much frustration with this new version, all DCMD are disabled and must be replaced manually.
     - DeepCore drill has a custom remanent in the unlikly scenario where it gets eaten by the local fauna.
     - DeepCore drill now outputs ore chunks that must be refined instead of directly usable ore.
     - Advanced DeepCore mining drill now smokes when mining.
     - Advanced DeepCore mining drill is now animated when mining.
-    - Advanced DeepCore drill now require DeepCore Mining Drones as "fuel" and doesn't require sulfuric acid anymore. Drones have 60MJ energy, drill uses 10MW resulting in a mining cycle requiring 5 drones.
+    - Advanced DeepCore drill now require DeepCore Mining Drones as "fuel" and doesn't require sulfuric acid anymore. Drones have 120MJ energy, drill uses 10MW resulting in a mining cycle requiring 3 drones.
     - Advanced DeepCore drill efficiency modules now reduce the DeepCore mining drones usage, but electricity usage stays at 10MW.
     - Deep Core Ore now must be refined like other ore chunks, in a chemical plant with sulfuric acid (previously it was in a centrifuge with DeepCore Mining drones).
     - Major rebalance for mining and refining as follow : 
