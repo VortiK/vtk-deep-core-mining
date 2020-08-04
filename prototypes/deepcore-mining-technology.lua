@@ -13,7 +13,7 @@ data:extend(
         },
         {
           type = "unlock-recipe",
-          recipe = "vtk-deepcore-mining-planner"
+          recipe = "vtk-deepcore-mining-moho"
         },
       },
     prerequisites = {"advanced-electronics", "robotics", "advanced-material-processing", "sulfur-processing", "chemical-science-pack"}, 
@@ -40,6 +40,10 @@ data:extend(
         {
           type = "unlock-recipe",
           recipe = "vtk-deepcore-mining-drill"
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "vtk-deepcore-mining-planner"
         },
       },
     prerequisites = {"vtk-deepcore", "advanced-material-processing-2", "productivity-module-3", "mining-productivity-1", "production-science-pack"}, 
@@ -92,6 +96,6 @@ data:extend(
 })
 
 for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
-  table.insert(data.raw['technology']['vtk-deepcore']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-"..ore.."-chunk-refining" })
+  table.insert(data.raw['technology']['vtk-deepcore-mining']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-"..ore.."-chunk-refining" })
   table.insert(data.raw['technology']['vtk-deepcore-mining-advanced']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-ore-chunk-refining-"..ore.."-focus" })
 end

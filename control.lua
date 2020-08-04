@@ -38,59 +38,58 @@ script.on_event({
   end
 end)
 
--- prevent beacons
+-- ore patches toggle and adcmd companion management on placed drill
 script.on_event(events.on_robot_built_entity,
     function(event)
-        prevent_beacons(event.created_entity)
+        dcm_dispatcher(event.created_entity, "create")
     end,
-    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}, {filter="name", name = "vtk-deepcore-mining-drill"}}
+    {
+        {filter="name", name = "vtk-deepcore-mining-moho"},
+        {filter="name", name = "vtk-deepcore-mining-drill"},
+        {filter="name", name = "vtk-deepcore-mining-drill-advanced"}
+    }
 )
 script.on_event(events.on_built_entity,
     function(event)
-        prevent_beacons(event.created_entity)
+        dcm_dispatcher(event.created_entity, "create")
     end,
-    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}, {filter="name", name = "vtk-deepcore-mining-drill"}}
+    {
+        {filter="name", name = "vtk-deepcore-mining-moho"},
+        {filter="name", name = "vtk-deepcore-mining-drill"},
+        {filter="name", name = "vtk-deepcore-mining-drill-advanced"}
+    }
 )
 
--- adcmd_energy_companion place
-script.on_event(events.on_robot_built_entity,
-    function(event)
-        adcmd_energy_companion_add(event.created_entity)
-    end,
-    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}}
-)
-script.on_event(events.on_built_entity,
-    function(event)
-        adcmd_energy_companion_add(event.created_entity)
-    end,
-    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}}
-)
-
--- adcmd_energy_companion remove
+-- ore patches toggle and adcmd companion management on removed drill
 script.on_event(events.on_entity_died,
     function(event)
-        adcmd_energy_companion_remove(event.entity)
+        dcm_dispatcher(event.entity, "remove")
     end,
-    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}}
+    {
+        {filter="name", name = "vtk-deepcore-mining-moho"},
+        {filter="name", name = "vtk-deepcore-mining-drill"},
+        {filter="name", name = "vtk-deepcore-mining-drill-advanced"}
+    }
 )
 script.on_event(events.on_player_mined_entity,
     function(event)
-        adcmd_energy_companion_remove(event.entity)
+        dcm_dispatcher(event.entity, "remove")
     end,
-    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}}
+    {
+        {filter="name", name = "vtk-deepcore-mining-moho"},
+        {filter="name", name = "vtk-deepcore-mining-drill"},
+        {filter="name", name = "vtk-deepcore-mining-drill-advanced"}
+    }
 )
 script.on_event(events.on_robot_pre_mined,
     function(event)
-        adcmd_energy_companion_remove(event.entity)
+        dcm_dispatcher(event.entity, "remove")
     end,
-    {{filter="name", name = "vtk-deepcore-mining-drill-advanced"}}
-)
-
--- check power on adcmd energy interface companions every few and then
-script.on_nth_tick(120, 
-    function(event)
-        adcmd_energy_switcher()
-    end
+    {
+        {filter="name", name = "vtk-deepcore-mining-moho"},
+        {filter="name", name = "vtk-deepcore-mining-drill"},
+        {filter="name", name = "vtk-deepcore-mining-drill-advanced"}
+    }
 )
 
 -- on mod update fixes
@@ -103,6 +102,22 @@ script.on_configuration_changed(function(data)
         if current < v(2,0,0) then
             upgrade200(data)
         end
+        if current < v(2,2,0) then
+            upgrade220(data)
+        end
     end
-
+    -- init ADCMD list
+    init_globals()
 end)
+
+-- init ADCMD list
+script.on_init(function()
+    init_globals()
+end)
+
+-- check power on adcmd energy interface companions every few and then
+script.on_nth_tick(120, 
+    function(event)
+        adcmd_updater()
+    end
+)

@@ -32,6 +32,149 @@ local deep_core_control = {
 }
 --]]
 
+-- Deep Core Chunks Variations definitino
+local function deepcorechunksvariations(oretint)
+  return 
+{
+  {
+    layers = {
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-1.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+        },
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-1-layer.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+          tint = oretint
+        }
+    }
+  },
+  {
+    layers = {
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-2.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+        },
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-2-layer.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+          tint = oretint
+        }
+    }
+  },
+  {
+    layers = {
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-3.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+        },
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-3-layer.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+          tint = oretint
+        }
+    }
+  },
+  {
+    layers = {
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-4.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+        },
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-4-layer.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+          tint = oretint
+        }
+    }
+  },
+  {
+    layers = {
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-5.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+        },
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-5-layer.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+          tint = oretint
+        }
+    }
+  },
+  {
+    layers = {
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-6.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+        },
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-6-layer.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+          tint = oretint
+        }
+    }
+  },
+  {
+    layers = {
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-7.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+        },
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-7-layer.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+          tint = oretint
+        }
+    }
+  },
+  {
+    layers = {
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-8.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+        },
+        {
+          filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-8-layer.png",
+          height = 64,
+          width = 64,
+          scale = 0.25,
+          tint = oretint
+        }
+    }
+  },
+}
+end
+
 -- 
 -- Deep Core Cracks
 -- 
@@ -55,7 +198,7 @@ local deep_core_ore = {
   tree_removal_probability = 0,
   cliff_removal_probability = 0,
   minable = {
-    mining_time = 300,
+    mining_time = 400,
     mining_particle = "stone-particle",
     results = {
       {
@@ -96,11 +239,12 @@ local deep_core_ore = {
   {
     sheet =
     {
-      filename = "__vtk-deep-core-mining__/graphics/resource/deep-core.png",
+      filename = "__vtk-deep-core-mining__/graphics/resource/deep-core-sheet.png",
       priority = "extra-high",
       width = 512,
       height = 512,
-      frame_count = 1,
+      frame_count = 6,
+      line_length = 3,
       variation_count = 1,
     }
   },
@@ -158,13 +302,20 @@ local function resource_patch_maker(
     resource_patch_search_radius = 20,
     minable =
     {
-      mining_time = miningtime*2,
+      mining_time = miningtime*12,
       mining_particle = miningparticle,
       results =
       {
         {
           type = "item",
-          name = ore_result,
+          name = ore_result, -- ore chunks
+          amount_min = 2,
+          amount_max = 4,
+          probability = 1
+        },
+        {
+          type = "item",
+          name = ore_name, -- raw ore
           amount_min = 2,
           amount_max = 4,
           probability = 1
@@ -301,8 +452,18 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     fluidamount                                         -- fluid amount
   )
   
+  local ore_patch_ore = util.table.deepcopy(ore_patch)
+  local ore_patch_chunk = util.table.deepcopy(ore_patch)
+  ore_patch_ore.name = ore_patch_ore.name .. "-ore"
+  ore_patch_ore.minable.results[1].probability = 0
+  ore_patch_ore.minable.mining_time = ore_patch_ore.minable.mining_time / 4
+  ore_patch_chunk.name = ore_patch_chunk.name .. "-chunk"
+  ore_patch_chunk.minable.results[2].probability = 0
+
   data:extend({
-    ore_patch
+    ore_patch,
+    ore_patch_ore,
+    ore_patch_chunk
   })
 
   if ore == "uranium-ore" then
@@ -339,18 +500,9 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
         },
     },
     icon_size = 64,
-    mipmap_count = 8,
-    pictures =
-    {
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-1.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-2.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-3.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-4.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-5.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-6.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-      { size = 64, filename = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-chunk-7.png", scale = 0.25, mipmap_count = 3, tint = oretint },
-    },
+    mipmap_count = 1,
+
+    pictures = deepcorechunksvariations(oretint),
     subgroup = "raw-resource",
     order = "va[vtk-deepcore-mining-chunk-"..i.."]",
     stack_size = 100
@@ -367,6 +519,7 @@ data:extend({
     name = "vtk-deepcore-mining-ore-chunk",
     icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk.png",
     icon_size = 64,
+    pictures = deepcorechunksvariations({240, 225, 142}),
     subgroup = "raw-resource",
     order = "vz[vtk-deepcore-mining-ore-chunk]",
     stack_size = 100

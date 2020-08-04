@@ -11,15 +11,15 @@ data:extend({
     {
         type = "recipe",
         name = "vtk-deepcore-mining-ore-chunk-refining",
-        energy_required = 50,
+        energy_required = 8,
         enabled = false,
 --        category = "centrifuging",
         category = "chemistry",
         subgroup = "raw-material",
         allow_decomposition = false,
         ingredients = {
-            {"vtk-deepcore-mining-ore-chunk", 200},
-            {type="fluid", name=sulfuricacidname, amount=50}
+            {"vtk-deepcore-mining-ore-chunk", 100},
+            {type="fluid", name=sulfuricacidname, amount=20}
         },
         icons = {
         {
@@ -68,16 +68,16 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
         oreprobability = oredata.probability * 0.75
     end
 
-    table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = oreprobability, amount = 100 })
+    table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = 1, amount = 100 * oreprobability})
 
     -- on the fly focus deep core chunk refining recipes creation
     local ore_chunk_focus_recipe = table.deepcopy(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining'])
     ore_chunk_focus_recipe.name = 'vtk-deepcore-mining-ore-chunk-refining-'..ore..'-focus'
-    -- focused refining is wasteful and will only get half the result amount compared to the non focused refining method but guarrantee the ore type refinied
+    -- focused refining is wasteful but guarrantee the ore type refinied
 --    ore_chunk_focus_recipe.ingredients = {{"vtk-deepcore-mining-ore-chunk", 200}, {"vtk-deepcore-mining-drone", 1}}
-    ore_chunk_focus_recipe.energy_required = 50
-    ore_chunk_focus_recipe.ingredients = {{"vtk-deepcore-mining-ore-chunk", 300}, {type="fluid", name=sulfuricacidname, amount=100}}
-    ore_chunk_focus_recipe.results = {{name = "vtk-deepcore-mining-"..oredata.result.."-chunk", amount = math.ceil(100 * (oredata.refineamount / 10) * oreprobability)}}
+    ore_chunk_focus_recipe.energy_required = 4
+    ore_chunk_focus_recipe.ingredients = {{"vtk-deepcore-mining-ore-chunk", 100}, {type="fluid", name=sulfuricacidname, amount=20}}
+    ore_chunk_focus_recipe.results = {{name = "vtk-deepcore-mining-"..oredata.result.."-chunk", amount = 150 * oreprobability}}
 
     -- tint "generic" ores (like bobs)
     local oretint = nil
@@ -128,13 +128,13 @@ local function chunk_refining_recipe_maker(
         type = "recipe",
         name = "vtk-deepcore-mining-"..ore_name.."-chunk-refining",
         enabled = false,
-        energy_required = 16,
+        energy_required = 4,
         category = "chemistry",
         subgroup = "raw-material",
         allow_decomposition = false,
         ingredients = 
         {
-            {"vtk-deepcore-mining-"..refining_result.."-chunk", 30},
+            {"vtk-deepcore-mining-"..refining_result.."-chunk", 10},
             {type="fluid", name=refining_liquid, amount=refining_liquid_amount},
 			      refining_liquid2 and {type="fluid", name=refining_liquid2, amount=refining_liquid2_amount},
         },
@@ -202,4 +202,16 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   data:extend({
     ore_chunk_refining_recipe
   })
+
 end
+
+-- allow productivity in all chunks refining recipes
+--[[ 
+for k, v in pairs(data.raw.module) do
+  if v.name:find("productivity%-module") and v.limitation then
+    for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
+      table.insert(v.limitation, "vtk-deepcore-mining-"..ore.."-chunk-refining")
+    end
+  end
+end
+ ]]

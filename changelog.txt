@@ -1,4 +1,63 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.2.0
+Date: 04.08.2020
+  Changes:
+    - New Moho Mining Drill, outputs normal ore but mines slowly (like DCMD previously in 1.x versions, about 10x Vanilla Electric Mining Drills and less than half a DCMD).
+    - o Player can now chose the simple to place Moho Mine but only get slow ore mining or invest in the DCMD with lot of ore but require new infrastructure and logistics investment.
+    - o Reviewed technologies, Deep Core Mining now only unlocks the DCMDrone and the new Moho Mine. Chunk refining will come with the DCMDrill tech.
+    - Minor fix to the DCMD gfx.
+    - Clean up unused entity assets, reduces the mod size a bit.
+    - Fixed chunk refining Uranium probability output to 1% (from 0,5%) as it was rounded to 0.
+    - Fixed deep chunk refining recipe time to 8s from 50s as intented (doesn't change balance just reduce machine number needed).
+    - DCMD and ADCMD are a bit more expansive to build.
+    - DCMD now require 5MW (from 1MW). Progression is now Moho 1MW, DCMD 5MW, ADCMD 10MW. Not like it should matter at that level but they are hungry machines !
+  Balance:
+    - ADCMD reduced chunks production a bit (2 100/m from 2 800/m). Should be less chunks to handle for roughly the same output.
+    - ADCMD chunks refining, now use 100 chunks + 20 acid and outputs 100 ore chunks (from 200 and 50 and 100 respectively).
+    - ADCMD chunks refining replaced probability output by consistent ratioed output. More consitant and easier to balance.
+    - ADCMD focused chunks refining boosted a bit.
+    - Removed productivity from refining recipes.
+    - Overall, a bit less deep chunks, more raw ore output in both normal and focused deep chunks refining.
+  Todo:
+    - Fix recipes sorting in production inventory.
+    - Find a way to remove beaconing around drills again or maybe let people do OP setups if they like ?
+    - With Dirty Mining Mod Ore patches will only spawn on depleted dirty ore (Contribution from Darkshadow44)
+---------------------------------------------------------------------------------------------------
+Version: 2.1.0
+Date: 02.08.2020
+  Changes:
+    - Rebalanced Iron, Copper, Stone, Coal, Uranium ratios for Deep Core Ore refining to be close to the 1 000 SPM ratios roughly 50% Iron, 40% Copper, 7% Stone, 6% Coal. Uranium is even lower with 0,5%.
+    - For modded ore ratio balance, I'll need more feedback, only vanilla ratios are changed.
+    - Rebalanced Chunks refining to compensate for the heavy infrastructure investment, it now output much more ore.
+    - o Refining time reduced so it requires much less chemical plant machines : 1 Chemplant for 2 DCMD (before it was 4 chemplants to 1 DCMD), 2 Chemplants for 1 ADCMD (was 8 per 1 before).
+    - o Ore patches mining time increased to 12 (from 2) to balance.
+    - o Results in a Chunks to ore produced ratio now 8 (was 0,33 before), means your get 8 ore for 1 chunk.
+    - o Results in 1 DCMD (+ 0.5 chemplants) = 20 Vanilla Electric Mining Drills (was 5 before) worth of ore produced before modules.
+    - Reduced sulfuric acid required for chunks refining by 80% (base for iron from 100 to 20) for all chunks refining.
+    - All Deep Core Mining Drills and Chunk Refining can now be productivity and speed moduled to further encourage investment in Chunks Refining.
+    - Rebalanced Focused Chunks refining to be more viable now rougly 150% of the single ore yield from normal Deep Core Chunks Refining.
+    - Deep Core Crack now spawn by groups of 2 to 5.
+  Graphics:
+    - Revisited the ore chunks items icons GFX, should be less confusing and still have variations.
+    - Deep Core Ore now also use Chunks variations icons with golden tint.
+    - Deep Core Crack GFX review, now more smooth and has 6 variations.
+---------------------------------------------------------------------------------------------------
+Version: 2.0.4
+Date: 19.07.2020
+  Changes:
+    - Fix crash on ADCMD energy interface checking, thanks for the report and save to reproduce the bug by Hardjagg in https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/5f119bb78aaa2c42fc9d1607
+---------------------------------------------------------------------------------------------------
+Version: 2.0.3
+Date: 10.07.2020
+  Changes:
+    - Fix last ontick update trigger not working.
+---------------------------------------------------------------------------------------------------
+Version: 2.0.2
+Date: 10.07.2020
+  Changes:
+    - Improve ontick update spike for ADCMD, should be much less noticable now. Will only do something when ADCMD are actually built and remembers a list of ADCMD to update their energy status if needed.
+    - Removed the Beacon Prevention Feature as drills are already effect limited and code wasn't working anymore anyway.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.1
 Date: 07.07.2020
   Changes:

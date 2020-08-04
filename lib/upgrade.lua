@@ -75,3 +75,13 @@ function upgrade200(data)
         end
     end
 end
+
+
+-- 2.2.0 setup ore patches depending on the drill placed on them for versions before 2.2.0
+function upgrade220(data)
+    for _, surface in pairs(game.surfaces) do
+        for _, drill in ipairs(surface.find_entities_filtered({name={"vtk-deepcore-mining-drill","vtk-deepcore-mining-moho"}})) do
+            moho_hot_swapper(drill, "create")
+        end
+    end
+end

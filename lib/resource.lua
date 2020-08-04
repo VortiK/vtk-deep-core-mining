@@ -189,7 +189,6 @@ function place_deep_core_cracks(area, surface)
     end
     
     local minspawnrange = settings.global["vtk-deep-core-mining-spawn-radius-from-start"].value
-    local crackrichness = settings.global["vtk-deep-core-mining-crack-richness"].value
     
   -- debug
   -- local player = game.players[1]
@@ -216,46 +215,59 @@ function place_deep_core_cracks(area, surface)
         return
     end
     
-    local x1 = area.left_top.x
-    local y1 = area.left_top.y
-    local x2 = area.right_bottom.x
-    local y2 = area.right_bottom.y
-    
-    -- minimum distance from spawn where deepcore mining cracks appear (default 1)
+  -- minimum distance from spawn where deepcore mining cracks appear (default 1)
   -- debug
   -- player.print("setting value "..minspawnrange)
   -- player.print("position x "..x1.." y "..y1)
 
-    if Area.inside(Position.expand_to_area({0,0}, minspawnrange), {x1, y1}) then
-      return
-    end
-    
-    local attempts = 0
-    -- try 10 times to find a valid position to spawn a crack otherwise abandon
-    while attempts < 10 do
-        local x = math.random(x1, x2)
-        local y = math.random(y1, y2)
-        
-        local tile = surface.get_tile(x, y)
-    -- debug player.print(serpent.block(tile.name))
-      
-        if tile.valid and surface.can_place_entity{name = "vtk-deepcore-mining-crack", position = tile.position} then
-            local oreamount = crackrichness
-            local createdentity = surface.create_entity({name = "vtk-deepcore-mining-crack", amount = oreamount, position = tile.position, force = game.forces.neutral})
-            
-            -- cleanup decoratives around the newly spawned crack
-            local cleanupzone = Area.construct(createdentity.position.x, createdentity.position.y, createdentity.position.x, createdentity.position.y)
-            cleanupzone = Area.expand(cleanupzone, 2)
-            surface.destroy_decoratives({area=cleanupzone})
-      -- debug
-      -- player.print("vtk-deepcore-mining-crack placed successfully")
-      -- player.print(serpent.block(tile.position))
-      -- player.print(serpent.block(cleanupzone))
-            return
-        end
-        attempts = attempts + 1
-    end
+  if Area.inside(Position.expand_to_area({0,0}, minspawnrange), {area.left_top.x, area.left_top.y}) then
+    return
+  end
   
+  create_crack(surface, area, 1)
+end
+
+function create_crack(surface, area, cracks)
+
+  local stop = math.random(2, 5)
+  if cracks > stop then
+    return
+  end
+
+  local x1 = area.left_top.x
+  local y1 = area.left_top.y
+  local x2 = area.right_bottom.x
+  local y2 = area.right_bottom.y
+  
+  local crackrichness = settings.global["vtk-deep-core-mining-crack-richness"].value
+  local attempts = 0
+  -- try 10 times to find a valid position to spawn a crack otherwise abandon
+  while attempts < 10 do
+      local x = math.random(x1, x2)
+      local y = math.random(y1, y2)
+      
+      local tile = surface.get_tile(x, y)
+  -- debug player.print(serpent.block(tile.name))
+    
+      if tile.valid and surface.can_place_entity{name = "vtk-deepcore-mining-crack", position = tile.position} then
+          local oreamount = crackrichness
+          local createdentity = surface.create_entity({name = "vtk-deepcore-mining-crack", amount = oreamount, position = tile.position, force = game.forces.neutral})
+          
+          -- cleanup decoratives around the newly spawned crack
+          local cleanupzone = Area.construct(createdentity.position.x, createdentity.position.y, createdentity.position.x, createdentity.position.y)
+          surface.destroy_decoratives({area=Area.expand(cleanupzone, 0.6)})
+    -- debug
+    -- player.print("vtk-deepcore-mining-crack placed successfully")
+    -- player.print(serpent.block(tile.position))
+    -- player.print(serpent.block(cleanupzone))
+
+          -- a crack was spawned succesfully, let's continue to try to spawn a group up to 5 recurcively
+          cracks = cracks + 1
+          create_crack(surface, Area.expand(cleanupzone, 20), cracks)
+          return
+      end
+      attempts = attempts + 1
+  end
 end
 
 
