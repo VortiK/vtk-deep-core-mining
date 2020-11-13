@@ -92,6 +92,13 @@ script.on_event(events.on_robot_pre_mined,
     }
 )
 
+-- editor doesn't trigger normal events, so we should go around all miners like when we introduced moho miners
+script.on_event(events.on_player_toggled_map_editor,
+    function(event)
+        upgrade220()
+    end
+)
+
 -- on mod update fixes
 script.on_configuration_changed(function(data)
     if data.mod_changes["vtk-deep-core-mining"] and data.mod_changes["vtk-deep-core-mining"].old_version ~= nil then

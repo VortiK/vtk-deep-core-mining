@@ -84,12 +84,7 @@ function moho_hot_swapper(drill, mode)
     local surface = drill.surface
     local area = Position.expand_to_area(drill.position, 2)
 
-    local patches = {}
-    for _,ore in pairs(get_patchable_ores()) do
-        table.insert(patches, ore.."-patch")
-        table.insert(patches, ore.."-patch-ore")
-        table.insert(patches, ore.."-patch-chunk")
-    end
+    local patches = get_all_patches()
     
     local patchesCount = surface.count_entities_filtered{name = patches, area = area}
     local patchesFound = surface.find_entities_filtered{name = patches, area = area}

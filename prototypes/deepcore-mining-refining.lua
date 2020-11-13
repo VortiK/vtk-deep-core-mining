@@ -15,11 +15,12 @@ data:extend({
         enabled = false,
 --        category = "centrifuging",
         category = "chemistry",
-        subgroup = "raw-material",
+        subgroup = "vtk-deepcore-mining",
+        order = "v[items]-d1",
         allow_decomposition = false,
         ingredients = {
-            {"vtk-deepcore-mining-ore-chunk", 100},
-            {type="fluid", name=sulfuricacidname, amount=20}
+            {"vtk-deepcore-mining-ore-chunk", 80},
+            {type="fluid", name=sulfuricacidname, amount=15}
         },
         icons = {
         {
@@ -37,7 +38,6 @@ data:extend({
 --        },
         },
         icon_size = 64,
-        order = "v[vtk-deepcore-mining]-a[deepcore-ore-processing]",
         main_product = "",
         results =
         {
@@ -56,9 +56,18 @@ data:extend({
     },
 })
 
+local ore_chunk_no_uranium = table.deepcopy(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining'])
+ore_chunk_no_uranium['name'] = "vtk-deepcore-mining-ore-chunk-refining-no-uranium"
+ore_chunk_no_uranium['ingredients'] = {
+    {"vtk-deepcore-mining-ore-chunk", 100},
+    {type="fluid", name=sulfuricacidname, amount=20}
+}
+data:extend({ore_chunk_no_uranium})
+
 -- 
 -- DeepCore ore Chunks as DeepCore Ore refining results
 -- 
+local i = 2
 for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
 
     local oreprobability = oredata.probability
@@ -69,6 +78,9 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     end
 
     table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = 1, amount = 100 * oreprobability})
+    if oredata.result ~= "uranium-ore" then
+      table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining-no-uranium']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = 1, amount = 100 * oreprobability})
+    end
 
     -- on the fly focus deep core chunk refining recipes creation
     local ore_chunk_focus_recipe = table.deepcopy(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining'])
@@ -105,7 +117,9 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     else
         table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-focus.png"})
     end
+    ore_chunk_focus_recipe.order = "v[items]-d"..i,
     data:extend({ore_chunk_focus_recipe})
+    i = i + 1
 end
 
 -- 
@@ -121,7 +135,8 @@ local function chunk_refining_recipe_maker(
   refining_liquid2,
   refining_liquid2_amount,
   oretint,
-  machinetint
+  machinetint,
+  ore_order
 )
     local recipe =
     {
@@ -130,7 +145,8 @@ local function chunk_refining_recipe_maker(
         enabled = false,
         energy_required = 4,
         category = "chemistry",
-        subgroup = "raw-material",
+        subgroup = "vtk-deepcore-mining",
+        order = "v[items]-c"..ore_order,
         allow_decomposition = false,
         ingredients = 
         {
@@ -173,6 +189,7 @@ local function chunk_refining_recipe_maker(
     return recipe
 end
 
+local i = 1
 for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   local oretint = nil
   local machinetint = nil
@@ -195,17 +212,18 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     oredata.refineliquid2_name,   -- refining liquid 2
     oredata.refineliquid2,        -- refining liquid 2 amount
     oretint,                      -- tint
-    machinetint                   -- machinetint
+    machinetint,                  -- machinetint
     -- {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
+    i
   )
-
   data:extend({
     ore_chunk_refining_recipe
   })
-
+  i = i + 1
 end
 
 -- allow productivity in all chunks refining recipes
+-- yeah no, it's already infinite ore and balanced for without modules
 --[[ 
 for k, v in pairs(data.raw.module) do
   if v.name:find("productivity%-module") and v.limitation then

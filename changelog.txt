@@ -1,4 +1,47 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.4.0
+Date: 13.11.2020
+  Changes:
+    - All mining drills now use double energy usage : Moho 1 > 2MW, DeepCore 5 > 10MW, Advanced > MW. Halved the pollution emission per energy, so it remains the same as before but beware if you crank it up !
+    - Drills energy usage is now available as a startup configuration in mod settings.
+    - Deep Core Cracks spawning chance and group size variations are both map configurable in mod settings. Only new spawn will be affected obviously.
+    - Ore patch spawning chance and minimum distance are not map configuratble in mod setting. Only new spawn will be affected obviously.
+    - Removed the allow beacon around drill setting, it was not doing anything anymore as code was removed some time ago. Functionnaly still works as modules effects are limited on drills anyway.
+---------------------------------------------------------------------------------------------------
+Version: 2.3.2
+Date: 28.08.2020
+  Changes:
+    - Fixed electric mining drill animation smoke function wrongly overriding vanilla one that was actually deadcode (thank for report and analysis in https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/5f42e6ed5f4fe08ba57f66d4 )
+---------------------------------------------------------------------------------------------------
+Version: 2.3.1
+Date: 15.08.2020
+  Changes:
+    - Fixed editor mode not triggering build events used to hotswap ore patches for moho or deepcore miner (raw ore / chunks). It now triggers a full check of all miner when entering / exiting editor mode.
+    - Seems to also fix some cases where hotswaping wasn't working even when placing a miner normally.
+    - Bumped factorio version to 1.0 :tada:
+---------------------------------------------------------------------------------------------------
+Version: 2.3.0
+Date: 13.08.2020
+  Changes:
+    - Fixed patches spawning too close when one is already converted to a chunk/ore type by ploting a miner. Also in the case of two different types of ore close to each other. Now any type of ore patch can only spawn when none are already close by.
+    - Added a new DeepCore Refining recipe without Uranium. Made the normal one a bit cheaper to compensate.
+    - Added compatibility with Mylon's Prospector mod, Deep Core Patches will only spawn on depleted prospected ores now (Contribution from Darkshadow44).
+---------------------------------------------------------------------------------------------------
+Version: 2.2.2
+Date: 06.08.2020
+  Changes:
+    - Speed and productivity modules removed from all DCMDrills, wrecks balane and doesn't add meaningful gameplay. Can still use speed on refining though.
+    - This solves beaconing spam around drills !
+---------------------------------------------------------------------------------------------------
+Version: 2.2.1
+Date: 04.08.2020
+  Changes:
+    - Fixed all Deep Core recipes sorting in production inventory.
+    - Fixed ADCMD requiring 50 DCMD to be built, now 50 Vanilla Electric Mining Drill instead. Also reviewed all DCMDrills costs to be more coherent.
+    - Fixed Krastorio 2 Rare Metals Chunks refining locale.
+    - Fixed Krastorio 2 Rare Metals patch yielding smelted raremetal, now outputs raw rare metals as it should.
+    - Moho Update (2.2.0) basic integration into DE locale, some texts kept in english until I can get a proper translation (contributions welcome !).
+---------------------------------------------------------------------------------------------------
 Version: 2.2.0
 Date: 04.08.2020
   Changes:
@@ -18,10 +61,6 @@ Date: 04.08.2020
     - ADCMD focused chunks refining boosted a bit.
     - Removed productivity from refining recipes.
     - Overall, a bit less deep chunks, more raw ore output in both normal and focused deep chunks refining.
-  Todo:
-    - Fix recipes sorting in production inventory.
-    - Find a way to remove beaconing around drills again or maybe let people do OP setups if they like ?
-    - With Dirty Mining Mod Ore patches will only spawn on depleted dirty ore (Contribution from Darkshadow44)
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.0
 Date: 02.08.2020

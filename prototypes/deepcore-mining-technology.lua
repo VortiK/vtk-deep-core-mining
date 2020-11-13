@@ -76,6 +76,10 @@ data:extend(
           type = "unlock-recipe",
           recipe = "vtk-deepcore-mining-ore-chunk-refining"
         },
+        {
+          type = "unlock-recipe",
+          recipe = "vtk-deepcore-mining-ore-chunk-refining-no-uranium"
+        },
     },
     prerequisites = {"vtk-deepcore", "vtk-deepcore-mining", "mining-productivity-3", "production-science-pack", "utility-science-pack"}, 
     unit =

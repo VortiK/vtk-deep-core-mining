@@ -1,5 +1,15 @@
 local sounds = require("__base__/prototypes/entity/demo-sounds")
 
+
+data:extend({
+    {
+        type = "item-subgroup",
+        name = "vtk-deepcore-mining",
+        group = "intermediate-products",
+        order = "v",
+    },
+})
+
 --
 -- Deep Core Items
 -- 
@@ -45,8 +55,8 @@ data:extend({
         icon_size = 64,
         fuel_value = '120MJ',
         fuel_category = 'vtk-deepcore-mining-drone',
-        subgroup = "intermediate-product",
-        order = "v[vtk-deepcore-mining-drone]",
+        subgroup = "vtk-deepcore-mining",
+        order = "v[items]-a1",
         stack_size = 50
     }
 })
@@ -59,8 +69,8 @@ data:extend({
         icon = "__vtk-deep-core-mining__/graphics/icons/mining-drone-blueprint.png",
         icon_size = 64,
         stack_size = 1,
-        subgroup = "tool",
-        order = "v[automated-construction]-d[deep-core-mining]",
+        subgroup = "vtk-deepcore-mining",
+        order = "v[items]-a2",
         selection_color = {r = 1.0, g = 0.2, b = 1.0, a = 0.3},
         alt_selection_color = {r = 0.2, g = 0.8, b = 0.3, a = 0.3},
         selection_mode = {"any-entity"},
@@ -95,8 +105,8 @@ data:extend({
         {
             {"electric-mining-drill", 10},
             {"steel-plate", 20},
-            {"advanced-circuit", 5},
-            {"vtk-deepcore-mining-drone", 5}
+            {"advanced-circuit", 10},
+            {"vtk-deepcore-mining-drone", 10}
         },
         result = "vtk-deepcore-mining-moho",
     },
@@ -109,8 +119,8 @@ data:extend({
         {
             {"electric-mining-drill", 20},
             {"steel-plate", 20},
-            {"advanced-circuit", 5},
-            {"vtk-deepcore-mining-drone", 10}
+            {"advanced-circuit", 20},
+            {"vtk-deepcore-mining-drone", 20}
         },
         result = "vtk-deepcore-mining-drill",
     },
@@ -121,9 +131,9 @@ data:extend({
         energy_required = 100,
         ingredients =
         {
-            {"vtk-deepcore-mining-drill", 50},
-            {"steel-plate", 100},
-            {"processing-unit", 20},
+            {"electric-mining-drill", 50},
+            {"steel-plate", 50},
+            {"processing-unit", 50},
             {"vtk-deepcore-mining-drone", 50}
         },
         result = "vtk-deepcore-mining-drill-advanced",
@@ -146,32 +156,6 @@ data:extend({
 -- 
 -- Deep Core Entities
 -- 
-
-function electric_mining_drill_smoke()
-    return
-    {
-      filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-smoke.png",
-      line_length = 6,
-      width = 24,
-      height = 38,
-      frame_count = 30,
-      animation_speed = 0,4,
-      direction_count = 1,
-      shift = util.by_pixel(0, 2),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-smoke.png",
-        line_length = 6,
-        width = 48,
-        height = 72,
-        frame_count = 30,
-        animation_speed = 0,4,
-        direction_count = 1,
-        shift = util.by_pixel(0, 3),
-        scale = 0.5,
-      }
-    }
-  end
 
 data:extend({
     {
@@ -246,11 +230,11 @@ data:extend({
             pipe_connections = {{ position = {1, 3} },}
         },
         
-        energy_usage = "1MW",
+        energy_usage = settings.startup["vtk-deep-core-mining-moho-energy"].value.."MW",
         energy_source =
         {
             type = "electric",
-            emissions_per_minute = 100,
+            emissions_per_minute = 50,
             usage_priority = "secondary-input",
         },
         vector_to_place_result = {-2, 3},
@@ -291,7 +275,7 @@ data:extend({
             audible_distance_modifier = 1,
         },
         module_specification = { module_slots = 2 },
-        allowed_effects = {"speed", "productivity", "consumption", "pollution"}, 
+        allowed_effects = {"consumption", "pollution"}, 
         radius_visualisation_picture =
         {
             filename = "__base__/graphics/entity/pumpjack/pumpjack-radius-visualization.png",
@@ -350,11 +334,11 @@ data:extend({
             }
         },
         
-        energy_usage = "5MW",
+        energy_usage = settings.startup["vtk-deep-core-mining-deepcore-energy"].value.."MW",
         energy_source =
         {
             type = "electric",
-            emissions_per_minute = 100,
+            emissions_per_minute = 50,
             usage_priority = "secondary-input",
         },
         vector_to_place_result = {-2, 3},
@@ -444,7 +428,7 @@ data:extend({
             audible_distance_modifier = 1,
         },
         module_specification = { module_slots = 2 },
-        allowed_effects = {"speed", "productivity", "consumption", "pollution"}, 
+        allowed_effects = {"consumption", "pollution"}, 
         radius_visualisation_picture =
         {
             filename = "__base__/graphics/entity/pumpjack/pumpjack-radius-visualization.png",
@@ -595,7 +579,7 @@ data:extend({
             audible_distance_modifier = 1,
         },
         module_specification = { module_slots = 2 },
-        allowed_effects = {"speed", "productivity", "consumption", "pollution"}, 
+        allowed_effects = {"consumption", "pollution"}, 
         -- module_specification = { module_slots = 0 },
         -- allowed_effects = nil, 
         radius_visualisation_picture =
@@ -629,10 +613,10 @@ data:extend({
             type = "electric",
             emissions_per_minute = 0,
             usage_priority = "secondary-input",
-            buffer_capacity = "10MW",
-            input_flow_limit = "10MW"
+            buffer_capacity = settings.startup["vtk-deep-core-mining-deepcore-advanced-energy"].value.."MW",
+            input_flow_limit = settings.startup["vtk-deep-core-mining-deepcore-advanced-energy"].value.."MW"
         },
-        energy_usage = "10MW",
+        energy_usage = settings.startup["vtk-deep-core-mining-deepcore-advanced-energy"].value.."MW",
         collision_box = {{ -4.1, -4.1}, {4.1, 4.5}},
     }
 })

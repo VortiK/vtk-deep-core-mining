@@ -118,10 +118,20 @@ function get_patchable_ores()
   return patchableOres
 end
 
+function get_all_patches()
+  local patches = {}
+  for _,ore in pairs(get_patchable_ores()) do
+      table.insert(patches, ore.."-patch")
+      table.insert(patches, ore.."-patch-ore")
+      table.insert(patches, ore.."-patch-chunk")
+  end
+  return patches
+end
+
 function spawn_ore_patch_on_depleted_ore(event)
     local ore = event.entity
     local surface = ore.surface
-    local areaToScan = Position.expand_to_area(ore.position, 10)
+    local areaToScan = Position.expand_to_area(ore.position, settings.global["vtk-deep-core-mining-patch-spawn-distance"].value)
     local minspawnrange = settings.global["vtk-deep-core-mining-spawn-radius-from-start"].value
     local minrichness = settings.global["vtk-deep-core-mining-patch-min-richness"].value
     local maxrichness = settings.global["vtk-deep-core-mining-patch-max-richness"].value
@@ -144,9 +154,24 @@ function spawn_ore_patch_on_depleted_ore(event)
         patchableOres = table.merge(patchableOres, dirtyores)
     end
     
+    -- When Prospector is installed, only generate patches after the last deposit is exhausted
+    -- Prospector is currently not really compatible to DirtyMining, so only enable this feature when DirtyMining is absent
+    if game.active_mods["Prospector"] and not game.active_mods["DirtyMining"] then
+      local patchableOresNew = {}
+      for key, name in pairs(patchableOres) do
+          local key_seam = key.."-seam"
+          if game.entity_prototypes[key_seam] ~= nil then
+              patchableOresNew = table.merge(patchableOresNew, {[key_seam] = name})
+          else
+              patchableOresNew = table.merge(patchableOresNew, {[key] = name})
+          end
+      end
+      patchableOres = patchableOresNew
+  end
+
     -- logic : 
     -- - if depleted ore has an equivalent patch entity
-    -- - 10% chance to spawn an ore patch on depletion
+    -- - configuration(default 10) % chance to spawn an ore patch on depletion
     -- - check if there isn't a nearby ore patch already
     -- - then spawn it on the location the ore was depleted
     
@@ -160,7 +185,8 @@ function spawn_ore_patch_on_depleted_ore(event)
     local orePatchToSpawn = nil
     for patchableOre, oreresult in pairs(patchableOres) do
         -- need to pass true for "plain" search as 4th param because some ore have a "-" and it is a special character for lua string.find() apparently ...
-        if string.find(patchableOre, ore.name, 1, true) then 
+        -- if string.find(patchableOre, ore.name, 1, true) then 
+        if patchableOre == ore.name then
             if settings.global["vtk-deep-core-mining-spawn-"..oreresult.."-patch"]
             and settings.global["vtk-deep-core-mining-spawn-"..oreresult.."-patch"].value then
                 validOre = true
@@ -171,8 +197,10 @@ function spawn_ore_patch_on_depleted_ore(event)
     end
     
     if validOre and not Area.inside(Position.expand_to_area({0,0}, minspawnrange), ore.position) then
-        local number = math.random(1, 10)
-        entitiesCount = surface.count_entities_filtered{area = areaToScan, name = orePatchToSpawn}
+        local number = math.random(1, settings.global["vtk-deep-core-mining-patch-spawn-chance"].value)
+        
+        local patches = get_all_patches()
+        entitiesCount = surface.count_entities_filtered{area = areaToScan, name = patches}
         
         if number == 1 and entitiesCount == 0 then
             oreamount = math.random(minrichness, maxrichness)
@@ -201,7 +229,7 @@ function place_deep_core_cracks(area, surface)
     end
     
     -- lucky day ? (1 / 500)
-    local luck = math.random(1, 500)
+    local luck = math.random(1, settings.global["vtk-deep-core-mining-crack-spawn-chance"].value)
   -- debug player.print(serpent.block(luck))
     if luck ~= 250 then
         return
@@ -229,7 +257,7 @@ end
 
 function create_crack(surface, area, cracks)
 
-  local stop = math.random(2, 5)
+  local stop = math.random(settings.global["vtk-deep-core-mining-spawn-min-group"].value, settings.global["vtk-deep-core-mining-spawn-max-group"].value)
   if cracks > stop then
     return
   end
@@ -261,7 +289,7 @@ function create_crack(surface, area, cracks)
     -- player.print(serpent.block(tile.position))
     -- player.print(serpent.block(cleanupzone))
 
-          -- a crack was spawned succesfully, let's continue to try to spawn a group up to 5 recurcively
+          -- a crack was spawned succesfully, let's continue to try to spawn a group up to a maxium recurcively
           cracks = cracks + 1
           create_crack(surface, Area.expand(cleanupzone, 20), cracks)
           return

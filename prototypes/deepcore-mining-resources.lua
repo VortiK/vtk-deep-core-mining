@@ -308,14 +308,14 @@ local function resource_patch_maker(
       {
         {
           type = "item",
-          name = ore_result, -- ore chunks
+          name = "vtk-deepcore-mining-"..ore_result.."-chunk", -- ore chunks
           amount_min = 2,
           amount_max = 4,
           probability = 1
         },
         {
           type = "item",
-          name = ore_name, -- raw ore
+          name = ore_result, -- raw ore
           amount_min = 2,
           amount_max = 4,
           probability = 1
@@ -354,29 +354,8 @@ local function resource_patch_maker(
   
   if fluid ~= nil then
     table.merge(oredata.minable, {["fluid_amount"] = fluidamount, ["required_fluid"] = fluid})
-    
-    
-  local fluid_req = {
-    minable =
-    {
-      mining_time = miningtime*2,
-      results =
-      {
-        {
-          type = "item",
-          name = ore_result,
-          amount_min = 2,
-          amount_max = 2,
-          probability = 1
-        }
-      },
-      fluid_amount = fluidamount,
-      required_fluid = sulfuricacidname
-    }
-  }
-    -- for k,v in pairs(fluid_req) do oredata[k] = v end
   end
-  
+
   return oredata
 end
 
@@ -440,7 +419,7 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   local ore_patch = resource_patch_maker(
     ore,                                                -- ore_name
     oredata.result.."-patch",                           -- ore_patch_name
-    "vtk-deepcore-mining-"..oredata.result.."-chunk",   -- patch mining ore result
+    oredata.result,                                     -- patch mining ore result
     oredata.patchimg,                                   -- ore image name (icon, entity, hrentity)
     oredata.frame,                                      -- frame
     oredata.variation,                                  -- variation
