@@ -542,3 +542,17 @@ if mods.pycoalprocessing then
     },
   })
 end
+
+-- Brevvens's Titanium support
+if mods.bztitanium then
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-titanium-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "he1"
+    },
+  })
+end
