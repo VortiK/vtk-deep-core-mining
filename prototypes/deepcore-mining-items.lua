@@ -1,4 +1,4 @@
-local sounds = require("__base__/prototypes/entity/demo-sounds")
+local sounds = require("__base__/prototypes/entity/sounds")
 
 
 data:extend({
@@ -230,11 +230,11 @@ data:extend({
             pipe_connections = {{ position = {1, 3} },}
         },
         
-        energy_usage = settings.startup["vtk-deep-core-mining-moho-energy"].value.."MW",
+        energy_usage = settings.startup["vtk-deep-core-mining-moho-energy"].value.."MW", -- default 2
         energy_source =
         {
             type = "electric",
-            emissions_per_minute = 50,
+            emissions_per_minute = settings.startup["vtk-deep-core-mining-moho-pollution"].value, -- default 200
             usage_priority = "secondary-input",
         },
         vector_to_place_result = {-2, 3},
@@ -334,11 +334,11 @@ data:extend({
             }
         },
         
-        energy_usage = settings.startup["vtk-deep-core-mining-deepcore-energy"].value.."MW",
+        energy_usage = settings.startup["vtk-deep-core-mining-deepcore-energy"].value.."MW", -- default 10 MW
         energy_source =
         {
             type = "electric",
-            emissions_per_minute = 50,
+            emissions_per_minute = settings.startup["vtk-deep-core-mining-deepcore-pollution"].value, -- default 500,
             usage_priority = "secondary-input",
         },
         vector_to_place_result = {-2, 3},
@@ -510,7 +510,7 @@ data:extend({
             fuel_category = "vtk-deepcore-mining-drone",
             effectivity = 1,
             fuel_inventory_size = 1,
-            emissions_per_minute = 1000,
+            emissions_per_minute = settings.startup["vtk-deep-core-mining-deepcore-advanced-pollution"].value, -- default 1000,
             smoke =
             {
               {

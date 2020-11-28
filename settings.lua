@@ -19,6 +19,15 @@ data:extend({
   },
   {
     type = "int-setting",
+		name = "vtk-deep-core-mining-moho-pollution",
+		setting_type = "startup",
+		minimum_value = 1,
+		default_value = 200,
+		maximum_value = 10000,
+		order = "2aa"
+  },
+  {
+    type = "int-setting",
 		name = "vtk-deep-core-mining-deepcore-energy",
 		setting_type = "startup",
 		minimum_value = 1,
@@ -26,7 +35,15 @@ data:extend({
 		maximum_value = 10000,
 		order = "2b"
   },
-  
+  {
+    type = "int-setting",
+		name = "vtk-deep-core-mining-deepcore-pollution",
+		setting_type = "startup",
+		minimum_value = 1,
+		default_value = 500,
+		maximum_value = 10000,
+		order = "2ba"
+  },
   {
     type = "int-setting",
 		name = "vtk-deep-core-mining-deepcore-advanced-energy",
@@ -35,6 +52,15 @@ data:extend({
 		default_value = 20,
 		maximum_value = 10000,
 		order = "2c"
+  },
+  {
+    type = "int-setting",
+		name = "vtk-deep-core-mining-deepcore-advanced-pollution",
+		setting_type = "startup",
+		minimum_value = 1,
+		default_value = 1000,
+		maximum_value = 10000,
+		order = "2ca"
   },
   {
 		type = "int-setting",

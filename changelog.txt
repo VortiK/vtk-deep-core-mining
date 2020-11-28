@@ -1,8 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.5.0
+Date: 28.11.2020
+  Changes:
+    - Update compatibility with Factorio 1.1.
+    - Fixed demo sounds not longer being separated.
+    - Reviewed pollution as it is now a fixed value at maximum consumption and not scaling depending on enery usage anymore.
+    - Added a mod setting to set pollution for moho, deepcore and advanced deepcore mining drills, respective defaults : 200, 500, 1000.
+    - Added support for Titanium ore from https://mods.factorio.com/mod/bztitanium (thanks pull request from brevven : https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/5fbb77fc382d8d2ab69e23ab )
+---------------------------------------------------------------------------------------------------
 Version: 2.4.0
 Date: 13.11.2020
   Changes:
-    - All mining drills now use double energy usage : Moho 1 > 2MW, DeepCore 5 > 10MW, Advanced > MW. Halved the pollution emission per energy, so it remains the same as before but beware if you crank it up !
+    - All mining drills now use double energy usage : Moho 1 > 2MW, DeepCore 5 > 10MW, Advanced > 20MW. Halved the pollution emission per energy, so it remains the same as before but beware if you crank it up !
     - Drills energy usage is now available as a startup configuration in mod settings.
     - Deep Core Cracks spawning chance and group size variations are both map configurable in mod settings. Only new spawn will be affected obviously.
     - Ore patch spawning chance and minimum distance are not map configuratble in mod setting. Only new spawn will be affected obviously.
