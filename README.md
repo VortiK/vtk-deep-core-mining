@@ -43,6 +43,9 @@ The idea is to repurpose depleted mining outpost when ore is depleted. So the in
 - Pyanodons Coal Processing : https://mods.factorio.com/mod/pycoalprocessing
 - Mylon's Prospector : https://mods.factorio.com/mod/Prospector
 
+## Compatibility contribution provided by Brevven https://mods.factorio.com/user/brevven : 
+- Titanium https://mods.factorio.com/mod/bztitanium
+
 Other mods support depending on request !
 
 ## Known incompatibility
