@@ -21,6 +21,7 @@
     "? pyrawores >= 2.0.7",
     "? pycoalprocessing >= 1.7.7",
     "? Prospector >= 1.0.25",
+    "? bztitanium >= 0.6.10",
     "!IndustrialRevolution"
   ]
 }

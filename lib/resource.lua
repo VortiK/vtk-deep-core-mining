@@ -115,6 +115,14 @@ function get_patchable_ores()
     patchableOres = table.merge(patchableOres, pycoalprocessing)
   end
 
+  -- Brevvens's Titanium support
+  if game.active_mods["bztitanium"] then
+    local bztitanium = {
+      ["titanium-ore"] = "titanium-ore",
+    }
+    patchableOres = table.merge(patchableOres, bztitanium)
+  end
+
   return patchableOres
 end
 

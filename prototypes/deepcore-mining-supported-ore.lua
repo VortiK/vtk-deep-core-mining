@@ -665,6 +665,25 @@ if mods.pycoalprocessing then
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, pycoalprocessing)
 end
 
+-- Brevvens's Titanium support
+if mods.bztitanium then
+  local bztitanium = {
+    ["titanium-ore"] = {
+      ["result"] = "titanium-ore",
+      ["img"] = "ore",
+      ["patchimg"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80,
+      ["refineliquid"] = 20,
+      ["probability"] = 0.10,
+      ["tint"] = true,
+      ["patchtint"] = true
+    },
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, bztitanium)
+end
+
 -- somehow table.count doesn't exists in lua and you have to do it yourself
 vtk_deepcoremining_supported_ores_count = 0
 
