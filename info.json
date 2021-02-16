@@ -22,6 +22,7 @@
     "? pycoalprocessing >= 1.7.7",
     "? Prospector >= 1.0.25",
     "? bztitanium >= 0.6.10",
+    "? bzlead >= 0.2.2",
     "!IndustrialRevolution"
   ]
 }

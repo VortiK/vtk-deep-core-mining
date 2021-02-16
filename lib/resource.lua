@@ -123,6 +123,14 @@ function get_patchable_ores()
     patchableOres = table.merge(patchableOres, bztitanium)
   end
 
+  -- Brevvens's Lead support
+  if game.active_mods["bzlead"] and not game.active_mods["bobores"] and not game.active_mods["angelsrefining"] then
+    local bzlead = {
+      ["lead-ore"] = "lead-ore",
+    }
+    patchableOres = table.merge(patchableOres, bzlead)
+  end
+
   return patchableOres
 end
 
