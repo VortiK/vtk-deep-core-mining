@@ -578,7 +578,69 @@ if mods.bztitanium then
       setting_type = "runtime-global",
       default_value = true,
       per_user = false,
-      order = "he1"
+      order = "hg1"
+    },
+  })
+end
+
+-- Space Exploration support
+if mods["space-exploration"] then
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-se-beryllium-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hh1"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-se-cryonite-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hh2"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-se-holmium-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hh3"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-se-iridium-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hh4"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-se-naquium-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hh5"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-se-vulcanite-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hh6"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-se-vitamelange-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hh7"
     },
   })
 end

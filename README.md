@@ -1,3 +1,5 @@
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T427A37)
+
 # VortiK's Deep Core Mining
 
 Sad to see your outposts depleted and empty ore trains on your rails ? No more with Deep Core Mining ! Refactor your mining outpost to give them a new longterm breath !

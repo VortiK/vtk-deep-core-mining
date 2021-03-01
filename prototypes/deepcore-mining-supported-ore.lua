@@ -684,9 +684,106 @@ if mods.bztitanium then
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, bztitanium)
 end
 
+
+-- Angel's ore support
+if mods["space-exploration"] then
+  local seores = {
+    ["se-beryllium-ore"] = {
+      ["result"] = "se-beryllium-ore",
+      ["img"] = "ore",
+      ["patchimg"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80,
+      ["refineliquid"] = 20,
+      ["probability"] = 0,
+      ["tint"] = true,
+      ["patchtint"] = true
+    },
+    ["se-cryonite"] = {
+      ["result"] = "se-cryonite",
+      ["img"] = "ore",
+      ["patchimg"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80,
+      ["refineliquid"] = 20,
+      ["probability"] = 0,
+      ["tint"] = true,
+      ["patchtint"] = true
+    },
+    ["se-holmium-ore"] = {
+      ["result"] = "se-holmium-ore",
+      ["img"] = "ore",
+      ["patchimg"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80,
+      ["refineliquid"] = 20,
+      ["probability"] = 0,
+      ["tint"] = true,
+      ["patchtint"] = true
+    },
+    ["se-iridium-ore"] = {
+      ["result"] = "se-iridium-ore",
+      ["mining-liquid"] = "sulfuric-acid", 
+      ["mining-liquid-amount"] = 50, 
+      ["img"] = "ore",
+      ["patchimg"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80,
+      ["refineliquid"] = 20,
+      ["probability"] = 0,
+      ["tint"] = true,
+      ["patchtint"] = true
+    },
+    ["se-naquium-ore"] = {
+      ["result"] = "se-naquium-ore",
+      ["mining-liquid"] = "sulfuric-acid", 
+      ["mining-liquid-amount"] = 200, 
+      ["img"] = "ore",
+      ["patchimg"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80,
+      ["refineliquid"] = 20,
+      ["probability"] = 0,
+      ["tint"] = true,
+      ["patchtint"] = true
+    },
+    ["se-vulcanite"] = {
+      ["result"] = "se-vulcanite",
+      ["img"] = "ore",
+      ["patchimg"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80,
+      ["refineliquid"] = 20,
+      ["probability"] = 0,
+      ["tint"] = true,
+      ["patchtint"] = true
+    },
+    ["se-vitamelange"] = {
+      ["result"] = "se-vitamelange",
+      ["img"] = "ore",
+      ["patchimg"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80,
+      ["refineliquid"] = 20,
+      ["probability"] = 0,
+      ["tint"] = true,
+      ["patchtint"] = true
+    },
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, seores)
+end
 -- somehow table.count doesn't exists in lua and you have to do it yourself
 vtk_deepcoremining_supported_ores_count = 0
 
 for k,v in pairs(vtk_deepcoremining_supported_ores) do
-  vtk_deepcoremining_supported_ores_count = vtk_deepcoremining_supported_ores_count + 1
+  if v['probability'] > 0 then
+    vtk_deepcoremining_supported_ores_count = vtk_deepcoremining_supported_ores_count + 1
+  end
 end

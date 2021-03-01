@@ -123,6 +123,20 @@ function get_patchable_ores()
     patchableOres = table.merge(patchableOres, bztitanium)
   end
 
+  -- Space Exploration Ores support
+  if game.active_mods["space-exploration"] then
+    local seore = {
+      ["se-beryllium-ore"] = "se-beryllium-ore",
+      ["se-cryonite"] = "se-cryonite",
+      ["se-holmium-ore"] = "se-holmium-ore",
+      ["se-iridium-ore"] = "se-iridium-ore",
+      ["se-naquium-ore"] = "se-naquium-ore",
+      ["se-vulcanite"] = "se-vulcanite",
+      ["se-vitamelange"] = "se-vitamelange",
+    }
+    patchableOres = table.merge(patchableOres, seore)
+  end
+
   return patchableOres
 end
 
@@ -186,7 +200,7 @@ function spawn_ore_patch_on_depleted_ore(event)
     -- debug
     -- local player = game.players[1]
     -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
-    -- player.print("mined ore : "..serpent.block(ore))
+    -- player.print("mined ore : "..serpent.block(ore.name))
     -- player.print(serpent.block(player))
     
     local validOre = false

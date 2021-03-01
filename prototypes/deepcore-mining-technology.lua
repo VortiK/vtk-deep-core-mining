@@ -101,5 +101,7 @@ data:extend(
 
 for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   table.insert(data.raw['technology']['vtk-deepcore-mining']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-"..ore.."-chunk-refining" })
-  table.insert(data.raw['technology']['vtk-deepcore-mining-advanced']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-ore-chunk-refining-"..ore.."-focus" })
+  if oredata['probability'] > 0 then
+    table.insert(data.raw['technology']['vtk-deepcore-mining-advanced']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-ore-chunk-refining-"..ore.."-focus" })
+  end
 end

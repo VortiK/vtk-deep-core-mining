@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.6.0
+Date: 20.02.2021
+  Changes:
+    - Unofficial support of Space Exploration Ores, Beryllium, Cryonite, Holmium, Iridium, Naquium, Vulcanite, Vitamelange, infinite ore patches will spawn an yield ore or chunks depending on the miner used.
+    - If supported ore probability is 0 it won't be refined from Deep Core Ore so Space Exploration ores can only be found on their planets and with Advanced Deep Core Mining.
+---------------------------------------------------------------------------------------------------
+Version: 2.5.1
+Date: 28.11.2020
+  Changes:
+    - Fix missing locale for new pollution configurations.
+---------------------------------------------------------------------------------------------------
 Version: 2.5.0
 Date: 28.11.2020
   Changes:
