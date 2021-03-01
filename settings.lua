@@ -583,6 +583,20 @@ if mods.bztitanium then
   })
 end
 
+-- Brevvens's Lead support
+if mods.bzlead and not mods.bobores and not mods.angelsrefining then
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-lead-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "he1"
+    },
+  })
+end
+
 -- Space Exploration support
 if mods["space-exploration"] then
   data:extend({

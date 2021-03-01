@@ -684,8 +684,26 @@ if mods.bztitanium then
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, bztitanium)
 end
 
+-- Brevvens's Lead support
+if mods.bzlead and not mods.bobores and not mods.angelsrefining then
+  local bzlead = {
+    ["lead-ore"] = {
+      ["result"] = "lead-ore",
+      ["img"] = "ore",
+      ["patchimg"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80,
+      ["refineliquid"] = 20,
+      ["probability"] = 0.30,
+      ["tint"] = true,
+      ["patchtint"] = true
+    },
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, bzlead)
+end
 
--- Angel's ore support
+-- Space Exploration's ore support
 if mods["space-exploration"] then
   local seores = {
     ["se-beryllium-ore"] = {
@@ -779,6 +797,7 @@ if mods["space-exploration"] then
   }
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, seores)
 end
+
 -- somehow table.count doesn't exists in lua and you have to do it yourself
 vtk_deepcoremining_supported_ores_count = 0
 

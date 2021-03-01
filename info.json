@@ -1,6 +1,6 @@
 {
   "name": "vtk-deep-core-mining",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "title": "VortiK's Deep core mining",
   "author": "VortiK",
   "homepage": "",
@@ -23,6 +23,7 @@
     "? Prospector >= 1.0.25",
     "? bztitanium >= 0.6.10",
     "? space-exploration >= 0.5.37",
+    "? bzlead >= 0.2.2",
     "!IndustrialRevolution"
   ]
 }

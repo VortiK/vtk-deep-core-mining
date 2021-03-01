@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.7.0
+Date: 01.02.2021
+  Changes:
+    - Added support for brevven's Lead mod https://mods.factorio.com/mod/bzlead from his own pull request.
+---------------------------------------------------------------------------------------------------
 Version: 2.6.0
 Date: 20.02.2021
   Changes:
