@@ -24,6 +24,6 @@
     "? bztitanium >= 0.6.10",
     "? space-exploration >= 0.5.37",
     "? bzlead >= 0.2.2",
-    "!IndustrialRevolution"
+    "? IndustrialRevolution >= 2.1.2"
   ]
 }
