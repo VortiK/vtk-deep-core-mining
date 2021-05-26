@@ -597,6 +597,20 @@ if mods.bzlead and not mods.bobores and not mods.angelsrefining then
   })
 end
 
+-- Brevvens's Tungsten support
+if mods.bztungsten and not mods.bobores then
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-tungsten-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "he1"
+    },
+  })
+end
+
 -- Space Exploration support
 if mods["space-exploration"] then
   data:extend({
