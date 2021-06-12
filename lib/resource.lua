@@ -139,6 +139,14 @@ function get_patchable_ores()
     patchableOres = table.merge(patchableOres, bztungsten)
   end
 
+  -- Brevvens's Zirconium support
+  if game.active_mods["bzzirconium"] then
+    local bzzirconium = {
+      ["zircon"] = "zircon",
+    }
+    patchableOres = table.merge(patchableOres, bzzirconium)
+  end
+
   -- Space Exploration Ores support
   if game.active_mods["space-exploration"] then
     local seore = {
