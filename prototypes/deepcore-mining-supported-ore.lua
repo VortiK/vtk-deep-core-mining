@@ -488,6 +488,25 @@ if mods["Krastorio2"] then
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, Krastorio2_ore)
 end
 
+-- Omnimatter support
+if mods.omnimatter then
+  local omnimatter = {
+    ["omnite"] = {
+      ["result"] = "omnite",
+      ["img"] = "ore",
+      ["patchimg"] = "ore", 
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80, 
+      ["refineliquid"] = 20, 
+      ["probability"] = 0.10,
+      ["tint"] = true,
+      ["patchtint"] = true
+    },
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, omnimatter)
+end
+
 -- Leighzer's Morphite support
 if mods.leighzermorphite then
   local leighzermorphite = {

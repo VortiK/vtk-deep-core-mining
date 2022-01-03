@@ -469,6 +469,20 @@ if mods.leighzermorphite then
   })
 end
 
+-- Omnimatter support
+if mods.omnimatter then
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-omnite-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "he1"
+    },
+  })
+end
+
 -- Pyanodons Raw Ores support
 if mods.pyrawores then
   data:extend({

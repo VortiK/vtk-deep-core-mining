@@ -83,6 +83,11 @@ function get_patchable_ores()
   if game.active_mods["Krastorio2"] then
     patchableOres = table.merge(patchableOres, {["rare-metals"] = "raw-rare-metals"})
   end
+
+  -- Omnimatter's ore support
+  if game.active_mods["omnimatter"] then
+    patchableOres = table.merge(patchableOres, {["omnite"] = "omnite"})
+  end
   
   -- Leighzer's Morphite support
   if game.active_mods["leighzermorphite"] then
