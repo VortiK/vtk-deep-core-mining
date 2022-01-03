@@ -48,12 +48,21 @@ The idea is to repurpose depleted mining outpost when ore is depleted. So the in
 ## Compatibility contribution provided by Brevven https://mods.factorio.com/user/brevven : 
 - Titanium https://mods.factorio.com/mod/bztitanium
 - Lead https://mods.factorio.com/mod/bzlead
+- Tungsten https://mods.factorio.com/mod/bztungsten
+- Zirconium https://mods.factorio.com/mod/bzzirconium
+
+## Compatibility contribution provided by Trimethylaluminium https://github.com/Trimethylaluminium : 
+- Industrial Revolution 2 https://mods.factorio.com/mod/IndustrialRevolution
+
+## Compatibility contribution provided by codwow https://mods.factorio.com/user/codwow : 
+- Omnimatter https://mods.factorio.com/mod/omnimatter
 
 Other mods support depending on request !
 
+
 ## Known incompatibility
-- NOT compatible with Industrial Revolution : https://mods.factorio.com/mod/IndustrialRevolution
 - Minor incompatibility with Filter Mining Drill mod : https://mods.factorio.com/mod/Cursed-FMD : the DCMDPlanner tool will not work to remove ore patches.
+- Although not compatible by default with Space Exploration, it's possible with a manual change described here : https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/603d6b2711e74c915950ba9f
 - Might not be compatible with Sea Block (obviously).
 
 ## Credits

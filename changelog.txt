@@ -3,7 +3,8 @@ Version: 2.8.0
 Date: 03.01.2022
   Changes:
     - Added support to 2 new ores in Mad Clown's Extended BobAngel Ores (Meta-Garnierite and Nova-Leucoxene).
-    - 
+    - Added support for brevven's Tungsten & Zirconium mods (https://mods.factorio.com/mod/bztungsten & https://mods.factorio.com/mod/bzzirconium) from his own contribution, thanks brevven !
+    - Added support for Omnimatter (https://mods.factorio.com/mod/omnimatter) thanks contribution from codwow.
     - Updated DE locale, mostly.
 ---------------------------------------------------------------------------------------------------
 Version: 2.7.1
