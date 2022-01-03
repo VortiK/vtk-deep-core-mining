@@ -727,6 +727,45 @@ if mods.bzlead and not mods.bobores and not mods.angelsrefining then
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, bzlead)
 end
 
+-- Brevvens's Tungsten support
+if mods.bztungsten and not mods.bobores then
+  local bztungsten = {
+    ["tungsten-ore"] = {
+      ["result"] = "tungsten-ore",
+      ["mining-liquid"] = "water",
+      ["mining-liquid-amount"] = 100,
+      ["patchimg"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80,
+      ["refineliquid"] = 20,
+      ["probability"] = 0.30,
+      ["tint"] = true,
+      ["patchtint"] = true
+    }
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, bztungsten)
+end
+
+-- Brevvens's Zirconium support
+if mods.bzzirconium then
+  local bzzirconium = {
+    ["zircon"] = {
+      ["result"] = "zircon",
+      ["img"] = "ore",
+      ["patchimg"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80,
+      ["refineliquid"] = 20,
+      ["probability"] = 0.30,
+      ["tint"] = true,
+      ["patchtint"] = true
+    }
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, bzzirconium)
+end
+
 -- Space Exploration's ore support
 if mods["space-exploration"] then
   local seores = {
