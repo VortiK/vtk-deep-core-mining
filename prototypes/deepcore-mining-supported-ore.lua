@@ -880,6 +880,37 @@ if mods["space-exploration"] then
   vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, seores)
 end
 
+--Industrial Revolution 2 ore support
+if mods.IndustrialRevolution then
+  local IndustrialRevolution = {
+    ["tin-ore"] = {
+      ["result"] = "tin-ore",
+      ["img"] = "ore",
+      ["patchimg"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80,
+      ["refineliquid"] = 20,
+      ["probability"] = 0.30,
+      ["tint"] = true,
+      ["patchtint"] = true
+    },
+	["gold-ore"] = {
+      ["result"] = "gold-ore",
+      ["img"] = "ore",
+      ["patchimg"] = "ore",
+      ["frame"] = 4,
+      ["variation"] = 3,
+      ["refineamount"] = 80,
+      ["refineliquid"] = 20,
+      ["probability"] = 0.15,
+      ["tint"] = true,
+      ["patchtint"] = true
+    },
+  }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, IndustrialRevolution)
+end
+
 -- somehow table.count doesn't exists in lua and you have to do it yourself
 vtk_deepcoremining_supported_ores_count = 0
 

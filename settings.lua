@@ -700,3 +700,25 @@ if mods["space-exploration"] then
     },
   })
 end
+
+--Industrial Revolution 2 support
+if mods["IndustrialRevolution"] then
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-gold-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hi1"
+    },
+    {
+      type = "bool-setting",
+      name = "vtk-deep-core-mining-spawn-tin-ore-patch",
+      setting_type = "runtime-global",
+      default_value = true,
+      per_user = false,
+      order = "hi2"
+    },
+  })
+end

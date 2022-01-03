@@ -167,6 +167,15 @@ function get_patchable_ores()
     }
     patchableOres = table.merge(patchableOres, seore)
   end
+	
+    --Industrial Revolution 2 ores support
+    if game.active_mods["IndustrialRevolution"] then
+    local IndustrialRevolution = {
+      ["tin-ore"] = "tin-ore",
+	  ["gold-ore"] = "gold-ore",
+    }
+    patchableOres = table.merge(patchableOres, IndustrialRevolution)
+  end
   
   return patchableOres
 end

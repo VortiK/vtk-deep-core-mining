@@ -26,6 +26,6 @@
     "? bzlead >= 0.2.2",
     "? bztungsten >= 0.0.12",
     "? bzzirconium >= 0.0.1",
-    "!IndustrialRevolution"
+    "? IndustrialRevolution >= 2.1.2"
   ]
 }
