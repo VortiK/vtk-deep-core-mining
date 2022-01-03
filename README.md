@@ -47,12 +47,14 @@ The idea is to repurpose depleted mining outpost when ore is depleted. So the in
 
 ## Compatibility contribution provided by Brevven https://mods.factorio.com/user/brevven : 
 - Titanium https://mods.factorio.com/mod/bztitanium
+- Lead https://mods.factorio.com/mod/bzlead
 
 Other mods support depending on request !
 
 ## Known incompatibility
 - NOT compatible with Industrial Revolution : https://mods.factorio.com/mod/IndustrialRevolution
 - Minor incompatibility with Filter Mining Drill mod : https://mods.factorio.com/mod/Cursed-FMD : the DCMDPlanner tool will not work to remove ore patches.
+- Might not be compatible with Sea Block (obviously).
 
 ## Credits
 - Deep Core Mining is powered by the Factorio Standard Library Project : https://github.com/Afforess/Factorio-Stdlib

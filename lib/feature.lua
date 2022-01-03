@@ -50,11 +50,15 @@ function adcmd_energy_switcher(drill)
     
     if entitiesCount > 0 then
         local companion = adcmdcompanions[1]
-        -- player.print(adcmd.name .." ".. adcmd.unit_number .." status : ".. drill.status)
-        if companion.energy < companion.power_usage then
-            drill.active = false
-        else
+        -- local player = game.players[1]
+        -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
+        -- player.print(drill.name .." ".. drill.unit_number .." status : ".. drill.status)
+        -- player.print(companion.name .." ".. companion.unit_number .." energy : ".. math.floor(companion.energy) .." power_usage : ".. math.floor(companion.power_usage))
+
+        if math.floor(companion.energy) == math.floor(companion.power_usage) then
             drill.active = true
+        else
+            drill.active = false
         end
     end
 end

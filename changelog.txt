@@ -1,14 +1,27 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.8.0
+Date: 03.01.2022
+  Changes:
+    - Added support to 2 new ores in Mad Clown's Extended BobAngel Ores (Meta-Garnierite and Nova-Leucoxene).
+    - 
+    - Updated DE locale, mostly.
+---------------------------------------------------------------------------------------------------
+Version: 2.7.1
+Date: 04.03.2021
+  Changes:
+    - Fixed ADCMD sometimes disabling itself even when there is enough electricity. Thanks for reports helping debug this in https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/60298868aeb4c6fd76f93752 .
+---------------------------------------------------------------------------------------------------
 Version: 2.7.0
-Date: 01.02.2021
+Date: 01.03.2021
   Changes:
     - Added support for brevven's Lead mod https://mods.factorio.com/mod/bzlead from his own pull request.
 ---------------------------------------------------------------------------------------------------
 Version: 2.6.0
 Date: 20.02.2021
   Changes:
-    - Unofficial support of Space Exploration Ores, Beryllium, Cryonite, Holmium, Iridium, Naquium, Vulcanite, Vitamelange, infinite ore patches will spawn an yield ore or chunks depending on the miner used.
+    - Unofficial support of Space Exploration Ores, Beryllium, Cryonite, Holmium, Iridium, Naquium, Vulcanite, Vitamelange, infinite ore patches will spawn and yield ore or chunks depending on the miner used.
     - If supported ore probability is 0 it won't be refined from Deep Core Ore so Space Exploration ores can only be found on their planets and with Advanced Deep Core Mining.
+    - Might be not tested bugs with Naquium only spawning in space and DCMD not placeable in space, I'm not that far yet :)
 ---------------------------------------------------------------------------------------------------
 Version: 2.5.1
 Date: 28.11.2020

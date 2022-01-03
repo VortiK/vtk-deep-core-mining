@@ -52,6 +52,8 @@ function get_patchable_ores()
       ["clowns-ore5"] = "clowns-ore5", 
       ["clowns-ore6"] = "clowns-ore6", 
       ["clowns-ore7"] = "clowns-ore7", 
+      ["clowns-ore8"] = "clowns-ore8", 
+      ["clowns-ore9"] = "clowns-ore9", 
     }
     patchableOres = table.merge(patchableOres, clownssores)
   end

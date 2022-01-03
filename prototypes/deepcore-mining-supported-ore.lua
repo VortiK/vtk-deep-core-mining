@@ -261,6 +261,30 @@ if mods.angelsrefining then
         ["tint"] = true,
         ["patchtint"] = true
       },
+      ["clowns-ore8"] = {
+        ["result"] = "clowns-ore8", 
+        ["img"] = "ore", 
+        ["patchimg"] = "ore", 
+        ["frame"] = 4,
+        ["variation"] = 3,
+        ["refineamount"] = 80, 
+        ["refineliquid"] = 20, 
+        ["probability"] = 0.15,
+        ["tint"] = true,
+        ["patchtint"] = true
+      },
+      ["clowns-ore9"] = {
+        ["result"] = "clowns-ore9", 
+        ["img"] = "ore", 
+        ["patchimg"] = "ore", 
+        ["frame"] = 4,
+        ["variation"] = 3,
+        ["refineamount"] = 80, 
+        ["refineliquid"] = 20, 
+        ["probability"] = 0.15,
+        ["tint"] = true,
+        ["patchtint"] = true
+      },
     }
     angelsores = table.merge(angelsores, angelbobsclownsores)
   end
