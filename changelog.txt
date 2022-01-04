@@ -1,12 +1,15 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.8.0
-Date: 03.01.2022
+Date: 04.01.2022
   Changes:
     - Added support to 2 new ores in Mad Clown's Extended BobAngel Ores (Meta-Garnierite and Nova-Leucoxene).
     - Added support for brevven's Tungsten & Zirconium mods (https://mods.factorio.com/mod/bztungsten & https://mods.factorio.com/mod/bzzirconium) from his own contribution, thanks brevven !
     - Added support for Omnimatter (https://mods.factorio.com/mod/omnimatter) thanks contribution from codwow.
     - Added support for Industrial Revolution 2 (https://mods.factorio.com/mod/IndustrialRevolution) thanks contribution from Trimethylaluminium.
     - Updated DE locale, mostly.
+    - Fixed Deep Core Refining locale mentionning it requires a Centrifuge, it was changed to Chemical plant some time ago already.
+    - Fixed Mad Clown's Extended Ores support and compatibility hell with Angel's Refining, Smelting and Bob's Plates, thanks DataRawSerpenting Debuging (Must not be many people playing that hellish mods combination as it was just crashing before ...).
+    - Hopefully nothing broke too much, let me know !
 ---------------------------------------------------------------------------------------------------
 Version: 2.7.1
 Date: 04.03.2021

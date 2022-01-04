@@ -46,16 +46,22 @@ function get_patchable_ores()
   if game.active_mods["Clowns-Extended-Minerals"] then
     local clownssores = {
       ["clowns-ore1"] = "clowns-ore1", 
-      ["clowns-ore2"] = "clowns-ore2", 
-      ["clowns-ore3"] = "clowns-ore3", 
       ["clowns-ore4"] = "clowns-ore4", 
       ["clowns-ore5"] = "clowns-ore5", 
-      ["clowns-ore6"] = "clowns-ore6", 
       ["clowns-ore7"] = "clowns-ore7", 
-      ["clowns-ore8"] = "clowns-ore8", 
-      ["clowns-ore9"] = "clowns-ore9", 
     }
     patchableOres = table.merge(patchableOres, clownssores)
+    if game.active_mods["bobplates"] then
+      local moreclownssores = {
+        ["clowns-ore2"] = "clowns-ore2", 
+        ["clowns-ore3"] = "clowns-ore3", 
+        ["clowns-ore6"] = "clowns-ore6", 
+        ["clowns-ore2"] = "clowns-ore8", 
+        ["clowns-ore3"] = "clowns-ore9", 
+      }
+      patchableOres = table.merge(patchableOres, moreclownssores)
+    end
+    
   end
 
   -- Bob's ore support
