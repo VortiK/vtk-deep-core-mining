@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.8.2
+Date: 05.01.2022
+  Changes:
+    - Fixed Omnimatter startup crash by actually making it a dependancy (sorry for not even testing to run both ... my mistake)
+    - Fixed ADCMD Hidden energy interface appearing in production energy statistics.
+    - Fixed ADCMD Hidden energy interface consuming energy when the drill is not active.
+    - Fixed ADCMD control script to use a save/load safe global, data was actually lost before between saves. That must explain some erratic behavior with the ADCMD staying disabled/enabled and needing to be manually replace to work correctly again.
+---------------------------------------------------------------------------------------------------
+Version: 2.8.1
+Date: 04.01.2022
+  Changes:
+    - Fixed Angel's + Bob's mods ore crash on load with Deep Core Mining without Mad Clown's Extended Ores.
+    - Fixed typos in mod's description.
+---------------------------------------------------------------------------------------------------
 Version: 2.8.0
 Date: 04.01.2022
   Changes:
@@ -25,8 +39,8 @@ Version: 2.6.0
 Date: 20.02.2021
   Changes:
     - Unofficial support of Space Exploration Ores, Beryllium, Cryonite, Holmium, Iridium, Naquium, Vulcanite, Vitamelange, infinite ore patches will spawn and yield ore or chunks depending on the miner used.
-    - If supported ore probability is 0 it won't be refined from Deep Core Ore so Space Exploration ores can only be found on their planets and with Advanced Deep Core Mining.
-    - Might be not tested bugs with Naquium only spawning in space and DCMD not placeable in space, I'm not that far yet :)
+    - If a supported ore's probability is 0 it won't be refined from Deep Core Ore ; for eg Space Exploration ores can only be found on their planets and not with Advanced Deep Core Mining.
+    - Didn't test with Naquium ore yet as only spawning in space and DCMD might not placeable in space, I'm not that far yet in my own playthrough!
 ---------------------------------------------------------------------------------------------------
 Version: 2.5.1
 Date: 28.11.2020

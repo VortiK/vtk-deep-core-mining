@@ -7,24 +7,24 @@ Sad to see your outposts depleted and empty ore trains on your rails ? No more w
 This mod is designed to aleviate the "depleted ore outpost" and "need to keep building new mining outpost forever" problems without a too cheaty infinite ore solution.
 
 - Adds a new type of equivalent ore resources patches that only spawn in place of depleted field to be mined with specific expensive drills.
-- Ore Patches can be mined with high tech drills.
-- Moho Mining Drill will yields ore directly.
-- Deep Core Mining Drill will yield ore chunks that must be refined to get usable raw ore, more investments but double the ore output per patches.
-- Also adds rare cracks resources patches in the world that can be mined with an advanced endgame Advanced Deep Core Mining Drill.
-- DeepCore ore from cracks require a two steps heavy refining process to get usable raw ore.
+- Ore Patches can be mined with high tech mining drills.
+- Moho Mining Drill will yield ore directly.
+- Deep Core Mining Drill will yield ore chunks that must be refined to get useable raw ore, more investments but double the ore output per Ore Patch.
+- Also adds rare cracks resources patches in the world that can be mined with an endgame Advanced Deep Core Mining Drill.
+- DeepCore ore from cracks require a two steps heavy refining process to get useable raw ore.
 
-The idea is to repurpose depleted mining outpost when ore is depleted. So the infrastructure is still useful for the investment of resources to replace old drills, adjusting logistics and setting up a refining facility to providing a small but steady infinite source of ore.
+The idea is to be able to repurpose depleted mining outpost when normal ore is mined. So the infrastructure can still be useful by investing some resources to replace the old drills, adjust logistics and setting up a refining facility to provid steady infinite source of ore.
 
 ## Features
-- New resources, ore "patches" have a small chance to spawn under depleted ore fields for Iron, Copper, Uranium, Coal and Stone and rare DeepCore Cracks spawn in the world.
+- New resources, ore "patches" have a small chance to spawn under depleted ore fields for Iron, Copper, Uranium, Coal and Stone. Also rare DeepCore Cracks spawn in the world.
 - Ore patches and Cracks provide an infinite yield that stays at 100%, however they output Ore Chunks that must be refined in chemical plants to get usable raw ores.
 - Ore patches and Cracks can be manually mined to free land and get a burst of resources as the cost of losing the infinite minable spot.
 - The Moho Mining Drill (MMD) can mines ore patches and provide raw ore directly, yields as much ore as 10 normal mining drills, not the best but also not much effort to place them in existing outpost as the same logistics can be kept.
-- The Deep Core Mining Drill (DCMD) is more powerfull, it will mine the ore patches aswell as much as 20 normal mining drills but it yields ore chunks that require specific logistics and refining consuming sulfuric acid to get ore.
+- The Deep Core Mining Drill (DCMD) is more powerful, it will mine the ore patches aswell for as much as 20 normal mining drills but it yields ore chunks that require specific logistics and refining that consume sulfuric acid to get ore.
 - The Advanced Deep Core Mining Drill (ADCMD) is also animated and has custom sounds. It is used to mine Cracks that yields a specific ore that require a heavy double steps refining to get useable ore. The drill will also consume Deep Core Mining drones to operate.
-- ADCMD is designed to provide double the output of a DCMD, however it consumes tons of energy, constant intermediate as fuel and a dedicated refining facility to process Deep Core Ore chunks.
-- Deep Core Ore can yields all existing ores in the game that are supported, there are different Focus Refining process available with differents yields, even single ore but it's inefficent.
-- Deep Core Mining Drills with output tons of ore to tarnsport and process. Splitters should help at low levels to handle the high ouput of the drills, however at high productivity levels it may be necessary to get creative with chests & stack inserters or one of the multiple loaders mods to keep up with the throughput : 
+- ADCMD is designed to provide double the output of a DCMD, however it consumes tons of energy, burns constant intermediate as fuel and needs a dedicated refining facility to process Deep Core Ore chunks.
+- Deep Core Ore can yields all supported ores in the game, there are different Focus Refining processes available with differents yields and even a single ore output to choose from (althought it's the least efficent recipe per Deep Core ore chunks).
+- Deep Core Mining Drills will output tons of ore to tarnsport and process, often reaching belts throughputs as Mining Productivity increases. Splitters should help at low levels to handle the high output of the drills, however at high productivity levels it may be necessary to get creative with chests & stack inserters or use one of the multiple loaders mods to keep up with the flow : 
   - Deadlock's Compact Loaders : https://mods.factorio.com/mod/DeadlockLoaders (*Featured in screenshots*)
   - Miniloader https://mods.factorio.com/mod/miniloader (*Performant & versatile*)
   - Loader Redux : https://mods.factorio.com/mod/LoaderRedux (*Vanilla flavour*)

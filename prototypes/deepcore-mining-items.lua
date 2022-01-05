@@ -606,17 +606,20 @@ data:extend({
             "not-selectable-in-game",
         },
         destructible = false,
+        minable = nil,
         icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-mine-advanced.png",
         icon_size = 64,
         energy_source =
         {
             type = "electric",
             emissions_per_minute = 0,
-            usage_priority = "secondary-input",
+            usage_priority = "primary-input",
             buffer_capacity = settings.startup["vtk-deep-core-mining-deepcore-advanced-energy"].value.."MW",
-            input_flow_limit = settings.startup["vtk-deep-core-mining-deepcore-advanced-energy"].value.."MW"
+            input_flow_limit = settings.startup["vtk-deep-core-mining-deepcore-advanced-energy"].value.."MW",
+            output_flow_limit = "0kW",
         },
         energy_usage = settings.startup["vtk-deep-core-mining-deepcore-advanced-energy"].value.."MW",
+        energy_production = "0GW",
         collision_box = {{ -4.1, -4.1}, {4.1, 4.5}},
     }
 })

@@ -1,9 +1,3 @@
-local script_data =
-{
-    drills = {},
-    next_index = nil
-}
-
 function adcmd_energy_companion_add(drill)
     local surface = drill.surface
     local force = drill.force
@@ -16,7 +10,7 @@ function adcmd_energy_companion_add(drill)
     -- player.print("companion created : "..serpent.block(companion))
     
     -- add drill in list to update
-    script_data.drills[drill.unit_number] = drill
+    global.vtkdcm_script_data.drills[drill.unit_number] = drill
 end
 
 function adcmd_energy_companion_remove(entity)
@@ -34,9 +28,9 @@ function adcmd_energy_companion_remove(entity)
         
         -- remove drill from list to update
         local index = tostring( entity.unit_number )
-        local drill = script_data.drills[index]
+        local drill = global.vtkdcm_script_data.drills[index]
         if drill then
-            script_data.drills[index] = nil
+            global.vtkdcm_script_data.drills[index] = nil
         end
     end
 end
@@ -54,32 +48,45 @@ function adcmd_energy_switcher(drill)
         -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
         -- player.print(drill.name .." ".. drill.unit_number .." status : ".. drill.status)
         -- player.print(companion.name .." ".. companion.unit_number .." energy : ".. math.floor(companion.energy) .." power_usage : ".. math.floor(companion.power_usage))
+        -- player.print(companion.name .." ".. companion.unit_number .." energy : ".. math.floor(companion.energy) .." power_usage : ".. math.floor(companion.power_usage))
 
         if math.floor(companion.energy) == math.floor(companion.power_usage) then
             drill.active = true
         else
             drill.active = false
         end
+        
+        if drill.status ~= 1 and drill.status ~= 41 then
+            companion.active = false
+        else
+            companion.active = true
+        end
     end
 end
 
 function adcmd_updater()
-    local index, drill = next( script_data.drills, script_data.next_index )
+    local index, drill = next( global.vtkdcm_script_data.drills, global.vtkdcm_script_data.next_index )
     if index then
-        script_data.next_index = index
+        global.vtkdcm_script_data.next_index = index
         if drill.valid then
             adcmd_energy_switcher(drill)
         end
     else
-        script_data.next_index = nil
+        global.vtkdcm_script_data.next_index = nil
     end
 end
 
 function init_globals()
+    global.vtkdcm_script_data =
+    {
+        drills = {},
+        next_index = nil
+    }
+
     -- [re]build the list of ADCMD entities
     for _, surface in pairs(game.surfaces) do
         for _, drill in ipairs(surface.find_entities_filtered({name="vtk-deepcore-mining-drill-advanced"})) do
-            script_data.drills[drill.unit_number] = drill
+            global.vtkdcm_script_data.drills[drill.unit_number] = drill
         end
     end
 end

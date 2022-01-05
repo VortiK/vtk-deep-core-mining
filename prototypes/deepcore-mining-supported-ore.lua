@@ -1,76 +1,77 @@
 if not vtk_deepcoremining_supported_ores then vtk_deepcoremining_supported_ores = {} end
 
-if not mods.angelsrefining then
-  vtk_deepcoremining_supported_ores = {
-    ["iron-ore"] = {
-      ["result"] = "iron-ore",
+-- if not mods.omnimatter then
+  if not mods.angelsrefining then
+    vtk_deepcoremining_supported_ores = {
+      ["iron-ore"] = {
+        ["result"] = "iron-ore",
+        ["img"] = "ore", 
+        ["patchimg"] = "iron-ore", 
+        ["frame"] = 3, 
+        ["variation"] = 1,
+        ["refineamount"] = 80, 
+        ["refineliquid"] = 20, 
+        ["probability"] = 0.50,
+        ["tint"] = true,
+        ["patchtint"] = false
+      },
+      ["copper-ore"] = {
+        ["result"] = "copper-ore", 
+        ["img"] = "ore", 
+        ["patchimg"] = "copper-ore", 
+        ["frame"] = 3,
+        ["variation"] = 1,
+        ["refineamount"] = 80, 
+        ["refineliquid"] = 20, 
+        ["probability"] = 0.40,
+        ["tint"] = true,
+        ["patchtint"] = false
+      },
+      ["stone"] = {
+        ["result"] = "stone", 
+        ["img"] = "ore", 
+        ["patchimg"] = "stone", 
+        ["frame"] = 3,
+        ["variation"] = 1,
+        ["refineamount"] = 80, 
+        ["refineliquid"] = 20, 
+        ["probability"] = 0.07,
+        ["tint"] = true,
+        ["patchtint"] = false
+      }
+    }
+  -- end
+
+  local alwaysthereore = {
+    ["coal"] = {
+      ["result"] = "coal", 
       ["img"] = "ore", 
-      ["patchimg"] = "iron-ore", 
+      ["patchimg"] = "coal", 
+      ["frame"] = 3,
+      ["variation"] = 1,
+      ["refineamount"] = 80, 
+      ["refineliquid"] = 20, 
+      ["probability"] = 0.06,
+      ["tint"] = true,
+      ["patchtint"] = false
+    },
+    ["uranium-ore"] = {
+      ["result"] = "uranium-ore", 
+      ["mining-liquid"] = "sulfuric-acid", 
+      ["mining-liquid-amount"] = 100, 
+      ["img"] = "ore", 
+      ["patchimg"] = "uranium-ore", 
       ["frame"] = 3, 
       ["variation"] = 1,
       ["refineamount"] = 80, 
       ["refineliquid"] = 20, 
-      ["probability"] = 0.50,
-      ["tint"] = true,
-      ["patchtint"] = false
-    },
-    ["copper-ore"] = {
-      ["result"] = "copper-ore", 
-      ["img"] = "ore", 
-      ["patchimg"] = "copper-ore", 
-      ["frame"] = 3,
-      ["variation"] = 1,
-      ["refineamount"] = 80, 
-      ["refineliquid"] = 20, 
-      ["probability"] = 0.40,
-      ["tint"] = true,
-      ["patchtint"] = false
-    },
-    ["stone"] = {
-      ["result"] = "stone", 
-      ["img"] = "ore", 
-      ["patchimg"] = "stone", 
-      ["frame"] = 3,
-      ["variation"] = 1,
-      ["refineamount"] = 80, 
-      ["refineliquid"] = 20, 
-      ["probability"] = 0.07,
+      ["probability"] = 0.01,
       ["tint"] = true,
       ["patchtint"] = false
     }
   }
+  vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, alwaysthereore)
 end
-
-local alwaysthereore = {
-  ["coal"] = {
-    ["result"] = "coal", 
-    ["img"] = "ore", 
-    ["patchimg"] = "coal", 
-    ["frame"] = 3,
-    ["variation"] = 1,
-    ["refineamount"] = 80, 
-    ["refineliquid"] = 20, 
-    ["probability"] = 0.06,
-    ["tint"] = true,
-    ["patchtint"] = false
-  },
-  ["uranium-ore"] = {
-    ["result"] = "uranium-ore", 
-    ["mining-liquid"] = "sulfuric-acid", 
-    ["mining-liquid-amount"] = 100, 
-    ["img"] = "ore", 
-    ["patchimg"] = "uranium-ore", 
-    ["frame"] = 3, 
-    ["variation"] = 1,
-    ["refineamount"] = 80, 
-    ["refineliquid"] = 20, 
-    ["probability"] = 0.01,
-    ["tint"] = true,
-    ["patchtint"] = false
-  }
-}
-vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, alwaysthereore)
-
 -- SimpleSilicon's ore support
 if mods["SimpleSilicon"] then
   local SimpleSilicon_ore = {
@@ -228,60 +229,60 @@ if mods.angelsrefining then
       },
     }
     vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, clownsores)
-  end
-  
-  if mods["bobplates"] then
-    local angelbobsclownsores = {
-      ["clowns-ore2"] = {
-        ["result"] = "clowns-ore2", 
-        ["img"] = "ore", 
-        ["patchimg"] = "ore", 
-        ["frame"] = 4,
-        ["variation"] = 3,
-        ["refineamount"] = 80, 
-        ["refineliquid"] = 20, 
-        ["probability"] = 0.22,
-        ["tint"] = true,
-        ["patchtint"] = true
-      },
-      ["clowns-ore3"] = {
-        ["result"] = "clowns-ore3", 
-        ["img"] = "ore", 
-        ["patchimg"] = "ore", 
-        ["frame"] = 4,
-        ["variation"] = 3,
-        ["refineamount"] = 80, 
-        ["refineliquid"] = 20, 
-        ["probability"] = 0.22,
-        ["tint"] = true,
-        ["patchtint"] = true
-      },
-      ["clowns-ore8"] = {
-        ["result"] = "clowns-ore8", 
-        ["img"] = "ore", 
-        ["patchimg"] = "ore", 
-        ["frame"] = 4,
-        ["variation"] = 3,
-        ["refineamount"] = 80, 
-        ["refineliquid"] = 20, 
-        ["probability"] = 0.15,
-        ["tint"] = true,
-        ["patchtint"] = true
-      },
-      ["clowns-ore9"] = {
-        ["result"] = "clowns-ore9", 
-        ["img"] = "ore", 
-        ["patchimg"] = "ore", 
-        ["frame"] = 4,
-        ["variation"] = 3,
-        ["refineamount"] = 80, 
-        ["refineliquid"] = 20, 
-        ["probability"] = 0.15,
-        ["tint"] = true,
-        ["patchtint"] = true
-      },
-    }
-    vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, angelbobsclownsores)
+
+    if mods["bobplates"] then
+      local angelbobsclownsores = {
+        ["clowns-ore2"] = {
+          ["result"] = "clowns-ore2", 
+          ["img"] = "ore", 
+          ["patchimg"] = "ore", 
+          ["frame"] = 4,
+          ["variation"] = 3,
+          ["refineamount"] = 80, 
+          ["refineliquid"] = 20, 
+          ["probability"] = 0.22,
+          ["tint"] = true,
+          ["patchtint"] = true
+        },
+        ["clowns-ore3"] = {
+          ["result"] = "clowns-ore3", 
+          ["img"] = "ore", 
+          ["patchimg"] = "ore", 
+          ["frame"] = 4,
+          ["variation"] = 3,
+          ["refineamount"] = 80, 
+          ["refineliquid"] = 20, 
+          ["probability"] = 0.22,
+          ["tint"] = true,
+          ["patchtint"] = true
+        },
+        ["clowns-ore8"] = {
+          ["result"] = "clowns-ore8", 
+          ["img"] = "ore", 
+          ["patchimg"] = "ore", 
+          ["frame"] = 4,
+          ["variation"] = 3,
+          ["refineamount"] = 80, 
+          ["refineliquid"] = 20, 
+          ["probability"] = 0.15,
+          ["tint"] = true,
+          ["patchtint"] = true
+        },
+        ["clowns-ore9"] = {
+          ["result"] = "clowns-ore9", 
+          ["img"] = "ore", 
+          ["patchimg"] = "ore", 
+          ["frame"] = 4,
+          ["variation"] = 3,
+          ["refineamount"] = 80, 
+          ["refineliquid"] = 20, 
+          ["probability"] = 0.15,
+          ["tint"] = true,
+          ["patchtint"] = true
+        },
+      }
+      vtk_deepcoremining_supported_ores = table.merge(vtk_deepcoremining_supported_ores, angelbobsclownsores)
+    end
   end
 end
 
