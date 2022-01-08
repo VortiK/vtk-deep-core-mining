@@ -8,52 +8,46 @@ end
 -- DeepCore Ore Refining
 -- 
 data:extend({
+{
+  type = "recipe",
+  name = "vtk-deepcore-mining-ore-chunk-refining",
+  energy_required = 8,
+  enabled = false,
+  category = "chemistry",
+  subgroup = "vtk-deepcore-mining",
+  order = "v[items]-d1",
+  allow_decomposition = false,
+  ingredients = {
+    {"vtk-deepcore-mining-ore-chunk", 80},
+    {type="fluid", name=sulfuricacidname, amount=15}
+  },
+  icons = {
     {
-        type = "recipe",
-        name = "vtk-deepcore-mining-ore-chunk-refining",
-        energy_required = 8,
-        enabled = false,
---        category = "centrifuging",
-        category = "chemistry",
-        subgroup = "vtk-deepcore-mining",
-        order = "v[items]-d1",
-        allow_decomposition = false,
-        ingredients = {
-            {"vtk-deepcore-mining-ore-chunk", 80},
-            {type="fluid", name=sulfuricacidname, amount=15}
-        },
-        icons = {
-        {
-            icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk-refining.png"
-        },
-        {
-          icon = "__base__/graphics/icons/fluid/sulfuric-acid.png",
-          scale = 0.25,
-          shift = {10, 10},
-        }
---        {
---            icon = "__vtk-deep-core-mining__/graphics/icons/mining-drone.png",
---            scale = 0.25,
---            shift = {10, 10},
---        },
-        },
-        icon_size = 64,
-        main_product = "",
-        results =
-        {
-        },
-        crafting_machine_tint =
-        {
-            -- primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
-            -- secondary = {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
-            -- tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
-            -- quaternary = {r=1,g=1,b=1,a=1}}
-            primay = {r = 0.800, g = 0.800, b = 0.100, a = 0.400},
-            secondary = {r = 0.800, g = 0.800, b = 0.100, a = 0.400},
-            tertiary = {r = 0.800, g = 0.800, b = 0.100, a = 0.400},
-            quaternary = {r = 0.800, g = 0.800, b = 0.100, a = 0.400},
-        }
+      icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk-refining.png"
     },
+    {
+      icon = "__base__/graphics/icons/fluid/sulfuric-acid.png",
+      scale = 0.25,
+      shift = {10, 10},
+    }
+  },
+  icon_size = 64,
+  main_product = "",
+  results =
+  {
+  },
+  crafting_machine_tint =
+  {
+    -- primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
+    -- secondary = {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
+    -- tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
+    -- quaternary = {r=1,g=1,b=1,a=1}}
+    primay = {r = 0.800, g = 0.800, b = 0.100, a = 0.400},
+    secondary = {r = 0.800, g = 0.800, b = 0.100, a = 0.400},
+    tertiary = {r = 0.800, g = 0.800, b = 0.100, a = 0.400},
+    quaternary = {r = 0.800, g = 0.800, b = 0.100, a = 0.400},
+  }
+}
 })
 
 local ore_chunk_no_uranium = table.deepcopy(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining'])
@@ -70,58 +64,58 @@ data:extend({ore_chunk_no_uranium})
 local i = 2
 for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
 
-    local oreprobability = oredata.probability
-    if vtk_deepcoremining_supported_ores_count > 10 then
-        oreprobability = oredata.probability * 0.50
-    elseif vtk_deepcoremining_supported_ores_count > 5 then
-        oreprobability = oredata.probability * 0.75
+  local oreprobability = oredata.probability
+  if vtk_deepcoremining_supported_ores_count > 10 then
+    oreprobability = oredata.probability * 0.50
+  elseif vtk_deepcoremining_supported_ores_count > 5 then
+    oreprobability = oredata.probability * 0.75
+  end
+
+  if oreprobability > 0 then
+    table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = 1, amount = 100 * oreprobability})
+    if oredata.result ~= "uranium-ore" then
+     table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining-no-uranium']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = 1, amount = 100 * oreprobability})
     end
 
-    if oreprobability > 0 then
-        table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = 1, amount = 100 * oreprobability})
-        if oredata.result ~= "uranium-ore" then
-        table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining-no-uranium']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = 1, amount = 100 * oreprobability})
-        end
+    -- on the fly focus deep core chunk refining recipes creation
+    local ore_chunk_focus_recipe = table.deepcopy(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining'])
+    ore_chunk_focus_recipe.name = 'vtk-deepcore-mining-ore-chunk-refining-'..ore..'-focus'
+    -- focused refining is wasteful but guarrantee the ore type refinied
+    -- ore_chunk_focus_recipe.ingredients = {{"vtk-deepcore-mining-ore-chunk", 200}, {"vtk-deepcore-mining-drone", 1}}
+    ore_chunk_focus_recipe.energy_required = 4
+    ore_chunk_focus_recipe.ingredients = {{"vtk-deepcore-mining-ore-chunk", 100}, {type="fluid", name=sulfuricacidname, amount=20}}
+    ore_chunk_focus_recipe.results = {{name = "vtk-deepcore-mining-"..oredata.result.."-chunk", amount = 150 * oreprobability}}
 
-        -- on the fly focus deep core chunk refining recipes creation
-        local ore_chunk_focus_recipe = table.deepcopy(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining'])
-        ore_chunk_focus_recipe.name = 'vtk-deepcore-mining-ore-chunk-refining-'..ore..'-focus'
-        -- focused refining is wasteful but guarrantee the ore type refinied
-        -- ore_chunk_focus_recipe.ingredients = {{"vtk-deepcore-mining-ore-chunk", 200}, {"vtk-deepcore-mining-drone", 1}}
-        ore_chunk_focus_recipe.energy_required = 4
-        ore_chunk_focus_recipe.ingredients = {{"vtk-deepcore-mining-ore-chunk", 100}, {type="fluid", name=sulfuricacidname, amount=20}}
-        ore_chunk_focus_recipe.results = {{name = "vtk-deepcore-mining-"..oredata.result.."-chunk", amount = 150 * oreprobability}}
-
-        -- tint "generic" ores (like bobs)
-        local oretint = nil
-        if oredata.tint then
-            if data.raw.resource[ore].tint then
-                oretint = data.raw.resource[ore].tint
-            else
-                oretint = data.raw.resource[ore].map_color
-            end
-            
-            -- table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-focus.png", tint = oretint})
-            table.insert(ore_chunk_focus_recipe.icons, 
-                {
-                icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon.png",
-                scale = 0.25,
-                shift = {-10, 10},
-                })
-            table.insert(ore_chunk_focus_recipe.icons, 
-                {
-                icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon-layer.png",
-                scale = 0.25,
-                shift = {-10, 10},
-                tint = oretint,
-                })
-        else
-            table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-focus.png"})
-        end
-        ore_chunk_focus_recipe.order = "v[items]-d"..i,
-        data:extend({ore_chunk_focus_recipe})
-        i = i + 1
+    -- tint "generic" ores (like bobs)
+    local oretint = nil
+    if oredata.tint then
+      if data.raw.resource[ore].tint then
+        oretint = data.raw.resource[ore].tint
+      else
+        oretint = data.raw.resource[ore].map_color
+      end
+      
+      -- table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-focus.png", tint = oretint})
+      table.insert(ore_chunk_focus_recipe.icons, 
+      {
+        icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon.png",
+        scale = 0.25,
+        shift = {-10, 10},
+      })
+      table.insert(ore_chunk_focus_recipe.icons, 
+      {
+        icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon-layer.png",
+        scale = 0.25,
+        shift = {-10, 10},
+        tint = oretint,
+      })
+    else
+      table.insert(ore_chunk_focus_recipe.icons, {icon = "__vtk-deep-core-mining__/graphics/icons/"..oredata.img.."-focus.png"})
     end
+    ore_chunk_focus_recipe.order = "v[items]-d"..i,
+    data:extend({ore_chunk_focus_recipe})
+    i = i + 1
+  end
 end
 
 -- 
@@ -140,55 +134,55 @@ local function chunk_refining_recipe_maker(
   machinetint,
   ore_order
 )
-    local recipe =
+  local recipe =
+  {
+    type = "recipe",
+    name = "vtk-deepcore-mining-"..ore_name.."-chunk-refining",
+    enabled = false,
+    energy_required = 4,
+    category = "chemistry",
+    subgroup = "vtk-deepcore-mining",
+    order = "v[items]-c"..ore_order,
+    allow_decomposition = false,
+    ingredients = 
     {
-        type = "recipe",
-        name = "vtk-deepcore-mining-"..ore_name.."-chunk-refining",
-        enabled = false,
-        energy_required = 4,
-        category = "chemistry",
-        subgroup = "vtk-deepcore-mining",
-        order = "v[items]-c"..ore_order,
-        allow_decomposition = false,
-        ingredients = 
-        {
-            {"vtk-deepcore-mining-"..refining_result.."-chunk", 10},
-            {type="fluid", name=refining_liquid, amount=refining_liquid_amount},
-			      refining_liquid2 and {type="fluid", name=refining_liquid2, amount=refining_liquid2_amount},
-        },
-        main_product = "", -- to force use of recipe locales and icons instead of result's
-        icons = {
-          {
-            icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon.png",
-          },
-          {
-            icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon-layer.png",
-            tint = oretint
-          },
-          {
-            icon = "__base__/graphics/icons/fluid/sulfuric-acid.png",
-            scale = 0.25,
-            shift = {10, 10},
-          }
-        },
-        icon_size = 64,
-        results = 
-        {
-            {type="item", name=refining_result, amount=result_amount},
-        },
-        crafting_machine_tint =
-        {
-            -- primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
-            -- secondary = {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
-            -- tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
-            primay = oretint,
-            secondary = oretint,
-            tertiary = oretint,
-            quaternary = oretint
-        }
+      {"vtk-deepcore-mining-"..refining_result.."-chunk", 10},
+      {type="fluid", name=refining_liquid, amount=refining_liquid_amount},
+      refining_liquid2 and {type="fluid", name=refining_liquid2, amount=refining_liquid2_amount},
+    },
+    main_product = "", -- to force use of recipe locales and icons instead of result's
+    icons = {
+      {
+        icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon.png",
+      },
+      {
+        icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon-layer.png",
+        tint = oretint
+      },
+      {
+        icon = "__base__/graphics/icons/fluid/sulfuric-acid.png",
+        scale = 0.25,
+        shift = {10, 10},
+      }
+    },
+    icon_size = 64,
+    results = 
+    {
+      {type="item", name=refining_result, amount=result_amount},
+    },
+    crafting_machine_tint =
+    {
+      -- primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
+      -- secondary = {r = 0.700, g = 0.130, b = 0.180, a = 0.357}, -- steel blue #4682B4
+      -- tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900 -- to change?
+      primay = oretint,
+      secondary = oretint,
+      tertiary = oretint,
+      quaternary = oretint
     }
-    
-    return recipe
+  }
+  
+  return recipe
 end
 
 local i = 1

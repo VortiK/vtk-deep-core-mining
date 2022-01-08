@@ -30,6 +30,10 @@ The idea is to be able to repurpose depleted mining outpost when normal ore is m
   - Loader Redux : https://mods.factorio.com/mod/LoaderRedux (*Vanilla flavour*)
 
 ## Mod support
+
+Since 2.9.0 automatically support all modded ores with a generic tinted gfx and refining parameters.
+
+Still supported mods with tailored configurations and contributions : 
 - Angel's Refining mod : https://mods.factorio.com/mod/angelsrefining
 - Angel's Petrochem mod compatibility (regarding Sulfuric Acid) : https://mods.factorio.com/mod/angelspetrochem
 - Reika's Dirty Mining mod : https://mods.factorio.com/mod/DirtyMining
@@ -63,7 +67,6 @@ Other mods support depending on request !
 ## Known incompatibility
 - Minor incompatibility with Filter Mining Drill mod : https://mods.factorio.com/mod/Cursed-FMD : the DCMDPlanner tool will not work to remove ore patches.
 - Although not compatible by default with Space Exploration, it's possible with a manual change described here : https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/603d6b2711e74c915950ba9f
-- Might not be compatible with Sea Block (obviously).
 
 ## Credits
 - Deep Core Mining is powered by the Factorio Standard Library Project : https://github.com/Afforess/Factorio-Stdlib

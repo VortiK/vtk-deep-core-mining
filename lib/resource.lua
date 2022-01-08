@@ -15,255 +15,45 @@ function get_filtered_amount(amount)
     return amountospawn
 end
 
-function get_patchable_ores()
-  local patchableOres =  {
-    ["iron-ore"] = "iron-ore",
-    ["copper-ore"] = "copper-ore", 
-    ["coal"] = "coal", 
-    ["stone"] = "stone", 
-    ["uranium-ore"] = "uranium-ore", 
-  }
-
-  -- SimpleSilicon's ore support
-  if game.active_mods["SimpleSilicon"] then
-    patchableOres = table.merge(patchableOres, {["SiSi-quartz-ore"] = "SiSi-quartz"})
-  end
-
-  -- Angel's ore support
-  if game.active_mods["angelsrefining"] then
-    local angelsores = {
-      ["angels-ore1"] = "angels-ore1", 
-      ["angels-ore2"] = "angels-ore2", 
-      ["angels-ore3"] = "angels-ore3", 
-      ["angels-ore4"] = "angels-ore4", 
-      ["angels-ore5"] = "angels-ore5", 
-      ["angels-ore6"] = "angels-ore6", 
-    }
-    patchableOres = table.merge(patchableOres, angelsores)
-  
-    -- Clowns Extended Minerals ore support
-    if game.active_mods["Clowns-Extended-Minerals"] then
-      local clownssores = {
-        ["clowns-ore1"] = "clowns-ore1", 
-        ["clowns-ore4"] = "clowns-ore4", 
-        ["clowns-ore5"] = "clowns-ore5", 
-        ["clowns-ore7"] = "clowns-ore7", 
-      }
-      patchableOres = table.merge(patchableOres, clownssores)
-      if game.active_mods["bobplates"] then
-        local moreclownssores = {
-          ["clowns-ore2"] = "clowns-ore2", 
-          ["clowns-ore3"] = "clowns-ore3", 
-          ["clowns-ore6"] = "clowns-ore6", 
-          ["clowns-ore2"] = "clowns-ore8", 
-          ["clowns-ore3"] = "clowns-ore9", 
-        }
-        patchableOres = table.merge(patchableOres, moreclownssores)
-      end
-    end
-  end
-
-  -- Bob's ore support
-  if game.active_mods["bobores"] and not game.active_mods["angelsrefining"] then
-    local bobores = {
-      ["tin-ore"] = "tin-ore", 
-      ["lead-ore"] = "lead-ore",
-      ["quartz"] = "quartz", 
-      ["silver-ore"] = "silver-ore", 
-      ["zinc-ore"] = "zinc-ore", 
-      ["gold-ore"] = "gold-ore", 
-      ["bauxite-ore"] = "bauxite-ore", 
-      ["rutile-ore"] = "rutile-ore", 
-      ["tungsten-ore"] = "tungsten-ore", 
-      ["thorium-ore"] = "thorium-ore", 
-      ["nickel-ore"] = "nickel-ore", 
-      ["cobalt-ore"] = "cobalt-ore", 
-      ["sulfur"] = "sulfur", 
-      ["gem-ore"] = "gem-ore", 
-    }
-    patchableOres = table.merge(patchableOres, bobores)
-  end
-  
-  -- Krastorio2's ore support
-  if game.active_mods["Krastorio2"] then
-    patchableOres = table.merge(patchableOres, {["rare-metals"] = "raw-rare-metals"})
-  end
-
-  -- Omnimatter's ore support
-  if game.active_mods["omnimatter"] then
-    patchableOres = table.merge(patchableOres, {["omnite"] = "omnite"})
-  end
-  
-  -- Leighzer's Morphite support
-  if game.active_mods["leighzermorphite"] then
-    local leighzermorphite = {
-      ["morphite-ore"] = "morphite-ore",
-    }
-    patchableOres = table.merge(patchableOres, leighzermorphite)
-  end
-
-  -- Pyanodons Raw Ores support
-  if game.active_mods["pyrawores"] then
-    local pyrawores = {
-      ["ore-tin"] = "ore-tin",
-      ["ore-quartz"] = "ore-quartz",
-      ["ore-aluminium"] = "ore-aluminium",
-      ["ore-chromium"] = "ore-chromium",
-      ["ore-lead"] = "ore-lead",
-      ["ore-nickel"] = "ore-nickel",
-      ["raw-coal"] = "raw-coal",
-      ["ore-titanium"] = "ore-titanium",
-      ["ore-zinc"] = "ore-zinc",
-    }
-    patchableOres = table.merge(patchableOres, pyrawores)
-  end
-
-  -- Pyanodons Coal Processing support
-  if game.active_mods["pycoalprocessing"] then
-    local pycoalprocessing = {
-      ["borax"] = "raw-borax",
-      ["niobium"] = "niobium-ore",
-    }
-    patchableOres = table.merge(patchableOres, pycoalprocessing)
-  end
-
-  -- Brevvens's Titanium support
-  if game.active_mods["bztitanium"] then
-    local bztitanium = {
-      ["titanium-ore"] = "titanium-ore",
-    }
-    patchableOres = table.merge(patchableOres, bztitanium)
-  end
-
-  -- Brevvens's Lead support
-  if game.active_mods["bzlead"] and not game.active_mods["bobores"] and not game.active_mods["angelsrefining"] then
-    local bzlead = {
-      ["lead-ore"] = "lead-ore",
-    }
-    patchableOres = table.merge(patchableOres, bzlead)
-  end
-
-  -- Brevvens's Tungsten support
-  if game.active_mods["bztungsten"] and not game.active_mods["bobores"] then
-    local bztungsten = {
-      ["tungsten-ore"] = "tungsten-ore",
-    }
-    patchableOres = table.merge(patchableOres, bztungsten)
-  end
-
-  -- Brevvens's Zirconium support
-  if game.active_mods["bzzirconium"] then
-    local bzzirconium = {
-      ["zircon"] = "zircon",
-    }
-    patchableOres = table.merge(patchableOres, bzzirconium)
-  end
-
-  -- Space Exploration Ores support
-  if game.active_mods["space-exploration"] then
-    local seore = {
-      ["se-beryllium-ore"] = "se-beryllium-ore",
-      ["se-cryonite"] = "se-cryonite",
-      ["se-holmium-ore"] = "se-holmium-ore",
-      ["se-iridium-ore"] = "se-iridium-ore",
-      ["se-naquium-ore"] = "se-naquium-ore",
-      ["se-vulcanite"] = "se-vulcanite",
-      ["se-vitamelange"] = "se-vitamelange",
-    }
-    patchableOres = table.merge(patchableOres, seore)
-  end
-	
-    --Industrial Revolution 2 ores support
-    if game.active_mods["IndustrialRevolution"] then
-    local IndustrialRevolution = {
-      ["tin-ore"] = "tin-ore",
-	  ["gold-ore"] = "gold-ore",
-    }
-    patchableOres = table.merge(patchableOres, IndustrialRevolution)
-  end
-  
-  return patchableOres
-end
-
 function get_all_patches()
   local patches = {}
-  for _,ore in pairs(get_patchable_ores()) do
-      table.insert(patches, ore.."-patch")
-      table.insert(patches, ore.."-patch-ore")
-      table.insert(patches, ore.."-patch-chunk")
+  for _, ore in pairs(game.get_filtered_entity_prototypes({{filter = "type", type = "resource"}})) do
+    if ore.resource_category == "vtk-deepcore-mining-ore-patch" then
+      table.insert(patches, ore.name)
+    end
   end
   return patches
 end
 
 function spawn_ore_patch_on_depleted_ore(event)
-    local ore = event.entity
-    local surface = ore.surface
-    local areaToScan = Position.expand_to_area(ore.position, settings.global["vtk-deep-core-mining-patch-spawn-distance"].value)
-    local minspawnrange = settings.global["vtk-deep-core-mining-spawn-radius-from-start"].value
-    local minrichness = settings.global["vtk-deep-core-mining-patch-min-richness"].value
-    local maxrichness = settings.global["vtk-deep-core-mining-patch-max-richness"].value
-    local patchableOres = get_patchable_ores()
-    
-    -- since it is a user setting, it is possible to break things up, making sure this won't
-    if minrichness > maxrichness then
-        minrichness = maxrichness
-    end
+  local ore = event.entity
+  local surface = ore.surface
+  local areaToScan = Position.expand_to_area(ore.position, settings.global["vtk-deep-core-mining-patch-spawn-distance"].value)
+  local minspawnrange = settings.global["vtk-deep-core-mining-spawn-radius-from-start"].value
+  local minrichness = settings.global["vtk-deep-core-mining-patch-min-richness"].value
+  local maxrichness = settings.global["vtk-deep-core-mining-patch-max-richness"].value
 
-    -- Add support for Dirty Mining of supported ore patches
-    if game.active_mods["DirtyMining"] then
-        local dirtyores = {}
-        for orename, oreresult in pairs(patchableOres) do
-          local dirtyorename = 'dirty-ore-'..orename
-          if game.entity_prototypes[dirtyorename] then
-            dirtyores = table.merge(dirtyores, {[dirtyorename] = oreresult})
-          end
-        end
-        patchableOres = table.merge(patchableOres, dirtyores)
-    end
-    
-    -- When Prospector is installed, only generate patches after the last deposit is exhausted
-    -- Prospector is currently not really compatible to DirtyMining, so only enable this feature when DirtyMining is absent
-    if game.active_mods["Prospector"] and not game.active_mods["DirtyMining"] then
-      local patchableOresNew = {}
-      for key, name in pairs(patchableOres) do
-          local key_seam = key.."-seam"
-          if game.entity_prototypes[key_seam] ~= nil then
-              patchableOresNew = table.merge(patchableOresNew, {[key_seam] = name})
-          else
-              patchableOresNew = table.merge(patchableOresNew, {[key] = name})
-          end
-      end
-      patchableOres = patchableOresNew
+  -- since it is a user setting, it is possible to break things up, making sure this won't
+  if minrichness > maxrichness then
+      minrichness = maxrichness
   end
 
-    -- logic : 
-    -- - if depleted ore has an equivalent patch entity
-    -- - configuration(default 10) % chance to spawn an ore patch on depletion
-    -- - check if there isn't a nearby ore patch already
-    -- - then spawn it on the location the ore was depleted
-    
-    -- debug
-    -- local player = game.players[1]
-    -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
-    -- player.print("mined ore : "..serpent.block(ore.name))
-    -- player.print(serpent.block(player))
-    
-    local validOre = false
-    local orePatchToSpawn = nil
-    for patchableOre, oreresult in pairs(patchableOres) do
-        -- need to pass true for "plain" search as 4th param because some ore have a "-" and it is a special character for lua string.find() apparently ...
-        -- if string.find(patchableOre, ore.name, 1, true) then 
-        if patchableOre == ore.name then
-            if settings.global["vtk-deep-core-mining-spawn-"..oreresult.."-patch"]
-            and settings.global["vtk-deep-core-mining-spawn-"..oreresult.."-patch"].value then
-                validOre = true
-                orePatchToSpawn = oreresult.."-patch"
-                break
-            end
-        end
-    end
-    
-    if validOre and not Area.inside(Position.expand_to_area({0,0}, minspawnrange), ore.position) then
+  -- logic : 
+  -- - if depleted ore has an equivalent patch entity
+  -- - configuration(default 10) % chance to spawn an ore patch on depletion
+  -- - check if there isn't a nearby ore patch already
+  -- - then spawn it on the location the ore was depleted
+  
+  -- debug
+  -- local player = game.players[1]
+  -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
+  -- player.print("mined ore : "..serpent.block(ore.name))
+  -- player.print(serpent.block(ore))
+  -- player.print(serpent.block(player))
+  
+  if game.entity_prototypes[ore.prototype.mineable_properties.products[1].name.."-patch"] ~= nil then
+    local orePatchToSpawn = game.entity_prototypes[ore.prototype.mineable_properties.products[1].name.."-patch"].name
+    if not Area.inside(Position.expand_to_area({0,0}, minspawnrange), ore.position) then
         local number = math.random(1, settings.global["vtk-deep-core-mining-patch-spawn-chance"].value)
         
         local patches = get_all_patches()
@@ -274,7 +64,7 @@ function spawn_ore_patch_on_depleted_ore(event)
             local newOreEntity = surface.create_entity({name = orePatchToSpawn, amount = oreamount, position = ore.position, force = game.forces.neutral, raise_built = true})
         end
     end
-  
+  end
 end
 
 

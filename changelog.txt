@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.9.0
+Date: 07.01.2022
+  Changes:
+    - Major refactor to more dynamically handle ores support for Deep Core Mining.
+    - Deep Core Mining Ore patches and refining recipes will be generated for all present ores (even non explicitly supported modded ores).
+    - Infinite and fluid resources are ignored (if cases creep out please report them with the associated mod list).
+    - Explicit support is possible to customize deepcore ressources gfx and refining parameters.
+    - During play control also reviewed to be dynamic, when ore depletes it will check for an appropriate Deep Core patch if it exists and spawn it.
+    - This should fix all crashes with all mods configurations once and for all.
+    - WIP dynamic settings support for all ores.
+    - WIP dynamic translations support for all ores.
+    - WIP Might also need and explcit exclude list for resources that don't make sense to be Deep Core-y-fied.
+---------------------------------------------------------------------------------------------------
 Version: 2.8.2
 Date: 05.01.2022
   Changes:
