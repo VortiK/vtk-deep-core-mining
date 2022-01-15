@@ -799,7 +799,31 @@ local vtk_custom_ores = {
     ["tint"] = true,
     ["patchtint"] = true
   },
-  
+  ["se-water-ice"] = {
+    ["result"] = "se-water-ice",
+    ["img"] = "ore",
+    ["patchimg"] = "ore",
+    ["frame"] = 4,
+    ["variation"] = 3,
+    ["refineamount"] = 80,
+    ["refineliquid"] = 20,
+    ["probability"] = 0,
+    ["tint"] = true,
+    ["patchtint"] = true
+  },
+  ["se-methane-ice"] = {
+    ["result"] = "se-methane-ice",
+    ["img"] = "ore",
+    ["patchimg"] = "ore",
+    ["frame"] = 4,
+    ["variation"] = 3,
+    ["refineamount"] = 80,
+    ["refineliquid"] = 20,
+    ["probability"] = 0,
+    ["tint"] = true,
+    ["patchtint"] = true
+  },
+
   --Industrial Revolution 2
   ["tin-ore"] = {
     ["result"] = "tin-ore",
