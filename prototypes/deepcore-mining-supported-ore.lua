@@ -833,21 +833,33 @@ for _, resource in pairs(data.raw.resource) do
   local proceed = false
   local vtk_result = nil
   
-  -- log(resource.name)
+  -- log(" new ore found : "..resource.name)
   -- log(serpent.block(resource))
   -- log("minable "..serpent.block(resource.minable))
   -- log("results "..serpent.block(resource.minable.results))
   -- log("infinite "..serpent.block(resource.infinite))
+  -- log("map_grid "..serpent.block(resource.map_grid))
+  -- log("autoplace "..serpent.block(resource.autoplace))
   if resource.minable then
     if resource.infinite then
+      proceed = false
+    elseif resource.autoplace == nil then
+      proceed = false
+    elseif resource.map_grid == false then
       proceed = false
     elseif resource.minable.result then
         vtk_result = resource.minable.result
         proceed = true
     elseif resource.minable.results then
       for _, result in ipairs(resource.minable.results) do
-          if result and result.type ~= "fluid" then
+          -- log("loop _ "..serpent.block(_))
+          -- log("loop result "..serpent.block(result))
+          -- log("loop result.name "..serpent.block(result.name))
+          if result.name and result.type ~= "fluid" then
             vtk_result = result.name
+            proceed = true
+          elseif result[1] then
+            vtk_result = result[1]
             proceed = true
           end
       end

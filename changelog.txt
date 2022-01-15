@@ -1,4 +1,22 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.9.3
+Date: 15.01.2022
+  Changes:
+    - Fixed bob's ore standalone crash on startup because of gems exceptions code running althrough gems are not placeable (not too sure what's the gameplay with only bob's ore but hey it's fixed!).
+---------------------------------------------------------------------------------------------------
+Version: 2.9.2
+Date: 15.01.2022
+  Changes:
+    - Fixed "junk" recipe being generated and ores that don't make sense to be deep core-y-fied.
+    - Excluded resources that don't have an autoplace control, since they don't appear in the world, they can't be deep core mined.
+    - Also excluded all resources that don't have a map grid display, this removes ores that are single tiles eg: K2 Imersite, pyanodon rocks and the like, prospector "enriched" ores.
+    - No need for an explicit exclusion list for now !
+---------------------------------------------------------------------------------------------------
+Version: 2.9.1
+Date: 08.01.2022
+  Changes:
+    - Fixed startup crash with mods having short declared resources results, notably pyanodon's.
+---------------------------------------------------------------------------------------------------
 Version: 2.9.0
 Date: 07.01.2022
   Changes:
@@ -17,8 +35,8 @@ Date: 05.01.2022
   Changes:
     - Fixed Omnimatter startup crash by actually making it a dependancy (sorry for not even testing to run both ... my mistake)
     - Fixed ADCMD Hidden energy interface appearing in production energy statistics.
-    - Fixed ADCMD Hidden energy interface consuming energy when the drill is not active.
-    - Fixed ADCMD control script to use a save/load safe global, data was actually lost before between saves. That must explain some erratic behavior with the ADCMD staying disabled/enabled and needing to be manually replace to work correctly again.
+    - Fixed ADCMD Hidden energy interface consuming energy when the drill is not active (eg when output full or fuel starved).
+    - Fixed ADCMD control script to use a save/load safe global, data was actually lost before between saves. That must explain some erratic behavior with the ADCMD staying disabled/enabled and needing to be manually replaced to work correctly again.
 ---------------------------------------------------------------------------------------------------
 Version: 2.8.1
 Date: 04.01.2022

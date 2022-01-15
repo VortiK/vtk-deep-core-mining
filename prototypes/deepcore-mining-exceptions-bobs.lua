@@ -1,5 +1,5 @@
-
-if mods.bobores and not mods.angelsrefining then
+if mods.bobores and not mods.angelsrefining
+  and vtk_deepcoremining_supported_ores['gem-ore'] ~= nil then
   if bobmods.ores.settings.UnsortedGemOre == true then
     bobmods.lib.resource.add_result("gem-ore-patch", {name="gem-ore"})
     data.raw.recipe["vtk-deepcore-mining-gem-ore-chunk-refining"].results = 
