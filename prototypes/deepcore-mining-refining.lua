@@ -72,6 +72,9 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   end
 
   if oreprobability > 0 then
+    if oreprobability < 0.01 then
+      oreprobability = 0.01
+    end
     table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = 1, amount = 100 * oreprobability})
     if oredata.result ~= "uranium-ore" then
      table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining-no-uranium']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = 1, amount = 100 * oreprobability})
