@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.10.1
+Date: 02.10.2022
+  Changes:
+    - Fixed refining recipe icon crash on gameload when ores have icons instead of icon and properly take into account icon_size.
+---------------------------------------------------------------------------------------------------
 Version: 2.10.0
 Date: 02.10.2022
   Changes:
