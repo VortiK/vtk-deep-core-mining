@@ -656,6 +656,8 @@ local vtk_custom_ores = {
   -- Brevvens's Titanium
   ["titanium-ore"] = {
     ["result"] = "titanium-ore",
+    ["mining-liquid"] = "lubricant", 
+    ["mining-liquid-amount"] = 30, 
     ["img"] = "ore",
     ["patchimg"] = "ore",
     ["frame"] = 4,
@@ -907,6 +909,8 @@ for _, resource in pairs(data.raw.resource) do
           ["probability"] = 0.10,
           ["tint"] = true,
           ["patchtint"] = true,
+          --["mining-liquid"] = resource.minable.required_fluid, 
+          --["mining-liquid-amount"] = resource.minable.fluid_amount*10, 
         }
       }
       vtk_deepcoremining_supported_ores[resource.name] = resources_to_support[resource.name]
@@ -914,6 +918,6 @@ for _, resource in pairs(data.raw.resource) do
   end
 end
 
--- log(serpent.block(vtk_deepcoremining_supported_ores))
+ log(serpent.block(vtk_deepcoremining_supported_ores))
 
 vtk_deepcoremining_supported_ores_count = table_size(vtk_deepcoremining_supported_ores)

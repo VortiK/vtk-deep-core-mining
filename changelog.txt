@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.9.5
+Date: 20.03.2022
+  Changes:
+    - Fixed Deep Core Ore Mining missing mining required_fluid for ore automatic support.
+    - Fixed Bz Titanium missing lubricant for deep core mining.
+---------------------------------------------------------------------------------------------------
 Version: 2.9.4
 Date: 15.01.2022
   Changes:
@@ -14,8 +20,8 @@ Version: 2.9.2
 Date: 15.01.2022
   Changes:
     - Fixed "junk" recipe being generated and ores that don't make sense to be deep core-y-fied.
-    - Excluded resources that don't have an autoplace control, since they don't appear in the world, they can't be deep core mined.
-    - Also excluded all resources that don't have a map grid display, this removes ores that are single tiles eg: K2 Imersite, pyanodon rocks and the like, prospector "enriched" ores.
+    - Excluded resources that don't have an autoplace control, since they don't appear in the world, they can't be deep core mined (eg. prospector "enriched" ores).
+    - Also excluded all resources that don't have a map grid display, this removes ores that are single tiles eg: K2 Imersite, pyanodon rocks and the like.
     - No need for an explicit exclusion list for now !
 ---------------------------------------------------------------------------------------------------
 Version: 2.9.1
