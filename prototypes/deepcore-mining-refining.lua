@@ -127,7 +127,8 @@ end
 local function chunk_refining_recipe_maker(
   ore_name, 
   ore_icon, 
-  ore_refining_result, 
+  ore_refining_result_icon, 
+  ore_refining_result_icon_size,
   refining_result, 
   result_amount, 
   refining_liquid,
@@ -167,11 +168,6 @@ local function chunk_refining_recipe_maker(
         icon = "__base__/graphics/icons/fluid/sulfuric-acid.png",
         scale = 0.25,
         shift = {10, 10},
-      },
-      {
-        icon = ore_refining_result,
-        scale = 0.25,
-        shift = {-10, 10},
       }
     },
     icon_size = 64,
@@ -190,6 +186,10 @@ local function chunk_refining_recipe_maker(
       quaternary = oretint
     }
   }
+
+  if ore_refining_result_icon then
+    table.insert(recipe.icons, { icon = ore_refining_result_icon, icon_size = ore_refining_result_icon_size, scale = 0.25, shift = {-10, 10}, })
+  end
   
   return recipe
 end
@@ -198,6 +198,8 @@ local i = 1
 for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   local oretint = nil
   local machinetint = nil
+  local oreresulticon = nil
+  local oreresulticonsize = nil
   if data.raw.resource[ore].tint then
     machinetint = data.raw.resource[ore].tint
   else
@@ -207,10 +209,20 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     oretint = machinetint
   end
   
+  if data.raw.resource[ore].icon then
+    oreresulticon = data.raw.resource[ore].icon
+    oreresulticonsize = data.raw.resource[ore].icon.icon_size
+  end
+  if data.raw.resource[ore].icons then
+    oreresulticon = data.raw.resource[ore].icons[1].icon
+    oreresulticonsize = data.raw.resource[ore].icons[1].icon_size
+  end
+  
   local ore_chunk_refining_recipe = chunk_refining_recipe_maker(
     ore,                          -- ore_name : used for recipe name "-chunk-refining" and ingredient "-chunk")
     oredata.img,                  -- ore refining icon "-chunk-refining.png"
-    data.raw.resource[ore].icon,  -- ore refining result icon
+    oreresulticon,                -- ore refining result icon
+    oreresulticonsize,
     oredata.result,               -- result
     oredata.refineamount,         -- result amount
     sulfuricacidname,             -- refining liquid
