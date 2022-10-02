@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.10.0
+Date: 02.10.2022
+  Changes:
+    - Added a blacklist to exclude specific ores from being deep core mining-fied, simply add the ore name to the global array vtk_deepcoremining_blacklist_ores.
+    - Added ore icon to its chunk refining icon layer.
+    - Fixed MadClown ore6 yielding ore7, thanks Kyusoath for pointing out the typo! ( https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/63323781a8b759ce6a88ee29 ).
+    - Fixed older migration script crashing in test scenario trying to explicitly enable recipes that are not present for some circumstances. Replaced by proper method for reseting technologies if already unlocked when loading an old save.
+---------------------------------------------------------------------------------------------------
 Version: 2.9.5
 Date: 20.03.2022
   Changes:

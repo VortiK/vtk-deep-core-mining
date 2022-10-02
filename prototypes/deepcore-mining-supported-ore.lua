@@ -1,6 +1,11 @@
 
 if not vtk_deepcoremining_supported_ores then vtk_deepcoremining_supported_ores = {} end
 
+if not vtk_deepcoremining_blacklist_ores then vtk_deepcoremining_blacklist_ores = {} end
+
+-- Test blacklist
+-- vtk_deepcoremining_blacklist_ores["iron-ore"] = 1
+
 local vtk_custom_ores = {
 
   -- Factorio \o/
@@ -219,7 +224,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["clowns-ore6"] = {
-    ["result"] = "clowns-ore7", 
+    ["result"] = "clowns-ore6", 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -892,6 +897,10 @@ for _, resource in pairs(data.raw.resource) do
     end
   end
   
+  if vtk_deepcoremining_blacklist_ores[resource.name] then
+    proceed = false
+  end
+
   if proceed then
     -- custom sprites for vanilla and explicitly supported mod's ores, else generic gfx and stats
     if vtk_custom_ores[resource.name] then

@@ -33,7 +33,8 @@ The idea is to be able to repurpose depleted mining outpost when normal ore is m
 
 Since 2.9.0 automatically support all modded ores with a generic tinted gfx and refining parameters.
 
-Still supported mods with tailored configurations and contributions : 
+Supported mods with tailored configurations and contributions : 
+
 - Angel's Refining mod : https://mods.factorio.com/mod/angelsrefining
 - Angel's Petrochem mod compatibility (regarding Sulfuric Acid) : https://mods.factorio.com/mod/angelspetrochem
 - Reika's Dirty Mining mod : https://mods.factorio.com/mod/DirtyMining
@@ -60,6 +61,9 @@ Still supported mods with tailored configurations and contributions :
 
 ## Compatibility contribution provided by codwow https://mods.factorio.com/user/codwow : 
 - Omnimatter https://mods.factorio.com/mod/omnimatter
+
+## Blacklist feature to disable Deep Core Mining for specific ores if wanted by other mods
+- Simply add the ore name in the global table `vtk_deepcoremining_blacklist_ores` with a random value, like `1` eg : `vtk_deepcoremining_blacklist_ores["iron-ore"] = 1`
 
 Other mods support depending on request !
 

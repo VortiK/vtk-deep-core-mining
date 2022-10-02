@@ -127,6 +127,7 @@ end
 local function chunk_refining_recipe_maker(
   ore_name, 
   ore_icon, 
+  ore_refining_result, 
   refining_result, 
   result_amount, 
   refining_liquid,
@@ -166,6 +167,11 @@ local function chunk_refining_recipe_maker(
         icon = "__base__/graphics/icons/fluid/sulfuric-acid.png",
         scale = 0.25,
         shift = {10, 10},
+      },
+      {
+        icon = ore_refining_result,
+        scale = 0.25,
+        shift = {-10, 10},
       }
     },
     icon_size = 64,
@@ -203,7 +209,8 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   
   local ore_chunk_refining_recipe = chunk_refining_recipe_maker(
     ore,                          -- ore_name : used for recipe name "-chunk-refining" and ingredient "-chunk")
-    oredata.img,                  -- ore refining icon "-chunk-refining.png
+    oredata.img,                  -- ore refining icon "-chunk-refining.png"
+    data.raw.resource[ore].icon,  -- ore refining result icon
     oredata.result,               -- result
     oredata.refineamount,         -- result amount
     sulfuricacidname,             -- refining liquid
