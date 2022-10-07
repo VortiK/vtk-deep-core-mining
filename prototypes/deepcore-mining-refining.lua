@@ -208,10 +208,11 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   if oredata.tint then
     oretint = machinetint
   end
-  
+
+  -- log("ore icon "..serpent.block(data.raw.resource[ore]))
   if data.raw.resource[ore].icon then
     oreresulticon = data.raw.resource[ore].icon
-    oreresulticonsize = data.raw.resource[ore].icon.icon_size
+    oreresulticonsize = data.raw.resource[ore].icon_size
   end
   if data.raw.resource[ore].icons then
     oreresulticon = data.raw.resource[ore].icons[1].icon

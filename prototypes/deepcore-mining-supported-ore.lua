@@ -927,6 +927,6 @@ for _, resource in pairs(data.raw.resource) do
   end
 end
 
- log(serpent.block(vtk_deepcoremining_supported_ores))
+-- log(serpent.block(vtk_deepcoremining_supported_ores))
 
 vtk_deepcoremining_supported_ores_count = table_size(vtk_deepcoremining_supported_ores)
