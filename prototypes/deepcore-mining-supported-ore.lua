@@ -452,9 +452,9 @@ if mods["bobores"] then
   }
 end
 
-{
-  -- Krastorio 2 Rare Metals
-  ["rare-metals"] = {
+-- Krastorio 2 Rare Metals
+if mods["Krastorio2"] then
+  vtk_custom_ores["rare-metals"] = {
     ["results"] = { { type="item", name="raw-rare-metals", amount=1 } }, 
     ["mining-liquid"] = "chlorine", 
     ["mining-liquid-amount"] = 25, 
@@ -467,8 +467,10 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
+  }
+end
 
+{
   -- Omnimatter
   ["omnite"] = {
     ["results"] = { { type="item", name="omnite", amount=1 } },
