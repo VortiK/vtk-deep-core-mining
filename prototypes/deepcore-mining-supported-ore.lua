@@ -696,9 +696,9 @@ if mods["bztitanium"] then
   }
 end
 
-{
-  -- Brevvens's Lead
-  ["lead-ore"] = {
+-- Brevvens's Lead
+if mods["bzlead"] then
+  vtk_custom_ores["lead-ore"] = {
     ["results"] = { { type="item", name="lead-ore", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
@@ -709,8 +709,10 @@ end
     ["probability"] = 0.30,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  
+  }
+end
+
+{
   -- Brevvens's Tungsten
   ["tungsten-ore"] = {
     ["results"] = { { type="item", name="tungsten-ore", amount=1 } },
