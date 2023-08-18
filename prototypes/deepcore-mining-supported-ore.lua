@@ -861,9 +861,9 @@ if mods["space-exploration"] then
   }
 end
 
-{
-  --Industrial Revolution 2
-  ["tin-ore"] = {
+--Industrial Revolution 2
+if mods["IndustrialRevolution"] then
+  vtk_custom_ores["tin-ore"] = {
     ["results"] = { { type="item", name="tin-ore", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
@@ -874,8 +874,8 @@ end
     ["probability"] = 0.30,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["gold-ore"] = {
+  }
+  vtk_custom_ores["gold-ore"] = {
     ["results"] = { { type="item", name="gold-ore", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
@@ -886,8 +886,8 @@ end
     ["probability"] = 0.15,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-}
+  }
+end
 
 
 -- Process all existing resources to create deepcore mining reference for them to create associated patches, items, refining and technology
