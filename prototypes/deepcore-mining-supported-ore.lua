@@ -729,9 +729,9 @@ if mods["bztungsten"] then
   }
 end
 
-{
-  -- Brevvens's Zirconium
-  ["zircon"] = {
+-- Brevvens's Zirconium
+if mods["bzzirconium"] then
+  vtk_custom_ores["zircon"] = {
     ["results"] = { { type="item", name="zircon", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
@@ -742,8 +742,10 @@ end
     ["probability"] = 0.30,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  
+  }
+end
+
+{
   -- Space Exploration's ore support
   ["se-beryllium-ore"] = {
     ["results"] = { { type="item", name="se-beryllium-ore", amount=1 } },
