@@ -678,9 +678,9 @@ if mods["pycoalprocessing"] then
   }
 end
 
-{
-  -- Brevvens's Titanium
-  ["titanium-ore"] = {
+-- Brevvens's Titanium
+if mods["bztitanium"] then
+  vtk_custom_ores["titanium-ore"] = {
     ["results"] = { { type="item", name="titanium-ore", amount=1 } },
     ["mining-liquid"] = "lubricant", 
     ["mining-liquid-amount"] = 30, 
@@ -693,8 +693,10 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
+  }
+end
 
+{
   -- Brevvens's Lead
   ["lead-ore"] = {
     ["results"] = { { type="item", name="lead-ore", amount=1 } },
