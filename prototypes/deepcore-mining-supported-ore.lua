@@ -470,9 +470,9 @@ if mods["Krastorio2"] then
   }
 end
 
-{
-  -- Omnimatter
-  ["omnite"] = {
+-- Omnimatter
+if mods["omnimatter"] then
+  vtk_custom_ores["omnite"] = {
     ["results"] = { { type="item", name="omnite", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore", 
@@ -483,8 +483,10 @@ end
     ["probability"] = 1, -- obviously, there's only omnite :D
     ["tint"] = true,
     ["patchtint"] = true
-  },
+  }
+end
 
+{
   -- Leighzer's Morphite support
   ["morphite-ore"] = {
     ["results"] = { { type="item", name="morphite-ore", amount=1 } },
