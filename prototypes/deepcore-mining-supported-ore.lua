@@ -10,7 +10,7 @@ local vtk_custom_ores = {
 
   -- Factorio \o/
   ["iron-ore"] = {
-    ["result"] = "iron-ore", 
+    ["results"] = { { type="item", name="iron-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "iron-ore", 
     ["frame"] = 3, 
@@ -22,7 +22,7 @@ local vtk_custom_ores = {
     ["patchtint"] = false
   },
   ["copper-ore"] = {
-    ["result"] = "copper-ore", 
+    ["results"] = { { type="item", name="copper-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "copper-ore", 
     ["frame"] = 3,
@@ -34,7 +34,7 @@ local vtk_custom_ores = {
     ["patchtint"] = false
   },
   ["stone"] = {
-    ["result"] = "stone", 
+    ["results"] = { { type="item", name="stone", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "stone", 
     ["frame"] = 3,
@@ -46,7 +46,7 @@ local vtk_custom_ores = {
     ["patchtint"] = false
   },
   ["coal"] = {
-    ["result"] = "coal", 
+    ["results"] = { { type="item", name="coal", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "coal", 
     ["frame"] = 3,
@@ -58,7 +58,7 @@ local vtk_custom_ores = {
     ["patchtint"] = false
   },
   ["uranium-ore"] = {
-    ["result"] = "uranium-ore", 
+    ["results"] = { { type="item", name="uranium-ore", amount=1 } }, 
     ["mining-liquid"] = "sulfuric-acid", 
     ["mining-liquid-amount"] = 100, 
     ["img"] = "ore", 
@@ -74,7 +74,7 @@ local vtk_custom_ores = {
 
   -- Simple Silicon
   ["SiSi-quartz-ore"] = {
-    ["result"] = "SiSi-quartz", 
+    ["results"] = { { type="item", name="SiSi-quartz", amount=1 } }, 
     ["mining-liquid"] = "water", 
     ["mining-liquid-amount"] = 100, 
     ["img"] = "ore", 
@@ -90,7 +90,7 @@ local vtk_custom_ores = {
 
   -- Angel's ores
   ["angels-ore1"] = {
-    ["result"] = "angels-ore1", 
+    ["results"] = { { type="item", name="angels-ore1", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -102,7 +102,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["angels-ore2"] = {
-    ["result"] = "angels-ore2", 
+    ["results"] = { { type="item", name="angels-ore2", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -114,7 +114,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["angels-ore3"] = {
-    ["result"] = "angels-ore3", 
+    ["results"] = { { type="item", name="angels-ore3", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -126,7 +126,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["angels-ore4"] = {
-    ["result"] = "angels-ore4", 
+    ["results"] = { { type="item", name="angels-ore4", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -138,7 +138,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["angels-ore5"] = {
-    ["result"] = "angels-ore5", 
+    ["results"] = { { type="item", name="angels-ore5", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -150,7 +150,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["angels-ore6"] = {
-    ["result"] = "angels-ore6", 
+    ["results"] = { { type="item", name="angels-ore6", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -164,7 +164,7 @@ local vtk_custom_ores = {
 
   -- Mad Clown's Extended Angel's Bob's Minerals ores
   ["clowns-ore1"] = {
-    ["result"] = "clowns-ore1", 
+    ["results"] = { { type="item", name="clowns-ore1", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -176,7 +176,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["clowns-ore2"] = {
-    ["result"] = "clowns-ore2", 
+    ["results"] = { { type="item", name="clowns-ore2", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -188,7 +188,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["clowns-ore3"] = {
-    ["result"] = "clowns-ore3", 
+    ["results"] = { { type="item", name="clowns-ore3", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -200,7 +200,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["clowns-ore4"] = {
-    ["result"] = "clowns-ore4", 
+    ["results"] = { { type="item", name="clowns-ore4", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -212,7 +212,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["clowns-ore5"] = {
-    ["result"] = "clowns-ore5", 
+    ["results"] = { { type="item", name="clowns-ore5", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -224,7 +224,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["clowns-ore6"] = {
-    ["result"] = "clowns-ore6", 
+    ["results"] = { { type="item", name="clowns-ore6", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -236,7 +236,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["clowns-ore7"] = {
-    ["result"] = "clowns-ore7", 
+    ["results"] = { { type="item", name="clowns-ore7", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -248,7 +248,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["clowns-ore8"] = {
-    ["result"] = "clowns-ore8", 
+    ["results"] = { { type="item", name="clowns-ore8", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -260,7 +260,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["clowns-ore9"] = {
-    ["result"] = "clowns-ore9", 
+    ["results"] = { { type="item", name="clowns-ore9", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -274,7 +274,7 @@ local vtk_custom_ores = {
 
   -- Bob's ores
   ["tin-ore"] = {
-    ["result"] = "tin-ore", 
+    ["results"] = { { type="item", name="tin-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -286,7 +286,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["lead-ore"] = {
-    ["result"] = "lead-ore", 
+    ["results"] = { { type="item", name="lead-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -298,7 +298,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["quartz"] =  {
-    ["result"] = "quartz", 
+    ["results"] = { { type="item", name="quartz", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -310,7 +310,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["silver-ore"] = {
-    ["result"] = "silver-ore", 
+    ["results"] = { { type="item", name="silver-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -322,7 +322,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["zinc-ore"] = {
-    ["result"] = "zinc-ore", 
+    ["results"] = { { type="item", name="zinc-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -334,7 +334,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["gold-ore"] = {
-    ["result"] = "gold-ore", 
+    ["results"] = { { type="item", name="gold-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -346,7 +346,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["bauxite-ore"] = {
-    ["result"] = "bauxite-ore", 
+    ["results"] = { { type="item", name="bauxite-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -358,7 +358,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["rutile-ore"] = {
-    ["result"] = "rutile-ore", 
+    ["results"] = { { type="item", name="rutile-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -370,7 +370,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["tungsten-ore"] = {
-    ["result"] = "tungsten-ore", 
+    ["results"] = { { type="item", name="tungsten-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -382,7 +382,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["thorium-ore"] = {
-    ["result"] = "thorium-ore", 
+    ["results"] = { { type="item", name="thorium-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -394,7 +394,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["nickel-ore"] = {
-    ["result"] = "nickel-ore", 
+    ["results"] = { { type="item", name="nickel-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -406,7 +406,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["cobalt-ore"] = {
-    ["result"] = "cobalt-ore", 
+    ["results"] = { { type="item", name="cobalt-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -418,7 +418,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["sulfur"] = {
-    ["result"] = "sulfur", 
+    ["results"] = { { type="item", name="sulfur", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -430,7 +430,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["gem-ore"] = {
-    ["result"] = "gem-ore", 
+    ["results"] = { { type="item", name="gem-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -444,7 +444,7 @@ local vtk_custom_ores = {
 
   -- Krastorio 2 Rare Metals
   ["rare-metals"] = {
-    ["result"] = "raw-rare-metals", 
+    ["results"] = { { type="item", name="raw-rare-metals", amount=1 } }, 
     ["mining-liquid"] = "chlorine", 
     ["mining-liquid-amount"] = 25, 
     ["img"] = "ore", 
@@ -460,7 +460,7 @@ local vtk_custom_ores = {
 
   -- Omnimatter
   ["omnite"] = {
-    ["result"] = "omnite",
+    ["results"] = { { type="item", name="omnite", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -474,7 +474,7 @@ local vtk_custom_ores = {
 
   -- Leighzer's Morphite support
   ["morphite-ore"] = {
-    ["result"] = "morphite-ore",
+    ["results"] = { { type="item", name="morphite-ore", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -488,7 +488,7 @@ local vtk_custom_ores = {
 
   -- Pyanodon's Raw Ores support
   ["ore-tin"] = {
-    ["result"] = "ore-tin",
+    ["results"] = { { type="item", name="ore-tin", amount=1 } },
     ["mining-liquid"] = "steam",
     ["mining-liquid-amount"] = 100,
     ["img"] = "ore",
@@ -504,7 +504,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["ore-quartz"] = {
-    ["result"] = "ore-quartz",
+    ["results"] = { { type="item", name="ore-quartz", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -516,7 +516,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["ore-aluminium"] = {
-    ["result"] = "ore-aluminium",
+    ["results"] = { { type="item", name="ore-aluminium", amount=1 } },
     ["mining-liquid"] = "coal-gas",
     ["mining-liquid-amount"] = 100,
     ["img"] = "ore",
@@ -532,7 +532,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["ore-chromium"] = {
-    ["result"] = "ore-chromium",
+    ["results"] = { { type="item", name="ore-chromium", amount=1 } },
     ["mining-liquid"] = "syngas",
     ["mining-liquid-amount"] = 40,
     ["img"] = "ore",
@@ -548,7 +548,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["ore-lead"] = {
-    ["result"] = "ore-lead",
+    ["results"] = { { type="item", name="ore-lead", amount=1 } },
     ["mining-liquid"] = "acetylene",
     ["mining-liquid-amount"] = 100,
     ["img"] = "ore",
@@ -564,7 +564,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["ore-nickel"] = {
-    ["result"] = "ore-nickel",
+    ["results"] = { { type="item", name="ore-nickel", amount=1 } },
     ["mining-liquid"] = "syngas",
     ["mining-liquid-amount"] = 40,
     ["img"] = "ore",
@@ -580,7 +580,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["raw-coal"] = {
-    ["result"] = "raw-coal",
+    ["results"] = { { type="item", name="raw-coal", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore", 
     ["frame"] = 4,
@@ -592,7 +592,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["ore-titanium"] = {
-    ["result"] = "ore-titanium",
+    ["results"] = { { type="item", name="ore-titanium", amount=1 } },
     ["mining-liquid"] = "acetylene",
     ["mining-liquid-amount"] = 40,
     ["img"] = "ore",
@@ -608,7 +608,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["ore-zinc"] = {
-    ["result"] = "ore-zinc",
+    ["results"] = { { type="item", name="ore-zinc", amount=1 } },
     ["mining-liquid"] = "syngas",
     ["mining-liquid-amount"] = 40,
     ["img"] = "ore",
@@ -626,7 +626,7 @@ local vtk_custom_ores = {
 
   -- Pyanodons Coal Processing support
   ["borax"] = {
-    ["result"] = "raw-borax",
+    ["results"] = { { type="item", name="raw-borax", amount=1 } },
     ["mining-liquid"] = "syngas",
     ["mining-liquid-amount"] = 50,
     ["img"] = "ore",
@@ -642,7 +642,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["niobium"] = {
-    ["result"] = "niobium-ore",
+    ["results"] = { { type="item", name="niobium-ore", amount=1 } },
     ["mining-liquid"] = "refsyngas",
     ["mining-liquid-amount"] = 60,
     ["img"] = "ore",
@@ -660,7 +660,7 @@ local vtk_custom_ores = {
   
   -- Brevvens's Titanium
   ["titanium-ore"] = {
-    ["result"] = "titanium-ore",
+    ["results"] = { { type="item", name="titanium-ore", amount=1 } },
     ["mining-liquid"] = "lubricant", 
     ["mining-liquid-amount"] = 30, 
     ["img"] = "ore",
@@ -676,7 +676,7 @@ local vtk_custom_ores = {
 
   -- Brevvens's Lead
   ["lead-ore"] = {
-    ["result"] = "lead-ore",
+    ["results"] = { { type="item", name="lead-ore", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
     ["frame"] = 4,
@@ -690,7 +690,7 @@ local vtk_custom_ores = {
   
   -- Brevvens's Tungsten
   ["tungsten-ore"] = {
-    ["result"] = "tungsten-ore",
+    ["results"] = { { type="item", name="tungsten-ore", amount=1 } },
     ["mining-liquid"] = "water",
     ["mining-liquid-amount"] = 100,
     ["patchimg"] = "ore",
@@ -705,7 +705,7 @@ local vtk_custom_ores = {
   
   -- Brevvens's Zirconium
   ["zircon"] = {
-    ["result"] = "zircon",
+    ["results"] = { { type="item", name="zircon", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
     ["frame"] = 4,
@@ -719,7 +719,7 @@ local vtk_custom_ores = {
   
   -- Space Exploration's ore support
   ["se-beryllium-ore"] = {
-    ["result"] = "se-beryllium-ore",
+    ["results"] = { { type="item", name="se-beryllium-ore", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
     ["frame"] = 4,
@@ -731,7 +731,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["se-cryonite"] = {
-    ["result"] = "se-cryonite",
+    ["results"] = { { type="item", name="se-cryonite", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
     ["frame"] = 4,
@@ -743,7 +743,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["se-holmium-ore"] = {
-    ["result"] = "se-holmium-ore",
+    ["results"] = { { type="item", name="se-holmium-ore", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
     ["frame"] = 4,
@@ -755,7 +755,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["se-iridium-ore"] = {
-    ["result"] = "se-iridium-ore",
+    ["results"] = { { type="item", name="se-iridium-ore", amount=1 } },
     ["mining-liquid"] = "sulfuric-acid", 
     ["mining-liquid-amount"] = 50, 
     ["img"] = "ore",
@@ -769,7 +769,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["se-naquium-ore"] = {
-    ["result"] = "se-naquium-ore",
+    ["results"] = { { type="item", name="se-naquium-ore", amount=1 } },
     ["mining-liquid"] = "sulfuric-acid", 
     ["mining-liquid-amount"] = 200, 
     ["img"] = "ore",
@@ -783,7 +783,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["se-vulcanite"] = {
-    ["result"] = "se-vulcanite",
+    ["results"] = { { type="item", name="se-vulcanite", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
     ["frame"] = 4,
@@ -795,7 +795,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["se-vitamelange"] = {
-    ["result"] = "se-vitamelange",
+    ["results"] = { { type="item", name="se-vitamelange", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
     ["frame"] = 4,
@@ -807,7 +807,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["se-water-ice"] = {
-    ["result"] = "se-water-ice",
+    ["results"] = { { type="item", name="se-water-ice", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
     ["frame"] = 4,
@@ -819,7 +819,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["se-methane-ice"] = {
-    ["result"] = "se-methane-ice",
+    ["results"] = { { type="item", name="se-methane-ice", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
     ["frame"] = 4,
@@ -833,7 +833,7 @@ local vtk_custom_ores = {
 
   --Industrial Revolution 2
   ["tin-ore"] = {
-    ["result"] = "tin-ore",
+    ["results"] = { { type="item", name="tin-ore", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
     ["frame"] = 4,
@@ -845,7 +845,7 @@ local vtk_custom_ores = {
     ["patchtint"] = true
   },
   ["gold-ore"] = {
-    ["result"] = "gold-ore",
+    ["results"] = { { type="item", name="gold-ore", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
     ["frame"] = 4,
@@ -862,7 +862,7 @@ local vtk_custom_ores = {
 -- Process all existing resources to create deepcore mining reference for them to create associated patches, items, refining and technology
 for _, resource in pairs(data.raw.resource) do
   local proceed = false
-  local vtk_result = nil
+  local vtk_results = nil
   
   -- log(" new ore found : "..resource.name)
   -- log(serpent.block(resource))
@@ -879,18 +879,19 @@ for _, resource in pairs(data.raw.resource) do
     elseif resource.map_grid == false then
       proceed = false
     elseif resource.minable.result then
-        vtk_result = resource.minable.result
+        vtk_results = { { type="item", name=resource.minable.result, amount=1 } }
         proceed = true
     elseif resource.minable.results then
+      vtk_results = {}
       for _, result in ipairs(resource.minable.results) do
           -- log("loop _ "..serpent.block(_))
           -- log("loop result "..serpent.block(result))
           -- log("loop result.name "..serpent.block(result.name))
           if result.name and result.type ~= "fluid" then
-            vtk_result = result.name
+            table.insert(vtk_results, result)
             proceed = true
           elseif result[1] then
-            vtk_result = result[1]
+            table.insert(vtk_results, result)
             proceed = true
           end
       end
@@ -908,7 +909,7 @@ for _, resource in pairs(data.raw.resource) do
     else 
       local resources_to_support = {
         [resource.name] = {
-          ["result"] = vtk_result,
+          ["results"] = vtk_results,
           ["img"] = "ore", 
           ["patchimg"] = "ore", 
           ["frame"] = 4,

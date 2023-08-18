@@ -268,7 +268,7 @@ data:extend({
 local function resource_patch_maker(
   ore_name, 
   ore_patch_name, 
-  ore_result,
+  ore_results,
   oreimg, 
   frame, 
   variation, 
@@ -279,6 +279,44 @@ local function resource_patch_maker(
   fluid,
   fluidamount
 )
+  -- The mining results can be chunks or the original results.
+  -- The original mining results get amplified by factor 3.
+  -- If they do not have variance (no amount_min, amount_max specified), then
+  -- we introduce some.
+  local mining_results = {
+    {
+      type = "item",
+      name = "vtk-deepcore-mining-"..ore_name.."-chunk", -- ore chunks
+      amount_min = 2,
+      amount_max = 4,
+      probability = 1
+    }
+  }
+  for _,result in pairs(ore_results) do
+    local mod_result = util.table.deepcopy(result)
+    if not mod_result.probability then
+      -- we will set a probability later, so set it here if it is missing.
+      mod_result.probability = 1
+    end
+    if mod_result.amount or mod_result[2] then
+      -- introduce some variance (on average amplified by 3)
+      mod_result.amount_min = 2 * (mod_result.amount or mod_result[2])
+      mod_result.amount_max = 4 * (mod_result.amount or mod_result[2])
+      -- unset amount, since its value overrides amount_min/amount_max
+      mod_result.amount = nil
+      mod_result[2] = nil
+    else
+      -- amplify the variance by 3
+      if mod_result.amount_min then
+        mod_result.amount_min = mod_result.amount_min * 3
+      end
+      if mod_result.amount_max then
+        mod_result.amount_max = mod_result.amount_max * 3
+      end
+    end
+    table.insert(mining_results, mod_result)
+  end
+
   local oredata = 
   {
     type = "resource",
@@ -304,23 +342,7 @@ local function resource_patch_maker(
     {
       mining_time = miningtime*12,
       mining_particle = miningparticle,
-      results =
-      {
-        {
-          type = "item",
-          name = "vtk-deepcore-mining-"..ore_name.."-chunk", -- ore chunks
-          amount_min = 2,
-          amount_max = 4,
-          probability = 1
-        },
-        {
-          type = "item",
-          name = ore_result, -- raw ore
-          amount_min = 2,
-          amount_max = 4,
-          probability = 1
-        }
-      }
+      results = mining_results
     },
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -0.75, -0.75}, {0.75, 0.75}},
@@ -419,7 +441,7 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   local ore_patch = resource_patch_maker(
     ore,                                                -- ore_name
     ore.."-patch",                                      -- ore_patch_name
-    oredata.result,                                     -- patch mining ore result
+    oredata.results,                                    -- patch mining ore result
     oredata.patchimg,                                   -- ore image name (icon, entity, hrentity)
     oredata.frame,                                      -- frame
     oredata.variation,                                  -- variation
@@ -434,10 +456,14 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   local ore_patch_ore = util.table.deepcopy(ore_patch)
   local ore_patch_chunk = util.table.deepcopy(ore_patch)
   ore_patch_ore.name = ore_patch_ore.name .. "-ore"
+  -- the first entry is the chunk result
   ore_patch_ore.minable.results[1].probability = 0
   ore_patch_ore.minable.mining_time = ore_patch_ore.minable.mining_time / 4
   ore_patch_chunk.name = ore_patch_chunk.name .. "-chunk"
-  ore_patch_chunk.minable.results[2].probability = 0
+  -- all other results are the original ore result
+  for i = 2,#ore_patch_chunk.minable.results do
+    ore_patch_chunk.minable.results[i].probability = 0
+  end
 
   data:extend({
     ore_patch,

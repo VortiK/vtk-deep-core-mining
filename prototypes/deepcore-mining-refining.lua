@@ -76,7 +76,8 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
       oreprobability = 0.01
     end
     table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..ore.."-chunk", probability = 1, amount = 100 * oreprobability})
-    if oredata.result ~= "uranium-ore" then
+    if oredata.results and oredata.results[1] and
+        not (oredata.results[1].name == "uranium-ore" or oredata.results[1][1] == "uranium-ore") then
      table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining-no-uranium']['results'], {name = "vtk-deepcore-mining-"..ore.."-chunk", probability = 1, amount = 100 * oreprobability})
     end
 
@@ -129,7 +130,7 @@ local function chunk_refining_recipe_maker(
   ore_icon, 
   ore_refining_result_icon, 
   ore_refining_result_icon_size,
-  refining_result, 
+  refining_results,
   result_amount, 
   refining_liquid,
   refining_liquid_amount,
@@ -139,6 +140,23 @@ local function chunk_refining_recipe_maker(
   machinetint,
   ore_order
 )
+  -- amplify each result by ``result_amount``
+  local mod_refining_results = util.table.deepcopy(refining_results)
+  for _,v in pairs(mod_refining_results) do
+    if v[2] then
+      v[2] = v[2] * result_amount
+    end
+    if v.amount then
+      v.amount = v.amount * result_amount
+    end
+    if v.amount_min then
+      v.amount_min = v.amount_min * result_amount
+    end
+    if v.amount_max then
+      v.amount_max = v.amount_max * result_amount
+    end
+  end
+
   local recipe =
   {
     type = "recipe",
@@ -171,10 +189,7 @@ local function chunk_refining_recipe_maker(
       }
     },
     icon_size = 64,
-    results = 
-    {
-      {type="item", name=refining_result, amount=result_amount},
-    },
+    results = mod_refining_results,
     crafting_machine_tint =
     {
       -- primary = {r = 0.000, g = 0.680, b = 0.894, a = 0.000}, -- #00ade45b -- to change?
@@ -224,7 +239,7 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     oredata.img,                  -- ore refining icon "-chunk-refining.png"
     oreresulticon,                -- ore refining result icon
     oreresulticonsize,
-    oredata.result,               -- result
+    oredata.results,              -- results
     oredata.refineamount,         -- result amount
     sulfuricacidname,             -- refining liquid
     oredata.refineliquid,         -- refining liquid amount
