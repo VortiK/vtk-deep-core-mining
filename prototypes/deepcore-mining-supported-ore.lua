@@ -745,9 +745,9 @@ if mods["bzzirconium"] then
   }
 end
 
-{
-  -- Space Exploration's ore support
-  ["se-beryllium-ore"] = {
+-- Space Exploration's ore support
+if mods["space-exploration"] then
+  vtk_custom_ores["se-beryllium-ore"] = {
     ["results"] = { { type="item", name="se-beryllium-ore", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
@@ -758,8 +758,8 @@ end
     ["probability"] = 0,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["se-cryonite"] = {
+  }
+  vtk_custom_ores["se-cryonite"] = {
     ["results"] = { { type="item", name="se-cryonite", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
@@ -770,8 +770,8 @@ end
     ["probability"] = 0,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["se-holmium-ore"] = {
+  }
+  vtk_custom_ores["se-holmium-ore"] = {
     ["results"] = { { type="item", name="se-holmium-ore", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
@@ -782,8 +782,8 @@ end
     ["probability"] = 0,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["se-iridium-ore"] = {
+  }
+  vtk_custom_ores["se-iridium-ore"] = {
     ["results"] = { { type="item", name="se-iridium-ore", amount=1 } },
     ["mining-liquid"] = "sulfuric-acid", 
     ["mining-liquid-amount"] = 50, 
@@ -796,8 +796,8 @@ end
     ["probability"] = 0,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["se-naquium-ore"] = {
+  }
+  vtk_custom_ores["se-naquium-ore"] = {
     ["results"] = { { type="item", name="se-naquium-ore", amount=1 } },
     ["mining-liquid"] = "sulfuric-acid", 
     ["mining-liquid-amount"] = 200, 
@@ -810,8 +810,8 @@ end
     ["probability"] = 0,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["se-vulcanite"] = {
+  }
+  vtk_custom_ores["se-vulcanite"] = {
     ["results"] = { { type="item", name="se-vulcanite", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
@@ -822,8 +822,8 @@ end
     ["probability"] = 0,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["se-vitamelange"] = {
+  }
+  vtk_custom_ores["se-vitamelange"] = {
     ["results"] = { { type="item", name="se-vitamelange", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
@@ -834,8 +834,8 @@ end
     ["probability"] = 0,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["se-water-ice"] = {
+  }
+  vtk_custom_ores["se-water-ice"] = {
     ["results"] = { { type="item", name="se-water-ice", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
@@ -846,8 +846,8 @@ end
     ["probability"] = 0,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["se-methane-ice"] = {
+  }
+  vtk_custom_ores["se-methane-ice"] = {
     ["results"] = { { type="item", name="se-methane-ice", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore",
@@ -858,8 +858,10 @@ end
     ["probability"] = 0,
     ["tint"] = true,
     ["patchtint"] = true
-  },
+  }
+end
 
+{
   --Industrial Revolution 2
   ["tin-ore"] = {
     ["results"] = { { type="item", name="tin-ore", amount=1 } },
