@@ -6,8 +6,9 @@ if not vtk_deepcoremining_blacklist_ores then vtk_deepcoremining_blacklist_ores 
 -- Test blacklist
 -- vtk_deepcoremining_blacklist_ores["iron-ore"] = 1
 
-local vtk_custom_ores = {
+local vtk_custom_ores = {}
 
+{
   -- Factorio \o/
   ["iron-ore"] = {
     ["results"] = { { type="item", name="iron-ore", amount=1 } }, 
