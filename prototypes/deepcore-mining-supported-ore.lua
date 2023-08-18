@@ -502,9 +502,9 @@ if mods["leighzermorphite"] then
   }
 end
 
-{
-  -- Pyanodon's Raw Ores support
-  ["ore-tin"] = {
+-- Pyanodon's Raw Ores support
+if mods["pyrawores"] then
+  vtk_custom_ores["ore-tin"] = {
     ["results"] = { { type="item", name="ore-tin", amount=1 } },
     ["mining-liquid"] = "steam",
     ["mining-liquid-amount"] = 100,
@@ -519,8 +519,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["ore-quartz"] = {
+  }
+  vtk_custom_ores["ore-quartz"] = {
     ["results"] = { { type="item", name="ore-quartz", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore", 
@@ -531,8 +531,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["ore-aluminium"] = {
+  }
+  vtk_custom_ores["ore-aluminium"] = {
     ["results"] = { { type="item", name="ore-aluminium", amount=1 } },
     ["mining-liquid"] = "coal-gas",
     ["mining-liquid-amount"] = 100,
@@ -547,8 +547,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["ore-chromium"] = {
+  }
+  vtk_custom_ores["ore-chromium"] = {
     ["results"] = { { type="item", name="ore-chromium", amount=1 } },
     ["mining-liquid"] = "syngas",
     ["mining-liquid-amount"] = 40,
@@ -563,8 +563,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["ore-lead"] = {
+  }
+  vtk_custom_ores["ore-lead"] = {
     ["results"] = { { type="item", name="ore-lead", amount=1 } },
     ["mining-liquid"] = "acetylene",
     ["mining-liquid-amount"] = 100,
@@ -579,8 +579,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["ore-nickel"] = {
+  }
+  vtk_custom_ores["ore-nickel"] = {
     ["results"] = { { type="item", name="ore-nickel", amount=1 } },
     ["mining-liquid"] = "syngas",
     ["mining-liquid-amount"] = 40,
@@ -595,8 +595,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["raw-coal"] = {
+  }
+  vtk_custom_ores["raw-coal"] = {
     ["results"] = { { type="item", name="raw-coal", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore", 
@@ -607,8 +607,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["ore-titanium"] = {
+  }
+  vtk_custom_ores["ore-titanium"] = {
     ["results"] = { { type="item", name="ore-titanium", amount=1 } },
     ["mining-liquid"] = "acetylene",
     ["mining-liquid-amount"] = 40,
@@ -623,8 +623,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["ore-zinc"] = {
+  }
+  vtk_custom_ores["ore-zinc"] = {
     ["results"] = { { type="item", name="ore-zinc", amount=1 } },
     ["mining-liquid"] = "syngas",
     ["mining-liquid-amount"] = 40,
@@ -639,8 +639,10 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
+  }
+end
 
+{
   -- Pyanodons Coal Processing support
   ["borax"] = {
     ["results"] = { { type="item", name="raw-borax", amount=1 } },
