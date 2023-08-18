@@ -712,9 +712,9 @@ if mods["bzlead"] then
   }
 end
 
-{
-  -- Brevvens's Tungsten
-  ["tungsten-ore"] = {
+-- Brevvens's Tungsten
+if mods["bztungsten"] then
+  vtk_custom_ores["tungsten-ore"] = {
     ["results"] = { { type="item", name="tungsten-ore", amount=1 } },
     ["mining-liquid"] = "water",
     ["mining-liquid-amount"] = 100,
@@ -726,8 +726,10 @@ end
     ["probability"] = 0.30,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  
+  }
+end
+
+{
   -- Brevvens's Zirconium
   ["zircon"] = {
     ["results"] = { { type="item", name="zircon", amount=1 } },
