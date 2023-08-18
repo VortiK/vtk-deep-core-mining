@@ -280,9 +280,9 @@ if mods["Clowns-Extended-Minerals"] then
   }
 end
 
-{
-  -- Bob's ores
-  ["tin-ore"] = {
+-- Bob's ores
+if mods["bobores"] then
+  vtk_custom_ores["tin-ore"] = {
     ["results"] = { { type="item", name="tin-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -293,8 +293,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["lead-ore"] = {
+  }
+  vtk_custom_ores["lead-ore"] = {
     ["results"] = { { type="item", name="lead-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -305,8 +305,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["quartz"] =  {
+  }
+  vtk_custom_ores["quartz"] =  {
     ["results"] = { { type="item", name="quartz", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -317,8 +317,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["silver-ore"] = {
+  }
+  vtk_custom_ores["silver-ore"] = {
     ["results"] = { { type="item", name="silver-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -329,8 +329,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["zinc-ore"] = {
+  }
+  vtk_custom_ores["zinc-ore"] = {
     ["results"] = { { type="item", name="zinc-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -341,8 +341,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["gold-ore"] = {
+  }
+  vtk_custom_ores["gold-ore"] = {
     ["results"] = { { type="item", name="gold-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -353,8 +353,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["bauxite-ore"] = {
+  }
+  vtk_custom_ores["bauxite-ore"] = {
     ["results"] = { { type="item", name="bauxite-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -365,8 +365,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["rutile-ore"] = {
+  }
+  vtk_custom_ores["rutile-ore"] = {
     ["results"] = { { type="item", name="rutile-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -377,8 +377,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["tungsten-ore"] = {
+  }
+  vtk_custom_ores["tungsten-ore"] = {
     ["results"] = { { type="item", name="tungsten-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -389,8 +389,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["thorium-ore"] = {
+  }
+  vtk_custom_ores["thorium-ore"] = {
     ["results"] = { { type="item", name="thorium-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -401,8 +401,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["nickel-ore"] = {
+  }
+  vtk_custom_ores["nickel-ore"] = {
     ["results"] = { { type="item", name="nickel-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -413,8 +413,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["cobalt-ore"] = {
+  }
+  vtk_custom_ores["cobalt-ore"] = {
     ["results"] = { { type="item", name="cobalt-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -425,8 +425,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["sulfur"] = {
+  }
+  vtk_custom_ores["sulfur"] = {
     ["results"] = { { type="item", name="sulfur", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -437,8 +437,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["gem-ore"] = {
+  }
+  vtk_custom_ores["gem-ore"] = {
     ["results"] = { { type="item", name="gem-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -449,8 +449,10 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
+  }
+end
 
+{
   -- Krastorio 2 Rare Metals
   ["rare-metals"] = {
     ["results"] = { { type="item", name="raw-rare-metals", amount=1 } }, 
