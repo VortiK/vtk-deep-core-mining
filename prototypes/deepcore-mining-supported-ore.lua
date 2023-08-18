@@ -92,9 +92,9 @@ if mods["SimpleSilicon"] then
   }
 end
 
-{
-  -- Angel's ores
-  ["angels-ore1"] = {
+-- Angel's ores
+if mods["angelsrefining"] then
+  vtk_custom_ores["angels-ore1"] = {
     ["results"] = { { type="item", name="angels-ore1", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -105,8 +105,8 @@ end
     ["probability"] = 0.50,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["angels-ore2"] = {
+  }
+  vtk_custom_ores["angels-ore2"] = {
     ["results"] = { { type="item", name="angels-ore2", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -117,8 +117,8 @@ end
     ["probability"] = 0.50,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["angels-ore3"] = {
+  }
+  vtk_custom_ores["angels-ore3"] = {
     ["results"] = { { type="item", name="angels-ore3", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -129,8 +129,8 @@ end
     ["probability"] = 0.30,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["angels-ore4"] = {
+  }
+  vtk_custom_ores["angels-ore4"] = {
     ["results"] = { { type="item", name="angels-ore4", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -141,8 +141,8 @@ end
     ["probability"] = 0.30,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["angels-ore5"] = {
+  }
+  vtk_custom_ores["angels-ore5"] = {
     ["results"] = { { type="item", name="angels-ore5", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -153,8 +153,8 @@ end
     ["probability"] = 0.30,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["angels-ore6"] = {
+  }
+  vtk_custom_ores["angels-ore6"] = {
     ["results"] = { { type="item", name="angels-ore6", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -165,8 +165,10 @@ end
     ["probability"] = 0.30,
     ["tint"] = true,
     ["patchtint"] = true
-  },
+  }
+end
 
+{
   -- Mad Clown's Extended Angel's Bob's Minerals ores
   ["clowns-ore1"] = {
     ["results"] = { { type="item", name="clowns-ore1", amount=1 } }, 
