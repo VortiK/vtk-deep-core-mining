@@ -642,9 +642,9 @@ if mods["pyrawores"] then
   }
 end
 
-{
-  -- Pyanodons Coal Processing support
-  ["borax"] = {
+-- Pyanodons Coal Processing support
+if mods["pycoalprocessing"] then
+  vtk_custom_ores["borax"] = {
     ["results"] = { { type="item", name="raw-borax", amount=1 } },
     ["mining-liquid"] = "syngas",
     ["mining-liquid-amount"] = 50,
@@ -659,8 +659,8 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["niobium"] = {
+  }
+  vtk_custom_ores["niobium"] = {
     ["results"] = { { type="item", name="niobium-ore", amount=1 } },
     ["mining-liquid"] = "refsyngas",
     ["mining-liquid-amount"] = 60,
@@ -675,8 +675,10 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  
+  }
+end
+
+{
   -- Brevvens's Titanium
   ["titanium-ore"] = {
     ["results"] = { { type="item", name="titanium-ore", amount=1 } },
