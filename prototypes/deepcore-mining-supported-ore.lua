@@ -168,9 +168,9 @@ if mods["angelsrefining"] then
   }
 end
 
-{
-  -- Mad Clown's Extended Angel's Bob's Minerals ores
-  ["clowns-ore1"] = {
+-- Mad Clown's Extended Angel's Bob's Minerals ores
+if mods["Clowns-Extended-Minerals"] then
+  vtk_custom_ores["clowns-ore1"] = {
     ["results"] = { { type="item", name="clowns-ore1", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -181,8 +181,8 @@ end
     ["probability"] = 0.07,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["clowns-ore2"] = {
+  }
+  vtk_custom_ores["clowns-ore2"] = {
     ["results"] = { { type="item", name="clowns-ore2", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -193,8 +193,8 @@ end
     ["probability"] = 0.22,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["clowns-ore3"] = {
+  }
+  vtk_custom_ores["clowns-ore3"] = {
     ["results"] = { { type="item", name="clowns-ore3", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -205,8 +205,8 @@ end
     ["probability"] = 0.22,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["clowns-ore4"] = {
+  }
+  vtk_custom_ores["clowns-ore4"] = {
     ["results"] = { { type="item", name="clowns-ore4", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -217,8 +217,8 @@ end
     ["probability"] = 0.22,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["clowns-ore5"] = {
+  }
+  vtk_custom_ores["clowns-ore5"] = {
     ["results"] = { { type="item", name="clowns-ore5", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -229,8 +229,8 @@ end
     ["probability"] = 0.22,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["clowns-ore6"] = {
+  }
+  vtk_custom_ores["clowns-ore6"] = {
     ["results"] = { { type="item", name="clowns-ore6", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -241,8 +241,8 @@ end
     ["probability"] = 0.15,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["clowns-ore7"] = {
+  }
+  vtk_custom_ores["clowns-ore7"] = {
     ["results"] = { { type="item", name="clowns-ore7", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -253,8 +253,8 @@ end
     ["probability"] = 0.15,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["clowns-ore8"] = {
+  }
+  vtk_custom_ores["clowns-ore8"] = {
     ["results"] = { { type="item", name="clowns-ore8", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -265,8 +265,8 @@ end
     ["probability"] = 0.07,
     ["tint"] = true,
     ["patchtint"] = true
-  },
-  ["clowns-ore9"] = {
+  }
+  vtk_custom_ores["clowns-ore9"] = {
     ["results"] = { { type="item", name="clowns-ore9", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
@@ -277,8 +277,10 @@ end
     ["probability"] = 0.07,
     ["tint"] = true,
     ["patchtint"] = true
-  },
+  }
+end
 
+{
   -- Bob's ores
   ["tin-ore"] = {
     ["results"] = { { type="item", name="tin-ore", amount=1 } }, 
