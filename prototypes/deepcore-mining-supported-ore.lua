@@ -486,9 +486,9 @@ if mods["omnimatter"] then
   }
 end
 
-{
-  -- Leighzer's Morphite support
-  ["morphite-ore"] = {
+-- Leighzer's Morphite support
+if mods["leighzermorphite"] then
+  vtk_custom_ores["morphite-ore"] = {
     ["results"] = { { type="item", name="morphite-ore", amount=1 } },
     ["img"] = "ore",
     ["patchimg"] = "ore", 
@@ -499,8 +499,10 @@ end
     ["probability"] = 0.10,
     ["tint"] = true,
     ["patchtint"] = true
-  },
+  }
+end
 
+{
   -- Pyanodon's Raw Ores support
   ["ore-tin"] = {
     ["results"] = { { type="item", name="ore-tin", amount=1 } },
