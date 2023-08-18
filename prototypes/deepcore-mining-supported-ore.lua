@@ -74,9 +74,9 @@ if mods["base"] then
   }
 end
 
-{
-  -- Simple Silicon
-  ["SiSi-quartz-ore"] = {
+-- Simple Silicon
+if mods["SimpleSilicon"] then
+  vtk_custom_ores["SiSi-quartz-ore"] = {
     ["results"] = { { type="item", name="SiSi-quartz", amount=1 } }, 
     ["mining-liquid"] = "water", 
     ["mining-liquid-amount"] = 100, 
@@ -89,8 +89,10 @@ end
     ["probability"] = 0.20,
     ["tint"] = true,
     ["patchtint"] = true
-  },
+  }
+end
 
+{
   -- Angel's ores
   ["angels-ore1"] = {
     ["results"] = { { type="item", name="angels-ore1", amount=1 } }, 
