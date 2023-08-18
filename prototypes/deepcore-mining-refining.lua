@@ -75,9 +75,9 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     if oreprobability < 0.01 then
       oreprobability = 0.01
     end
-    table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = 1, amount = 100 * oreprobability})
+    table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining']['results'], {name = "vtk-deepcore-mining-"..ore.."-chunk", probability = 1, amount = 100 * oreprobability})
     if oredata.result ~= "uranium-ore" then
-     table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining-no-uranium']['results'], {name = "vtk-deepcore-mining-"..oredata.result.."-chunk", probability = 1, amount = 100 * oreprobability})
+     table.insert(data.raw['recipe']['vtk-deepcore-mining-ore-chunk-refining-no-uranium']['results'], {name = "vtk-deepcore-mining-"..ore.."-chunk", probability = 1, amount = 100 * oreprobability})
     end
 
     -- on the fly focus deep core chunk refining recipes creation
@@ -87,7 +87,7 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     -- ore_chunk_focus_recipe.ingredients = {{"vtk-deepcore-mining-ore-chunk", 200}, {"vtk-deepcore-mining-drone", 1}}
     ore_chunk_focus_recipe.energy_required = 4
     ore_chunk_focus_recipe.ingredients = {{"vtk-deepcore-mining-ore-chunk", 100}, {type="fluid", name=sulfuricacidname, amount=20}}
-    ore_chunk_focus_recipe.results = {{name = "vtk-deepcore-mining-"..oredata.result.."-chunk", amount = 150 * oreprobability}}
+    ore_chunk_focus_recipe.results = {{name = "vtk-deepcore-mining-"..ore.."-chunk", amount = 150 * oreprobability}}
 
     -- tint "generic" ores (like bobs)
     local oretint = nil
@@ -151,7 +151,7 @@ local function chunk_refining_recipe_maker(
     allow_decomposition = false,
     ingredients = 
     {
-      {"vtk-deepcore-mining-"..refining_result.."-chunk", 10},
+      {"vtk-deepcore-mining-"..ore_name.."-chunk", 10},
       {type="fluid", name=refining_liquid, amount=refining_liquid_amount},
       refining_liquid2 and {type="fluid", name=refining_liquid2, amount=refining_liquid2_amount},
     },

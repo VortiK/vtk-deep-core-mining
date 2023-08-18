@@ -1,0 +1,26 @@
+{
+  "item":
+  [
+    ["vtk-deepcore-mining-raw-rare-metals-chunk", "vtk-deepcore-mining-rare-metals-chunk"],
+    ["vtk-deepcore-mining-SiSi-quartz-chunk", "vtk-deepcore-mining-SiSi-quartz-ore-chunk"],
+    ["vtk-deepcore-mining-raw-borax-chunk", "vtk-deepcore-mining-borax-chunk"],
+    ["vtk-deepcore-mining-niobium-ore-chunk", "vtk-deepcore-mining-niobium-chunk"]
+  ],
+  "resource":
+  [
+    ["raw-rare-metals-patch", "rare-metals-patch"],
+    ["SiSi-quartz-patch", "SiSi-quartz-ore-patch"],
+    ["raw-borax-patch", "borax-patch"],
+    ["niobium-ore-patch", "niobium-patch"],
+
+    ["raw-rare-metals-patch-chunk", "rare-metals-patch-chunk"],
+    ["SiSi-quartz-patch-chunk", "SiSi-quartz-ore-patch-chunk"],
+    ["raw-borax-patch-chunk", "borax-patch-chunk"],
+    ["niobium-ore-patch-chunk", "niobium-patch-chunk"],
+
+    ["raw-rare-metals-patch-ore", "rare-metals-patch-ore"],
+    ["SiSi-quartz-patch-ore", "SiSi-quartz-ore-patch-ore"],
+    ["raw-borax-patch-ore", "borax-patch-ore"],
+    ["niobium-ore-patch-ore", "niobium-patch-ore"]
+  ]
+}

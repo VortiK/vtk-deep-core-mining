@@ -308,7 +308,7 @@ local function resource_patch_maker(
       {
         {
           type = "item",
-          name = "vtk-deepcore-mining-"..ore_result.."-chunk", -- ore chunks
+          name = "vtk-deepcore-mining-"..ore_name.."-chunk", -- ore chunks
           amount_min = 2,
           amount_max = 4,
           probability = 1
@@ -418,7 +418,7 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   end
   local ore_patch = resource_patch_maker(
     ore,                                                -- ore_name
-    oredata.result.."-patch",                           -- ore_patch_name
+    ore.."-patch",                                      -- ore_patch_name
     oredata.result,                                     -- patch mining ore result
     oredata.patchimg,                                   -- ore image name (icon, entity, hrentity)
     oredata.frame,                                      -- frame
@@ -468,7 +468,7 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   local ore_chunk = 
   {
     type = "item",
-    name = "vtk-deepcore-mining-"..oredata.result.."-chunk",
+    name = "vtk-deepcore-mining-"..ore.."-chunk",
     icons = {
         {
             icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon.png",
