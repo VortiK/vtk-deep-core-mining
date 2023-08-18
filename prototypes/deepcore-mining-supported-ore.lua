@@ -8,9 +8,9 @@ if not vtk_deepcoremining_blacklist_ores then vtk_deepcoremining_blacklist_ores 
 
 local vtk_custom_ores = {}
 
-{
-  -- Factorio \o/
-  ["iron-ore"] = {
+-- Factorio \o/
+if mods["base"] then
+  vtk_custom_ores["iron-ore"] = {
     ["results"] = { { type="item", name="iron-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "iron-ore", 
@@ -21,8 +21,8 @@ local vtk_custom_ores = {}
     ["probability"] = 0.50,
     ["tint"] = true,
     ["patchtint"] = false
-  },
-  ["copper-ore"] = {
+  }
+  vtk_custom_ores["copper-ore"] = {
     ["results"] = { { type="item", name="copper-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "copper-ore", 
@@ -33,8 +33,8 @@ local vtk_custom_ores = {}
     ["probability"] = 0.40,
     ["tint"] = true,
     ["patchtint"] = false
-  },
-  ["stone"] = {
+  }
+  vtk_custom_ores["stone"] = {
     ["results"] = { { type="item", name="stone", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "stone", 
@@ -45,8 +45,8 @@ local vtk_custom_ores = {}
     ["probability"] = 0.07,
     ["tint"] = true,
     ["patchtint"] = false
-  },
-  ["coal"] = {
+  }
+  vtk_custom_ores["coal"] = {
     ["results"] = { { type="item", name="coal", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "coal", 
@@ -57,8 +57,8 @@ local vtk_custom_ores = {}
     ["probability"] = 0.06,
     ["tint"] = true,
     ["patchtint"] = false
-  },
-  ["uranium-ore"] = {
+  }
+  vtk_custom_ores["uranium-ore"] = {
     ["results"] = { { type="item", name="uranium-ore", amount=1 } }, 
     ["mining-liquid"] = "sulfuric-acid", 
     ["mining-liquid-amount"] = 100, 
@@ -71,8 +71,10 @@ local vtk_custom_ores = {}
     ["probability"] = 0.01,
     ["tint"] = true,
     ["patchtint"] = false
-  },
+  }
+end
 
+{
   -- Simple Silicon
   ["SiSi-quartz-ore"] = {
     ["results"] = { { type="item", name="SiSi-quartz", amount=1 } }, 
