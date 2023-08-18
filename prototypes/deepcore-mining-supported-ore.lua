@@ -919,10 +919,14 @@ for _, resource in pairs(data.raw.resource) do
           ["probability"] = 0.10,
           ["tint"] = true,
           ["patchtint"] = true,
-          --["mining-liquid"] = resource.minable.required_fluid, 
-          --["mining-liquid-amount"] = resource.minable.fluid_amount*10, 
         }
       }
+      if resource.minable.required_fluid then
+        resources_to_support[resource.name]["mining-liquid"] = resource.minable.required_fluid
+      end
+      if resource.minable.fluid_amount then
+        resources_to_support[resource.name]["mining-liquid-amount"] = resource.minable.fluid_amount*10
+      end
       vtk_deepcoremining_supported_ores[resource.name] = resources_to_support[resource.name]
     end
   end
