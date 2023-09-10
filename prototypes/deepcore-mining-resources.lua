@@ -279,6 +279,7 @@ local function resource_patch_maker(
   fluid,
   fluidamount
 )
+
   -- The mining results can be chunks or the original results.
   -- The original mining results get amplified by factor 3.
   -- If they do not have variance (no amount_min, amount_max specified), then

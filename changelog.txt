@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.11.0
+Date: 10.09.2023
+  Changes:
+    - Added support for ores with multiple mining results outputs. Thanks https://github.com/leanora-polera for the pull request https://github.com/VortiK/vtk-deep-core-mining/pull/18
+---------------------------------------------------------------------------------------------------
 Version: 2.10.2
 Date: 07.10.2022
   Changes:
