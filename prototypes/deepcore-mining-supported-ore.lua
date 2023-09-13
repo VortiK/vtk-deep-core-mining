@@ -5,6 +5,7 @@ if not vtk_deepcoremining_blacklist_ores then vtk_deepcoremining_blacklist_ores 
 
 -- Test blacklist
 -- vtk_deepcoremining_blacklist_ores["iron-ore"] = 1
+vtk_deepcoremining_blacklist_ores["oil-sand"] = 1
 
 local vtk_custom_ores = {}
 
@@ -428,18 +429,6 @@ if mods["bobores"] then
   }
   vtk_custom_ores["sulfur"] = {
     ["results"] = { { type="item", name="sulfur", amount=1 } }, 
-    ["img"] = "ore", 
-    ["patchimg"] = "ore", 
-    ["frame"] = 4, 
-    ["variation"] = 3,
-    ["refineamount"] = 80, 
-    ["refineliquid"] = 20, 
-    ["probability"] = 0.10,
-    ["tint"] = true,
-    ["patchtint"] = true
-  }
-  vtk_custom_ores["gem-ore"] = {
-    ["results"] = { { type="item", name="gem-ore", amount=1 } }, 
     ["img"] = "ore", 
     ["patchimg"] = "ore", 
     ["frame"] = 4, 
@@ -922,7 +911,11 @@ for _, resource in pairs(data.raw.resource) do
             table.insert(vtk_results, result)
             proceed = true
           elseif result[1] then
-            table.insert(vtk_results, result)
+            if result[2] then
+              table.insert(vtk_results, {type = "item", name = result[1], amount = result[2]})
+            else
+              table.insert(vtk_results, {type = "item", name = result[1], amount = 1})
+            end
             proceed = true
           end
       end

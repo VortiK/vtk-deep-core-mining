@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.11.1
+Date: 13.09.2023
+  Changes:
+    - Finally fixed the dreaded Bob's Metals Gem crash on load.
+    - Fixed some Pyanodon's ores crashes because of old format mining results definition.
+    - I hope there will be no break of other mod support, please let me know if encounter more crashes.
+---------------------------------------------------------------------------------------------------
 Version: 2.11.0
 Date: 10.09.2023
   Changes:
