@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.11.2
+Date: 29.05.2024
+  Changes:
+    - Fixed no products resources crash on mining when trying to generate a Deep Core Patch (even if the resource is not compatible).
+    - Pyanodon's petroleum bitumen tarpit for instance.
+    - Thanks reports and MidnightTech for providing a save game where the bug is isolated and easily reproductible !
+---------------------------------------------------------------------------------------------------
 Version: 2.11.1
 Date: 13.09.2023
   Changes:

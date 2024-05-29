@@ -51,18 +51,21 @@ function spawn_ore_patch_on_depleted_ore(event)
   -- player.print(serpent.block(ore))
   -- player.print(serpent.block(player))
   
-  if game.entity_prototypes[ore.prototype.mineable_properties.products[1].name.."-patch"] ~= nil then
-    local orePatchToSpawn = game.entity_prototypes[ore.prototype.mineable_properties.products[1].name.."-patch"].name
-    if not Area.inside(Position.expand_to_area({0,0}, minspawnrange), ore.position) then
-        local number = math.random(1, settings.global["vtk-deep-core-mining-patch-spawn-chance"].value)
-        
-        local patches = get_all_patches()
-        entitiesCount = surface.count_entities_filtered{area = areaToScan, name = patches}
-        
-        if number == 1 and entitiesCount == 0 then
-            oreamount = math.random(minrichness, maxrichness)
-            local newOreEntity = surface.create_entity({name = orePatchToSpawn, amount = oreamount, position = ore.position, force = game.forces.neutral, raise_built = true})
-        end
+  if ore.prototype.mineable_properties.products ~= nil then
+    if game.entity_prototypes[ore.prototype.mineable_properties.products[1].name.."-patch"] ~= nil
+    then
+      local orePatchToSpawn = game.entity_prototypes[ore.prototype.mineable_properties.products[1].name.."-patch"].name
+      if not Area.inside(Position.expand_to_area({0,0}, minspawnrange), ore.position) then
+          local number = math.random(1, settings.global["vtk-deep-core-mining-patch-spawn-chance"].value)
+          
+          local patches = get_all_patches()
+          entitiesCount = surface.count_entities_filtered{area = areaToScan, name = patches}
+          
+          if number == 1 and entitiesCount == 0 then
+              oreamount = math.random(minrichness, maxrichness)
+              local newOreEntity = surface.create_entity({name = orePatchToSpawn, amount = oreamount, position = ore.position, force = game.forces.neutral, raise_built = true})
+          end
+      end
     end
   end
 end
