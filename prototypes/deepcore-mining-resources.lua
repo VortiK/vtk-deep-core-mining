@@ -1,19 +1,17 @@
-local sulfuricacidname = "sulfuric-acid"
-if mods["angelspetrochem"] then
-    sulfuricacidname = "liquid-sulfuric-acid"
-end
+local item_tints = require("__base__.prototypes.item-tints")
 
--- 
+
+--
 -- Deep Core resource category
--- 
+--
 local deep_core_resource_patch_category = {
-    type = "resource-category",
-    name = "vtk-deepcore-mining-ore-patch"
+  type = "resource-category",
+  name = "vtk-deepcore-mining-ore-patch"
 }
 
 local deep_core_resource_ore_category = {
-    type = "resource-category",
-    name = "vtk-deepcore-mining-crack"
+  type = "resource-category",
+  name = "vtk-deepcore-mining-crack"
 }
 -- not used for now, generates way too much cracks and autoplace is dark magic
 -- generated in control.lua on tile explore instead with a low chance by empirical design
@@ -34,159 +32,159 @@ local deep_core_control = {
 
 -- Deep Core Chunks Variations definitino
 local function deepcorechunksvariations(oretint)
-  return 
-{
+  return
   {
-    layers = {
+    {
+      layers = {
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-1.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
         },
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-1-layer.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
           tint = oretint
         }
-    }
-  },
-  {
-    layers = {
+      }
+    },
+    {
+      layers = {
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-2.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
         },
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-2-layer.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
           tint = oretint
         }
-    }
-  },
-  {
-    layers = {
+      }
+    },
+    {
+      layers = {
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-3.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
         },
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-3-layer.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
           tint = oretint
         }
-    }
-  },
-  {
-    layers = {
+      }
+    },
+    {
+      layers = {
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-4.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
         },
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-4-layer.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
           tint = oretint
         }
-    }
-  },
-  {
-    layers = {
+      }
+    },
+    {
+      layers = {
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-5.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
         },
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-5-layer.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
           tint = oretint
         }
-    }
-  },
-  {
-    layers = {
+      }
+    },
+    {
+      layers = {
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-6.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
         },
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-6-layer.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
           tint = oretint
         }
-    }
-  },
-  {
-    layers = {
+      }
+    },
+    {
+      layers = {
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-7.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
         },
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-7-layer.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
           tint = oretint
         }
-    }
-  },
-  {
-    layers = {
+      }
+    },
+    {
+      layers = {
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-8.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
         },
         {
           filename = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-8-layer.png",
           height = 64,
           width = 64,
-          scale = 0.25,
+          scale = 0.5,
           tint = oretint
         }
-    }
-  },
-}
+      }
+    },
+  }
 end
 
--- 
+--
 -- Deep Core Cracks
--- 
+--
 local deep_core_ore = {
   type = "resource",
   name = "vtk-deepcore-mining-crack",
   icon = "__vtk-deep-core-mining__/graphics/icons/deep-core.png",
   icon_size = 32,
-  flags = {"placeable-neutral"},
+  flags = { "placeable-neutral" },
   allow_decomposition = false,
-  collision_box = {{ -5.4, -5.4}, {5.4, 5.4}},
-  selection_box = {{ -2.5, -2.5}, {2.5, 2.5}},
+  collision_box = { { -5.4, -5.4 }, { 5.4, 5.4 } },
+  selection_box = { { -2.5, -2.5 }, { 2.5, 2.5 } },
   category = "vtk-deepcore-mining-crack",
   order = "z[vtk-deepcore-mining]-b[ore]",
   infinite = true,
@@ -208,8 +206,8 @@ local deep_core_ore = {
         amount_max = 1200,
       },
     },
---    fluid_amount = 9000,
---    required_fluid = sulfuricacidname
+    --    fluid_amount = 9000,
+    --    required_fluid = sulfuricacidname
   },
   --[[
   autoplace =
@@ -233,7 +231,7 @@ local deep_core_ore = {
       }
     }
   },
-  ]]--
+  ]] --
 
   stages =
   {
@@ -248,38 +246,37 @@ local deep_core_ore = {
       variation_count = 1,
     }
   },
-  stage_counts = {0},
+  stage_counts = { 0 },
   map_color = util.color "001eff",
   map_grid = false
 }
 
 data:extend({
-  deep_core_resource_patch_category, 
-  deep_core_resource_ore_category, 
-  -- deep_core_noise_layer, 
-  -- deep_core_control, 
-  deep_core_ore, 
+  deep_core_resource_patch_category,
+  deep_core_resource_ore_category,
+  -- deep_core_noise_layer,
+  -- deep_core_control,
+  deep_core_ore,
 })
 
 
--- 
+--
 -- DeepCore Ore Mining Patches
 --
 local function resource_patch_maker(
-  ore_name, 
-  ore_patch_name, 
-  ore_results,
-  oreimg, 
-  frame, 
-  variation, 
-  miningtime, 
-  miningparticle, 
-  mapcolor, 
-  oretint, 
-  fluid,
-  fluidamount
+    ore_name,
+    ore_patch_name,
+    ore_results,
+    oreimg,
+    frame,
+    variation,
+    miningtime,
+    miningparticle,
+    mapcolor,
+    oretint,
+    fluid,
+    fluidamount
 )
-
   -- The mining results can be chunks or the original results.
   -- The original mining results get amplified by factor 3.
   -- If they do not have variance (no amount_min, amount_max specified), then
@@ -287,13 +284,13 @@ local function resource_patch_maker(
   local mining_results = {
     {
       type = "item",
-      name = "vtk-deepcore-mining-"..ore_name.."-chunk", -- ore chunks
+      name = "vtk-deepcore-mining-" .. ore_name .. "-chunk", -- ore chunks
       amount_min = 2,
       amount_max = 4,
       probability = 1
     }
   }
-  for _,result in pairs(ore_results) do
+  for _, result in pairs(ore_results) do
     local mod_result = util.table.deepcopy(result)
     if not mod_result.probability then
       -- we will set a probability later, so set it here if it is missing.
@@ -318,19 +315,19 @@ local function resource_patch_maker(
     table.insert(mining_results, mod_result)
   end
 
-  local oredata = 
+  local oredata =
   {
     type = "resource",
     name = ore_patch_name,
     tint = oretint,
     icons = {
       {
-        icon = "__vtk-deep-core-mining__/graphics/icons/"..oreimg.."-patch.png",
+        icon = "__vtk-deep-core-mining__/graphics/icons/" .. oreimg .. "-patch.png",
         tint = oretint
       }
     },
     icon_size = 64,
-    flags = {"placeable-neutral"},
+    flags = { "placeable-neutral" },
     category = "vtk-deepcore-mining-ore-patch",
     order = "a-b-a",
     infinite = true,
@@ -341,50 +338,39 @@ local function resource_patch_maker(
     resource_patch_search_radius = 20,
     minable =
     {
-      mining_time = miningtime*12,
+      mining_time = miningtime * 12,
       mining_particle = miningparticle,
       results = mining_results
     },
-    collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
-    selection_box = {{ -0.75, -0.75}, {0.75, 0.75}},
-    stage_counts = {0},
+    collision_box = { { -1.4, -1.4 }, { 1.4, 1.4 } },
+    selection_box = { { -0.75, -0.75 }, { 0.75, 0.75 } },
+    stage_counts = { 0 },
     stages =
     {
       sheet =
       {
-        filename = "__vtk-deep-core-mining__/graphics/resource/"..oreimg.."-patch-sprite.png", 
-        priority = "extra-high",
+        filename = "__vtk-deep-core-mining__/graphics/resource/" .. oreimg .. "-patch-sprite-hr.png",
         tint = oretint,
-        width = 100,
-        height = 100,
+        width = 250,
+        height = 250,
         frame_count = frame,
         variation_count = variation,
-        hr_version = {
-          filename = "__vtk-deep-core-mining__/graphics/resource/"..oreimg.."-patch-sprite-hr.png",
-          priority = "extra-high",
-          tint = oretint,
-          width = 250,
-          height = 250,
-          frame_count = frame,
-          variation_count = variation,
-          scale = 0.5
-        }
+        scale = 0.5
       }
     },
     map_color = mapcolor,
     map_grid = false
   }
-  
+
   if fluid ~= nil then
-    table.merge(oredata.minable, {["fluid_amount"] = fluidamount, ["required_fluid"] = fluid})
+    table.insert(oredata.minable, { ["fluid_amount"] = fluidamount, ["required_fluid"] = fluid })
   end
 
   return oredata
 end
 
 local function make_ore_glow(oreresource)
-
-  data.raw.resource[oreresource].stage_counts = {1}
+  data.raw.resource[oreresource].stage_counts = { 1 }
   data.raw.resource[oreresource].effect_animation_period = 5
   data.raw.resource[oreresource].effect_animation_period_deviation = 1
   data.raw.resource[oreresource].effect_darkness_multiplier = 3.6
@@ -393,7 +379,7 @@ local function make_ore_glow(oreresource)
   {
     sheet =
     {
-      filename = "__vtk-deep-core-mining__/graphics/resource/"..oreresource.."-sprite.png",
+      filename = "__vtk-deep-core-mining__/graphics/resource/" .. oreresource .. "-sprite.png",
       priority = "extra-high",
       width = 100,
       height = 100,
@@ -405,14 +391,14 @@ local function make_ore_glow(oreresource)
   {
     sheet =
     {
-      filename = "__vtk-deep-core-mining__/graphics/resource/"..oreresource.."-glow.png",
+      filename = "__vtk-deep-core-mining__/graphics/resource/" .. oreresource .. "-glow.png",
       priority = "extra-high",
       width = 100,
       height = 100,
       frame_count = 3,
       variation_count = 1,
       blend_mode = "additive",
-      flags = {"light"},
+      flags = { "light" },
     }
   }
 end
@@ -431,7 +417,7 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   if oredata["mining-liquid"] then
     if oredata["mining-liquid"] == "sulfuric-acid" then
       fluid = sulfuricacidname
-    else 
+    else
       fluid = oredata["mining-liquid"]
     end
   end
@@ -440,31 +426,35 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     fluidamount = oredata["mining-liquid-amount"]
   end
   local ore_patch = resource_patch_maker(
-    ore,                                                -- ore_name
-    ore.."-patch",                                      -- ore_patch_name
-    oredata.results,                                    -- patch mining ore result
-    oredata.patchimg,                                   -- ore image name (icon, entity, hrentity)
-    oredata.frame,                                      -- frame
-    oredata.variation,                                  -- variation
-    data.raw.resource[ore].minable['mining_time'],      -- miningtime,
-    data.raw.resource[ore].minable['mining_particle'],  -- miningparticle
-    data.raw.resource[ore].map_color,                   -- mapcolor
-    oretint,                                            -- tint
-    fluid,                                              -- fluid required
-    fluidamount                                         -- fluid amount
+    ore,                                               -- ore_name
+    ore .. "-patch",                                   -- ore_patch_name
+    oredata.results,                                   -- patch mining ore result
+    oredata.patchimg,                                  -- ore image name (icon, entity, hrentity)
+    oredata.frame,                                     -- frame
+    oredata.variation,                                 -- variation
+    data.raw.resource[ore].minable['mining_time'],     -- miningtime,
+    data.raw.resource[ore].minable['mining_particle'], -- miningparticle
+    data.raw.resource[ore].map_color,                  -- mapcolor
+    oretint,                                           -- tint
+    fluid,                                             -- fluid required
+    fluidamount                                        -- fluid amount
   )
-  
+
   local ore_patch_ore = util.table.deepcopy(ore_patch)
   local ore_patch_chunk = util.table.deepcopy(ore_patch)
   ore_patch_ore.name = ore_patch_ore.name .. "-ore"
   -- the first entry is the chunk result
   ore_patch_ore.minable.results[1].probability = 0
   ore_patch_ore.minable.mining_time = ore_patch_ore.minable.mining_time / 4
+  ore_patch_ore.hidden_in_factoriopedia = true
+  ore_patch_ore.hidden = true
   ore_patch_chunk.name = ore_patch_chunk.name .. "-chunk"
   -- all other results are the original ore result
-  for i = 2,#ore_patch_chunk.minable.results do
+  for i = 2, #ore_patch_chunk.minable.results do
     ore_patch_chunk.minable.results[i].probability = 0
   end
+  ore_patch_chunk.hidden = true
+  ore_patch_chunk.hidden_in_factoriopedia = true
 
   data:extend({
     ore_patch,
@@ -475,12 +465,11 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   if ore == "uranium-ore" then
     make_ore_glow("uranium-ore-patch")
   end
-
 end
 
--- 
+--
 -- DeepCore Ore chunks
--- 
+--
 local i = 1
 for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   local oretint = nil
@@ -491,30 +480,31 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
       oretint = data.raw.resource[ore].map_color
     end
   end
-  
-  local ore_chunk = 
+
+  local ore_chunk =
   {
     type = "item",
-    name = "vtk-deepcore-mining-"..ore.."-chunk",
+    name = "vtk-deepcore-mining-" .. ore .. "-chunk",
     icons = {
-        {
-            icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon.png",
-        },
-        {
-            icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon-layer.png",
-            tint = oretint
-        },
+      {
+        icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon.png",
+      },
+      {
+        icon = "__vtk-deep-core-mining__/graphics/icons/ore-chunk-icon-layer.png",
+        tint = oretint
+      },
     },
     icon_size = 64,
     mipmap_count = 1,
 
     pictures = deepcorechunksvariations(oretint),
     subgroup = "raw-resource",
-    order = "va[vtk-deepcore-mining-chunk-"..i.."]",
-    stack_size = 100
+    order = "va[vtk-deepcore-mining-chunk-" .. i .. "]",
+    stack_size = 100,
+    random_tint_color = item_tints.iron_rust
   }
   data:extend({
-    ore_chunk, 
+    ore_chunk,
   })
   i = i + 1
 end
@@ -525,9 +515,10 @@ data:extend({
     name = "vtk-deepcore-mining-ore-chunk",
     icon = "__vtk-deep-core-mining__/graphics/icons/deepcore-ore-chunk.png",
     icon_size = 64,
-    pictures = deepcorechunksvariations({240, 225, 142}),
+    pictures = deepcorechunksvariations({ 240, 225, 142 }),
     subgroup = "raw-resource",
     order = "vz[vtk-deepcore-mining-ore-chunk]",
-    stack_size = 100
+    stack_size = 100,
+    random_tint_color = item_tints.iron_rust
   }
 })

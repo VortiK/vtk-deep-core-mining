@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 3.0.0
+Date: 10.12.2024
+  Changes:
+    - Updated for Factorio 2.0 and Space Age.
+    - Works for Tungsten and Calcite on Vulcanus.
+    - Deep Core Cracks will only spawn on Nauvis.
+    - Deep Core Ore will only yield Nauvis ores.
+    - All drills output stacked on belt if researched.
+    - All drills are always not rotatable.
+    - To clean-up and ease the mod maintenance I removed all other mods explicite support in 3.0.0 (automatic deep core ore support is still present), if they ever updates to Factorio 2.0.0 and there is a need and an interest beyond my automatic support I can add them back.
+---------------------------------------------------------------------------------------------------
 Version: 2.11.2
 Date: 29.05.2024
   Changes:

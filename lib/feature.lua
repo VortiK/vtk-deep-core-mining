@@ -1,3 +1,7 @@
+-- Factorio STD Lib
+local Position = require('__vtk-deep-core-mining__/stdlib/area/position')
+local string = require('__vtk-deep-core-mining__/stdlib/utils/string')
+
 function adcmd_energy_companion_add(drill)
     local surface = drill.surface
     local force = drill.force
@@ -10,7 +14,7 @@ function adcmd_energy_companion_add(drill)
     -- player.print("companion created : "..serpent.block(companion))
     
     -- add drill in list to update
-    global.vtkdcm_script_data.drills[drill.unit_number] = drill
+    storage.vtkdcm_script_data.drills[drill.unit_number] = drill
 end
 
 function adcmd_energy_companion_remove(entity)
@@ -28,9 +32,9 @@ function adcmd_energy_companion_remove(entity)
         
         -- remove drill from list to update
         local index = tostring( entity.unit_number )
-        local drill = global.vtkdcm_script_data.drills[index]
+        local drill = storage.vtkdcm_script_data.drills[index]
         if drill then
-            global.vtkdcm_script_data.drills[index] = nil
+            storage.vtkdcm_script_data.drills[index] = nil
         end
     end
 end
@@ -65,19 +69,19 @@ function adcmd_energy_switcher(drill)
 end
 
 function adcmd_updater()
-    local index, drill = next( global.vtkdcm_script_data.drills, global.vtkdcm_script_data.next_index )
+    local index, drill = next( storage.vtkdcm_script_data.drills, storage.vtkdcm_script_data.next_index )
     if index then
-        global.vtkdcm_script_data.next_index = index
+        storage.vtkdcm_script_data.next_index = index
         if drill.valid then
             adcmd_energy_switcher(drill)
         end
     else
-        global.vtkdcm_script_data.next_index = nil
+        storage.vtkdcm_script_data.next_index = nil
     end
 end
 
 function init_globals()
-    global.vtkdcm_script_data =
+    storage.vtkdcm_script_data =
     {
         drills = {},
         next_index = nil
@@ -86,7 +90,7 @@ function init_globals()
     -- [re]build the list of ADCMD entities
     for _, surface in pairs(game.surfaces) do
         for _, drill in ipairs(surface.find_entities_filtered({name="vtk-deepcore-mining-drill-advanced"})) do
-            global.vtkdcm_script_data.drills[drill.unit_number] = drill
+            storage.vtkdcm_script_data.drills[drill.unit_number] = drill
         end
     end
 end
@@ -116,10 +120,18 @@ function moho_hot_swapper(drill, mode)
                 if mode == "remove" then -- replace back to normal ore patch
                     swap_ore_patch(entity, "patch")
                 -- else depending on drill type
-                elseif(drill.name == "vtk-deepcore-mining-drill") then
-                    swap_ore_patch(entity, "chunk")
                 else
-                    swap_ore_patch(entity, "ore")
+                    if(drill.name == "vtk-deepcore-mining-drill") then
+                       swap_ore_patch(entity, "chunk")
+                       -- need to "wake up" the drill so it checks the new ore patch and starts mining it
+                        drill.active = false
+                        drill.active = true
+                    else
+                       swap_ore_patch(entity, "ore")
+                       -- need to "wake up" the drill so it checks the new ore patch and starts mining it
+                        drill.active = false
+                        drill.active = true
+                    end
                 end
             end
         end

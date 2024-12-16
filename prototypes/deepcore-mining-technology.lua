@@ -16,7 +16,7 @@ data:extend(
           recipe = "vtk-deepcore-mining-moho"
         },
       },
-    prerequisites = {"advanced-electronics", "robotics", "advanced-material-processing", "sulfur-processing", "chemical-science-pack"}, 
+    prerequisites = {"advanced-circuit", "robotics", "advanced-material-processing", "sulfur-processing", "chemical-science-pack"}, 
     unit =
     {
       count = 500,

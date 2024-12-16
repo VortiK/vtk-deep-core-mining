@@ -1,3 +1,8 @@
+-- Factorio STD Lib
+local Area = require('__vtk-deep-core-mining__/stdlib/area/area')
+local Position = require('__vtk-deep-core-mining__/stdlib/area/position')
+local string = require('__vtk-deep-core-mining__/stdlib/utils/string')
+
 function get_filtered_amount(amount)
     -- spawn deep core ore chunks depending on the ore patch removed amount
     -- 10 000 = 3%
@@ -17,7 +22,7 @@ end
 
 function get_all_patches()
   local patches = {}
-  for _, ore in pairs(game.get_filtered_entity_prototypes({{filter = "type", type = "resource"}})) do
+  for _, ore in pairs(prototypes.get_entity_filtered({{filter = "type", type = "resource"}})) do
     if ore.resource_category == "vtk-deepcore-mining-ore-patch" then
       table.insert(patches, ore.name)
     end
@@ -52,10 +57,10 @@ function spawn_ore_patch_on_depleted_ore(event)
   -- player.print(serpent.block(player))
   
   if ore.prototype.mineable_properties.products ~= nil then
-    if game.entity_prototypes[ore.prototype.mineable_properties.products[1].name.."-patch"] ~= nil
+    if prototypes.entity[ore.prototype.mineable_properties.products[1].name.."-patch"] ~= nil
     then
-      local orePatchToSpawn = game.entity_prototypes[ore.prototype.mineable_properties.products[1].name.."-patch"].name
-      if not Area.inside(Position.expand_to_area({0,0}, minspawnrange), ore.position) then
+      local orePatchToSpawn = prototypes.entity[ore.prototype.mineable_properties.products[1].name.."-patch"].name
+      if not Position.inside(ore.position, Position.expand_to_area({x=0,y=0}, minspawnrange)) then
           local number = math.random(1, settings.global["vtk-deep-core-mining-patch-spawn-chance"].value)
           
           local patches = get_all_patches()
@@ -106,9 +111,9 @@ function place_deep_core_cracks(area, surface)
   -- minimum distance from spawn where deepcore mining cracks appear (default 1)
   -- debug
   -- player.print("setting value "..minspawnrange)
-  -- player.print("position x "..x1.." y "..y1)
+  -- player.print("position x "..area.left_top.x.." y "..area.left_top.y)
 
-  if Area.inside(Position.expand_to_area({0,0}, minspawnrange), {area.left_top.x, area.left_top.y}) then
+  if Position.inside({ x = area.left_top.x, y = area.left_top.y}, Position.expand_to_area({ x = 0, y = 0 }, minspawnrange)) then
     return
   end
   
@@ -162,21 +167,11 @@ end
 function remove_ore_patch(player, surface, area, entities)
     local patchescount = 0
     local sulfuricpatchescount = 0
-    local chlorinepatchescount = 0
     local dronescount = player.get_item_count("vtk-deepcore-mining-drone")
     local patches = {}
-    local sulfuricpatches = {}
     local todo = true
     local sulfuricacidbarrel = "sulfuric-acid-barrel"
-    if game.active_mods["angelspetrochem"] then
-        sulfuricacidbarrel = "liquid-sulfuric-acid-barrel"
-    end
     local sulfuricacidbarrelcount = player.get_item_count(sulfuricacidbarrel)
-    local chlorinebarrelcount = 0
-    
-    if game.active_mods["Krastorio2"] then
-      local chlorinebarrelcount = player.get_item_count("chlorine-barrel")
-    end
 
     -- debug
     -- player.print("inventory : "..serpent.line(player.get_inventory(defines.inventory.player_main).get_contents()))
@@ -200,9 +195,6 @@ function remove_ore_patch(player, surface, area, entities)
             if entity.name == "uranium-ore-patch" or entity.name == "vtk-deepcore-mining-crack" then
                 sulfuricpatchescount = sulfuricpatchescount + 1
             end
-            if entity.name == "rare-metals" then
-                chlorinepatchescount = chlorinepatchescount + 1
-            end
         end
     end
     
@@ -217,10 +209,6 @@ function remove_ore_patch(player, surface, area, entities)
     end
     if sulfuricacidbarrelcount < sulfuricpatchescount then
         player.print("Not enough sulfuric acid barrel. "..sulfuricpatchescount.." needed only "..sulfuricacidbarrelcount.." in inventory.")
-        todo = false
-    end
-    if chlorinepatchescount < chlorinebarrelcount then
-        player.print("Not enough chlorine acid barrel. "..chlorinepatchescount.." needed only "..chlorinebarrelcount.." in inventory.")
         todo = false
     end
     if not todo then
@@ -252,8 +240,4 @@ function remove_ore_patch(player, surface, area, entities)
     if sulfuricpatchescount > 0 then
         player.remove_item{name=sulfuricacidbarrel, count = sulfuricpatchescount}
     end
-	
-    if chlorinepatchescount > 0 then
-      player.remove_item{name="chlorine-barrel", count = chlorinepatchescount}
-  end
 end

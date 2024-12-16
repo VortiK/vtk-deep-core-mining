@@ -1,62 +1,51 @@
---- Entity module
--- @module Entity
+--- Tools for working with entities.
+-- @module Entity.Entity
+-- @usage local Entity = require('__vtk-deep-core-mining__/stdlib/entity/entity')
 
-require 'stdlib/core'
-require 'stdlib/surface'
-require 'stdlib/area/area'
+local Entity = {
+    __class = 'Entity',
+    __index = require('__vtk-deep-core-mining__/stdlib/core')
+}
+setmetatable(Entity, Entity)
 
-Entity = {}
-
---- Converts an entity and its selection_box to the area around it
--- @param entity to convert to an area
--- @return area that entity selection_box is valid for
-function Entity.to_selection_area(entity)
-    fail_if_missing(entity, "missing entity argument")
-
-    local pos = entity.position
-    local bb = entity.prototype.selection_box
-    return Area.offset(bb, pos)
-end
-
---- Converts an entity and its collision_box to the area around it
--- @param entity to convert to an area
--- @return area that entity collision_box is valid for
-function Entity.to_collision_area(entity)
-    fail_if_missing(entity, "missing entity argument")
-
-    local pos = entity.position
-    local bb = entity.prototype.collision_box
-    return Area.offset(bb, pos)
-end
-
---- Tests whether an entity has access to the field
--- @param entity to test field access
--- @param field_name that should be tested for
--- @return true if the entity has access to the field, false if the entity threw an exception accessing the field
+--- Tests whether an entity has access to a given field.
+-- @tparam LuaEntity entity the entity to test the access to a field
+-- @tparam string field_name the field name
+-- @treturn boolean true if the entity has access to the field, false if the entity threw an exception when trying to access the field
 function Entity.has(entity, field_name)
-  fail_if_missing(entity, "missing entity argument")
-  fail_if_missing(field_name, "missing field name argument")
+    assert(entity, 'missing entity argument')
+    assert(field_name, 'missing field name argument')
 
-  local status = pcall(function() return entity[field_name]; end)
-  return status
+    local status =
+    pcall(
+        function()
+            return entity[field_name]
+        end
+    )
+    return status
 end
 
---- Gets user data from the entity, stored in a mod's global data.
---- <p> The data will persist between loads, and will be removed for an entity when it becomes invalid</p>
--- @param entity the entity to look up data for
--- @return the data, or nil if no data exists for the entity
+--- Gets the user data that is associated with an entity.
+-- The user data is stored in the global object and it persists between loads.
+--> The user data will be removed from an entity when the entity becomes invalid.
+-- @tparam LuaEntity entity the entity to look up
+-- @treturn ?|nil|Mixed the user data, or nil if no data exists for the entity
 function Entity.get_data(entity)
-    fail_if_missing(entity, "missing entity argument")
-    if not global._entity_data then return nil end
+    assert(entity, 'missing entity argument')
+    if not storage._entity_data then
+        return nil
+    end
 
     local unit_number = entity.unit_number
     if unit_number then
-         return global._entity_data[unit_number]
-     else
+        return storage._entity_data[unit_number]
+    else
         local entity_name = entity.name
-        if not global._entity_data[entity_name] then return nil end
+        if not storage._entity_data[entity_name] then
+            return nil
+        end
 
-        local entity_category = global._entity_data[entity_name]
+        local entity_category = storage._entity_data[entity_name]
         for _, entity_data in pairs(entity_category) do
             if Entity._are_equal(entity_data.entity, entity) then
                 return entity_data.data
@@ -66,28 +55,31 @@ function Entity.get_data(entity)
     end
 end
 
---- Sets user data on the entity, stored in a mod's global data.
---- <p> The data will persist between loads, and will be removed for an entity when it becomes invalid</p>
--- @param entity the entity to set data for
--- @param data the data to set, or nil to delete the data associated with the entity
--- @return the previous data associated with the entity, or nil if the entity had no previous data
+--- Associates the user data to an entity.
+-- The user data will be stored in the global object and it will persist between loads.
+--> The user data will be removed from an entity when the entity becomes invalid.
+-- @tparam LuaEntity entity the entity with which to associate the user data
+-- @tparam ?|nil|Mixed data the data to set, or nil to delete the data associated with the entity
+-- @treturn ?|nil|Mixed the previous data associated with the entity, or nil if the entity had no previous data
 function Entity.set_data(entity, data)
-    fail_if_missing(entity, "missing entity argument")
+    assert(entity, 'missing entity argument')
 
-    if not global._entity_data then global._entity_data = {} end
+    if not storage._entity_data then
+        storage._entity_data = {}
+    end
 
     local unit_number = entity.unit_number
     if unit_number then
-        local prev = global._entity_data[unit_number]
-         global._entity_data[unit_number] = data
-         return prev
+        local prev = storage._entity_data[unit_number]
+        storage._entity_data[unit_number] = data
+        return prev
     else
         local entity_name = entity.name
-        if not global._entity_data[entity_name] then
-            global._entity_data[entity_name] = {}
-         end
+        if not storage._entity_data[entity_name] then
+            storage._entity_data[entity_name] = {}
+        end
 
-        local entity_category = global._entity_data[entity_name]
+        local entity_category = storage._entity_data[entity_name]
 
         for i = #entity_category, 1, -1 do
             local entity_data = entity_category[i]
@@ -110,46 +102,83 @@ function Entity.set_data(entity, data)
 end
 
 --- Freezes an entity, by making it inactive, inoperable, and non-rotatable, or unfreezes by doing the reverse.
--- @param entity the entity to freeze or unfreeze
--- @param mode (optional) if true, freezes the entity, if false, unfreezes the entity. If not specified, is true.
--- @return entity passed into it
+-- @tparam LuaEntity entity the entity to freeze or unfreeze
+-- @tparam[opt=true] boolean mode if true, freezes the entity, if false, unfreezes the entity. If not specified, it is set to true
+-- @treturn LuaEntity the entity that has been frozen or unfrozen
 function Entity.set_frozen(entity, mode)
-    fail_if_missing(entity, "missing entity argument")
+    assert(entity, 'missing entity argument')
     mode = mode == false and true or false
-    entity.active    = mode
-    entity.operable  = mode
+    entity.active = mode
+    entity.operable = mode
     entity.rotatable = mode
     return entity
 end
 
---- Makes an entity indestructible, so that it can not be damaged or mined by the player or enemy factions
--- @param entity the entity to set indestructible
--- @param mode (optional) if true, makes the entity indestructible, if false, makes the entity destructable. If not specified, is true.
--- @return entity passed into it
+--- Makes an entity indestructible so that it cannot be damaged or mined neither by the player nor by their enemy factions.
+-- @tparam LuaEntity entity the entity to make indestructable
+-- @tparam[opt=true] boolean mode if true, makes the entity indestructible, if false, makes the entity destructable
+-- @treturn LuaEntity the entity that has been made indestructable or destructable
 function Entity.set_indestructible(entity, mode)
-    fail_if_missing(entity, "missing entity argument")
+    assert(entity, 'missing entity argument')
     mode = mode == false and true or false
-    entity.minable       = mode
-    entity.destructible  = mode
+    entity.minable = mode
+    entity.destructible = mode
     return entity
 end
 
---- Tests if two entities are equal
--- <p>If they don't have reference equality and entity_a has an 'equals' function,
--- it will be called with entity_b as the first argument</p>
--- @tparam table entity_a
--- @tparam table entity_b
--- @treturn bool
+--- Tests if two entities are equal.
+-- If they don't have a reference equality and ***entity\_a*** has ***equals*** function, it will be called with ***entity\_b*** as its first argument.
+-- @tparam LuaEntity entity_a
+-- @tparam LuaEntity entity_b
+-- @treturn boolean
 function Entity._are_equal(entity_a, entity_b)
-  if entity_a == nil then
-    return entity_a == entity_b
-  elseif entity_a == entity_b then
-    return true
-  elseif Entity.has(entity_a, "equals") and entity_a.equals ~= nil then
-    return entity_a.equals(entity_b)
-  else
-    return false
-  end
+    if entity_a == nil then
+        return entity_a == entity_b
+    elseif entity_a == entity_b then
+        return true
+    elseif Entity.has(entity_a, 'equals') and entity_a.equals ~= nil then
+        return entity_a.equals(entity_b)
+    else
+        return false
+    end
+end
+
+function Entity.find_resources(entity, all)
+    if entity.type == 'mining-drill' then
+        local radius = entity.prototype.mining_drill_radius
+        local name = (not all and (entity.mining_target and entity.mining_target.name)) or nil
+        return entity.surface.count_entities_filtered {
+            type = 'resource',
+            name = name,
+            position = entity.position,
+            radius = radius,
+        }
+    end
+    return 0
+end
+
+function Entity.is_damaged(entity)
+    return entity.get_health_ratio() < 1
+end
+Entity.damaged = Entity.is_damaged
+
+function Entity.is_circuit_connected(entity)
+    local list = entity.circuit_connected_entities
+    return list and (next(list.red) or next(list.green))
+end
+
+function Entity.count_circuit_connections(entity)
+    local list = entity.circuit_connected_entities
+    return list and #list.red + #list.green
+end
+
+function Entity.has_fluidbox(entity)
+    local box = entity.fluidbox
+    return box and #box > 0
+end
+
+function Entity.can_deconstruct(entity)
+    return entity.minable and entity.prototype.selectable_in_game and not entity.has_flag('not-deconstructable')
 end
 
 return Entity

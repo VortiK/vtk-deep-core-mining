@@ -1,108 +1,85 @@
---- Chunk module
---- <p>A chunk represents a 32x32 area of a surface in factorio.</p>
--- @module Chunk
+--- For working with chunks.
+-- A chunk represents a 32 tile<sup>2</sup> on a surface in Factorio.
+-- @module Area.Chunk
+-- @usage local Chunk = require('__vtk-deep-core-mining__/stdlib/area/chunk')
+-- @see Concepts.ChunkPosition
 
-require 'stdlib/core'
-require 'stdlib/area/position'
+local Chunk = {
+    __class = 'Chunk',
+    __index = require('__vtk-deep-core-mining__/stdlib/core')
+}
+setmetatable(Chunk, Chunk)
 
-Chunk = {}
-MAX_UINT = 4294967296
+local Game = require('__vtk-deep-core-mining__/stdlib/game')
+local Position = require('__vtk-deep-core-mining__/stdlib/area/position')
 
---- Calculates the chunk coordinates for the tile position given
---  @param position to calculate the chunk for
---  @return the chunk position as a table
---  @usage
-----local chunk_x = Chunk.from_position(pos).x
-function Chunk.from_position(position)
-    position = Position.to_table(position)
-    local x = math.floor(position.x)
-    local y = math.floor(position.y)
-    local chunk_x = bit32.arshift(x, 5)
-    if x < 0 then
-        chunk_x = chunk_x - MAX_UINT
+local AREA_PATH = '__vtk-deep-core-mining__/stdlib/area/area'
+
+Chunk.__call = Position.__call
+
+--- Gets the chunk position of a chunk where the specified position resides.
+-- @function Chunk.from_position
+-- @see Area.Position.to_chunk_position
+Chunk.from_position = Position.to_chunk_position
+
+--- Gets the top_left position from a chunk position.
+-- @function Chunk.to_position
+-- @see Area.Position.from_chunk_position
+Chunk.to_position = Position.from_chunk_position
+
+--Chunk.to_center_position
+--Chunk.to_center_tile_position
+
+-- Hackish function, Factorio lua doesn't allow require inside functions because...
+local function load_area(area)
+    local Area = package.loaded[AREA_PATH]
+    if not Area then
+        local log = log or function(_msg_) end
+        log('WARNING: Area for Position not found in package.loaded')
     end
-    local chunk_y = bit32.arshift(y, 5)
-    if y < 0 then
-        chunk_y = chunk_y - MAX_UINT
-    end
-    return {x = chunk_x, y = chunk_y}
+    return Area and Area.load(area) or area
 end
 
---- Converts a chunk to the area it contains
--- @param chunk_pos to convert to an area
--- @return area that chunk is valid for
-function Chunk.to_area(chunk_pos)
-    fail_if_missing(chunk_pos, "missing chunk_pos argument")
-    chunk_pos = Position.to_table(chunk_pos)
+--- Gets the area of a chunk from the specified chunk position.
+-- @tparam Concepts.ChunkPosition pos the chunk position
+-- @treturn Concepts.BoundingBox the chunk's area
+function Chunk.to_area(pos)
+    local left_top = Chunk.to_position(pos)
+    local right_bottom = Position.add(left_top, 32, 32)
 
-    local left_top = { x = chunk_pos.x * 32, y = chunk_pos.y * 32 }
-    return { left_top = left_top, right_bottom = Position.offset(left_top, 32, 32) }
+    return load_area { left_top = left_top, right_bottom = right_bottom }
 end
 
---- Gets user data from the chunk, stored in a mod's global data.
---- <p> The data will persist between loads</p>
---  @param surface the surface to look up data for
---  @param chunk_pos the chunk coordinates to look up data for
---  @param default_value (optional) to set and return if no data exists
---  @return the data, or nil if no data exists for the chunk
+--- Gets the user data that is associated with a chunk.
+-- The user data is stored in the global object and it persists between loads.
+-- @tparam LuaSurface surface the surface on which the user data is looked up
+-- @tparam Concepts.ChunkPosition chunk_pos the chunk position on which the user data is looked up
+-- @tparam[opt] Mixed default_value the user data to set for the chunk and returned if the chunk had no user data
+-- @treturn ?|nil|Mixed the user data **OR** *nil* if it does not exist for the chunk and if no default_value was set
 function Chunk.get_data(surface, chunk_pos, default_value)
-    fail_if_missing(surface, "missing surface argument")
-    fail_if_missing(chunk_pos, "missing chunk_pos argument")
-    if not global._chunk_data then
-        if not default_value then return nil end
-        global._chunk_data = {}
-    end
+    surface = Game.get_surface(surface)
+    assert(surface, 'invalid surface')
 
-    local idx = Chunk.get_index(surface, chunk_pos)
-    local val = global._chunk_data[idx]
-    if not val then
-        global._chunk_data[idx] = default_value
-        val = default_value
-    end
+    local key = Position(chunk_pos):to_key()
 
-    return val, idx
+    return Game.get_or_set_data('_chunk_data', surface.index, key, false, default_value)
 end
+Chunk.get = Chunk.get_data
 
---- Sets user data on the chunk, stored in a mod's global data.
---- <p> The data will persist between loads</p>
---  @param surface the surface to look up data for
---  @param chunk_pos the chunk coordinates to look up data for
---  @param data the data to set (or nil to erase the data for the chunk)
---  @return the previous data associated with the chunk, or nil if the chunk had no previous data
-function Chunk.set_data(surface, chunk_pos, data)
-    fail_if_missing(surface, "missing surface argument")
-    fail_if_missing(chunk_pos, "missing chunk_pos argument")
-    if not global._chunk_data then global._chunk_data = {} end
+--- Associates the user data to a chunk.
+-- The user data will be stored in the global object and it will persist between loads.
+-- @tparam LuaSurface surface the surface on which the user data will reside
+-- @tparam Concepts.ChunkPosition chunk_pos the chunk position to associate with the user data
+-- @tparam ?|nil|Mixed value the user data to set **OR** *nil* to erase the existing user data for the chunk
+-- @treturn ?|nil|Mixed the previous user data associated with the chunk **OR** *nil* if the chunk had no previous user data
+function Chunk.set_data(surface, chunk_pos, value)
+    surface = Game.get_surface(surface)
+    assert(surface, 'invalid surface')
 
-    local idx = Chunk.get_index(surface, chunk_pos)
-    local prev = global._chunk_data[idx]
-    global._chunk_data[idx] = data
+    local key = Position(chunk_pos):to_key()
 
-    return prev
+    return Game.get_or_set_data('_chunk_data', surface.index, key, true, value)
 end
+Chunk.set = Chunk.set_data
 
---- Calculates and returns a stable, deterministic, unique integer id for the given chunk_pos
---- <p> The id will not change once calculated</p>
---  @param surface the chunk is on
---  @param chunk_pos of the chunk
-function Chunk.get_index(surface, chunk_pos)
-    fail_if_missing(surface, "missing surface argument")
-    fail_if_missing(chunk_pos, "missing chunk_pos argument")
-    if not global._next_chunk_index then global._next_chunk_index = 0 end
-    if not global._chunk_indexes then global._chunk_indexes = {} end
-
-    if type(surface) == "string" then
-        surface = game.surfaces[surface]
-    end
-    local surface_idx = surface.index
-    if not global._chunk_indexes[surface_idx] then global._chunk_indexes[surface_idx] = {} end
-
-    local surface_chunks = global._chunk_indexes[surface_idx]
-    if not surface_chunks[chunk_pos.x] then surface_chunks[chunk_pos.x] = {} end
-    if not surface_chunks[chunk_pos.x][chunk_pos.y] then
-        surface_chunks[chunk_pos.x][chunk_pos.y] = global._next_chunk_index
-        global._next_chunk_index = global._next_chunk_index + 1
-    end
-
-    return surface_chunks[chunk_pos.x][chunk_pos.y]
-end
+return Chunk

@@ -1,10 +1,3 @@
--- Factorio STD Lib
-require 'stdlib/area/area'
-require 'stdlib/area/position'
-require 'stdlib/table'
-require 'stdlib/string'
--- Sementic Version comparision tool
-local v = require 'lib/semver'
 -- This Mod's functions
 require 'lib/resource'
 require 'lib/feature'
@@ -22,7 +15,7 @@ end)
 
 -- spawn cracks in the world on exploration
 script.on_event({
-  events.on_chunk_generated, 
+  events.on_chunk_generated,
 }, function(event)
     place_deep_core_cracks(event.area, event.surface)
 end)
@@ -41,7 +34,7 @@ end)
 -- ore patches toggle and adcmd companion management on placed drill
 script.on_event(events.on_robot_built_entity,
     function(event)
-        dcm_dispatcher(event.created_entity, "create")
+        dcm_dispatcher(event.entity, "create")
     end,
     {
         {filter="name", name = "vtk-deepcore-mining-moho"},
@@ -51,7 +44,7 @@ script.on_event(events.on_robot_built_entity,
 )
 script.on_event(events.on_built_entity,
     function(event)
-        dcm_dispatcher(event.created_entity, "create")
+        dcm_dispatcher(event.entity, "create")
     end,
     {
         {filter="name", name = "vtk-deepcore-mining-moho"},
@@ -90,13 +83,6 @@ script.on_event(events.on_robot_pre_mined,
         {filter="name", name = "vtk-deepcore-mining-drill"},
         {filter="name", name = "vtk-deepcore-mining-drill-advanced"}
     }
-)
-
--- editor doesn't trigger normal events, so we should go around all miners like when we introduced moho miners
-script.on_event(events.on_player_toggled_map_editor,
-    function(event)
-        upgrade220()
-    end
 )
 
 -- on mod update fixes
