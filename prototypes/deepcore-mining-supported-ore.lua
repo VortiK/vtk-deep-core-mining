@@ -93,8 +93,15 @@ if mods["space-age"] then
     ["tint"] = true,
     ["patchtint"] = true
   }
+
+  vtk_deepcoremining_blacklist_ores["scrap"] = 1
 end
 
+if mods["Cerys-Moon-of-Fulgora"] then
+  vtk_deepcoremining_blacklist_ores["cerys-nuclear-scrap"] = 1
+  vtk_deepcoremining_blacklist_ores["cerys-nitrogen-rich-minerals"] = 1
+  vtk_deepcoremining_blacklist_ores["methane-ice"] = 1
+end
 
 -- Process all existing resources to create deepcore mining reference for them to create associated patches, items, refining and technology
 for _, resource in pairs(data.raw.resource) do

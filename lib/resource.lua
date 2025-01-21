@@ -85,7 +85,7 @@ function place_deep_core_cracks(area, surface)
     
   -- debug
   -- local player = game.players[1]
-  -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
+  -- player.print)
 
     -- only spawn deep core mining cracks in nauvis
     -- supports New Game Plus mod's "Nauvis plus" worlds

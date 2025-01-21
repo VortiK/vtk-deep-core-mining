@@ -19,21 +19,20 @@ The idea is to be able to repurpose depleted mining outpost when normal ore is m
 - New resources, ore "patches" have a small chance to spawn under depleted ore fields for Iron, Copper, Uranium, Coal and Stone. Also rare DeepCore Cracks spawn in the world.
 - Ore patches and Cracks provide an infinite yield that stays at 100%, however they output Ore Chunks that must be refined in chemical plants to get usable raw ores.
 - Ore patches and Cracks can be manually mined to free land and get a burst of resources as the cost of losing the infinite minable spot.
+- In Space Age Deep Core Cracks only spawn on Nauvis and only yield Nauvis resources.
+- In Space Age Tungsten and Calcite from Vulcanus are supported and get Deep Core Mining Patches.
 - The Moho Mining Drill (MMD) can mines ore patches and provide raw ore directly, yields as much ore as 10 normal mining drills, not the best but also not much effort to place them in existing outpost as the same logistics can be kept.
 - The Deep Core Mining Drill (DCMD) is more powerful, it will mine the ore patches aswell for as much as 20 normal mining drills but it yields ore chunks that require specific logistics and refining that consume sulfuric acid to get ore.
 - The Advanced Deep Core Mining Drill (ADCMD) is also animated and has custom sounds. It is used to mine Cracks that yields a specific ore that require a heavy double steps refining to get useable ore. The drill will also consume Deep Core Mining drones to operate.
 - ADCMD is designed to provide double the output of a DCMD, however it consumes tons of energy, burns constant intermediate as fuel and needs a dedicated refining facility to process Deep Core Ore chunks.
 - Deep Core Ore can yields all supported ores in the game, there are different Focus Refining processes available with differents yields and even a single ore output to choose from (althought it's the least efficent recipe per Deep Core ore chunks).
-- Deep Core Mining Drills will output tons of ore to tarnsport and process, often reaching belts throughputs as Mining Productivity increases. Splitters should help at low levels to handle the high output of the drills, however at high productivity levels it may be necessary to get creative with chests & stack inserters or use one of the multiple loaders mods to keep up with the flow : 
-  - Deadlock's Compact Loaders : https://mods.factorio.com/mod/DeadlockLoaders (*Featured in screenshots*)
-  - Miniloader https://mods.factorio.com/mod/miniloader (*Performant & versatile*)
-  - Loader Redux : https://mods.factorio.com/mod/LoaderRedux (*Vanilla flavour*)
+- Deep Core Mining Drills will output tons of ore to tarnsport and process, often reaching belts throughputs as Mining Productivity increases. Splitters should help at low levels to handle the high output of the drills, however at high productivity levels it may be necessary to get creative with chests & stack inserters or use one of the multiple loaders mods to keep up with the flow.
 
 ## Mod support
 
 Since 2.9.0 automatically support all modded ores with a generic tinted gfx and refining parameters.
 
-Supported mods with tailored configurations and contributions : 
+Before Factorio Space Age Supported mods with tailored configurations and contributions : 
 
 - Angel's Refining mod : https://mods.factorio.com/mod/angelsrefining
 - Angel's Petrochem mod compatibility (regarding Sulfuric Acid) : https://mods.factorio.com/mod/angelspetrochem
@@ -70,7 +69,7 @@ Other mods support depending on request !
 
 ## Known incompatibility
 - Minor incompatibility with Filter Mining Drill mod : https://mods.factorio.com/mod/Cursed-FMD : the DCMDPlanner tool will not work to remove ore patches.
-- Although not compatible by default with Space Exploration, it's possible with a manual change described here : https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/603d6b2711e74c915950ba9f
+- (old) Although not compatible by default with Space Exploration, it's possible with a manual change described here : https://mods.factorio.com/mod/vtk-deep-core-mining/discussion/603d6b2711e74c915950ba9f
 
 ## Credits
 - Deep Core Mining is powered by the Factorio Standard Library Project : https://github.com/Afforess/Factorio-Stdlib

@@ -95,85 +95,10 @@ function init_globals()
     end
 end
 
-function moho_hot_swapper(drill, mode)
-    local surface = drill.surface
-    local area = Position.expand_to_area(drill.position, 2)
-
-    local patches = get_all_patches()
-    
-    local patchesCount = surface.count_entities_filtered{name = patches, area = area}
-    local patchesFound = surface.find_entities_filtered{name = patches, area = area}
-
-    -- debug
-    -- local player = game.players[1]
-    -- player.print("VTK-DEEP-CORE-MINING_DEBUG")
-    -- player.print("found entity : " .. patchesCount)
-
-    if patchesCount > 0 then
-        for _, entity in pairs(patchesFound) do
-            -- debug
-            -- player.print("found entity : "..serpent.block(entity.name))
-            -- player.print("found entity category : "..serpent.block(entity.prototype.resource_category))
-            
-            if entity.type == "resource"
-            and entity.prototype.resource_category == "vtk-deepcore-mining-ore-patch" then
-                if mode == "remove" then -- replace back to normal ore patch
-                    swap_ore_patch(entity, "patch")
-                -- else depending on drill type
-                else
-                    if(drill.name == "vtk-deepcore-mining-drill") then
-                       swap_ore_patch(entity, "chunk")
-                       -- need to "wake up" the drill so it checks the new ore patch and starts mining it
-                        drill.active = false
-                        drill.active = true
-                    else
-                       swap_ore_patch(entity, "ore")
-                       -- need to "wake up" the drill so it checks the new ore patch and starts mining it
-                        drill.active = false
-                        drill.active = true
-                    end
-                end
-            end
-        end
-    end
-end
-
-function swap_ore_patch(entity, newpatch)
-    -- ore
-    -- patch
-    -- chunk
-    if string.sub(entity.name, -5) == newpatch
-    or string.sub(entity.name, -3) == newpatch
-    then
-        -- patch is already the expected one, do nothing !
-        return
-    end
-    
-    local newentityname = entity.name
-    if string.sub(entity.name, -3) == "ore" then
-        newentityname = entity.name:sub(1, -5)
-    elseif string.sub(entity.name, -5) == "chunk" then
-        newentityname = entity.name:sub(1, -7)
-    elseif string.sub(entity.name, -5) == "patch" then
-        newentityname = entity.name.."-"..newpatch
-    end
-    
-    -- debug
-    -- local player = game.players[1]
-    -- player.print("old entity : "..serpent.block(entity.name))
-    -- player.print("new entity : "..serpent.block(newentityname))
-    local newpatch = entity.surface.create_entity({name = newentityname, position = entity.position, force = entity.force})
-    entity.destroy()
-end
-
 function dcm_dispatcher(entity, mode)
-    if entity.name == "vtk-deepcore-mining-drill-advanced" then
-        if mode == "remove" then
-            adcmd_energy_companion_remove(entity)
-        else
-            adcmd_energy_companion_add(entity)
-        end
+    if mode == "remove" then
+        adcmd_energy_companion_remove(entity)
     else
-        moho_hot_swapper(entity, mode)
+        adcmd_energy_companion_add(entity)
     end
 end

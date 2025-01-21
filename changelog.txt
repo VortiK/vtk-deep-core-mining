@@ -1,14 +1,35 @@
 ---------------------------------------------------------------------------------------------------
+Version: 3.1.1
+Date: 20.01.2025
+  Changes:
+    - Fixed mod upgrade control code crashing on some game load (disabled it as it's not used for now).
+---------------------------------------------------------------------------------------------------
+Version: 3.1.0
+Date: 20.01.2025
+  Changes:
+    - Add missing settings for enabling Tungsten and Calcite ore patches (on by default).
+    - Space Age : Fixed technology requiring Productivity 3 (Gleba) now only Productivity 2. No change for non Space Age game.
+    - Space Age : Deep Core Mining Tech now require Space Science Pack and Big Mining Drill techs (Vulcanus)
+    - Space Age : Deep Core Mining Drill require Big Mining Drill and Tungsten Carbide to build instead of Electric Drill and Steel.
+    - Space Age : Advanced Deep Core Mining Tech now require Space and Metallurgic Science Pack techs (Vulcanus).
+    - Space Age : Advanced Deep Core Mining Drill now require Big Mining Drill and Tungsten Plates instead of Electric Drill and Steel.
+    - Disabled Cerys-Moon-of-Fulgora ressources for now.
+---------------------------------------------------------------------------------------------------
 Version: 3.0.0
-Date: 10.12.2024
+Date: 19.01.2025
   Changes:
     - Updated for Factorio 2.0 and Space Age.
     - Works for Tungsten and Calcite on Vulcanus.
     - Deep Core Cracks will only spawn on Nauvis.
     - Deep Core Ore will only yield Nauvis ores.
-    - All drills output stacked on belt if researched.
-    - All drills are always not rotatable.
+    - Locales small adjustements.
+    - All drills output stacked on belt if researched (Space Age only).
+    - All drills are always not rotatable (removed mod option).
+    - Drills support Quality modules.
+    - Drills now have a small radius and have more valid placing around patches, still can only place one drill per patch but give a bit more build flexibility.
     - To clean-up and ease the mod maintenance I removed all other mods explicite support in 3.0.0 (automatic deep core ore support is still present), if they ever updates to Factorio 2.0.0 and there is a need and an interest beyond my automatic support I can add them back.
+    - Deep Core Ore Chunk patches disabled for now as resources can't be hot swapped anymore. Will reintroduce it later when I find a solution.
+    - Consequence Deep Core Mining Drill is not really useful for now versus the Moho Drill.
 ---------------------------------------------------------------------------------------------------
 Version: 2.11.2
 Date: 29.05.2024

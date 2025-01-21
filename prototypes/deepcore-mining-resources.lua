@@ -281,7 +281,9 @@ local function resource_patch_maker(
   -- The original mining results get amplified by factor 3.
   -- If they do not have variance (no amount_min, amount_max specified), then
   -- we introduce some.
-  local mining_results = {
+  local mining_results = {}
+  --[[ 
+  local mining_results = {disable chunks for now until I can find a proper solution
     {
       type = "item",
       name = "vtk-deepcore-mining-" .. ore_name .. "-chunk", -- ore chunks
@@ -290,6 +292,7 @@ local function resource_patch_maker(
       probability = 1
     }
   }
+  -- ]]
   for _, result in pairs(ore_results) do
     local mod_result = util.table.deepcopy(result)
     if not mod_result.probability then
@@ -363,7 +366,8 @@ local function resource_patch_maker(
   }
 
   if fluid ~= nil then
-    table.insert(oredata.minable, { ["fluid_amount"] = fluidamount, ["required_fluid"] = fluid })
+    oredata.minable["fluid_amount"] = fluidamount
+    oredata.minable["required_fluid"] = fluid
   end
 
   return oredata
@@ -415,11 +419,7 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
 
   local fluid = nil;
   if oredata["mining-liquid"] then
-    if oredata["mining-liquid"] == "sulfuric-acid" then
-      fluid = sulfuricacidname
-    else
-      fluid = oredata["mining-liquid"]
-    end
+    fluid = oredata["mining-liquid"]
   end
   local fluidamount = nil;
   if oredata["mining-liquid-amount"] then
@@ -440,6 +440,7 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
     fluidamount                                        -- fluid amount
   )
 
+  --[[
   local ore_patch_ore = util.table.deepcopy(ore_patch)
   local ore_patch_chunk = util.table.deepcopy(ore_patch)
   ore_patch_ore.name = ore_patch_ore.name .. "-ore"
@@ -455,11 +456,12 @@ for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
   end
   ore_patch_chunk.hidden = true
   ore_patch_chunk.hidden_in_factoriopedia = true
+  ]]
 
   data:extend({
-    ore_patch,
-    ore_patch_ore,
-    ore_patch_chunk
+    -- ore_patch_ore,
+    -- ore_patch_chunk,
+    ore_patch
   })
 
   if ore == "uranium-ore" then

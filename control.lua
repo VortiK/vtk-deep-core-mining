@@ -37,8 +37,6 @@ script.on_event(events.on_robot_built_entity,
         dcm_dispatcher(event.entity, "create")
     end,
     {
-        {filter="name", name = "vtk-deepcore-mining-moho"},
-        {filter="name", name = "vtk-deepcore-mining-drill"},
         {filter="name", name = "vtk-deepcore-mining-drill-advanced"}
     }
 )
@@ -47,8 +45,6 @@ script.on_event(events.on_built_entity,
         dcm_dispatcher(event.entity, "create")
     end,
     {
-        {filter="name", name = "vtk-deepcore-mining-moho"},
-        {filter="name", name = "vtk-deepcore-mining-drill"},
         {filter="name", name = "vtk-deepcore-mining-drill-advanced"}
     }
 )
@@ -59,8 +55,6 @@ script.on_event(events.on_entity_died,
         dcm_dispatcher(event.entity, "remove")
     end,
     {
-        {filter="name", name = "vtk-deepcore-mining-moho"},
-        {filter="name", name = "vtk-deepcore-mining-drill"},
         {filter="name", name = "vtk-deepcore-mining-drill-advanced"}
     }
 )
@@ -69,8 +63,6 @@ script.on_event(events.on_player_mined_entity,
         dcm_dispatcher(event.entity, "remove")
     end,
     {
-        {filter="name", name = "vtk-deepcore-mining-moho"},
-        {filter="name", name = "vtk-deepcore-mining-drill"},
         {filter="name", name = "vtk-deepcore-mining-drill-advanced"}
     }
 )
@@ -79,15 +71,13 @@ script.on_event(events.on_robot_pre_mined,
         dcm_dispatcher(event.entity, "remove")
     end,
     {
-        {filter="name", name = "vtk-deepcore-mining-moho"},
-        {filter="name", name = "vtk-deepcore-mining-drill"},
         {filter="name", name = "vtk-deepcore-mining-drill-advanced"}
     }
 )
 
 -- on mod update fixes
 script.on_configuration_changed(function(data)
-    if data.mod_changes["vtk-deep-core-mining"] and data.mod_changes["vtk-deep-core-mining"].old_version ~= nil then
+    --[[ if data.mod_changes["vtk-deep-core-mining"] and data.mod_changes["vtk-deep-core-mining"].old_version ~= nil then
         local current = v(data.mod_changes["vtk-deep-core-mining"].old_version)
         if current < v(1,8,2) then
             upgrade182(data)
@@ -98,7 +88,7 @@ script.on_configuration_changed(function(data)
         if current < v(2,2,0) then
             upgrade220(data)
         end
-    end
+    end ]]
     -- init ADCMD list
     init_globals()
 end)

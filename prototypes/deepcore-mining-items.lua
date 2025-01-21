@@ -348,10 +348,15 @@ data:extend({
 
         input_fluid_box =
         {
-            pipe_picture = assembler2pipepictures(),
-            pipe_covers = pipecoverspictures(),
+            -- pipe_picture = assembler2pipepictures(),
+            -- pipe_covers = pipecoverspictures(),
             volume = 200,
-            pipe_connections = { { direction = defines.direction.south, position = { 1, 2.25 } } }
+            pipe_connections = {
+                {
+                    flow_direction = "input",
+                    direction = defines.direction.south, position = { 1, 1.5 }
+                }
+            }
         },
 
         energy_usage = settings.startup["vtk-deep-core-mining-moho-energy"].value .. "MW", -- default 2
@@ -363,7 +368,6 @@ data:extend({
         },
         vector_to_place_result = { -2, 3 },
 
-        
         graphics_set = {
             animation = {
                 layers = {
@@ -392,8 +396,25 @@ data:extend({
                         height = 400,
                         frame_count = 1,
                         direction_count = 1,
-                        shift = util.by_pixel(8, -8),
+                        shift = util.by_pixel(10, -10),
                         scale = 0.5
+                    },
+                    {
+                        filename = "__base__/graphics/entity/pipe-covers/pipe-cover-south.png",
+                        priority = "extra-high",
+                        width = 128,
+                        height = 128,
+                        shift = util.by_pixel(32, 100),
+                        scale = 0.5
+                    },
+                    {
+                        filename = "__base__/graphics/entity/pipe-covers/pipe-cover-south-shadow.png",
+                        priority = "extra-high",
+                        width = 128,
+                        height = 128,
+                        shift = util.by_pixel(32, 100),
+                        scale = 0.5,
+                        draw_as_shadow = true
                     }
                 }
             },
@@ -424,8 +445,8 @@ data:extend({
             match_speed_to_activity = true,
             audible_distance_modifier = 1,
         },
-        module_specification = { module_slots = 2 },
-        allowed_effects = { "consumption", "pollution" },
+        module_slots = 2,
+        allowed_effects = { "consumption", "pollution", "quality" },
         radius_visualisation_picture =
         {
             filename = "__base__/graphics/entity/pumpjack/pumpjack-radius-visualization.png",
@@ -469,10 +490,15 @@ data:extend({
 
         input_fluid_box =
         {
-            pipe_picture = assembler2pipepictures(),
-            pipe_covers = pipecoverspictures(),
+            -- pipe_picture = assembler2pipepictures(),
+            -- pipe_covers = pipecoverspictures(),
             volume = 200,
-            pipe_connections = { { direction = defines.direction.south, position = { 1, 2.5 } } }
+            pipe_connections = {
+                {
+                    flow_direction = "input",
+                    direction = defines.direction.south, position = { 1, 1.5 }
+                }
+            }
         },
 
         energy_usage = settings.startup["vtk-deep-core-mining-deepcore-energy"].value .. "MW", -- default 10 MW
@@ -512,8 +538,25 @@ data:extend({
                         height = 400,
                         frame_count = 1,
                         direction_count = 1,
-                        shift = util.by_pixel(8, -8),
+                        shift = util.by_pixel(11, -10),
                         scale = 0.5
+                    },
+                    {
+                        filename = "__base__/graphics/entity/pipe-covers/pipe-cover-south.png",
+                        priority = "extra-high",
+                        width = 128,
+                        height = 128,
+                        shift = util.by_pixel(32, 100),
+                        scale = 0.5
+                    },
+                    {
+                        filename = "__base__/graphics/entity/pipe-covers/pipe-cover-south-shadow.png",
+                        priority = "extra-high",
+                        width = 128,
+                        height = 128,
+                        shift = util.by_pixel(32, 100),
+                        scale = 0.5,
+                        draw_as_shadow = true
                     }
                 }
             },
@@ -544,8 +587,8 @@ data:extend({
             match_speed_to_activity = true,
             audible_distance_modifier = 1,
         },
-        module_specification = { module_slots = 2 },
-        allowed_effects = { "consumption", "pollution" },
+        module_slots = 2,
+        allowed_effects = { "consumption", "pollution", "quality" },
         radius_visualisation_picture =
         {
             filename = "__base__/graphics/entity/pumpjack/pumpjack-radius-visualization.png",
@@ -579,7 +622,7 @@ data:extend({
         close_sound = sounds.drill_close,
 
         mining_speed = 10,
-        resource_searching_radius = 0.49,
+        resource_searching_radius = 1.49,
 
         rotatable = false,
         supports_direction = false,
@@ -668,8 +711,8 @@ data:extend({
             match_speed_to_activity = true,
             audible_distance_modifier = 1,
         },
-        module_specification = { module_slots = 2 },
-        allowed_effects = { "consumption", "pollution" },
+        module_slots = 2,
+        allowed_effects = { "consumption", "pollution", "quality" },
         radius_visualisation_picture =
         {
             filename = "__base__/graphics/entity/pumpjack/pumpjack-radius-visualization.png",
@@ -716,10 +759,54 @@ table.insert(data.raw["mining-drill"]["vtk-deepcore-mining-drill"].flags, "not-r
 table.insert(data.raw["mining-drill"]["vtk-deepcore-mining-drill-advanced"].flags, "not-rotatable")
 
 if mods["space-age"] then
-    table.insert(data.raw["mining-drill"]["vtk-deepcore-mining-moho"],
-        { heating_energy = "500kW", drops_full_belt_stacks = true })
-    table.insert(data.raw["mining-drill"]["vtk-deepcore-mining-drill"],
-        { heating_energy = "500kW", drops_full_belt_stacks = true })
-    table.insert(data.raw["mining-drill"]["vtk-deepcore-mining-drill-advanced"],
-        { heating_energy = "1000kW", drops_full_belt_stacks = true })
-end
+    table.insert(data.raw["mining-drill"]["vtk-deepcore-mining-moho"], { heating_energy = "500kW", drops_full_belt_stacks = true })
+    table.insert(data.raw["mining-drill"]["vtk-deepcore-mining-drill"], { heating_energy = "500kW", drops_full_belt_stacks = true })
+    table.insert(data.raw["mining-drill"]["vtk-deepcore-mining-drill-advanced"], { heating_energy = "1000kW", drops_full_belt_stacks = true })
+    data.raw["recipe"]["vtk-deepcore-mining-drill"]["ingredients"] =
+    {
+        {
+            type = "item",
+            name = "big-mining-drill",
+            amount = 10
+        },
+        {
+            type = "item",
+            name = "tungsten-carbide",
+            amount = 20
+        },
+        {
+            type = "item",
+            name = "advanced-circuit",
+            amount = 20
+        },
+        {
+            type = "item",
+            name = "vtk-deepcore-mining-drone",
+            amount = 20
+        }
+    }
+
+    data.raw["recipe"]["vtk-deepcore-mining-drill-advanced"]["ingredients"] =
+    {
+        {
+            type = "item",
+            name = "big-mining-drill",
+            amount = 20
+        },
+        {
+            type = "item",
+            name = "tungsten-plate",
+            amount = 50
+        },
+        {
+            type = "item",
+            name = "processing-unit",
+            amount = 50
+        },
+        {
+            type = "item",
+            name = "vtk-deepcore-mining-drone",
+            amount = 50
+        }
+    }
+    end

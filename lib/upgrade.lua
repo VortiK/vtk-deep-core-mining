@@ -1,2 +1,2 @@
 -- Sementic Version comparision tool
-local v = require 'lib/semver'
+-- local v = require 'lib/semver'

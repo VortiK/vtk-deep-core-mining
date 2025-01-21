@@ -46,7 +46,7 @@ data:extend(
           recipe = "vtk-deepcore-mining-planner"
         },
       },
-    prerequisites = {"vtk-deepcore", "advanced-material-processing-2", "productivity-module-3", "mining-productivity-1", "production-science-pack"}, 
+    prerequisites = {"vtk-deepcore", "advanced-material-processing-2", "productivity-module-2", "mining-productivity-1", "production-science-pack"}, 
     unit =
     {
       count = 1000,
@@ -81,7 +81,7 @@ data:extend(
           recipe = "vtk-deepcore-mining-ore-chunk-refining-no-uranium"
         },
     },
-    prerequisites = {"vtk-deepcore", "vtk-deepcore-mining", "mining-productivity-3", "production-science-pack", "utility-science-pack"}, 
+    prerequisites = {"vtk-deepcore", "vtk-deepcore-mining", "mining-productivity-2", "production-science-pack", "utility-science-pack"}, 
     unit =
     {
       count = 1500,
@@ -100,8 +100,20 @@ data:extend(
 })
 
 for ore, oredata in pairs(vtk_deepcoremining_supported_ores) do
-  table.insert(data.raw['technology']['vtk-deepcore-mining']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-"..ore.."-chunk-refining" })
-  if oredata['probability'] > 0 then
-    table.insert(data.raw['technology']['vtk-deepcore-mining-advanced']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-ore-chunk-refining-"..ore.."-focus" })
+  if oredata.probability ~= nil then
+    table.insert(data.raw['technology']['vtk-deepcore-mining']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-"..ore.."-chunk-refining" })
+    if oredata['probability'] > 0 then
+      table.insert(data.raw['technology']['vtk-deepcore-mining-advanced']['effects'], {type = "unlock-recipe", recipe = "vtk-deepcore-mining-ore-chunk-refining-"..ore.."-focus" })
+    end
   end
+end
+
+if mods["space-age"] then
+  table.insert(data.raw["technology"]["vtk-deepcore-mining-advanced"]["prerequisites"], "space-science-pack")
+  table.insert(data.raw["technology"]["vtk-deepcore-mining-advanced"]["prerequisites"], "metallurgic-science-pack")
+  table.insert(data.raw["technology"]["vtk-deepcore-mining-advanced"]["unit"]["ingredients"], { "space-science-pack", 1 })
+  table.insert(data.raw["technology"]["vtk-deepcore-mining-advanced"]["unit"]["ingredients"], { "metallurgic-science-pack", 1 })
+  
+  data.raw["technology"]["vtk-deepcore-mining"].prerequisites = {"vtk-deepcore", "advanced-material-processing-2", "productivity-module-2", "mining-productivity-1", "production-science-pack", "space-science-pack", "big-mining-drill"}
+  table.insert(data.raw["technology"]["vtk-deepcore-mining"]["unit"]["ingredients"], { "space-science-pack", 1 })
 end
